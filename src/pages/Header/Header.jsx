@@ -26,7 +26,7 @@ const Header = () => {
                         <div className="search"><SearchIcon/></div>
                     </div>
                 </div>
-                <div className='headerInfo'>Velomarket Koleso</div>
+                <div className='headerInfo'>velomarket-koleso.ru</div>
             </div>
         </div>
     );

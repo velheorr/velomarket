@@ -8,7 +8,7 @@ import map from './img/map.jpg'
 
 const Contacts = () => {
     return (
-        <div className={`${s.grey_txt} ${s.pagePadding}`}>
+        <div className={`${s.grey_txt}`}>
             <h2><ContactsIcon fontSize="small"/> Контакты</h2>
             <Divider/>
             <p>г. Пермь Борчанинова 62 Веломаркет «Колесо»</p>

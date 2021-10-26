@@ -1,9 +1,15 @@
 import React from 'react';
+import s from "../Contacts/Contacts.module.css";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Divider from "@mui/material/Divider";
 
 const Catalog = () => {
     return (
-        <div>
-            Каталог
+        <div className={`${s.grey_txt}`}>
+            <h2><ShoppingCartIcon fontSize="small"/> Каталог</h2>
+            <Divider/>
+            
+
         </div>
     );
 };
