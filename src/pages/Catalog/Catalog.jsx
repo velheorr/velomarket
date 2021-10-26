@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Test = () => {
+const Catalog = () => {
     return (
         <div>
-            TEST
+            Каталог
         </div>
     );
 };
 
-export default Test;
+export default Catalog;
