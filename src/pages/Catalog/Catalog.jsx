@@ -8,7 +8,7 @@ const Catalog = () => {
         <div className={`${s.grey_txt}`}>
             <h2><ShoppingCartIcon fontSize="small"/> Каталог</h2>
             <Divider/>
-            
+
 
         </div>
     );

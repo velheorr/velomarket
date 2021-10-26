@@ -2,7 +2,6 @@
     display: flex;
     flex-flow: column;
     vertical-align: middle;
-    min-width: 100%;
     position: relative;
     min-height: 100vh;
 }
@@ -51,7 +50,6 @@
 }
 
 .lowerHeader {
-    width: 100%;
     margin: 10px auto;
     padding: 0 45px;
 }
