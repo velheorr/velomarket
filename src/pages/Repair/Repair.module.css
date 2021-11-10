@@ -1,3 +1,7 @@
 .grey_txt p {
     color: #828282;
 }
+
+.tablePrice p {
+    text-align: right;
+}

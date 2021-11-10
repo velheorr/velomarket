@@ -3,6 +3,7 @@ import Divider from "@mui/material/Divider";
 
 import ContactsIcon from '@mui/icons-material/Contacts';
 import ScheduleIcon from '@mui/icons-material/Schedule';
+import React from "react";
 
 
 const Contacts = () => {
@@ -16,7 +17,7 @@ const Contacts = () => {
         {day: 'Воскресенье', time: '09:00 - 19:00'},
     ]
 
-    const schedulMap = schedule.map(item => <View item={item} />)
+    const scheduleMap = schedule.map((item, i) => <View item={item} key={i} />)
 
 
 
@@ -30,21 +31,14 @@ const Contacts = () => {
 
             <h2><ScheduleIcon fontSize="small"/> Время работы</h2>
             <Divider/>
-
-                {schedulMap}
-
-
-
-
-
-
-        </div>
+            {scheduleMap}
+         </div>
     );
 };
 
 const View = ({item}) =>{
     return (
-        <div className={s.work}>
+        <div className={s.work} >
             <div className={s.day}>{item.day}</div>
             <div className={s.time}>{item.time}</div>
         </div>
