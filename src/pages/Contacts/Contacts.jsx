@@ -1,12 +1,25 @@
-import s from './Contacts.module.css'
+import s from './Contacts.module.scss'
 import Divider from "@mui/material/Divider";
 
 import ContactsIcon from '@mui/icons-material/Contacts';
 import ScheduleIcon from '@mui/icons-material/Schedule';
-import MapIcon from '@mui/icons-material/Map';
-import map from './img/map.jpg'
+
 
 const Contacts = () => {
+    const schedule = [
+        {day: 'Понедельник', time: 'Выходной'},
+        {day: 'Вторник', time: '09:00 - 19:00'},
+        {day: 'Среда', time: '09:00 - 19:00'},
+        {day: 'Четверг', time: '09:00 - 19:00'},
+        {day: 'Пятница', time: '09:00 - 19:00'},
+        {day: 'Суббота', time: '09:00 - 19:00'},
+        {day: 'Воскресенье', time: '09:00 - 19:00'},
+    ]
+
+    const schedulMap = schedule.map(item => <View item={item} />)
+
+
+
     return (
         <div className={`${s.grey_txt}`}>
             <h2><ContactsIcon fontSize="small"/> Контакты</h2>
@@ -15,19 +28,27 @@ const Contacts = () => {
             <p>тел: +7 (902) 471-37-69</p>
             <p>тел: +7 (902) 808-22-68</p>
 
-            <h2><ScheduleIcon fontSize="small"/> График работы</h2>
+            <h2><ScheduleIcon fontSize="small"/> Время работы</h2>
             <Divider/>
-            <p>понедельник-пятница с 10:00 до 19:00</p>
-            <p>Суббота,Воскресение: выходной</p>
+
+                {schedulMap}
 
 
 
-            <h2><MapIcon fontSize="small"/> Как к нам доехать</h2>
-            <Divider/>
-            <p>Мы находимся в 5 минутах ходьбы...</p>
-            <img src={map} alt=""/>
+
+
+
         </div>
     );
 };
+
+const View = ({item}) =>{
+    return (
+        <div className={s.work}>
+            <div className={s.day}>{item.day}</div>
+            <div className={s.time}>{item.time}</div>
+        </div>
+    )
+}
 
 export default Contacts;

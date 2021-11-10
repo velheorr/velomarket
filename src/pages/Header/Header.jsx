@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../App.css';
+import '../../App.scss';
 import logo from './img/logo.png'
 import SearchIcon from '@mui/icons-material/Search';
 import {NavLink} from "react-router-dom";
@@ -13,12 +13,12 @@ const Header = () => {
                     <li><NavLink to="/repair">Сервис и Ремонт</NavLink></li>
                     <li><NavLink to="/delivery">Оплата и Доставка</NavLink></li>
                     <li><NavLink to="/contacts">Контакты</NavLink></li>
-                    <li><NavLink to="/contacts">Где купить?</NavLink></li>
+                    <li><NavLink to="/where">Где купить?</NavLink></li>
                 </ul>
             </div>
             <div className='lowerHeader'>
                 <div className='headerLogo'>
-                    <a href="/"><img src={logo}/></a>
+                    <NavLink to="/catalog"><img src={logo} alt={'velomarketkoleso.ru'}/></NavLink>
                 </div>
                 <div className='headerSearch'>
                     <div>
@@ -28,7 +28,7 @@ const Header = () => {
                 </div>
                 <div className='headerInfo'>
                     <div>Интернет-магазин: </div>
-                    <div>velomarket-koleso.ru</div>
+                    <div>velomarketkoleso.ru</div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,21 @@
+.grey_txt p {
+    color: #828282;
+}
+
+.work {
+    color: #828282;
+    line-height: 20px;
+    display: flex;
+}
+
+.day, .time {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+
+.day {
+    min-width: 90px;
+    width: 20%;
+    padding-right: 5px;
+}

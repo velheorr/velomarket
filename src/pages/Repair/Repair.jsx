@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "../Contacts/Contacts.module.css";
+import s from "../Contacts/Contacts.module.scss";
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import Divider from "@mui/material/Divider";
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "../Contacts/Contacts.module.css";
+import s from "../Contacts/Contacts.module.scss";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Divider from "@mui/material/Divider";
 
