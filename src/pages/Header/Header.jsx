@@ -27,7 +27,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className='headerInfo'>
-                    <div>Интернет-магазин: </div>
+                    {/*<div>Интернет-магазин: </div>*/}
                     <div>velomarketkoleso.ru</div>
                 </div>
             </div>

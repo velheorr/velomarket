@@ -14,6 +14,12 @@ import Select from '@mui/material/Select';
 
 import repairPrice from '../../Data/file_.json'
 
+import Paper from '@mui/material/Paper';
+import MenuList from "@mui/material/MenuList";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import {ContentCut} from "@mui/icons-material";
+import Typography from "@mui/material/Typography";
+
 const Repair = () => {
     const [price ,setPrice] = useState(null)
     /*const x = repairPrice.filter(i => (i.ТипНоменклатуры === 'Услуга'))*/
@@ -34,7 +40,6 @@ const Repair = () => {
     const handleChange = (event) => {
         setSelect(event.target.value);
         makePrice(event.target.value)
-
     };
     const selected = selectMenu.map((item, i)=> <MenuItem key={i} value={item.val}>{item.name}</MenuItem>)
 
@@ -43,14 +48,11 @@ const Repair = () => {
     },[])
 
     let listItems
-    const makePrice = async (type = 'УСЛУГИ')=>{
-        const x = await repairPrice.filter(i => (i.НоменклатураРодитель === type))
+    const makePrice = (type = 'УСЛУГИ')=>{
+        const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
         console.log(x)
-        await setPrice(x)
-
-
+        setPrice(x)
     }
-
 
     if (price) {
         listItems = price.map((item, i)=> <View key={i} item={item}/>)
@@ -58,11 +60,6 @@ const Repair = () => {
 
     /*const y = Object.values(repairPrice).map((i) =>{console.log(i.НоменклатураРодитель)})*/
 
-    /*let listItems
-    if (price) {
-        listItems = price.map((item, i)=> <View key={i} item={item}/>)
-    }
-*/
 
     return (
         <>
@@ -81,8 +78,11 @@ const Repair = () => {
                     {selected}
                 </Select>
             </FormControl>
+            <Paper sx={{width: '100%', maxWidth: '100%'}}>
+                <MenuList>
              {price ? listItems : null}
-
+                </MenuList>
+            </Paper>
         </>
     );
 };
@@ -90,18 +90,29 @@ const Repair = () => {
 const View = ({item})=>{
     const {НоменклатураБренд, Номенклатура, Цена} = item
     return (
-        <List sx={{ width: '100%', bgcolor: 'background.paper', borderBottom: '1px solid #e0e0e0' }} aria-label="contacts" >
+        /*<List sx={{ width: '100%', bgcolor: 'background.paper', borderBottom: '1px solid #e0e0e0' }} aria-label="contacts" >
             <ListItem disablePadding>
                 <ListItemButton className={s.tablePrice}>
-                    {/*<ListItemIcon>
-                        <StarIcon />
-                    </ListItemIcon>*/}
                     <ListItemText primary={НоменклатураБренд}/>
                     <ListItemText   secondary={Номенклатура} />
                     <ListItemText   secondary={`${Цена}р`} />
                 </ListItemButton>
             </ListItem>
-        </List>
+        </List>*/
+        <>
+            <MenuItem>
+                {/*<ListItemIcon>
+                        <ContentCut fontSize="small" />
+                    </ListItemIcon>*/}
+                <ListItemText>{НоменклатураБренд}</ListItemText>
+                <ListItemText>{Номенклатура}</ListItemText>
+                <Typography variant="body2" color="text.secondary">{Цена}р</Typography>
+
+            </MenuItem>
+            <Divider />
+        </>
+
+
     )
 }
 
