@@ -4,10 +4,15 @@ import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Divider from "@mui/material/Divider";
 import PaymentIcon from '@mui/icons-material/Payment';
+import Slider from '../../Slider/Slider'
 
 const Delivery = () => {
+
     return (
         <div className={`${s.grey_txt}`}>
+            {/*<Slider/>*/}
+
+
             <h2><PaymentIcon fontSize="small"/> Способы оплаты</h2>
             <Divider/>
             <p>QR Код</p>
@@ -25,8 +30,8 @@ const Delivery = () => {
             <p>Стоимость доставки на заказы составляет -  200р</p>
             <p>Для отдаленных районов - 300р</p>
         </div>
-)
-    ;
+    )
+        ;
 };
 
 export default Delivery;

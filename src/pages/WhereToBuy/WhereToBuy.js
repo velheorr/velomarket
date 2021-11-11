@@ -22,7 +22,7 @@ const WhereToBuy = () => {
         <div className={`${s.grey_txt}`}>
             <h2><MapIcon fontSize="small"/> Как к нам доехать</h2>
             <Divider/>
-            <p>Мы находимся в 5 минутах ходьбы от остановки Автовокзал</p>
+            <p>Мы находимся в 5 минутах ходьбы от остановки "Автовокзал"</p>
             <YMaps >
                 <Map width='100%' height='500px' defaultState={mapData}>{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
                     <ZoomControl options={{ float: 'right' }} />

@@ -19,7 +19,7 @@
         align-items: center;
         vertical-align: top;
         height: 40px;
-        margin: 0 auto;
+        margin: 4px auto;
         li {
             white-space: nowrap;
             margin-left: 15px;
@@ -46,13 +46,17 @@
     border-color: rgba(0, 0, 0, 0.12);
     background-color: #fafafa;
     padding: 0 45px;
+    >span img {
+        width: 58px;
+        margin-top: 6px;
+    }
 }
 
 .lowerHeader {
     margin: 10px auto;
     padding: 0 45px;
     >div {
-        display: inline-flex;
+        /*display: inline-flex;*/
     }
 }
 
@@ -97,11 +101,19 @@
     font-weight: 600;
     font-family: emoji;
     right: 50px;
-    vertical-align: top;
     position: absolute;
+    top: 8px;
 }
 
 .mainBody {
     /*padding: 0 45px;*/
     padding: 0 130px;
+}
+
+.botLogo {
+    position: absolute;
+    width: 350px;
+    right: 14px;
+    bottom: -33px;
+    z-index: -1;
 }

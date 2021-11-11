@@ -9,6 +9,7 @@ import Repair from "./pages/Repair/Repair";
 import Delivery from "./pages/Delivery/Delivery";
 import Contacts from "./pages/Contacts/Contacts";
 import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
+import logo from "./pages/Header/img/logo.png";
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
                     <Route path='*' render={() => <div>Error 404  "Страница не найдена"</div>}/>
                 </Switch>
             </div>
+            <img className='botLogo' src={logo} alt={'velomarketkoleso.ru'}/>
         </div>
     );
 }
