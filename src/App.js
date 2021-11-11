@@ -20,14 +20,15 @@ const App = () => {
             </div>
             <div className='mainBody'>
                 <Switch>
-                    <Route exact path='/' render={()=> <Redirect to={'/catalog'}/>} />
-                    <Route exact path='/catalog' render={() => <Catalog/>}/>
+                   {/* <Route exact path='/' render={()=> <Redirect to={'/catalog'}/>} />*/}
+                    <Route path='/catalog' render={() => <Catalog/>}/>
                     <Route path='/repair' render={() => <Repair/>}/>
                     <Route path='/delivery' render={() => <Delivery/>}/>
                     <Route path='/contacts' render={() => <Contacts/>}/>
                     <Route path='/where' render={() => <WhereToBuy/>}/>
 
-                    <Route path='*' render={() => <div>Error 404  "Страница не найдена"</div>}/>
+                    <Route path='*' render={() => <Redirect to={'/catalog'}/>}/>
+                    {/*<Route path='*' render={() => <div>Error 404  "Страница не найдена"</div>}/>*/}
                 </Switch>
             </div>
             <img className='botLogo' src={logo} alt={'velomarketkoleso.ru'}/>
