@@ -1,13 +1,12 @@
 import React from 'react';
 import '../../App.scss';
 import logo from './img/logo.png'
-import SearchIcon from '@mui/icons-material/Search';
 import {NavLink} from "react-router-dom";
 import Slider from "../../Slider/Slider";
 
 const Header = () => {
     return (
-        <div>
+        <>
             <div className='navHeader'>
                 <span><NavLink to="/"><img src={logo} alt={'velomarketkoleso.ru'}/></NavLink></span>
                 <ul>
@@ -20,22 +19,9 @@ const Header = () => {
                 <span className='headerInfo'>Веломаркет Колесо</span>
             </div>
             <div className='lowerHeader'>
-                <div><Slider/></div>
-                {/*<div className='headerLogo'>
-                    <NavLink to="/catalog"><img src={logo} alt={'velomarketkoleso.ru'}/></NavLink>
-                </div>
-                <div className='headerSearch'>
-                    <div>
-                        <div><input type="text" placeholder={'Поиск товаров'}/></div>
-                        <div className="search"><SearchIcon/></div>
-                    </div>
-                </div>
-                <div className='headerInfo'>
-                    <div>Интернет-магазин: </div>
-                    <div>velomarketkoleso.ru</div>
-                </div>*/}
+                <Slider/>
             </div>
-        </div>
+        </>
     );
 };
 

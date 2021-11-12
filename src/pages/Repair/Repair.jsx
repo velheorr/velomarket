@@ -2,10 +2,6 @@ import React, {useEffect, useState} from 'react';
 import s from "./Repair.module.css";
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import Divider from "@mui/material/Divider";
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,8 +12,6 @@ import repairPrice from '../../Data/file_.json'
 
 import Paper from '@mui/material/Paper';
 import MenuList from "@mui/material/MenuList";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import {ContentCut} from "@mui/icons-material";
 import Typography from "@mui/material/Typography";
 
 const Repair = () => {
@@ -50,7 +44,6 @@ const Repair = () => {
     let listItems
     const makePrice = (type = 'УСЛУГИ')=>{
         const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
-        console.log(x)
         setPrice(x)
     }
 
@@ -78,7 +71,7 @@ const Repair = () => {
                     {selected}
                 </Select>
             </FormControl>
-            <Paper sx={{width: '100%', maxWidth: '100%'}}>
+            <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
                 <MenuList>
              {price ? listItems : null}
                 </MenuList>
@@ -90,15 +83,6 @@ const Repair = () => {
 const View = ({item})=>{
     const {НоменклатураБренд, Номенклатура, Цена} = item
     return (
-        /*<List sx={{ width: '100%', bgcolor: 'background.paper', borderBottom: '1px solid #e0e0e0' }} aria-label="contacts" >
-            <ListItem disablePadding>
-                <ListItemButton className={s.tablePrice}>
-                    <ListItemText primary={НоменклатураБренд}/>
-                    <ListItemText   secondary={Номенклатура} />
-                    <ListItemText   secondary={`${Цена}р`} />
-                </ListItemButton>
-            </ListItem>
-        </List>*/
         <>
             <MenuItem>
                 {/*<ListItemIcon>
@@ -111,12 +95,8 @@ const View = ({item})=>{
             </MenuItem>
             <Divider />
         </>
-
-
     )
 }
-
-
 
 export default Repair;
 

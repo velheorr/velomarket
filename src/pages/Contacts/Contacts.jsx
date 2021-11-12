@@ -1,9 +1,8 @@
+import React from "react";
 import s from './Contacts.module.scss'
 import Divider from "@mui/material/Divider";
-
 import ContactsIcon from '@mui/icons-material/Contacts';
 import ScheduleIcon from '@mui/icons-material/Schedule';
-import React from "react";
 
 
 const Contacts = () => {
@@ -18,8 +17,6 @@ const Contacts = () => {
     ]
 
     const scheduleMap = schedule.map((item, i) => <View item={item} key={i} />)
-
-
 
     return (
         <div className={`${s.grey_txt}`}>

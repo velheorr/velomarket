@@ -1,6 +1,6 @@
 import React from "react";
 import './App.scss';
-import {Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import Header from "./pages/Header/Header";
@@ -27,8 +27,8 @@ const App = () => {
                     <Route path='/contacts' render={() => <Contacts/>}/>
                     <Route path='/where' render={() => <WhereToBuy/>}/>
 
-                    <Route path='*' render={() => <Redirect to={'/catalog'}/>}/>
-                    {/*<Route path='*' render={() => <div>Error 404  "Страница не найдена"</div>}/>*/}
+                    {/*<Route path='*' render={() => <Redirect to={'/'}/>}/>*/}
+                    <Route path='*' render={() => <div>Error 404  "Страница не найдена"</div>}/>
                 </Switch>
             </div>
             <img className='botLogo' src={logo} alt={'velomarketkoleso.ru'}/>
