@@ -1,22 +1,51 @@
 .grey_txt p {
     color: #828282;
 }
+.pointer {
+    cursor: pointer;
+}
+.breadcrump {
+    color: #828282;
+}
 
-
-.wrapper {
-    /*display: grid;
-    grid-template-columns: 25% 25% 25% 25%;*/
+.catalogWrapper {
+    display: grid;
+    grid-template-columns: 20% 80%;
     margin-top: 30px;
 }
-/*.wrapper>div {
-    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
-    margin: 10px;
-    padding: 5px;
-    display: flex;
+
+.wrapper {
+    margin: 30px auto;
 }
-.wrapper div {
-    padding: 15px 25px;
-}*/
+.wrapper>div>div {
+    padding: 25px;
+    text-align: center;
+
+}
+.wrapper>div>div:hover {
+    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.04);
+    color: #260852;
+}
+
  .wrapper img {
     width: 70px;
+}
+
+ .wrapper .text {
+     font-weight: 600;
+ }
+
+
+
+.items>div>div>div {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.price {
+    text-align: right;
+    font-weight: 600;
 }

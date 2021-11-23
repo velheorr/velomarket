@@ -8,7 +8,8 @@ const initialState = {
         { name:'Велосипеды', img: 'bike'},
         { name:'Велоазапчасти', img: 'zapchasti'},
     ],
-    catalogItemsLoading: 'loading',
+    catalogPage: '',
+    catalogData: [],
     goods: [],
     /*heroesLoadingStatus: 'idle'*/
 }
@@ -27,7 +28,8 @@ const catalogSlice = createSlice({
     initialState,
     reducers: {
         getCatalogItems: (state, action) => {state.catalogItems = action.payload},
-        loadingCatalogItems: state => {state.catalogItemsLoading = 'loading'},
+        openCatalog: (state, action) => {state.catalogPage = action.payload},
+        openCatalogData: (state, action) => {state.catalogData = action.payload},
         loadedCatalogItems: state => {state.catalogItemsLoading = 'ready'},
         /*heroCreated: (state, action) => {state.heroes.push(action.payload)},*/
     },
@@ -48,5 +50,5 @@ const {actions, reducer} = catalogSlice;
 
 export default reducer;
 export const {
-    loadedCatalogItems
+    openCatalog, openCatalogData
 } = actions;

@@ -5,27 +5,27 @@ import Divider from "@mui/material/Divider";
 
 import goods from '../../Data/goods.json';
 import {useDispatch, useSelector} from "react-redux";
-import {loadedCatalogItems} from "./CatalogSlice";
+import {openCatalog, openCatalogData} from "./CatalogSlice";
 
-import samokat from './img/samokat.jpg'
-import zapchasti from './img/zapchasti.jpg'
-import bike from './img/bike.jpg'
-import winter from './img/winter.jpg'
-import Button from "@mui/material/Button";
+import samokat from './img/samokat.png'
+import zapchasti from './img/zapchasti.png'
+import bike from './img/bike.png'
+import winter from './img/winter.png'
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
+import CatalogCard from "./catalogCard/catalogCard";
 
 const Catalog = () => {
     const catalogItems = [
-        { name:'Самокаты', img: samokat},
-        { name:'Зимние товары', img: winter},
-        { name:'Велосипеды', img: bike},
-        { name:'Велоазапчасти', img: zapchasti}
+        { name: 'САМОКАТЫ', img: samokat},
+        { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
+        { name: 'ВЕЛОСИПЕДЫ', img: bike},
+        { name: 'ВЕЛОЗАПЧАСТИ', img: zapchasti},
     ]
 
     const dispatch = useDispatch();
-    /*const catalogItems = useSelector(state => state.catalog.catalogItems)*/
+    const catalogPage = useSelector(state => state.catalog.catalogPage)
+    const catalogData = useSelector(state => state.catalog.catalogData)
 
     /*const getCatalogs = (goods) =>{
         let res = []
@@ -35,65 +35,77 @@ const Catalog = () => {
                 res.push(str);
             }
         }
-        console.log(res)
+        return console.log(res)
     }
-    useEffect(()=>{
+    getCatalogs(goods)*/
+/*    useEffect(()=>{
         getCatalogs(goods)
         dispatch(loadedCatalogItems())
     },[])*/
+    const selectCatalog = (name)=>{
+        if (name === catalogPage) return;
+        console.log(name)
+        dispatch(openCatalog(name))
+        getCatalogItems(name)
+
+    }
+
+    const getCatalogItems = (name)=>{
+        let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
+        console.log(newCatalog)
+        dispatch(openCatalogData(newCatalog))
+
+        /*console.log(catalogData)*/
+        const cards = newCatalog.map(i => <CatalogCard key={i.НоменклатураАртикул} data={i}/>)
+    }
 
 
-    const renderCatalog = (catalogItems)=>{
+    const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
-                <Grid item xs={4} sm={3} md={3}>
-                    <img src={item.img} alt={item.name}/><div>{item.name}</div>
-                </Grid>
-
-            /*<div key={i}>
-
-                <img src={item.img} alt={item.name}/><div>{item.name}</div>
-                {/!* <img src={item.img} alt={item.name}/><span>{item.name}</span>*!/}
-            </div>*/
+            <Grid key={i} item xs={4} sm={3} md={3} onClick={()=> selectCatalog(item.name)}>
+               <div><img src={item.img} alt={item.name}/></div><div className={s.text}>{item.name}</div>
+            </Grid>
         )
      }
-    const elements = renderCatalog(catalogItems);
+     const elements = renderCatalogs(catalogItems);
+
+    const renderCatalogItems = (catalogData)=>{
+        return catalogData.map((item, i) => <CatalogCard key={i} item={item}/>)
+    }
+    const catalogElements = renderCatalogItems(catalogData)
+
 
     return (
         <div className={`${s.grey_txt}`}>
-            <h2><ShoppingCartIcon fontSize="small"/> Каталог</h2>
+            <h2 onClick={()=>selectCatalog('')} className={s.pointer}><ShoppingCartIcon fontSize="small"/> Каталог <span className={s.breadcrump}>/</span> {catalogPage}</h2>
             <Divider/>
-           {/* <div className={s.wrapper}>
-                {elements}
-            </div>*/}
-           <Box sx={{ flexGrow: 1 }}>
-               <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className={s.wrapper}>
-                   {elements}
-               </Grid>
-           </Box>
+            {
+                catalogPage === ''
+                    ?
+                    <Box sx={{ flexGrow: 1 }} className={s.wrapper}>
+                        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                            {elements}
+                        </Grid>
+                    </Box>
+                    :
+                    <div className={s.catalogWrapper}>
+                        <div>
+                            Параметры
+                        </div>
+                        <div className={s.items}>
+                            <Box sx={{ flexGrow: 1, display: 'grid',}} >
+                                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                                    {catalogData ? catalogElements : 'no data' }
+                                </Grid>
+                            </Box>
+                        </div>
+                    </div>
+            }
+
 
         </div>
     );
 };
 
-/*
-const View = ({i})=>{
-    /!*console.log(catalogItems)
-    const items = catalogItems.map(i => <div>{i}</div>)*!/
-    return (
-        <>
-            <div>{i}</div>
-           {/!* {items}*!/}
-           {/!* <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>*!/}
-        </>
-    )
-}
-*/
 
 export default Catalog;
