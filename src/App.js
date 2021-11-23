@@ -1,8 +1,6 @@
 import React from "react";
 import './App.scss';
-import {Route, Switch, withRouter} from "react-router-dom";
-import {connect} from "react-redux";
-import {compose} from "redux";
+import {Route, Switch, Redirect} from "react-router-dom";
 import Header from "./pages/Header/Header";
 import Catalog from "./pages/Catalog/Catalog";
 import Repair from "./pages/Repair/Repair";
@@ -20,14 +18,13 @@ const App = () => {
             </div>
             <div className='mainBody'>
                 <Switch>
-                   {/* <Route exact path='/' render={()=> <Redirect to={'/catalog'}/>} />*/}
-                    <Route exact path='/' render={() => <Catalog/>}/>
+                    <Route exact path='/' render={()=> <Redirect to={'/catalog'}/>} />
+                    <Route exact path='/catalog' render={() => <Catalog/>}/>
                     <Route path='/repair' render={() => <Repair/>}/>
                     <Route path='/delivery' render={() => <Delivery/>}/>
                     <Route path='/contacts' render={() => <Contacts/>}/>
                     <Route path='/where' render={() => <WhereToBuy/>}/>
 
-                    {/*<Route path='*' render={() => <Redirect to={'/'}/>}/>*/}
                     <Route path='*' render={() => <div>Error 404  "Страница не найдена"</div>}/>
                 </Switch>
             </div>
@@ -36,6 +33,4 @@ const App = () => {
     );
 }
 
-export default compose (
-    withRouter,
-    connect())(App);
+export default App;

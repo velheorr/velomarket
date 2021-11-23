@@ -100,7 +100,7 @@ const Catalog = () => {
                             <div className={s.filters}>Производитель</div>
                         </div>
                         <div className={s.items}>
-                            <Box sx={{ flexGrow: 1, display: 'grid',}} >
+                            <Box sx={{ flexGrow: 1, display: 'grid'}} >
                                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
                                     {catalogData ? catalogElements : 'no data' }
                                 </Grid>
@@ -108,8 +108,6 @@ const Catalog = () => {
                         </div>
                     </div>
             }
-
-
         </div>
     );
 };
