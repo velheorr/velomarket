@@ -1,7 +1,9 @@
-import React, {useCallback, useEffect} from 'react';
+import React from 'react';
 import s from "./Catalog.module.css";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 
 import goods from '../../Data/goods.json';
 import {useDispatch, useSelector} from "react-redux";
@@ -11,9 +13,10 @@ import samokat from './img/samokat.png'
 import zapchasti from './img/zapchasti.png'
 import bike from './img/bike.png'
 import winter from './img/winter.png'
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+
 import CatalogCard from "./catalogCard/catalogCard";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
 
 const Catalog = () => {
     const catalogItems = [
@@ -36,29 +39,17 @@ const Catalog = () => {
             }
         }
         return console.log(res)
-    }
-    getCatalogs(goods)*/
-/*    useEffect(()=>{
-        getCatalogs(goods)
-        dispatch(loadedCatalogItems())
-    },[])*/
+    }*/
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
-        console.log(name)
         dispatch(openCatalog(name))
         getCatalogItems(name)
-
     }
 
     const getCatalogItems = (name)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
-        console.log(newCatalog)
         dispatch(openCatalogData(newCatalog))
-
-        /*console.log(catalogData)*/
-        const cards = newCatalog.map(i => <CatalogCard key={i.НоменклатураАртикул} data={i}/>)
     }
-
 
     const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
@@ -70,7 +61,7 @@ const Catalog = () => {
      const elements = renderCatalogs(catalogItems);
 
     const renderCatalogItems = (catalogData)=>{
-        return catalogData.map((item, i) => <CatalogCard key={i} item={item}/>)
+        return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
     }
     const catalogElements = renderCatalogItems(catalogData)
 
@@ -90,7 +81,23 @@ const Catalog = () => {
                     :
                     <div className={s.catalogWrapper}>
                         <div>
-                            Параметры
+                            <Typography gutterBottom component="div" fontSize={16} fontWeight={600} textAlign='center'>Параметры</Typography>
+                            <div className={s.filters}>Цена</div>
+                            <TextField
+                                label="От"
+                                id="priceFrom"
+                                defaultValue=""
+                                size="small"
+                                className={s.filters}
+                            />
+                            <TextField
+                                label="До"
+                                id="priceTo"
+                                defaultValue=""
+                                size="small"
+                                className={s.filters}
+                            />
+                            <div className={s.filters}>Производитель</div>
                         </div>
                         <div className={s.items}>
                             <Box sx={{ flexGrow: 1, display: 'grid',}} >

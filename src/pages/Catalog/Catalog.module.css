@@ -48,4 +48,10 @@
 .price {
     text-align: right;
     font-weight: 600;
+    color: black;
+}
+
+.filters {
+    margin: 10px 0px;
+    width: 80%;
 }

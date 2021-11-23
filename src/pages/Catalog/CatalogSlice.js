@@ -1,5 +1,4 @@
-import {createAsyncThunk, createSlice, createSelector} from '@reduxjs/toolkit'
-
+import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     catalogItems: [
@@ -11,39 +10,16 @@ const initialState = {
     catalogPage: '',
     catalogData: [],
     goods: [],
-    /*heroesLoadingStatus: 'idle'*/
 }
 
-
-/*export const fetchHeroes = createAsyncThunk(
-    'heroes/fetchHeroes',
-    async ()=>{
-        const {request} = useHttp();
-        return await request("http://localhost:3001/heroes")
-    }
-)*/
 
 const catalogSlice = createSlice({
     name: 'catalog',
     initialState,
     reducers: {
-        getCatalogItems: (state, action) => {state.catalogItems = action.payload},
         openCatalog: (state, action) => {state.catalogPage = action.payload},
         openCatalogData: (state, action) => {state.catalogData = action.payload},
-        loadedCatalogItems: state => {state.catalogItemsLoading = 'ready'},
-        /*heroCreated: (state, action) => {state.heroes.push(action.payload)},*/
     },
-    extraReducers: builder => {
-        builder
-            /*.addCase(fetchHeroes.pending, state => {state.heroesLoadingStatus = 'loading'})
-            .addCase(fetchHeroes.fulfilled, (state, action) =>{
-                state.heroesLoadingStatus = 'idle';
-                state.heroes = action.payload;
-                /!*heroesAdapter.setAll(state, action.payload)*!/
-            })
-            .addCase(fetchHeroes.rejected, state => {state.heroesLoadingStatus = 'error'})*/
-            .addDefaultCase(()=>{})
-    }
 });
 
 const {actions, reducer} = catalogSlice;
