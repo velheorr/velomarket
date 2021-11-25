@@ -29,10 +29,11 @@
                 text-decoration: none;
                 color: #828282;
                 font-size: 14px;
-                &:hover {
+                &:hover, &.active {
                     text-decoration: none;
                     cursor: pointer;
-                    color: #333333;
+                    /*color: #333333;*/
+                    color: #260852;
                     transition: color ease-in-out .2s;
                 }
             }

@@ -1,11 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit'
 
+import samokat from './img/samokat.png'
+import zapchasti from './img/zapchasti.png'
+import bike from './img/bike.png'
+import winter from './img/winter.png'
+
 const initialState = {
     catalogItems: [
-        { name:'Самокаты', img: 'samokat'},
-        { name:'Зимние товары', img: 'winter'},
-        { name:'Велосипеды', img: 'bike'},
-        { name:'Велоазапчасти', img: 'zapchasti'},
+        { name: 'САМОКАТЫ', img: samokat},
+        { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
+        { name: 'ВЕЛОСИПЕДЫ', img: bike},
+        { name: 'ВЕЛОЗАПЧАСТИ', img: zapchasti},
     ],
     catalogPage: '',
     catalogData: [],

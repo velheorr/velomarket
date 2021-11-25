@@ -10,7 +10,7 @@ const Header = () => {
             <div className='navHeader'>
                 <span><NavLink to="/"><img src={logo} alt={'velomarketkoleso.ru'}/></NavLink></span>
                 <ul>
-                    <li><NavLink to="/">Каталог</NavLink></li>
+                    <li><NavLink activeClassName='active'  to="/catalog">Каталог</NavLink></li>
                     <li><NavLink to="/repair">Сервис и Ремонт</NavLink></li>
                     <li><NavLink to="/delivery">Оплата и Доставка</NavLink></li>
                     <li><NavLink to="/contacts">Контакты</NavLink></li>

@@ -4,33 +4,22 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 import goods from '../../Data/goods.json';
 import {useDispatch, useSelector} from "react-redux";
 import {openCatalog, openCatalogData, setFilteredBrand} from "./CatalogSlice";
-
-import samokat from './img/samokat.png'
-import zapchasti from './img/zapchasti.png'
-import bike from './img/bike.png'
-import winter from './img/winter.png'
-
 import CatalogCard from "./catalogCard/catalogCard";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import CatalogFilters from "./catalogFilters/catalogFilters";
 
-const Catalog = () => {
-    const catalogItems = [
-        { name: 'САМОКАТЫ', img: samokat},
-        { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
-        { name: 'ВЕЛОСИПЕДЫ', img: bike},
-        { name: 'ВЕЛОЗАПЧАСТИ', img: zapchasti},
-    ]
 
+const Catalog = () => {
     const dispatch = useDispatch();
-    const catalogPage = useSelector(state => state.catalog.catalogPage)
-    const catalogData = useSelector(state => state.catalog.catalogData)
-    const filteredBrand = useSelector(state => state.catalog.filteredBrand)
+    const catalogPage = useSelector(state => state.catalog.catalogPage);
+    const catalogItems = useSelector(state => state.catalog.catalogItems);
+    const catalogData = useSelector(state => state.catalog.catalogData);
+    const filteredBrand = useSelector(state => state.catalog.filteredBrand);
 
     /*const getCatalogs = (goods) =>{
         let res = []
@@ -47,7 +36,6 @@ const Catalog = () => {
         dispatch(openCatalog(name))
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
         dispatch(openCatalogData(newCatalog))
-
         catalogFilters(newCatalog)
     }
 
