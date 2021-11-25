@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 
 import goods from '../../Data/goods.json';
 import {useDispatch, useSelector} from "react-redux";
-import {openCatalog, openCatalogData} from "./CatalogSlice";
+import {openCatalog, openCatalogData, setFilteredBrand} from "./CatalogSlice";
 
 import samokat from './img/samokat.png'
 import zapchasti from './img/zapchasti.png'
@@ -17,6 +17,9 @@ import winter from './img/winter.png'
 import CatalogCard from "./catalogCard/catalogCard";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const Catalog = () => {
     const catalogItems = [
@@ -29,6 +32,7 @@ const Catalog = () => {
     const dispatch = useDispatch();
     const catalogPage = useSelector(state => state.catalog.catalogPage)
     const catalogData = useSelector(state => state.catalog.catalogData)
+    const filteredBrand = useSelector(state => state.catalog.filteredBrand)
 
     /*const getCatalogs = (goods) =>{
         let res = []
@@ -43,12 +47,10 @@ const Catalog = () => {
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
         dispatch(openCatalog(name))
-        getCatalogItems(name)
-    }
-
-    const getCatalogItems = (name)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
         dispatch(openCatalogData(newCatalog))
+
+        catalogFilters(newCatalog)
     }
 
     const renderCatalogs = (catalogItems)=>{
@@ -63,12 +65,32 @@ const Catalog = () => {
     const renderCatalogItems = (catalogData)=>{
         return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
     }
-    const catalogElements = renderCatalogItems(catalogData)
+    const catalogElements = renderCatalogItems(catalogData);
 
+    const catalogFilters = (newCatalog)=>{
+        let filterBrand = []
+        const filtered = newCatalog.map(i => i.НоменклатураБренд)
+        for (let str of filtered) {
+            if (!filterBrand.includes(str)) {
+                filterBrand.push(str);
+            }
+        }
+        dispatch(setFilteredBrand(filterBrand));
+    }
+    const renderCatalogFilters =(filterdata)=>{
+        if (!filterdata) return
+        return filterdata.map((item, i)=> <FormControlLabel key={i} control={<Checkbox defaultChecked />} label={item} />);
+    }
+    const catalogFilterElements =  renderCatalogFilters(filteredBrand) ;
+
+    const resetCatalogs = ()=>{
+        selectCatalog('');
+        dispatch(setFilteredBrand())
+    }
 
     return (
         <div className={`${s.grey_txt}`}>
-            <h2 onClick={()=>selectCatalog('')} className={s.pointer}><ShoppingCartIcon fontSize="small"/> Каталог <span className={s.breadcrump}>/</span> {catalogPage}</h2>
+            <h2 onClick={resetCatalogs} className={s.pointer}><ShoppingCartIcon fontSize="small"/> Каталог <span className={s.breadcrump}>/</span> {catalogPage}</h2>
             <Divider/>
             {
                 catalogPage === ''
@@ -98,6 +120,9 @@ const Catalog = () => {
                                 className={s.filters}
                             />
                             <div className={s.filters}>Производитель</div>
+                            <FormGroup>
+                                {catalogData ? catalogFilterElements : 'no data' }
+                            </FormGroup>
                         </div>
                         <div className={s.items}>
                             <Box sx={{ flexGrow: 1, display: 'grid'}} >
