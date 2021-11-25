@@ -15,11 +15,9 @@ import bike from './img/bike.png'
 import winter from './img/winter.png'
 
 import CatalogCard from "./catalogCard/catalogCard";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import CatalogFilters from "./catalogFilters/catalogFilters";
 
 const Catalog = () => {
     const catalogItems = [
@@ -60,7 +58,7 @@ const Catalog = () => {
             </Grid>
         )
      }
-     const elements = renderCatalogs(catalogItems);
+    const elements = renderCatalogs(catalogItems);
 
     const renderCatalogItems = (catalogData)=>{
         return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
@@ -78,8 +76,8 @@ const Catalog = () => {
         dispatch(setFilteredBrand(filterBrand));
     }
     const renderCatalogFilters =(filterdata)=>{
-        if (!filterdata) return
-        return filterdata.map((item, i)=> <FormControlLabel key={i} control={<Checkbox defaultChecked />} label={item} />);
+        if (!filterdata) return;
+        return filterdata.map((item, i)=> <FormControlLabel key={i} control={<Checkbox />} label={item} />);
     }
     const catalogFilterElements =  renderCatalogFilters(filteredBrand) ;
 
@@ -90,7 +88,9 @@ const Catalog = () => {
 
     return (
         <div className={`${s.grey_txt}`}>
-            <h2 onClick={resetCatalogs} className={s.pointer}><ShoppingCartIcon fontSize="small"/> Каталог <span className={s.breadcrump}>/</span> {catalogPage}</h2>
+            <h2 onClick={resetCatalogs} className={s.pointer}>
+                <ShoppingCartIcon fontSize="small"/> Каталог <span className={s.breadcrump}>/</span> {catalogPage}
+            </h2>
             <Divider/>
             {
                 catalogPage === ''
@@ -102,28 +102,7 @@ const Catalog = () => {
                     </Box>
                     :
                     <div className={s.catalogWrapper}>
-                        <div>
-                            <Typography gutterBottom component="div" fontSize={16} fontWeight={600} textAlign='center'>Параметры</Typography>
-                            <div className={s.filters}>Цена</div>
-                            <TextField
-                                label="От"
-                                id="priceFrom"
-                                defaultValue=""
-                                size="small"
-                                className={s.filters}
-                            />
-                            <TextField
-                                label="До"
-                                id="priceTo"
-                                defaultValue=""
-                                size="small"
-                                className={s.filters}
-                            />
-                            <div className={s.filters}>Производитель</div>
-                            <FormGroup>
-                                {catalogData ? catalogFilterElements : 'no data' }
-                            </FormGroup>
-                        </div>
+                        <CatalogFilters catalogFilterElements={catalogFilterElements} catalogData={catalogData} />
                         <div className={s.items}>
                             <Box sx={{ flexGrow: 1, display: 'grid'}} >
                                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >

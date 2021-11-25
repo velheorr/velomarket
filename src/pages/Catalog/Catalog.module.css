@@ -50,8 +50,11 @@
     font-weight: 600;
     color: black;
 }
-
+.filters {
+    font-style: italic;
+    font-weight: 600;
+}
 .filters>div {
-    margin: 10px 0px !important;
+    margin: 15px 0px !important;
     width: 80%;
 }
