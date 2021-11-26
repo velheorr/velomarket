@@ -7,15 +7,14 @@ import Button from "@mui/material/Button";
 import {Controller, useForm} from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setCatalogDataFilter} from "../CatalogSlice";
 
 const CatalogFilters = ({catalogData}) => {
     const { register, handleSubmit, reset, control } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
+    const dispatch = useDispatch()
     const onSubmit = data => {
-        console.log(data)
-        //console.log(catalogData)
         let minPrice;
         let maxPrice;
         let brandArr =[]
@@ -24,16 +23,18 @@ const CatalogFilters = ({catalogData}) => {
         if(data.priceTo > 0){maxPrice = data.priceTo}
 
         for (let key in data){
-            if (typeof Number(data[key]) && data[key] > 0 || data[key] === true){
+            if (data[key] === true){
                 console.log(data[key])
                 brandArr.push(key)
             }
-
         }
-        console.log(brandArr)
 
-
-
+        const catalogData_filtered = catalogData.filter(i => {
+            for (let key in brandArr){
+                if (i.НоменклатураБренд === brandArr[key]) return i.НоменклатураБренд;
+            }
+        })
+        dispatch(setCatalogDataFilter(catalogData_filtered))
     };
 
 
@@ -57,6 +58,10 @@ const CatalogFilters = ({catalogData}) => {
     }
     const catalogFilterElements = renderCatalogFilters(filteredBrand);
 
+    const resetForm = ()=>{
+        reset()
+        dispatch(setCatalogDataFilter(''))
+    }
 
     return (
         <div>
@@ -84,7 +89,7 @@ const CatalogFilters = ({catalogData}) => {
                     {catalogData ? catalogFilterElements : 'no data' }
                 </FormGroup>
                 <div><Button type="submit">Применить фильтры</Button></div>
-                <div><Button onClick={()=>reset()}>Сбросить</Button></div>
+                <div><Button onClick={resetForm}>Сбросить</Button></div>
             </form>
         </div>
     );

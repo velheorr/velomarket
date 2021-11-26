@@ -17,6 +17,7 @@ const Catalog = () => {
     const catalogPage = useSelector(state => state.catalog.catalogPage);
     const catalogItems = useSelector(state => state.catalog.catalogItems);
     const catalogData = useSelector(state => state.catalog.catalogData);
+    const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
 
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
@@ -36,6 +37,9 @@ const Catalog = () => {
     const elements = renderCatalogs(catalogItems);
 
     const renderCatalogItems = (catalogData)=>{
+        if (catalogDataFiltered.length > 0) {
+            return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
+        }
         return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
     }
     const catalogElements = renderCatalogItems(catalogData);
