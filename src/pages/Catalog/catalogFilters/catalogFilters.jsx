@@ -13,31 +13,34 @@ import {setCatalogDataFilter} from "../CatalogSlice";
 const CatalogFilters = ({catalogData}) => {
     const { register, handleSubmit, reset, control } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const onSubmit = data => {
-        let minPrice;
-        let maxPrice;
+        let minPrice = 0;
+        let maxPrice = 1000000;
         let brandArr =[]
 
-        if(data.priceFrom > 0){minPrice = data.priceFrom}
-        if(data.priceTo > 0){maxPrice = data.priceTo}
-
         for (let key in data){
+            if (key === 'priceFrom' && typeof Number(data[key]) && data[key] > 0 && data[key] <= maxPrice){minPrice = data[key]}
+            if (key === 'priceTo'&& typeof Number(data[key]) && data[key] <= 1000000 ){maxPrice = data[key]}
+            console.log(key)
             if (data[key] === true){
-                console.log(data[key])
-                brandArr.push(key)
+                 brandArr.push(key)
             }
         }
 
         const catalogData_filtered = catalogData.filter(i => {
-            for (let key in brandArr){
-                if (i.НоменклатураБренд === brandArr[key]) return i.НоменклатураБренд;
+            if (+i.Цена >= minPrice && +i.Цена <= maxPrice) {
+                if (brandArr.length > 0){
+                    for (let key in brandArr){
+                        if (i.НоменклатураБренд === brandArr[key]) return i.НоменклатураБренд;
+                    }
+                } else {
+                    return i.НоменклатураБренд;
+                }
             }
         })
         dispatch(setCatalogDataFilter(catalogData_filtered))
     };
-
-
 
 
     const renderCatalogFilters =(filterdata)=>{
@@ -71,7 +74,7 @@ const CatalogFilters = ({catalogData}) => {
                 <TextField
                     {...register("priceFrom", {min: 0})}
                     label="От"
-                    defaultValue=""
+                    defaultValue=''
                     size="small"
                     className={s.filters}
                     type="number"
