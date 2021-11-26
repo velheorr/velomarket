@@ -4,8 +4,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 
 import goods from '../../Data/goods.json';
 import {useDispatch, useSelector} from "react-redux";
@@ -19,18 +17,7 @@ const Catalog = () => {
     const catalogPage = useSelector(state => state.catalog.catalogPage);
     const catalogItems = useSelector(state => state.catalog.catalogItems);
     const catalogData = useSelector(state => state.catalog.catalogData);
-    const filteredBrand = useSelector(state => state.catalog.filteredBrand);
 
-    /*const getCatalogs = (goods) =>{
-        let res = []
-        const catalogs = goods.map(i => i.ПутьПапки.split(`\\`)[0])
-        for (let str of catalogs) {
-            if (!res.includes(str) && str !== "УСЛУГИ") {
-                res.push(str);
-            }
-        }
-        return console.log(res)
-    }*/
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
         dispatch(openCatalog(name))
@@ -63,11 +50,7 @@ const Catalog = () => {
         }
         dispatch(setFilteredBrand(filterBrand));
     }
-    const renderCatalogFilters =(filterdata)=>{
-        if (!filterdata) return;
-        return filterdata.map((item, i)=> <FormControlLabel key={i} control={<Checkbox />} label={item} />);
-    }
-    const catalogFilterElements =  renderCatalogFilters(filteredBrand) ;
+
 
     const resetCatalogs = ()=>{
         selectCatalog('');
@@ -90,7 +73,7 @@ const Catalog = () => {
                     </Box>
                     :
                     <div className={s.catalogWrapper}>
-                        <CatalogFilters catalogFilterElements={catalogFilterElements} catalogData={catalogData} />
+                        <CatalogFilters catalogData={catalogData} />
                         <div className={s.items}>
                             <Box sx={{ flexGrow: 1, display: 'grid'}} >
                                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
