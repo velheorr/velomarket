@@ -7,7 +7,6 @@ import {YMaps, Map, Placemark, ZoomControl} from 'react-yandex-maps';
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ScheduleIcon from "@mui/icons-material/Schedule";
 import HomeIcon from "@mui/icons-material/Home";
 import List from "@mui/material/List";
 
@@ -39,7 +38,8 @@ const WhereToBuy = () => {
 
             <div className={s.map}>
                 <YMaps>
-                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map(coordinate => <Placemark
+                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
+                        key={i}
                         geometry={coordinate}
                         options={{
                             preset: "islands#blueStretchyIcon",

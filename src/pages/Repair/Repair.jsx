@@ -12,7 +12,6 @@ import repairPrice from '../../Data/file_.json'
 import Paper from '@mui/material/Paper';
 import {useSelector} from "react-redux";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ContactsIcon from "@mui/icons-material/Contacts";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 

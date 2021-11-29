@@ -22,7 +22,7 @@ const repairSlice = createSlice({
     name: 'repair',
     initialState,
     reducers: {
-        /*openCatalog: (state, action) => {state.catalogPage = action.payload},*/
+        menu: (state, action) => {state.selectMenu = action.payload},
     },
 });
 
@@ -30,5 +30,5 @@ const {actions, reducer} = repairSlice;
 
 export default reducer;
 export const {
-
+    menu
 } = actions;
