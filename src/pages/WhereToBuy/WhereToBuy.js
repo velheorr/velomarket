@@ -4,6 +4,12 @@ import MapIcon from "@mui/icons-material/Map";
 import s from './WhereToBuy.module.css'
 
 import {YMaps, Map, Placemark, ZoomControl} from 'react-yandex-maps';
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import HomeIcon from "@mui/icons-material/Home";
+import List from "@mui/material/List";
 
 
 const WhereToBuy = () => {
@@ -18,15 +24,32 @@ const WhereToBuy = () => {
     ];
 
     return (
-        <div className={`${s.grey_txt}`}>
-            <h2><MapIcon fontSize="small"/> Как к нам доехать</h2>
+        <div>
+            <ListItem disablePadding className={s.menuHeader}>
+                <ListItemIcon><MapIcon color='primary'/></ListItemIcon>
+                <ListItemText primary="Как к нам доехать"/>
+            </ListItem>
             <Divider/>
-            <p>Наш адрес: ул. Борчанинова 62, за Центральным рынком</p>
+            <List>
+                <ListItem>
+                    <ListItemIcon><HomeIcon /></ListItemIcon>
+                    <ListItemText secondary='Мы находимся в 5 минутах ходьбы от остановки "Автовокзал"' />
+                </ListItem>
+            </List>
 
-            {/*<p>Мы находимся в 5 минутах ходьбы от остановки "Автовокзал"</p>*/}
             <div className={s.map}>
                 <YMaps>
-                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
+                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map(coordinate => <Placemark
+                        geometry={coordinate}
+                        options={{
+                            preset: "islands#blueStretchyIcon",
+                            balloonCloseButton: false,
+                            hideIconOnBalloonOpen: false
+                        }}
+                        properties={{
+                            iconContent: 'Веломаркет "Колесо"',
+                        }}
+                    />)}
                         <ZoomControl options={{ float: 'right' }} />
                     </Map>
                 </YMaps>

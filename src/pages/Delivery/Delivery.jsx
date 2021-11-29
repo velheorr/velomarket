@@ -3,7 +3,6 @@ import s from "./Delivery.module.css";
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Divider from "@mui/material/Divider";
-import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -27,7 +26,7 @@ const Delivery = () => {
             <List>
                 <ListItem>
                     <ListItemIcon><QrCodeScannerIcon /></ListItemIcon>
-                    <ListItemText secondary="через QR Код" />
+                    <ListItemText secondary="Оплата через QR Код" />
                 </ListItem>
                 <ListItem>
                     <ListItemIcon><CreditCardIcon /></ListItemIcon>

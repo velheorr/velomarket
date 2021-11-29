@@ -1,11 +1,18 @@
-.grey_txt p {
-    color: #828282;
+.menuHeader {margin: 15px 0;}
+.menuHeader span {
+    font-weight: 600;
+    font-size: 20px;
 }
+
 
 .work {
     color: #828282;
     line-height: 20px;
     display: flex;
+}
+.active {
+    font-weight: 600;
+    color: black;
 }
 
 .day, .time {
