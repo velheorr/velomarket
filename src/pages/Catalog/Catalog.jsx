@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 
 import goods from '../../Data/goods.json';
 import {useDispatch, useSelector} from "react-redux";
-import {openCatalog, openCatalogData, setFilteredBrand} from "./CatalogSlice";
+import {openCatalog, openCatalogData, setCatalogDataFilter, setFilteredBrand} from "./CatalogSlice";
 import CatalogCard from "./catalogCard/catalogCard";
 import CatalogFilters from "./catalogFilters/catalogFilters";
 
@@ -60,6 +60,7 @@ const Catalog = () => {
     const resetCatalogs = ()=>{
         selectCatalog('');
         dispatch(setFilteredBrand())
+        dispatch(setCatalogDataFilter(0))
     }
 
     return (

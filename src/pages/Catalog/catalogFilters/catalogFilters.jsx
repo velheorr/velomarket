@@ -9,7 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import {useDispatch, useSelector} from "react-redux";
 import {setCatalogDataFilter} from "../CatalogSlice";
-import {isAllOf} from "@reduxjs/toolkit";
+
 
 const CatalogFilters = ({catalogData}) => {
     const { register, handleSubmit, reset, control } = useForm();
@@ -40,8 +40,6 @@ const CatalogFilters = ({catalogData}) => {
         })
         dispatch(setCatalogDataFilter(catalogData_filtered))
     };
-
-
 
 
     const renderCatalogFilters =(filterdata)=>{
