@@ -1,5 +1,7 @@
-.grey_txt p {
-    color: #828282;
+.menuHeader {margin: 15px 0;}
+.menuHeader span {
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .tablePrice p {

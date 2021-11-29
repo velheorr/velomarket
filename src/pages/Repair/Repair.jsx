@@ -11,6 +11,10 @@ import repairPrice from '../../Data/file_.json'
 
 import Paper from '@mui/material/Paper';
 import {useSelector} from "react-redux";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import ListItemText from "@mui/material/ListItemText";
+import ListItem from "@mui/material/ListItem";
 
 
 const Repair = () => {
@@ -49,10 +53,12 @@ const Repair = () => {
 
     return (
         <>
-            <div className={`${s.grey_txt}`}>
-                <h2><HomeRepairServiceIcon fontSizeInherit/> Сервис и Ремонт</h2>
-                <Divider/>
-            </div>
+            <ListItem disablePadding className={s.menuHeader}>
+                <ListItemIcon><HomeRepairServiceIcon color='primary'/></ListItemIcon>
+                <ListItemText primary="Сервис и Ремонт"/>
+            </ListItem>
+            <Divider/>
+
             <FormControl sx={{ m: 1, minWidth: 250 }}>
                 <InputLabel id="repairSelect">Вид услуги</InputLabel>
                 <Select
