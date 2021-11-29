@@ -50,7 +50,7 @@ const Repair = () => {
     return (
         <>
             <div className={`${s.grey_txt}`}>
-                <h2><HomeRepairServiceIcon fontSize="small"/> Сервис и Ремонт</h2>
+                <h2><HomeRepairServiceIcon fontSizeInherit/> Сервис и Ремонт</h2>
                 <Divider/>
             </div>
             <FormControl sx={{ m: 1, minWidth: 250 }}>
