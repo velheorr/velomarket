@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {openCatalog, openCatalogData, setCatalogDataFilter, setFilteredBrand} from "./CatalogSlice";
 import CatalogCard from "./catalogCard/catalogCard";
 import CatalogFilters from "./catalogFilters/catalogFilters";
+import Button from "@mui/material/Button";
 
 
 const Catalog = () => {
@@ -65,8 +66,10 @@ const Catalog = () => {
 
     return (
         <div className={`${s.grey_txt}`}>
-            <h2 onClick={resetCatalogs} className={s.pointer}>
-                <ShoppingCartIcon fontSize="small"/> Каталог <span className={s.breadcrump}>/</span> {catalogPage}
+            <h2>
+                <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
+                {catalogPage ? <span className={s.breadcrump}> / </span> : ''}
+                {catalogPage}
             </h2>
             <Divider/>
             {
