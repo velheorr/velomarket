@@ -5,6 +5,16 @@ import zapchasti from './img/zapchasti.png'
 import bike from './img/bike.png'
 import winter from './img/winter.png'
 
+/*
+function importAll(r) {
+    return r.keys().map(r);
+}
+*/
+
+/*const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
+console.log(images)*/
+
+
 const initialState = {
     catalogItems: [
         { name: 'САМОКАТЫ', img: samokat},

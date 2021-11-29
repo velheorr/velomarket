@@ -9,6 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import {useDispatch, useSelector} from "react-redux";
 import {setCatalogDataFilter} from "../CatalogSlice";
+import {isAllOf} from "@reduxjs/toolkit";
 
 const CatalogFilters = ({catalogData}) => {
     const { register, handleSubmit, reset, control } = useForm();
@@ -19,13 +20,11 @@ const CatalogFilters = ({catalogData}) => {
         let maxPrice = 1000000;
         let brandArr =[]
 
+        if (data['priceFrom'] && data['priceFrom'] > 0 &&data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']} else {minPrice = 0;}
+        if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']} else {maxPrice = 1000000}
+
         for (let key in data){
-            if (key === 'priceFrom' && typeof Number(data[key]) && data[key] > 0 && data[key] <= maxPrice){minPrice = data[key]}
-            if (key === 'priceTo'&& typeof Number(data[key]) && data[key] <= 1000000 ){maxPrice = data[key]}
-            console.log(key)
-            if (data[key] === true){
-                 brandArr.push(key)
-            }
+            if (data[key] === true){brandArr.push(key)}
         }
 
         const catalogData_filtered = catalogData.filter(i => {
@@ -41,6 +40,8 @@ const CatalogFilters = ({catalogData}) => {
         })
         dispatch(setCatalogDataFilter(catalogData_filtered))
     };
+
+
 
 
     const renderCatalogFilters =(filterdata)=>{

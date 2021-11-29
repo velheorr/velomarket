@@ -27,6 +27,7 @@ const Catalog = () => {
         catalogFilters(newCatalog)
     }
 
+
     const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
             <Grid key={i} item xs={4} sm={3} md={3} onClick={()=> selectCatalog(item.name)}>
