@@ -27,7 +27,7 @@ const CatalogFilters = ({catalogData}) => {
             if (data[key] === true){brandArr.push(key)}
         }
 
-        /*const catalogData_filtered = catalogData.filter(i => {
+        const catalogData_filtered = catalogData.filter(i => {
             if (+i.Цена >= minPrice && +i.Цена <= maxPrice) {
                 if (brandArr.length > 0){
                     for (let key in brandArr){
@@ -38,7 +38,7 @@ const CatalogFilters = ({catalogData}) => {
                 }
             }
         })
-        dispatch(setCatalogDataFilter(catalogData_filtered))*/
+        dispatch(setCatalogDataFilter(catalogData_filtered))
     };
 
 

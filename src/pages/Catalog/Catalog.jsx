@@ -65,7 +65,7 @@ const Catalog = () => {
     }
 
     return (
-        <div className={`${s.grey_txt}`}>
+        <>
             <h2>
                 <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
                 {catalogPage ? <span className={s.breadcrump}> > </span> : ''}
@@ -92,7 +92,7 @@ const Catalog = () => {
                         </div>
                     </div>
             }
-        </div>
+        </>
     );
 };
 
