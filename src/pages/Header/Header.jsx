@@ -16,7 +16,7 @@ const Header = () => {
                     <li><NavLink to="/contacts">Контакты</NavLink></li>
                     <li><NavLink to="/where">Где купить?</NavLink></li>
                 </ul>
-                <span className='headerInfo'>Веломаркет Колесо</span>
+                <span className='headerInfo'>Веломаркет "Колесо"</span>
             </div>
             <div className='lowerHeader'>
                 <Slider/>

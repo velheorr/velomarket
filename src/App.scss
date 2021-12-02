@@ -1,3 +1,4 @@
+
 .main {
     display: flex;
     flex-flow: column;
@@ -75,8 +76,9 @@
 
 .botLogo {
     position: absolute;
-    width: 350px;
+    width: 600px;
     right: 14px;
     bottom: -33px;
     z-index: -1;
+    opacity: 0.5;
 }

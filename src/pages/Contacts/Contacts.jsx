@@ -10,6 +10,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
 
+
 const Contacts = () => {
     const schedule = [
         {day: 'Понедельник', time: 'Выходной', id: 1},
@@ -24,8 +25,10 @@ const Contacts = () => {
     const day = date.getDay();
 
     const scheduleMap = schedule.map((item, i) => {
-        if(item.id === day) {
+        if(item.id === day && item.id !== 1) {
             return <View item={item} key={i} active={s.active} />
+        } else if (item.id === 1){
+            return <View item={item} key={i} active={s.holiday} />
         }
         return <View item={item} key={i} />
     });

@@ -9,13 +9,29 @@ import noimg from '../img/noimg.png'
 
 const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураМодель, НоменклатураКод, НоменклатураАртикул, Цена} = items;
+    const src = '/img/catalog'
+    let x;
+
+/*    const img = new Image()
+    img.src = `${src}/${НоменклатураКод}.png`
+    //img.onerror = function(){x = noimg};
+    console.log(img.onerror)*/
+
+    if (`${src}/${НоменклатураКод}.png`  ){
+        console.log(`${src}/${НоменклатураКод}.png`)
+        x = `${src}/${НоменклатураКод}.png`
+    }
+
     return (
         <Card sx={{ maxWidth: 300 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    height="175"
-                    image={noimg}
+                    height="300"
+                    width="300"
+                    //image ={img.src}
+                    image={x ? x : noimg}
+                    //image={noimg}
                     /*image="https://bikemania.com.ua/wa-data/public/shop/products/10/37/493710/images/166471/166471.440.jpg"*/
                     alt={Номенклатура}
                 />
