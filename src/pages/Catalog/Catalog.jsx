@@ -11,6 +11,10 @@ import {openCatalog, openCatalogData, setCatalogDataFilter, setFilteredBrand} fr
 import CatalogCard from "./catalogCard/catalogCard";
 import CatalogFilters from "./catalogFilters/catalogFilters";
 import Button from "@mui/material/Button";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import {NavLink} from "react-router-dom";
 
 const Catalog = () => {
     const dispatch = useDispatch();
@@ -31,7 +35,8 @@ const Catalog = () => {
     const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
             <Grid key={i} item xs={4} sm={3} md={3} onClick={()=> selectCatalog(item.name)}>
-               <div><img src={item.img} alt={item.name}/></div><div className={s.text}>{item.name}</div>
+               {/*<div><img src={item.img} alt={item.name}/></div><div className={s.text}>{item.name}</div>*/}
+                <NavLink to={`/catalog/${item.name}`} className={s.text}><img src={item.img} alt={item.name}/><div >{item.name}</div></NavLink>
             </Grid>
         )
      }
@@ -67,9 +72,21 @@ const Catalog = () => {
     return (
         <>
             <h2>
-                <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
-                {catalogPage ? <span className={s.breadcrump}> > </span> : ''}
-                {catalogPage}
+                {catalogPage
+                    ?
+                    <div>
+                        <NavLink to={`/catalog`} className={s.text}>
+                            <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
+                        </NavLink>
+                        <span className={s.breadcrump}>{catalogPage}</span>
+                    </div>
+                    :
+                    <ListItem disablePadding className={s.menuHeader}>
+                        <ListItemIcon><ShoppingCartIcon color='primary'/></ListItemIcon>
+                        <ListItemText primary="Каталог"/>
+                    </ListItem>
+                }
+
             </h2>
             <Divider/>
             {

@@ -1,5 +1,11 @@
+.menuHeader {margin: 15px 0;}
+.menuHeader span {
+    font-weight: 600;
+    font-size: 20px;
+}
+
 .breadcrump {
-    color: #828282;
+    padding-left: 30px;
 }
 
 .catalogWrapper {
@@ -27,8 +33,10 @@
     width: 70px;
 }
 
- .wrapper .text {
+ .wrapper .text, a {
      font-weight: 600;
+     text-decoration: none;
+     color: #333;
  }
 
 

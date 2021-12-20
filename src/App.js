@@ -20,6 +20,7 @@ const App = () => {
                 <Switch>
                     <Route exact path='/' render={()=> <Redirect to={'/catalog'}/>} />
                     <Route exact path='/catalog' render={() => <Catalog/>}/>
+                    <Route path='/catalog/:pageId' render={() => <Catalog/>}/>
                     <Route path='/repair' render={() => <Repair/>}/>
                     <Route path='/delivery' render={() => <Delivery/>}/>
                     <Route path='/contacts' render={() => <Contacts/>}/>
