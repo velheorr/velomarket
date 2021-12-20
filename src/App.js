@@ -10,7 +10,8 @@ import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
 import logo from "./pages/Header/img/logo.png";
 
 
-const App = () => {
+const App = ({usePageViews}) => {
+
     return (
         <div className='main'>
             <div className='mainHeader'>

@@ -15,6 +15,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import {NavLink} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Catalog = () => {
     const dispatch = useDispatch();
@@ -22,9 +23,15 @@ const Catalog = () => {
     const catalogItems = useSelector(state => state.catalog.catalogItems);
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
+    let history = useHistory();
+
+    const catalogRoute =(path = '')=>{
+        history.push(`/catalog/${path}`)
+    }
 
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
+        catalogRoute(name)
         dispatch(openCatalog(name))
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
         dispatch(openCatalogData(newCatalog))
@@ -35,8 +42,7 @@ const Catalog = () => {
     const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
             <Grid key={i} item xs={4} sm={3} md={3} onClick={()=> selectCatalog(item.name)}>
-               {/*<div><img src={item.img} alt={item.name}/></div><div className={s.text}>{item.name}</div>*/}
-                <NavLink to={`/catalog/${item.name}`} className={s.text}><img src={item.img} alt={item.name}/><div >{item.name}</div></NavLink>
+                <div className={s.text}><img src={item.img} alt={item.name}/><div >{item.name}</div></div>
             </Grid>
         )
      }
@@ -63,10 +69,13 @@ const Catalog = () => {
 
 
     const resetCatalogs = ()=>{
+        catalogRoute()
         selectCatalog('');
         dispatch(setFilteredBrand())
         dispatch(setCatalogDataFilter(0))
     }
+
+
 
 
     return (
@@ -75,9 +84,7 @@ const Catalog = () => {
                 {catalogPage
                     ?
                     <div>
-                        <NavLink to={`/catalog`} className={s.text}>
-                            <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
-                        </NavLink>
+                        <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
                         <span className={s.breadcrump}>{catalogPage}</span>
                     </div>
                     :
