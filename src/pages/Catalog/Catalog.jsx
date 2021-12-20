@@ -12,7 +12,6 @@ import CatalogCard from "./catalogCard/catalogCard";
 import CatalogFilters from "./catalogFilters/catalogFilters";
 import Button from "@mui/material/Button";
 
-
 const Catalog = () => {
     const dispatch = useDispatch();
     const catalogPage = useSelector(state => state.catalog.catalogPage);
@@ -63,6 +62,7 @@ const Catalog = () => {
         dispatch(setFilteredBrand())
         dispatch(setCatalogDataFilter(0))
     }
+
 
     return (
         <>

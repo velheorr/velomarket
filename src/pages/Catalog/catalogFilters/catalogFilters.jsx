@@ -38,7 +38,7 @@ const CatalogFilters = ({catalogData}) => {
                 }
             }
         })
-        dispatch(setCatalogDataFilter(catalogData_filtered))
+        return dispatch(setCatalogDataFilter(catalogData_filtered))
     };
 
 

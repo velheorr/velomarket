@@ -77,10 +77,11 @@ const Repair = () => {
 };
 
 const View = ({item})=>{
-    const {НоменклатураБренд, Номенклатура, Цена} = item
+    const {НоменклатураБренд, Номенклатура, Цена} = item;
+    const txt = НоменклатураБренд.split('_').join(' ')
     return (
         <div className={s.list}>
-            <div>{НоменклатураБренд}</div>
+            <div>{txt}</div>
             <div>{Номенклатура}</div>
             <div>{Цена}р</div>
         </div>
