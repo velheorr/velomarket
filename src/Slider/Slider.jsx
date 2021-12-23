@@ -1,5 +1,6 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
+import '../App.scss'
 
 import img1 from "./img/1.jpg"
 import img2 from "./img/2.jpg"
@@ -24,7 +25,7 @@ const Slider = () => {
     }
 
     return (
-        <>
+        <div className='lowerHeader'>
             <SimpleImageSlider
                 style={slideStyle}
                 width={934}
@@ -36,7 +37,7 @@ const Slider = () => {
                 autoPlay={true}
                 autoPlayDelay={2}
             />
-        </>
+        </div>
     );
 };
 

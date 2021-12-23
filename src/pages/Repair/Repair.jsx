@@ -14,6 +14,7 @@ import {useSelector} from "react-redux";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
+import Slider from "../../Slider/Slider";
 
 
 const Repair = () => {
@@ -52,6 +53,7 @@ const Repair = () => {
 
     return (
         <>
+            <Slider/>
             <ListItem disablePadding className={s.menuHeader}>
                 <ListItemIcon><HomeRepairServiceIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Сервис и Ремонт"/>

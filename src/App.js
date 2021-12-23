@@ -8,9 +8,10 @@ import Delivery from "./pages/Delivery/Delivery";
 import Contacts from "./pages/Contacts/Contacts";
 import WhereToBuy from "./pages/WhereToBuy/WhereToBuy";
 import logo from "./pages/Header/img/logo.png";
+import CatalogPage from "./pages/CatalogPage/CatalogPage";
 
 
-const App = ({usePageViews}) => {
+const App = () => {
 
     return (
         <div className='main'>
@@ -20,8 +21,9 @@ const App = ({usePageViews}) => {
             <div className='mainBody'>
                 <Switch>
                     <Route exact path='/' render={()=> <Redirect to={'/catalog'}/>} />
-                    <Route exact path='/catalog' render={() => <Catalog/>}/>
-                    <Route path='/catalog/:pageId' render={() => <Catalog/>}/>
+                    <Route path='/catalog' render={() => <Catalog/>}/>
+                    <Route path='/catalog/:catalogId' render={() => <Catalog/>}/>
+                    <Route path='/catalogPage/:pageId' render={() => <CatalogPage/>}/>
                     <Route path='/repair' render={() => <Repair/>}/>
                     <Route path='/delivery' render={() => <Delivery/>}/>
                     <Route path='/contacts' render={() => <Contacts/>}/>

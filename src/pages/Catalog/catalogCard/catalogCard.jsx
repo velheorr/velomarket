@@ -7,6 +7,7 @@ import s from "../Catalog.module.css";
 import Card from "@mui/material/Card";
 import noimg from '../img/noimg.png'
 import * as axios from "axios";
+import {NavLink} from "react-router-dom";
 
 
 let ddd = noimg
@@ -57,7 +58,7 @@ const getImg = async ()=>{
         .then((res) => {
             let ddd = res.data._embedded.items[1].preview
         });
-    console.log(folder)
+
     /*folder.data._embedded.items.forEach(i =>{
         console.log(i.name)
     })*/
@@ -95,9 +96,14 @@ const CatalogCard = ({items}) => {
         x = `${src}/${НоменклатураКод}.png`
     }*/
 
+    const goToPage = (НоменклатураКод) =>{
+        //прописать диспатч куда переходить
+    }
+
 
     return (
         <Card sx={{ maxWidth: 300 }}>
+            <NavLink to={`/catalogPage/${НоменклатураКод}`}>
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -118,7 +124,7 @@ const CatalogCard = ({items}) => {
                     </Typography>
                     <Typography variant="body2" color="text.primary" component="div">
                         <div>Бренд: {НоменклатураБренд}</div>
-                        <div>Модель: {НоменклатураМодель}</div>
+                        {/*<div>Модель: {НоменклатураМодель}</div>*/}
 
 
                         {/*<div><CheckBoxIcon size="small" color='success'/></div>*/}
@@ -126,6 +132,7 @@ const CatalogCard = ({items}) => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
+            </NavLink>
         </Card>
     );
 };

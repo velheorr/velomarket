@@ -12,12 +12,15 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import MoneyIcon from '@mui/icons-material/Money';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import PaymentsIcon from '@mui/icons-material/Payments';
+import Slider from "../../Slider/Slider";
+
 
 const Delivery = () => {
 
 
     return (
         <div>
+            <Slider/>
             <ListItem disablePadding className={s.menuHeader}>
                 <ListItemIcon><PaymentsIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Способы оплаты"/>

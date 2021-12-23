@@ -9,6 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import List from "@mui/material/List";
+import Slider from "../../Slider/Slider";
 
 
 const WhereToBuy = () => {
@@ -24,6 +25,7 @@ const WhereToBuy = () => {
 
     return (
         <div>
+            <Slider/>
             <ListItem disablePadding className={s.menuHeader}>
                 <ListItemIcon><MapIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Как к нам доехать"/>

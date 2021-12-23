@@ -25,16 +25,5 @@ export const catalogApi = {
     getGoods(){
         return instance.get()
     }
-    /*getPhoneBook() {
-        return instance.get('read')
-    },
-    savePhoneBook(user) {
-        return instance.post('', user)
-    },
-    updatePhoneBook(userID, user) {
-        return instance.patch(userID, user)
-    },
-    deletePhoneBook(userID) {
-        return instance.delete(userID)
-    }*/
+
 }

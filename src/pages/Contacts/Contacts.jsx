@@ -9,6 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import PhoneIcon from '@mui/icons-material/Phone';
 import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
+import Slider from "../../Slider/Slider";
 
 
 const Contacts = () => {
@@ -35,6 +36,7 @@ const Contacts = () => {
 
     return (
         <div>
+            <Slider/>
             <ListItem disablePadding className={s.menuHeader}>
                 <ListItemIcon><ContactsIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Контакты"/>

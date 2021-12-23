@@ -14,8 +14,9 @@ import Button from "@mui/material/Button";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import {NavLink} from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import Slider from "../../Slider/Slider";
+import {useHistory} from "react-router-dom";
+import {catalogRoute} from "../../assets/functions";
 
 const Catalog = () => {
     const dispatch = useDispatch();
@@ -23,15 +24,13 @@ const Catalog = () => {
     const catalogItems = useSelector(state => state.catalog.catalogItems);
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
+
     let history = useHistory();
 
-    const catalogRoute =(path = '')=>{
-        history.push(`/catalog/${path}`)
-    }
 
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
-        catalogRoute(name)
+        catalogRoute(history, name)
         dispatch(openCatalog(name))
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
         dispatch(openCatalogData(newCatalog))
@@ -69,17 +68,16 @@ const Catalog = () => {
 
 
     const resetCatalogs = ()=>{
-        catalogRoute()
+        catalogRoute(history)
         selectCatalog('');
         dispatch(setFilteredBrand())
         dispatch(setCatalogDataFilter(0))
     }
 
 
-
-
     return (
         <>
+            <Slider/>
             <h2>
                 {catalogPage
                     ?
