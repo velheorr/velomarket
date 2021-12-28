@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.scss';
 import logo from './img/logo.png'
-import {NavLink, useHistory} from "react-router-dom";
+import {Link, useHistory } from "react-router-dom";
 import {catalogRoute} from "../../assets/functions";
 
 
@@ -11,13 +11,13 @@ const Header = () => {
     return (
         <>
             <div className='navHeader'>
-                <span><NavLink to="/"><img src={logo} alt={'velomarketkoleso.ru'}/></NavLink></span>
+                <span><Link to="/catalog"><img src={logo} alt={'velomarketkoleso.ru'}/></Link></span>
                 <ul>
-                    <li><NavLink activeClassName='active' onClick={catalogRoute(history)}  to="/catalog">Каталог</NavLink></li>
-                    <li><NavLink to="/repair">Сервис и Ремонт</NavLink></li>
-                    <li><NavLink to="/delivery">Оплата и Доставка</NavLink></li>
-                    <li><NavLink to="/contacts">Контакты</NavLink></li>
-                    <li><NavLink to="/where">Где купить?</NavLink></li>
+                   {/* <li><Link  onClick={catalogRoute(history)}  to="/catalog">Каталог</Link></li>*/}
+                    <li><Link to="/catalog">Каталог</Link></li>
+                    <li><Link to="/repair">Сервис и Ремонт</Link></li>
+                    <li><Link to="/delivery">Оплата и Доставка</Link></li>
+                    <li><Link to="/contacts">Контакты</Link></li>
                 </ul>
                 <span className='headerInfo'>Веломаркет "Колесо"</span>
             </div>

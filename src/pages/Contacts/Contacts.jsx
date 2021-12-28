@@ -10,6 +10,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
 import Slider from "../../Slider/Slider";
+import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
 
 
 const Contacts = () => {
@@ -34,6 +35,16 @@ const Contacts = () => {
         return <View item={item} key={i} />
     });
 
+    const mapData = {
+        center: [58.00103636683891,56.225435245232624],
+        zoom: 16,
+        size: [600, 600],
+    };
+
+    const coordinates = [
+        [58.00103636683891,56.225435245232624],
+    ];
+
     return (
         <div>
             <Slider/>
@@ -57,7 +68,7 @@ const Contacts = () => {
                     <ListItemText secondary="тел: +7 (902) 808-22-68" />
                 </ListItem>
             </List>
-            <Divider/>
+
 
 
             <ListItem disablePadding className={s.menuHeader}>
@@ -66,6 +77,31 @@ const Contacts = () => {
             </ListItem>
             <Divider/>
             {scheduleMap}
+
+            <ListItem disablePadding className={s.menuHeader}>
+                <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
+                <ListItemText primary="Как к нам доехать"/>
+            </ListItem>
+            <Divider/>
+
+            <div className={s.map}>
+                <YMaps>
+                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
+                        key={i}
+                        geometry={coordinate}
+                        options={{
+                            preset: "islands#blueStretchyIcon",
+                            balloonCloseButton: false,
+                            hideIconOnBalloonOpen: false
+                        }}
+                        properties={{
+                            iconContent: 'Веломаркет "Колесо"',
+                        }}
+                    />)}
+                        <ZoomControl options={{ float: 'right' }} />
+                    </Map>
+                </YMaps>
+            </div>
          </div>
     );
 };

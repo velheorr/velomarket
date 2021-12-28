@@ -15,7 +15,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Slider from "../../Slider/Slider";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import {catalogRoute} from "../../assets/functions";
 import {getData} from "../../api/api";
 
@@ -27,6 +27,7 @@ const Catalog = () => {
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
 
     let history = useHistory();
+    let { id } = useParams();
 
 
     const selectCatalog = (name)=>{
