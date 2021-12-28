@@ -1,5 +1,7 @@
 import * as axios from "axios";
 import noimg from "../pages/Catalog/img/noimg.png";
+const EasyYandexS3 = require("easy-yandex-s3");
+
 
 const instance = axios.create({
     baseURL: `https://disk.yandex.ru/i/bs3CT68dYWvZEg`,
@@ -26,4 +28,20 @@ export const catalogApi = {
         return instance.get()
     }
 
+}
+
+const s3 = new EasyYandexS3({
+    auth: {
+        accessKeyId: 'DxsrfFiuP8Lu7ip0IDdv',
+        secretAccessKey: "EnlJEQPKUg3zJHOkBhvUkOAxIafjNZ9ZUVuJgBgN",
+    },
+    Bucket: "velomarketkoleso", // например, "my-storage",
+    debug: false // Дебаг в консоли, потом можете удалить в релизе
+});
+
+export const getData = async()=>{
+    //const list = await s3.GetList('images');
+    //console.log(list)
+    const download = await s3.Download( 'images/Concept-180-2019.png' );
+    console.log(download)
 }

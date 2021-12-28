@@ -17,7 +17,7 @@ import { TabPanel, TabList, TabContext } from '@mui/lab';
 const CatalogPage = () => {
     const {pageId} = useParams()
     const [item, setItem] = useState(null);
-    console.log(pageId)
+    /*console.log(pageId)*/
     /*console.log(goods)*/
     const [value, setValue] = useState('1');
     const handleChange = (event, newValue) => {

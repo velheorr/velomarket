@@ -17,6 +17,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Slider from "../../Slider/Slider";
 import {useHistory} from "react-router-dom";
 import {catalogRoute} from "../../assets/functions";
+import {getData} from "../../api/api";
 
 const Catalog = () => {
     const dispatch = useDispatch();
@@ -73,6 +74,8 @@ const Catalog = () => {
         dispatch(setFilteredBrand())
         dispatch(setCatalogDataFilter(0))
     }
+
+
 
 
     return (

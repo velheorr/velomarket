@@ -10,7 +10,7 @@ import * as axios from "axios";
 import {NavLink} from "react-router-dom";
 
 
-let ddd = noimg
+
 const getImg = async ()=>{
     /*let response = await axios.get('https://cloud-api.yandex.net/v1/disk/public/resources?public_key=https%3A%2F%2Fdisk.yandex.ru%2Fd%2FAhRV9Bv4rrXBvA')*/
     /*let response = await axios.get('https://cloud-api.yandex.net/v1/disk/public/resources?public_key=https%3A%2F%2Fdisk.yandex.ru%2Fd%2FbC0wjFlOWByTMA')
@@ -25,13 +25,14 @@ const getImg = async ()=>{
 const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураМодель, НоменклатураКод, НоменклатураАртикул, Цена, ФайлКартинки} = items;
 
-
-    console.log(ФайлКартинки)
-    let img = noimg
+    const image = 'https://storage.yandexcloud.net/velomarketkoleso/images/Concept-180-2019.png'
+    /*console.log(ФайлКартинки)*/
+    let img = image
     if (ФайлКартинки){
         img = ФайлКартинки
         console.log(img)
     }
+
 
 
     return (
