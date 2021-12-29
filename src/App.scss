@@ -30,10 +30,10 @@
                 text-decoration: none;
                 color: #828282;
                 font-size: 14px;
+                font-weight: 600;
                 &:hover, &.active {
                     text-decoration: none;
                     cursor: pointer;
-                    /*color: #333333;*/
                     color: #260852;
                     transition: color ease-in-out .2s;
                 }
@@ -82,4 +82,8 @@
     bottom: -33px;
     z-index: -1;
     opacity: 0.5;
+}
+
+a {
+    text-decoration: none;
 }

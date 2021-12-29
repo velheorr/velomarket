@@ -1,5 +1,4 @@
 import '../Catalog.scss'
-import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -8,7 +7,7 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import {catalogRoute} from "../../../assets/functions";
-import {openCatalog, openCatalogData} from "../CatalogSlice";
+import {openCatalog, openCatalogData, setFilteredBrand} from "../CatalogSlice";
 import goods from "../../../Data/goods.json";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -18,14 +17,23 @@ const MainCatalogs = () => {
     const catalogPage = useSelector(state => state.catalog.catalogPage);
     const dispatch = useDispatch();
 
-
+    const catalogFilters = (newCatalog)=>{
+        let filterBrand = []
+        const filtered = newCatalog.map(i => i.НоменклатураБренд)
+        for (let str of filtered) {
+            if (!filterBrand.includes(str)) {
+                filterBrand.push(str);
+            }
+        }
+        dispatch(setFilteredBrand(filterBrand));
+    }
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
-        catalogRoute(name)
+        /*catalogRoute(name)*/
         dispatch(openCatalog(name))
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
         dispatch(openCatalogData(newCatalog))
-        //catalogFilters(newCatalog)
+        catalogFilters(newCatalog)
     }
 
     const renderCatalogs = (catalogItems)=>{

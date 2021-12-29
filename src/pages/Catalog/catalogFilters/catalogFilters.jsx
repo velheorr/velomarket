@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from "@mui/material/Typography";
-import s from "../Catalog.scss";
+import  "../Catalog.scss";
 import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
@@ -69,14 +69,14 @@ const CatalogFilters = ({catalogData}) => {
         <div>
             <Typography gutterBottom component="div" fontSize={16} fontWeight={600} align='center'>Параметры</Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={s.filters}>Цена:</div>
+                <div className='filters'>Цена:</div>
                 <TextField
                     {...register("priceFrom", {min: 0})}
                     label="От"
                     defaultValue=''
                     size="small"
                     variant="outlined"
-                    className={s.filters}
+                    className='filters'
                     type="number"
                 />
                 <TextField
@@ -85,10 +85,10 @@ const CatalogFilters = ({catalogData}) => {
                     defaultValue=""
                     size="small"
                     variant="outlined"
-                    className={s.filters}
+                    className='filters'
                     type="number"
                 />
-                <div className={s.filters}>Бренд:</div>
+                <div className='filters'>Бренд:</div>
                 <FormGroup>
                     {catalogData ? catalogFilterElements : 'no data' }
                 </FormGroup>
