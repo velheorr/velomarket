@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import './CatalogPage.scss'
 import {Link, useParams} from 'react-router-dom';
-import Slider from "../../Slider/Slider";
+
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Paper from "@mui/material/Paper";
 
-import goods from '../../Data/goods.json';
-import noimg from '../Catalog/img/noimg.png'
+import goods from '../../../Data/goods.json';
+import noimg from '../img/noimg.png'
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
+import Slider from "../../../Slider/Slider";
 
 
 const CatalogPage = () => {

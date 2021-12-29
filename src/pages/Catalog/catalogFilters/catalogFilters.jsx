@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from "@mui/material/Typography";
-import s from "../Catalog.module.css";
+import s from "../Catalog.scss";
 import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";

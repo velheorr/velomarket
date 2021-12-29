@@ -3,7 +3,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import s from "../Catalog.module.css";
+import s from "../Catalog.scss";
 import Card from "@mui/material/Card";
 import noimg from '../img/noimg.png'
 import * as axios from "axios";
