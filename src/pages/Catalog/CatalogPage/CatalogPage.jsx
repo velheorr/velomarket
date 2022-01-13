@@ -26,13 +26,8 @@ const CatalogPage = () => {
     };
 
     useEffect(() => {
-        getData()
+        setItem(goods.find(i => i.НоменклатураКод === itemId))
     }, [itemId])
-
-    const getData = () =>{
-        let item = goods.find(i => i.НоменклатураКод === itemId)
-        setItem(item)
-    }
 
 
     let parentPath = `/`
@@ -46,7 +41,7 @@ const CatalogPage = () => {
         <>
             <Slider/>
             <h2>
-                <Link to={`${parentPath}`}>
+                <Link to={parentPath}>
                     <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>
                 </Link>
                 <span className='breadcrump'>Описание товара</span>

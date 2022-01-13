@@ -1,20 +1,21 @@
-import React from 'react';
-import Typography from "@mui/material/Typography";
 import  "../Catalog.scss";
+import {Controller, useForm} from "react-hook-form";
+import {useDispatch, useSelector} from "react-redux";
+import {setCatalogDataFilter} from "../CatalogSlice";
+
+import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import {Controller, useForm} from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import {useDispatch, useSelector} from "react-redux";
-import {setCatalogDataFilter} from "../CatalogSlice";
 
 
 const CatalogFilters = ({catalogData}) => {
     const { register, handleSubmit, reset, control } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
     const dispatch = useDispatch();
+
     const onSubmit = data => {
         let minPrice = 0;
         let maxPrice = 1000000;
@@ -26,7 +27,7 @@ const CatalogFilters = ({catalogData}) => {
         for (let key in data){
             if (data[key] === true){brandArr.push(key)}
         }
-
+// eslint-disable-next-line
         const catalogData_filtered = catalogData.filter(i => {
             if (+i.Цена >= minPrice && +i.Цена <= maxPrice) {
                 if (brandArr.length > 0){

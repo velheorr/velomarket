@@ -23,7 +23,6 @@ const initialState = {
         { name: 'ГИРОСКУТЕРЫ', img: giro},
         { name: 'СПОРТИНВЕНТАРЬ', img: inventar},
     ],
-    catalogPage: '',
     catalogData: [],
     catalogDataFiltered: [],
     filteredBrand: [],
@@ -35,7 +34,6 @@ const catalogSlice = createSlice({
     name: 'catalog',
     initialState,
     reducers: {
-        openCatalog: (state, action) => {state.catalogPage = action.payload},
         openCatalogData: (state, action) => {state.catalogData = action.payload},
         setCatalogDataFilter: (state, action) => {state.catalogDataFiltered = action.payload},
         setFilteredBrand: (state, action )=> {state.filteredBrand = action.payload},
@@ -46,5 +44,5 @@ const {actions, reducer} = catalogSlice;
 
 export default reducer;
 export const {
-    openCatalog, openCatalogData, setFilteredBrand, setCatalogDataFilter
+    openCatalogData, setFilteredBrand, setCatalogDataFilter
 } = actions;

@@ -1,8 +1,9 @@
 import "./Catalog.scss";
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+
 import Divider from "@mui/material/Divider";
 import Slider from "../../Slider/Slider";
-import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 import Grid from "@mui/material/Grid";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -13,8 +14,6 @@ import Box from "@mui/material/Box";
 
 const Catalog = () => {
     const catalogItems = useSelector(state => state.catalog.catalogItems);
-    const dispatch = useDispatch();
-
 
     const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>

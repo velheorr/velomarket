@@ -1,13 +1,10 @@
 import React from 'react';
 import '../../App.scss';
 import logo from './img/logo.png'
-import {Link, NavLink, useHistory} from "react-router-dom";
-import {catalogRoute} from "../../assets/functions";
+import {Link, NavLink} from "react-router-dom";
 
 
 const Header = () => {
-    let history = useHistory();
-
     return (
         <>
             <div className='navHeader'>

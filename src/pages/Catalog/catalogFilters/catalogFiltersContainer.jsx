@@ -5,8 +5,8 @@ import CatalogFilters from "./catalogFilters";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import CatalogCard from "../catalogCard/catalogCard";
-import {openCatalog, openCatalogData, setCatalogDataFilter, setFilteredBrand} from "../CatalogSlice";
-import {catalogRoute} from "../../../assets/functions";
+import {openCatalogData, setFilteredBrand} from "../CatalogSlice";
+
 import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
 import Slider from "../../../Slider/Slider";
@@ -21,8 +21,9 @@ const CatalogFiltersContainer = () => {
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
 
     useEffect(()=>{
-        selectCatalog()
-    },[])
+        selectCatalog(id)
+        // eslint-disable-next-line 
+    },[id])
 
     const catalogFilters = (newCatalog)=>{
         let filterBrand = []
@@ -34,8 +35,8 @@ const CatalogFiltersContainer = () => {
         }
         dispatch(setFilteredBrand(filterBrand));
     }
-    const selectCatalog = ()=>{
-        dispatch(openCatalog(id))
+
+    const selectCatalog = (id)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))
         dispatch(openCatalogData(newCatalog))
         catalogFilters(newCatalog)
@@ -45,19 +46,12 @@ const CatalogFiltersContainer = () => {
 
 
     const renderCatalogItems = (catalogData)=>{
-        /*if (catalogDataFiltered.length > 0) {
+        if (catalogDataFiltered.length > 0) {
             return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
-        }*/
+        }
         return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
     }
     const catalogElements = renderCatalogItems(catalogData);
-
-
-    const resetCatalogs = ()=>{
-        dispatch(setFilteredBrand())
-        dispatch(setCatalogDataFilter(0))
-    }
-
 
     return (
         <>

@@ -1,39 +1,34 @@
 import "../Catalog.scss";
+import {Link} from "react-router-dom";
 
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
+
 import noimg from '../img/noimg.png'
 import * as axios from "axios";
-import {Link, useParams, useRouteMatch} from "react-router-dom";
+
 
 
 
 const getImg = async ()=>{
-    /*let response = await axios.get('https://cloud-api.yandex.net/v1/disk/public/resources?public_key=https%3A%2F%2Fdisk.yandex.ru%2Fd%2FAhRV9Bv4rrXBvA')*/
-    /*let response = await axios.get('https://cloud-api.yandex.net/v1/disk/public/resources?public_key=https%3A%2F%2Fdisk.yandex.ru%2Fd%2FbC0wjFlOWByTMA')
-    * https://disk.yandex.ru/i/bs3CT68dYWvZEg
-    * */
     let response = await axios.get('https://cloud-api.yandex.net/v1/disk/public/resources?public_key=https%3A%2F%2Fdisk.yandex.ru%2Fi%2F9qxg82YY4PIMEQ&preview_size=L')
 
 }
 
 
-
 const CatalogCard = ({items}) => {
-    const {Номенклатура, НоменклатураБренд, НоменклатураМодель, НоменклатураКод, НоменклатураАртикул, Цена, ФайлКартинки} = items;
+    const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, ФайлКартинки} = items;
 
     const image = 'https://storage.yandexcloud.net/velomarketkoleso/images/Concept-180-2019.png'
-    /*console.log(ФайлКартинки)*/
+
     let img = image
     if (ФайлКартинки){
         img = ФайлКартинки
-        console.log(img)
+        //console.log(img)
     }
-
-
 
 
     return (
