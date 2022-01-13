@@ -38,7 +38,7 @@ const Catalog = () => {
     const catalogPage = useSelector(state => state.catalog.catalogPage);
     const dispatch = useDispatch();
 
-    let { path, url } = useRouteMatch();
+
 
     const catalogFilters = (newCatalog)=>{
         let filterBrand = []
@@ -52,7 +52,7 @@ const Catalog = () => {
     }
     const selectCatalog = (name)=>{
         if (name === catalogPage) return;
-        /*catalogRoute(name)*/
+
         dispatch(openCatalog(name))
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(name))
         dispatch(openCatalogData(newCatalog))
@@ -62,14 +62,9 @@ const Catalog = () => {
     const renderCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
             <Grid key={i} item xs={4} sm={3} md={3} onClick={()=> selectCatalog(item.name)}>
-                <Link to={`${url}/${item.name}`}>
-                <div className='text'><img src={item.img} alt={item.name}/><div >{item.name}</div></div>
+                <Link to={`/catalog/${item.name}`}>
+                    <div className='text'><img src={item.img} alt={item.name}/><div >{item.name}</div></div>
                 </Link>
-                <Switch>
-                    <Route path={`${path}/:topicId`}>
-                        <CatalogFiltersContainer/>
-                    </Route>
-                </Switch>
             </Grid>
         )
     }

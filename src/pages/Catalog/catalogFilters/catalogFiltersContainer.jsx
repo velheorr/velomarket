@@ -9,9 +9,12 @@ import {setCatalogDataFilter, setFilteredBrand} from "../CatalogSlice";
 import {catalogRoute} from "../../../assets/functions";
 import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
+import Slider from "../../../Slider/Slider";
+import {Link, useParams} from "react-router-dom";
 
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
+    let {id} = useParams();
 
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
@@ -28,16 +31,17 @@ const CatalogFiltersContainer = () => {
 
 
     const resetCatalogs = ()=>{
-        /*catalogRoute(history)*/
-        /*selectCatalog('');*/
         dispatch(setFilteredBrand())
         dispatch(setCatalogDataFilter(0))
     }
+
+
     return (
         <>
+            <Slider/>
             <h2>
-                <Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button>
-                <span className='breadcrump'>catalogPage</span>
+                <Link to={`/`}><Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
+                <span className='breadcrump'>{id}</span>
             </h2>
             <Divider/>
             <div className='catalogWrapper'>

@@ -8,6 +8,7 @@ import Delivery from "./pages/Delivery/Delivery";
 import Contacts from "./pages/Contacts/Contacts";
 import logo from "./pages/Header/img/logo.png";
 import CatalogPage from "./pages/Catalog/CatalogPage/CatalogPage";
+import CatalogFiltersContainer from "./pages/Catalog/catalogFilters/catalogFiltersContainer";
 
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
                     <Route path="/delivery"><Delivery/></Route>
                     <Route path="/contacts"><Contacts/></Route>
 
-                    <Route path="catalog/:id" children={<Catalog />} />
+                    <Route path="/catalog/:id" children={<CatalogFiltersContainer />} />
 
                    {/* <Route path='/catalog/:catalogId' render={() => <Catalog/>}/>
                     <Route path='/catalogPage/:pageId' render={() => <CatalogPage/>}/>*/}
