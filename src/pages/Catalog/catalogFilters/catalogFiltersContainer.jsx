@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CatalogFilters from "./catalogFilters";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import CatalogCard from "../catalogCard/catalogCard";
-import {setCatalogDataFilter, setFilteredBrand} from "../CatalogSlice";
+import {openCatalog, openCatalogData, setCatalogDataFilter, setFilteredBrand} from "../CatalogSlice";
 import {catalogRoute} from "../../../assets/functions";
 import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
 import Slider from "../../../Slider/Slider";
 import {Link, useParams} from "react-router-dom";
+import goods from "../../../Data/goods.json";
 
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
@@ -19,15 +20,37 @@ const CatalogFiltersContainer = () => {
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
 
-    const renderCatalogItems = (catalogData)=>{
-        if (catalogDataFiltered.length > 0) {
-            return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
+    useEffect(()=>{
+        selectCatalog()
+    },[])
+
+    const catalogFilters = (newCatalog)=>{
+        let filterBrand = []
+        const filtered = newCatalog.map(i => i.НоменклатураБренд)
+        for (let str of filtered) {
+            if (!filterBrand.includes(str)) {
+                filterBrand.push(str);
+            }
         }
+        dispatch(setFilteredBrand(filterBrand));
+    }
+    const selectCatalog = ()=>{
+        dispatch(openCatalog(id))
+        let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))
+        dispatch(openCatalogData(newCatalog))
+        catalogFilters(newCatalog)
+    }
+
+
+
+
+    const renderCatalogItems = (catalogData)=>{
+        /*if (catalogDataFiltered.length > 0) {
+            return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
+        }*/
         return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
     }
     const catalogElements = renderCatalogItems(catalogData);
-
-
 
 
     const resetCatalogs = ()=>{
@@ -40,7 +63,7 @@ const CatalogFiltersContainer = () => {
         <>
             <Slider/>
             <h2>
-                <Link to={`/`}><Button variant="outlined" onClick={resetCatalogs} startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
+                <Link to={`/`}><Button variant="outlined"  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
                 <span className='breadcrump'>{id}</span>
             </h2>
             <Divider/>

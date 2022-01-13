@@ -16,37 +16,37 @@ import Slider from "../../../Slider/Slider";
 
 
 const CatalogPage = () => {
-    const {pageId} = useParams()
-    const [item, setItem] = useState(null);
-    /*console.log(pageId)*/
-    /*console.log(goods)*/
+    const {itemId} = useParams()
+    const [item, setItem] = useState('');
+
+
     const [value, setValue] = useState('1');
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
     useEffect(() => {
-        getData(goods)
-    }, [pageId])
+        getData()
+    }, [itemId])
 
-    const getData = (goods) =>{
-        const item = goods.find(i => i.НоменклатураКод === pageId)
-        /*return {
-            name: item.Номенклатура
-        }*/
+    const getData = () =>{
+        let item = goods.find(i => i.НоменклатураКод === itemId)
         setItem(item)
     }
 
-    /*console.log(item)*/
-    if (!item) {
-        return setItem({'Номенклатура':''})
+
+    let parentPath = `/`
+    if(item){
+        let x = item.ПутьПапки.split('\\')
+        parentPath = `/catalogs/${x[0]}`
     }
+
 
     return (
         <>
             <Slider/>
             <h2>
-                <Link to={'/catalog'}>
+                <Link to={`${parentPath}`}>
                     <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>
                 </Link>
                 <span className='breadcrump'>Описание товара</span>

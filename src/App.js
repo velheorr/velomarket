@@ -1,6 +1,6 @@
 import React from "react";
 import './App.scss';
-import {Switch,Route} from "react-router-dom";
+import {Switch, Route, useRouteMatch} from "react-router-dom";
 import Header from "./pages/Header/Header";
 import Catalog from "./pages/Catalog/Catalog";
 import Repair from "./pages/Repair/Repair";
@@ -25,7 +25,9 @@ const App = () => {
                     <Route path="/delivery"><Delivery/></Route>
                     <Route path="/contacts"><Contacts/></Route>
 
-                    <Route path="/catalog/:id" children={<CatalogFiltersContainer />} />
+                    {/*<Route path="/catalog/:id" children={<CatalogFiltersContainer />} />*/}
+                    <Route path="/catalogs/:id" ><CatalogFiltersContainer /></Route>
+                    <Route path="/catalog/:itemId"><CatalogPage /></Route>
 
                    {/* <Route path='/catalog/:catalogId' render={() => <Catalog/>}/>
                     <Route path='/catalogPage/:pageId' render={() => <CatalogPage/>}/>*/}
