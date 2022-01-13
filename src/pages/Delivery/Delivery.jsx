@@ -10,7 +10,6 @@ import List from "@mui/material/List";
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import MoneyIcon from '@mui/icons-material/Money';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import Slider from "../../Slider/Slider";
 
@@ -39,10 +38,6 @@ const Delivery = () => {
                 <ListItem>
                     <ListItemIcon><MoneyIcon /></ListItemIcon>
                     <ListItemText secondary="Наличными в магазине" />
-                </ListItem>
-                <ListItem >
-                    <ListItemIcon><AccountBalanceIcon /></ListItemIcon>
-                    <ListItemText secondary="Безналичная оплата через банк" />
                 </ListItem>
             </List>
 

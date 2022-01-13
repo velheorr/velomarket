@@ -22,7 +22,7 @@ const CatalogFiltersContainer = () => {
 
     useEffect(()=>{
         selectCatalog(id)
-        // eslint-disable-next-line 
+        // eslint-disable-next-line
     },[id])
 
     const catalogFilters = (newCatalog)=>{

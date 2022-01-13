@@ -63,10 +63,6 @@ const Contacts = () => {
                     <ListItemIcon><PhoneIcon /></ListItemIcon>
                     <ListItemText secondary="тел: +7 (902) 471-37-69" />
                 </ListItem>
-                <ListItem>
-                    <ListItemIcon><PhoneIcon /></ListItemIcon>
-                    <ListItemText secondary="тел: +7 (902) 808-22-68" />
-                </ListItem>
             </List>
 
 
