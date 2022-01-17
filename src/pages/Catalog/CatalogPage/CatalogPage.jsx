@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
 import Slider from "../../../Slider/Slider";
+import {imgURL} from "../../../assets/functions";
 
 
 const CatalogPage = () => {
@@ -36,6 +37,13 @@ const CatalogPage = () => {
         parentPath = `/catalogs/${x[0]}`
     }
 
+    console.log(item)
+    let img
+    if (item.ФайлКартинки){
+        img = imgURL(item.ФайлКартинки)
+    }
+
+
 
     return (
         <>
@@ -52,7 +60,7 @@ const CatalogPage = () => {
             <div className='cardInfo'>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}} className='cardImg'>
                     <img
-                        src={noimg}
+                        src={img} width={300}
                         alt="veloamarketkoleso.ru"
                     />
                 </Paper>
