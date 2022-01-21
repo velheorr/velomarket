@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Paper from "@mui/material/Paper";
 
-import goods from '../../../Data/goods.json';
-import noimg from '../img/noimg.png'
+import goods from '../../../Data/data.json';
+
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
@@ -37,7 +37,7 @@ const CatalogPage = () => {
         parentPath = `/catalogs/${x[0]}`
     }
 
-    console.log(item)
+
     let img
     if (item.ФайлКартинки){
         img = imgURL(item.ФайлКартинки)

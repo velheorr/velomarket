@@ -7,10 +7,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-import repairPrice from '../../Data/file_.json'
+import repairPrice from '../../Data/data.json'
 
 import Paper from '@mui/material/Paper';
-import {useSelector} from "react-redux";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
@@ -18,26 +17,38 @@ import Slider from "../../Slider/Slider";
 
 
 const Repair = () => {
-    const selectMenu = useSelector(state => state.repair.selectMenu);
+    const [options, setOptions] = useState([])
     const [price ,setPrice] = useState(null)
-    const [select, setSelect] = React.useState('УСЛУГИ');
+    const [select, setSelect] = useState('УСЛУГИ');
 
     const handleChange = (event) => {
         setSelect(event.target.value);
         makePrice(event.target.value)
     };
-    const selected = selectMenu.map((item, i)=> <MenuItem key={i} value={item.val}>{item.name}</MenuItem>)
 
     useEffect(()=>{
-        makePrice()
+        makePrice('УСЛУГИ')
+        prepareSelectOptions(repairPrice)
     },[])
 
-    let listItems
-    const makePrice = (type = 'УСЛУГИ')=>{
+    const prepareSelectOptions = (services)=>{
+        const ss = services.filter(i => i.ТипНоменклатуры === 'Услуга')
+        ss.forEach(i => {
+            if(!options.includes(i.НоменклатураРодитель)){
+                options.push(i.НоменклатураРодитель)
+            }
+        })
+        setOptions(options)
+    }
+
+    const selected = options.map((item, i)=> <MenuItem key={i} value={item}>{item}</MenuItem>)
+
+    const makePrice = (type)=>{
         const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
         setPrice(x)
     }
 
+    let listItems
     if (price) {
         let sort = price.sort((a, b)=> {
             if (a.НоменклатураБренд > b.НоменклатураБренд) {return 1}
@@ -48,8 +59,6 @@ const Repair = () => {
             return <View key={i} item={item}/>
         })
     }
-
-
 
     return (
         <>

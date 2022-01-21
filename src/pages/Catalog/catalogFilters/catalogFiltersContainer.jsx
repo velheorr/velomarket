@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
 import Slider from "../../../Slider/Slider";
 import {Link, useParams} from "react-router-dom";
-import goods from "../../../Data/goods.json";
+import goods from "../../../Data/data.json";
 
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
@@ -35,14 +35,14 @@ const CatalogFiltersContainer = () => {
         }
         dispatch(setFilteredBrand(filterBrand));
     }
+    console.log(goods)
+    console.log(id)
 
     const selectCatalog = (id)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))
         dispatch(openCatalogData(newCatalog))
         catalogFilters(newCatalog)
     }
-
-
 
 
     const renderCatalogItems = (catalogData)=>{

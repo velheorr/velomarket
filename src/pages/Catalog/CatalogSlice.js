@@ -5,13 +5,8 @@ import zapchasti from './img/zapchasti.png'
 import bike from './img/bike.png'
 import winter from './img/winter.png'
 import giro from './img/giro.png'
-import  inventar from './img/inventar.png'
+import inventar from './img/inventar.png'
 
-/*function importAll(r) {
-    return r.keys().map(r);
-}
-const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
-console.log(images[4])*/
 
 
 const initialState = {
@@ -26,7 +21,7 @@ const initialState = {
     catalogData: [],
     catalogDataFiltered: [],
     filteredBrand: [],
-
+    slidePack: []
 }
 
 

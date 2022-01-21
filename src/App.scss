@@ -65,14 +65,16 @@
     color: #260852;
     font-size: 24px;
     font-weight: 600;
-    font-family: emoji;
+    font-family: auto;
     right: 50px;
     position: absolute;
     top: 8px;
+    text-transform: uppercase;
+    font-style: italic;
 }
 
 .mainBody {
-    padding: 0 90px;
+    padding: 0 70px;
 }
 
 .botLogo {

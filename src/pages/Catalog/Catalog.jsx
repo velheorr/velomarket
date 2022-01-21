@@ -27,7 +27,7 @@ const Catalog = () => {
     const elements = renderCatalogs(catalogItems);
 
     return (
-        <div>
+        <>
             <Slider/>
             <h2>
                 <ListItem disablePadding className='menuHeader'>
@@ -42,7 +42,7 @@ const Catalog = () => {
                 </Grid>
             </Box>
 
-        </div>
+        </>
     );
 };
 

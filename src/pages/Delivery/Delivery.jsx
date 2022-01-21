@@ -16,7 +16,6 @@ import Slider from "../../Slider/Slider";
 
 const Delivery = () => {
 
-
     return (
         <div>
             <Slider/>

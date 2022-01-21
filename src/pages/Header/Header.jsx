@@ -15,7 +15,7 @@ const Header = () => {
                     <li><NavLink to="/delivery" className={isActive => (isActive ? 'active' : '')}>Оплата и Доставка</NavLink></li>
                     <li><NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}>Контакты</NavLink></li>
                 </ul>
-                <span className='headerInfo'>Веломаркет "Колесо"</span>
+                <span className='headerInfo'>Веломаркет Колесо</span>
             </div>
         </>
     );
@@ -24,5 +24,3 @@ const Header = () => {
 export default Header;
 
 
-/*
-className={({ isActive }) => (isActive ? 'activen' : '')}*/
