@@ -14,12 +14,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import Slider from "../../Slider/Slider";
+import {sortData} from "../../assets/functions";
 
 
 const Repair = () => {
     const [options, setOptions] = useState([])
-    const [price ,setPrice] = useState(null)
-    const [select, setSelect] = useState('УСЛУГИ');
+    const [price ,setPrice] = useState([])
+    const [select, setSelect] = useState('');
 
     const handleChange = (event) => {
         setSelect(event.target.value);
@@ -31,34 +32,33 @@ const Repair = () => {
         prepareSelectOptions(repairPrice)
     },[])
 
+
     const prepareSelectOptions = (services)=>{
         const ss = services.filter(i => i.ТипНоменклатуры === 'Услуга')
+        let prepareOptions = []
         ss.forEach(i => {
-            if(!options.includes(i.НоменклатураРодитель)){
-                options.push(i.НоменклатураРодитель)
+            if(!prepareOptions.includes(i.НоменклатураРодитель)){
+                prepareOptions.push(i.НоменклатураРодитель)
             }
         })
-        setOptions(options)
+        setOptions(prepareOptions)
     }
 
-    const selected = options.map((item, i)=> <MenuItem key={i} value={item}>{item}</MenuItem>)
+    const renderSelectOptions = options.map((item, i)=> {
+        let str = item.replace(/[0-9.]/g, '')
+        return <MenuItem key={i} value={item}>{str}</MenuItem>
+    })
 
     const makePrice = (type)=>{
         const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
-        setPrice(x)
+        const xSorted = sortData(x, 'НоменклатураБренд')
+        setPrice(xSorted)
     }
 
-    let listItems
-    if (price) {
-        let sort = price.sort((a, b)=> {
-            if (a.НоменклатураБренд > b.НоменклатураБренд) {return 1}
-            if (a.НоменклатураБренд < b.НоменклатураБренд) {return -1}
-            return 0
-        })
-        listItems = sort.map((item, i)=>{
-            return <View key={i} item={item}/>
-        })
-    }
+    const listItems = price.map((item, i)=>{
+        return <View key={i} item={item}/>
+    })
+
 
     return (
         <>
@@ -70,14 +70,14 @@ const Repair = () => {
             <Divider/>
 
             <FormControl sx={{ m: 1, minWidth: 250 }}>
-                <InputLabel id="repairSelect">Вид услуги</InputLabel>
+                <InputLabel id="repairSelect">Услуги</InputLabel>
                 <Select
                     labelId="repairSelect" id="demo-simple-select-autowidth"
                     value={select}
                     onChange={handleChange}
                     autoWidth  label="Вид услуги"
                 >
-                    {selected}
+                    {renderSelectOptions}
                 </Select>
             </FormControl>
             <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
