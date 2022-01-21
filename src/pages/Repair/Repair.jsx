@@ -55,7 +55,7 @@ const Repair = () => {
         setPrice(xSorted)
     }
 
-    const listItems = price.map((item, i)=>{
+    const renderListItems = price.map((item, i)=>{
         return <View key={i} item={item}/>
     })
 
@@ -81,7 +81,7 @@ const Repair = () => {
                 </Select>
             </FormControl>
             <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
-                {listItems}
+                {renderListItems}
             </Paper>
         </>
     );
