@@ -11,7 +11,7 @@ export const imgURL = (img)=>{
 }
 
 
-export const sortData = (data, sortParam)=>{
+export const sortData = (data, sortParam = 0)=>{
     data.sort((a, b)=> {
         if (a[sortParam] > b[sortParam]) {return 1}
         if (a[sortParam] < b[sortParam]) {return -1}

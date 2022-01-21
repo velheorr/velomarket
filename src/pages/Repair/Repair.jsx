@@ -81,7 +81,7 @@ const Repair = () => {
                 </Select>
             </FormControl>
             <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
-                    {price ? listItems : null}
+                {listItems}
             </Paper>
         </>
     );
