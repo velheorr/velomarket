@@ -1,10 +1,12 @@
+$gritTPL: 30% 50% 20%;
+
 .tablePrice p {
     text-align: right;
 }
 
 .list {
     display: grid;
-    grid-template-columns: 30% 50% 20%;
+    grid-template-columns: $gritTPL;
     padding: 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     >div:last-child {
@@ -19,3 +21,12 @@
     }
 }
 
+.listTitle {
+    display: grid;
+    grid-template-columns: $gritTPL;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #f3f3f3;
+}

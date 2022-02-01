@@ -83,6 +83,11 @@ const Repair = () => {
                     </Select>
                 </FormControl>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
+                    <div className='listTitle'>
+                        <div>Услуга</div>
+                        <div>Описание</div>
+                        <div>Цена</div>
+                    </div>
                     {renderListItems}
                 </Paper>
             </div>
