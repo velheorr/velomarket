@@ -14,55 +14,51 @@ import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
 import Slider from "../../../Slider/Slider";
 import {imgURL} from "../../../assets/functions";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 
 
 const CatalogPage = () => {
     const {itemId} = useParams()
     const [item, setItem] = useState('');
-
-
     const [value, setValue] = useState('1');
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
 
     useEffect(() => {
         setItem(goods.find(i => i.НоменклатураКод === itemId))
     }, [itemId])
 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-    let parentPath = `/`
-    if(item){
-        let x = item.ПутьПапки.split('\\')
-        parentPath = `/catalogs/${x[0]}`
+    const backBTN = ()=>{
+        let parentPath = `/`
+        if(item){parentPath = `/catalogs/${item.ПутьПапки.split('\\')[0]}`}
+        return parentPath
     }
 
 
-    let img
+    let img = imgURL('')
     if (item.ФайлКартинки){
-        img = imgURL(item.ФайлКартинки)
-    }
+        /*img = imgURL(item.ФайлКартинки)*/
 
+    }
 
 
     return (
         <>
             <Slider/>
-            <h2>
-                <Link to={parentPath}>
+            <ListItem disablePadding className='pageTitle'>
+                <Link to={backBTN}>
                     <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>
                 </Link>
-                <span className='breadcrump'>Описание товара</span>
-            </h2>
+                <ListItemText className='breadcrump' primary="Описание товара"/>
+            </ListItem>
             <Divider/>
 
-
-            <div className='cardInfo'>
+            <div className='pageBody cardInfo'>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}} className='cardImg'>
-                    <img
-                        src={img} width={300}
-                        alt="veloamarketkoleso.ru"
-                    />
+                    <img src={img} width={300} alt="veloamarketkoleso.ru" />
                 </Paper>
                 <div className='cardData'>
                     <div className='directory'>{item.ПутьПапки}</div>
@@ -80,7 +76,7 @@ const CatalogPage = () => {
                     </div>
                 </div>
             </div>
-            <Box sx={{ width: '100%', typography: 'body1' }}>
+            <Box sx={{ width: '85%', typography: 'body1' }} className='pageBody'>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -110,10 +106,6 @@ const CatalogPage = () => {
                     </TabPanel>
                 </TabContext>
             </Box>
-
-
-
-
         </>
     );
 };

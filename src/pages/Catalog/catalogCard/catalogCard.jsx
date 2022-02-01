@@ -15,7 +15,8 @@ const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, ФайлКартинки} = items;
 
 
-    let img = imgURL(ФайлКартинки)
+    /*let img = imgURL(ФайлКартинки)*/
+    let img = imgURL('')
 
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>

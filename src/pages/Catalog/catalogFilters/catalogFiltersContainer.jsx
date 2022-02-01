@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
+import '../../../App.scss'
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CatalogFilters from "./catalogFilters";
@@ -11,7 +12,11 @@ import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
 import Slider from "../../../Slider/Slider";
 import {Link, useParams} from "react-router-dom";
+
 import goods from "../../../Data/data.json";
+
+import ListItemText from "@mui/material/ListItemText";
+import ListItem from "@mui/material/ListItem";
 
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
@@ -54,20 +59,18 @@ const CatalogFiltersContainer = () => {
     return (
         <>
             <Slider/>
-            <h2>
+            <ListItem disablePadding className='pageTitle'>
                 <Link to={`/`}><Button variant="outlined"  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
-                <span className='breadcrump'>{id}</span>
-            </h2>
+                <ListItemText className='breadcrump' primary={id}/>
+            </ListItem>
             <Divider/>
-            <div className='catalogWrapper'>
+            <div className='pageBody catalogWrapper'>
                 <CatalogFilters catalogData={catalogData} />
-                <div className='items'>
-                    <Box sx={{ flexGrow: 1, display: 'grid'}} >
-                        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
-                            {catalogData ? catalogElements : 'no data' }
-                        </Grid>
-                    </Box>
-                </div>
+                <Box sx={{ flexGrow: 1, display: 'grid'}} className='items'>
+                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                        {catalogData ? catalogElements : 'no data' }
+                    </Grid>
+                </Box>
             </div>
         </>
     );

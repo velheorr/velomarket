@@ -4,11 +4,13 @@
     display: grid;
     grid-template-columns: 20% 80%;
     margin-top: 30px;
-    .items a {
-        margin-left: 10px;
-        margin-bottom: 10px;
-        width: 300px;
-
+    .items {
+        margin-top: 20px;
+        a {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 300px;
+        }
     }
 }
 
