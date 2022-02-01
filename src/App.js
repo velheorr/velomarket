@@ -9,6 +9,7 @@ import Contacts from "./pages/Contacts/Contacts";
 import logo from "./pages/Header/img/logo.png";
 import CatalogPage from "./pages/Catalog/CatalogPage/CatalogPage";
 import CatalogFiltersContainer from "./pages/Catalog/catalogFilters/catalogFiltersContainer";
+import Page404 from "./404/404";
 
 
 const App = () => {
@@ -18,19 +19,17 @@ const App = () => {
             <div className='mainHeader'>
                 <Header/>
             </div>
-            <div className='mainBody'>
-                <Switch>
-                    <Route exact path="/"><Catalog/></Route>
-                    <Route path="/repair"><Repair/></Route>
-                    <Route path="/delivery"><Delivery/></Route>
-                    <Route path="/contacts"><Contacts/></Route>
+            <Switch>
+                <Route exact path="/"><Catalog/></Route>
+                <Route path="/repair"><Repair/></Route>
+                <Route path="/delivery"><Delivery/></Route>
+                <Route path="/contacts"><Contacts/></Route>
 
-                    <Route path="/catalogs/:id" ><CatalogFiltersContainer /></Route>
-                    <Route path="/catalog/:itemId"><CatalogPage /></Route>
+                <Route path="/catalogs/:id" ><CatalogFiltersContainer /></Route>
+                <Route path="/catalog/:itemId"><CatalogPage /></Route>
 
-                    <Route path="*">Error 404  "Страница не найдена"</Route>
-                </Switch>
-            </div>
+                <Route path="*"><Page404/></Route>
+            </Switch>
             <img className='botLogo' src={logo} alt={'velomarketkoleso.ru'}/>
         </div>
     );

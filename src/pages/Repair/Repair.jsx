@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import s from "./Repair.module.css";
+import {useEffect, useState} from 'react';
+import '../../App.scss'
+import "./Repair.scss";
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import Divider from "@mui/material/Divider";
 import InputLabel from '@mui/material/InputLabel';
@@ -63,26 +64,28 @@ const Repair = () => {
     return (
         <>
             <Slider/>
-            <ListItem disablePadding className={s.menuHeader}>
+            <ListItem disablePadding className='pageTitle'>
                 <ListItemIcon><HomeRepairServiceIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Сервис и Ремонт"/>
             </ListItem>
             <Divider/>
 
-            <FormControl sx={{ m: 1, minWidth: 250 }}>
-                <InputLabel id="repairSelect">Услуги</InputLabel>
-                <Select
-                    labelId="repairSelect" id="demo-simple-select-autowidth"
-                    value={select}
-                    onChange={handleChange}
-                    autoWidth  label="Вид услуги"
-                >
-                    {renderSelectOptions}
-                </Select>
-            </FormControl>
-            <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
-                {renderListItems}
-            </Paper>
+            <div className='pageBody'>
+                <FormControl sx={{ m: 1, minWidth: 250 }}>
+                    <InputLabel id="repairSelect">Услуги</InputLabel>
+                    <Select
+                        labelId="repairSelect" id="demo-simple-select-autowidth"
+                        value={select}
+                        onChange={handleChange}
+                        autoWidth  label="Вид услуги"
+                    >
+                        {renderSelectOptions}
+                    </Select>
+                </FormControl>
+                <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
+                    {renderListItems}
+                </Paper>
+            </div>
         </>
     );
 };
@@ -91,7 +94,7 @@ const View = ({item})=>{
     const {НоменклатураБренд, Номенклатура, Цена} = item;
     const txt = НоменклатураБренд.split('_').join(' ')
     return (
-        <div className={s.list}>
+        <div className='list'>
             <div>{txt}</div>
             <div>{Номенклатура}</div>
             <div>{Цена}р</div>

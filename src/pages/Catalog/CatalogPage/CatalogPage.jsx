@@ -85,12 +85,14 @@ const CatalogPage = () => {
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
                             <Tab label="Характеристики" value="1" />
-                            {/*<Tab label="Описание" value="2" />*/}
+                            <Tab label="Описание" value="2" />
                         </TabList>
                     </Box>
                     <TabPanel value="1">
                         <div className='cardData'>
                             <div className='cardParams'>
+                                <div>Производитель</div>
+                                <div>{item.НоменклатураБрендПроизводитель}</div>
                                 <div>Бренд</div>
                                 <div>{item.НоменклатураБренд}</div>
                                 <div>Модель</div>
@@ -101,7 +103,10 @@ const CatalogPage = () => {
                         </div>
                     </TabPanel>
                     <TabPanel value="2">
-
+                        <div>
+                            {item.НоменклатураКраткоеОписание}
+                        </div>
+                        <div>{item.НоменклатураОписание}</div>
                     </TabPanel>
                 </TabContext>
             </Box>

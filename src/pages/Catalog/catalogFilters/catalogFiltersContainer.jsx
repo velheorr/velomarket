@@ -35,8 +35,6 @@ const CatalogFiltersContainer = () => {
         }
         dispatch(setFilteredBrand(filterBrand));
     }
-    console.log(goods)
-    console.log(id)
 
     const selectCatalog = (id)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))

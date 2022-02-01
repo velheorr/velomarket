@@ -1,3 +1,4 @@
+import '../../App.scss'
 import "./Catalog.scss";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
@@ -10,6 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
+
 
 
 const Catalog = () => {
@@ -29,12 +31,10 @@ const Catalog = () => {
     return (
         <>
             <Slider/>
-            <h2>
-                <ListItem disablePadding className='menuHeader'>
-                    <ListItemIcon><ShoppingCartIcon color='primary'/></ListItemIcon>
-                    <ListItemText primary="Каталог"/>
-                </ListItem>
-            </h2>
+            <ListItem disablePadding className='pageTitle'>
+                <ListItemIcon><ShoppingCartIcon color='primary'/></ListItemIcon>
+                <ListItemText primary="Каталог"/>
+            </ListItem>
             <Divider/>
             <Box sx={{ flexGrow: 1 }} className='wrapper'>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >

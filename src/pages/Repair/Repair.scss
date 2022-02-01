@@ -1,0 +1,21 @@
+.tablePrice p {
+    text-align: right;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    >div:last-child {
+        text-align: right;
+    }
+    >div:first-child {
+        font-weight: 600;
+    }
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+        cursor: pointer;
+    }
+}
+

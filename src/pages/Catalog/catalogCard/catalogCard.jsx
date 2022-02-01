@@ -29,7 +29,7 @@ const CatalogCard = ({items}) => {
                         alt={Номенклатура}
                     />
                     <CardContent>
-                        <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={72} color={'#333'}>
+                        <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={72} color={'#333'} overflow={'hidden'}>
                             {Номенклатура}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" component="span">

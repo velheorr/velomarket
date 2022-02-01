@@ -1,5 +1,5 @@
 import React from "react";
-import s from './Contacts.module.scss'
+import './Contacts.scss'
 import Divider from "@mui/material/Divider";
 import ContactsIcon from '@mui/icons-material/Contacts';
 import ScheduleIcon from '@mui/icons-material/Schedule';
@@ -27,10 +27,13 @@ const Contacts = () => {
     const day = date.getDay();
 
     const scheduleMap = schedule.map((item, i) => {
+        const active = 'active';
+        const holiday = 'holiday';
+
         if(item.id === day && item.id !== 1) {
-            return <View item={item} key={i} active={s.active} />
+            return <View item={item} key={i} active={active} />
         } else if (item.id === 1){
-            return <View item={item} key={i} active={s.holiday} />
+            return <View item={item} key={i} active={holiday} />
         }
         return <View item={item} key={i} />
     });
@@ -48,13 +51,13 @@ const Contacts = () => {
     return (
         <div>
             <Slider/>
-            <ListItem disablePadding className={s.menuHeader}>
+            <ListItem disablePadding className='pageTitle'>
                 <ListItemIcon><ContactsIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Контакты"/>
             </ListItem>
             <Divider/>
 
-            <List>
+            <List className='pageBody'>
                 <ListItem>
                     <ListItemIcon><HomeIcon /></ListItemIcon>
                     <ListItemText secondary="г. Пермь Борчанинова 62 Веломаркет «Колесо»" />
@@ -65,22 +68,24 @@ const Contacts = () => {
                 </ListItem>
             </List>
 
-
-
-            <ListItem disablePadding className={s.menuHeader}>
+            <Divider/>
+            <ListItem disablePadding className='pageTitle'>
                 <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Время работы"/>
             </ListItem>
             <Divider/>
-            {scheduleMap}
+            <div className='pageBody'>
+                {scheduleMap}
+            </div>
 
-            <ListItem disablePadding className={s.menuHeader}>
+            <Divider/>
+            <ListItem disablePadding className='pageTitle'>
                 <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Как к нам доехать"/>
             </ListItem>
             <Divider/>
 
-            <div className={s.map}>
+            <div className='map pageBody'>
                 <YMaps>
                     <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
                         key={i}
@@ -103,10 +108,11 @@ const Contacts = () => {
 };
 
 const View = ({item, active}) =>{
+    const css = active || ''
     return (
-        <div className={`${s.work} ${active}`} >
-            <div className={s.day}>{item.day}</div>
-            <div className={s.time}>{item.time}</div>
+        <div className={`work ${css}`}>
+            <div className='day'>{item.day}</div>
+            <div className='time'>{item.time}</div>
         </div>
     )
 }
