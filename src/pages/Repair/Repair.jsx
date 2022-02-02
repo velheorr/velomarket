@@ -56,10 +56,13 @@ const Repair = () => {
         setPrice(xSorted)
     }
 
-    const renderListItems = price.map((item, i)=>{
-        return <View key={i} item={item}/>
-    })
-
+    const renderListItems = (price) => {
+        const data = price.map((item, i) => {
+            return <View key={i} item={item}/>
+        })
+        return data
+    }
+    let listItems = renderListItems(price)
 
     return (
         <>
@@ -88,7 +91,7 @@ const Repair = () => {
                         <div>Описание</div>
                         <div>Цена</div>
                     </div>
-                    {renderListItems}
+                    {listItems}
                 </Paper>
             </div>
         </>

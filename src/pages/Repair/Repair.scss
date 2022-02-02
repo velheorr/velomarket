@@ -29,4 +29,7 @@ $gritTPL: 30% 50% 20%;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     background-color: #f3f3f3;
+    >div:not(:first-child) {
+        border-left: 1px solid grey;
+    }
 }

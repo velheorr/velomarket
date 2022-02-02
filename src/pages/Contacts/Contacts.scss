@@ -4,22 +4,21 @@
     color: #828282;
     line-height: 20px;
     display: flex;
+    .day, .time {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed;
+    }
+    .time {min-width: 90px;}
+    .day {
+        min-width: 90px;
+        width: 20%;
+        padding-right: 5px;
+    }
 }
 .active {
     font-weight: 600;
     color: black;
-}
-
-.day, .time {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-
-
-.day {
-    min-width: 90px;
-    width: 20%;
-    padding-right: 5px;
 }
 
 .holiday {
@@ -27,6 +26,4 @@
     font-weight: 600;
 }
 
-.map{
-    margin: 25px auto;
-}
+.map{margin: 25px auto;}
