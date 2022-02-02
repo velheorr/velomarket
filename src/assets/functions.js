@@ -4,13 +4,12 @@ const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/images/'
 
 
 export const imgURL = (img)=>{
-    console.log(img)
-    if (img.includes('.png')){
-        return baseURL + img
-    }
-    return `${baseURL}noimg.png`
+    return  baseURL + img
 }
-
+export const imgURLerror = (e)=>{
+    e.target.onerror = null;
+    e.target.src = baseURL + 'noimg.png'
+}
 
 export const sortData = (data, sortParam)=>{
     data.sort((a, b)=> {

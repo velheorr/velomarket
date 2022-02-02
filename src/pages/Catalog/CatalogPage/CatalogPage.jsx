@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
 import Slider from "../../../Slider/Slider";
-import {imgURL} from "../../../assets/functions";
+import {imgURL, imgURLerror} from "../../../assets/functions";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
@@ -37,14 +37,6 @@ const CatalogPage = () => {
         return parentPath
     }
 
-
-    let img = imgURL('')
-    if (item.ФайлКартинки){
-        /*img = imgURL(item.ФайлКартинки)*/
-
-    }
-
-
     return (
         <>
             <Slider/>
@@ -58,7 +50,7 @@ const CatalogPage = () => {
 
             <div className='pageBody cardInfo'>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}} className='cardImg'>
-                    <img src={img} width={300} alt="veloamarketkoleso.ru" />
+                    <img src={imgURL(item.ФайлКартинки)} width={300} alt="veloamarketkoleso.ru"  onError={imgURLerror}/>
                 </Paper>
                 <div className='cardData'>
                     <div className='directory'>{item.ПутьПапки}</div>

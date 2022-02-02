@@ -7,16 +7,12 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 
-import {imgURL} from "../../../assets/functions";
+import {imgURL, imgURLerror} from "../../../assets/functions";
 
 
 
 const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, ФайлКартинки} = items;
-
-
-    /*let img = imgURL(ФайлКартинки)*/
-    let img = imgURL('')
 
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
@@ -26,8 +22,9 @@ const CatalogCard = ({items}) => {
                         component="img"
                         height="300"
                         width="300"
-                        image = {img}
+                        image = {imgURL(ФайлКартинки)}
                         alt={Номенклатура}
+                        onError ={imgURLerror}
                     />
                     <CardContent>
                         <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={72} color={'#333'} overflow={'hidden'}>
