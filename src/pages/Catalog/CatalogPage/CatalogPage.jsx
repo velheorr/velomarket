@@ -37,6 +37,16 @@ const CatalogPage = () => {
         return parentPath
     }
 
+    /*console.log(item.НоменклатураКраткоеОписание)*/
+    console.log(item)
+    const strSplit = ()=>{
+        if (item.НоменклатураОписание){
+            const str = item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
+            return str
+        }
+    }
+    const itemDescription = strSplit()
+
     return (
         <>
             <Slider/>
@@ -64,11 +74,11 @@ const CatalogPage = () => {
                     <div className='cardPrice'>
                         <div>Цена:</div>
                         <div>{item.Цена}</div>
-                        <div>р.</div>
+                        <div>₽</div>
                     </div>
                 </div>
             </div>
-            <Box sx={{ width: '85%', typography: 'body1' }} className='pageBody'>
+            <Box sx={{ typography: 'body1', marginTop: '20px' }} className='pageBody'>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -76,26 +86,26 @@ const CatalogPage = () => {
                             <Tab label="Описание" value="2" />
                         </TabList>
                     </Box>
-                    <TabPanel value="1">
-                        <div className='cardData'>
-                            <div className='cardParams'>
-                                <div>Производитель</div>
-                                <div>{item.НоменклатураБрендПроизводитель}</div>
-                                <div>Бренд</div>
-                                <div>{item.НоменклатураБренд}</div>
-                                <div>Модель</div>
-                                <div>{item.НоменклатураМодель}</div>
-                                <div>Раздел</div>
-                                <div>{item.НоменклатураРодительРодитель}</div>
+                    <Paper sx={{width: '100%', backgroundColor: '#ffffffed', minHeight: '250px'}}>
+                        <TabPanel value="1">
+                            <div className='cardData'>
+                                <div className='cardParams'>
+                                    <div>Производитель</div>
+                                    <div>{item.НоменклатураБрендПроизводитель}</div>
+                                    <div>Бренд</div>
+                                    <div>{item.НоменклатураБренд}</div>
+                                    <div>Модель</div>
+                                    <div>{item.НоменклатураМодель}</div>
+                                    <div>Раздел</div>
+                                    <div>{item.НоменклатураРодительРодитель}</div>
+                                </div>
                             </div>
-                        </div>
-                    </TabPanel>
-                    <TabPanel value="2">
-                        <div>
-                            {item.НоменклатураКраткоеОписание}
-                        </div>
-                        <div>{item.НоменклатураОписание}</div>
-                    </TabPanel>
+                        </TabPanel>
+                        <TabPanel value="2">
+                            <div>{item.НоменклатураКраткоеОписание}</div>
+                            <div>{itemDescription}</div>
+                        </TabPanel>
+                    </Paper>
                 </TabContext>
             </Box>
         </>
