@@ -39,7 +39,7 @@ const CatalogPage = () => {
     }
 
     /*console.log(item.НоменклатураКраткоеОписание)*/
-    console.log(item)
+
     const strSplit = ()=>{
         if (item.НоменклатураОписание){
             const str = item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
