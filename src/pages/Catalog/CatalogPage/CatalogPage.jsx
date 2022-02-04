@@ -16,6 +16,7 @@ import Slider from "../../../Slider/Slider";
 import {imgURL, imgURLerror} from "../../../assets/functions";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Chip from '@mui/material/Chip';
 
 
 const CatalogPage = () => {
@@ -75,6 +76,9 @@ const CatalogPage = () => {
                         <div>Цена:</div>
                         <div>{item.Цена}</div>
                         <div>₽</div>
+                    </div>
+                    <div className='chip'>
+                        {item.ВНаличии > 0 ? <Chip label="Есть в наличии" color="success" size='small'/> : <Chip label="Товар временно закончился" size='small'/>}
                     </div>
                 </div>
             </div>
