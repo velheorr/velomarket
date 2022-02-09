@@ -27,3 +27,8 @@ export const sortData = (data, sortParam, direction = '+')=>{
 
     return data
 }
+
+export const clearSymbol = (data)=>{
+    const x = data.split('_').join(' ')
+    return x
+}
