@@ -44,7 +44,6 @@ const CatalogFiltersContainer = () => {
 
     const selectCatalog = (id)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))
-        console.log(newCatalog)
         if (newCatalog.length > 0) {setData(true)}
         dispatch(openCatalogData(newCatalog))
         catalogFilters(newCatalog)

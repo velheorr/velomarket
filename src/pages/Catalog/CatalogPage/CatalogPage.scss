@@ -5,6 +5,10 @@
     margin-top: 10px;
     .cardImg {
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
 }
 

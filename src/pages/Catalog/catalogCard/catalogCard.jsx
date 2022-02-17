@@ -12,17 +12,16 @@ import React from "react";
 
 
 const CatalogCard = ({items}) => {
-    const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, ФайлКартинки, НоменклатураМодель} = items;
-
+    const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, ПутьКартинок,ОснКартинка, НоменклатураМодель} = items;
+    /*minHeight: 490*/
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
             <Card sx={{ maxWidth: 300 }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        height="300"
                         width="300"
-                        image = {imgURL(ФайлКартинки)}
+                        image ={imgURL(ПутьКартинок, ОснКартинка)}
                         alt={Номенклатура}
                         onError ={imgURLerror}
                     />
