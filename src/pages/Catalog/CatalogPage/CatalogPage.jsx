@@ -91,10 +91,12 @@ const CatalogPage = () => {
                         </Box>
                         <Paper sx={{width: '100%', backgroundColor: '#ffffffed', minHeight: '250px'}}>
                             <TabPanel value="1">
+                                <div>{item.НоменклатураКраткоеОписание}</div>
+                                <div>{itemDescription}</div>
+                            </TabPanel>
+                            <TabPanel value="2">
                                 <div className='cardData'>
                                     <div className='cardParams'>
-                                        <div>Производитель</div>
-                                        <div>{item.НоменклатураБрендПроизводитель}</div>
                                         <div>Бренд</div>
                                         <div>{clearSymbol(item.НоменклатураБренд)}</div>
                                         <div>Модель</div>
@@ -103,10 +105,6 @@ const CatalogPage = () => {
                                         <div>{item.НоменклатураРодительРодитель}</div>
                                     </div>
                                 </div>
-                            </TabPanel>
-                            <TabPanel value="2">
-                                <div>{item.НоменклатураКраткоеОписание}</div>
-                                <div>{itemDescription}</div>
                             </TabPanel>
                         </Paper>
                     </TabContext>
