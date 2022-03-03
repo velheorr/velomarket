@@ -9,6 +9,7 @@ import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import {clearSymbol} from "../../../assets/functions";
 
 
 const CatalogFilters = ({catalogData}) => {
@@ -43,21 +44,24 @@ const CatalogFilters = ({catalogData}) => {
     };
 
 
-    const renderCatalogFilters =(filterdata)=>{
+    const renderCatalogFilters =(filterdata)=> {
         if (!filterdata) return;
-        return filterdata.map((item, i)=> <FormControlLabel
-            key={i}
-            label={item}
-            control={
+        return filterdata.map((item, i) => {
+            const name = clearSymbol(item)
+            return <FormControlLabel
+                key = {i}
+                label = {name}
+                control = {
                 <Controller
                     name={item}
                     control={control}
-                    render={({ field: { value, ...field } }) => (
-                        <Checkbox {...field} checked={!!value} />
+                    render={({field: {value, ...field}}) => (
+                        <Checkbox {...field} checked={!!value}/>
                     )}
                 />
-            }
-             />);
+                }
+            />
+        })
     }
     const catalogFilterElements = renderCatalogFilters(filteredBrand);
 

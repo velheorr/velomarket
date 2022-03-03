@@ -35,7 +35,7 @@ const CatalogCard = ({items}) => {
                             <div>Бренд: {clearSymbol(НоменклатураБренд)}</div>
                         </Typography>
                         <Typography variant="body2" color="text.primary" component="div">
-                            <div className='price'>Цена: {Цена}р.</div>
+                           {/* <div className='price'>Цена: {Цена}р.</div>*/}
                         </Typography>
                     </CardContent>
                 </CardActionArea>

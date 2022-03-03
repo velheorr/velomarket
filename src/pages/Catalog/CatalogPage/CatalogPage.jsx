@@ -9,6 +9,8 @@ import Paper from "@mui/material/Paper";
 
 import goods from '../../../Data/data.json';
 
+
+
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
@@ -73,9 +75,9 @@ const CatalogPage = () => {
                         <div>{item.НоменклатураКод}</div>
                     </div>
                     <div className='cardPrice'>
-                        <div>Цена:</div>
+                        {/*<div>Цена:</div>
                         <div>{item.Цена}</div>
-                        <div>₽</div>
+                        <div>₽</div>*/}
                     </div>
                 </div>
             </div>
