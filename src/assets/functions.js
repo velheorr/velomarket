@@ -3,12 +3,14 @@
 const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/images/'
 
 export const imgURL = (path, mainImg)=>{
-    console.log(path)
-    console.log(mainImg)
+    if (path === '' && mainImg === '') {
+        return baseURL + 'noimg.png'
+    }
+    /*console.log(path)
+    console.log(mainImg)*/
     if (path && path.length > 1 && mainImg && mainImg.length > 1){
         return (`${baseURL}${path}/${mainImg}`)
     }
-    /*return  baseURL + img*/
 }
 export const imgURLerror = (e)=>{
     e.target.onerror = null;

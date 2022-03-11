@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import {clearSymbol} from "../../../assets/functions";
+import Divider from "@mui/material/Divider";
+import Chip from "@mui/material/Chip";
 
 
 const CatalogFilters = ({catalogData}) => {
@@ -64,6 +66,7 @@ const CatalogFilters = ({catalogData}) => {
         })
     }
     const catalogFilterElements = renderCatalogFilters(filteredBrand);
+    console.log(filteredBrand)
 
     const resetForm = ()=>{
         reset()
@@ -74,7 +77,7 @@ const CatalogFilters = ({catalogData}) => {
         <div>
             <Typography gutterBottom component="div" fontSize={16} fontWeight={600} align='center'>Параметры</Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='filters'>Цена:</div>
+                {/*<div className='filters'>Цена:</div>
                 <TextField
                     {...register("priceFrom", {min: 0})}
                     label="От"
@@ -92,8 +95,8 @@ const CatalogFilters = ({catalogData}) => {
                     variant="outlined"
                     className='filters'
                     type="number"
-                />
-                <div className='filters'>Бренд:</div>
+                />*/}
+                <Chip className='filterName' label="Бренд:" color="primary"/>
                 <FormGroup>
                     {catalogData ? catalogFilterElements : 'no data' }
                 </FormGroup>

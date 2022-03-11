@@ -6,7 +6,7 @@ import CatalogFilters from "./catalogFilters";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import CatalogCard from "../catalogCard/catalogCard";
-import {openCatalogData, setFilteredBrand} from "../CatalogSlice";
+import {openCatalogData, setCatalogDataFilter, setFilteredBrand} from "../CatalogSlice";
 
 import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
@@ -32,6 +32,7 @@ const CatalogFiltersContainer = () => {
     },[id])
 
     const catalogFilters = (newCatalog)=>{
+        console.log(newCatalog)
         let filterBrand = []
         const filtered = newCatalog.map(i => i.НоменклатураБренд)
         for (let str of filtered) {
@@ -58,11 +59,15 @@ const CatalogFiltersContainer = () => {
     }
     const catalogElements = renderCatalogItems(catalogData);
 
+    const resetFiltersFromCatalogs = ()=>{
+        dispatch(setCatalogDataFilter([]))
+    }
+
     return (
         <>
             <Slider/>
             <ListItem disablePadding className='pageTitle'>
-                <Link to={`/`}><Button variant="outlined"  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
+                <Link to={`/`}><Button variant="outlined" onClick={resetFiltersFromCatalogs}  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
                 <ListItemText className='breadcrump' primary={id}/>
             </ListItem>
             <Divider/>

@@ -45,12 +45,8 @@
 }
 
 
-.filters {
-    font-style: italic;
-    font-weight: 600;
-    padding: 5px 0;
-    margin-bottom: 5px !important;
-    >div {
-        width: 80%;
-    }
+
+.filterName {
+    width: 80%;
+    text-align: center;
 }

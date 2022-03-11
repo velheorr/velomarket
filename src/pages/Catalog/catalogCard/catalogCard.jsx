@@ -21,6 +21,7 @@ const CatalogCard = ({items}) => {
                     <CardMedia
                         component="img"
                         width="300"
+                        height='300'
                         image ={imgURL(ПутьКартинок, ОснКартинка)}
                         alt={Номенклатура}
                         onError ={imgURLerror}
