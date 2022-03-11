@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
 import React from "react";
+import Divider from "@mui/material/Divider";
 
 
 
@@ -30,6 +31,7 @@ const CatalogCard = ({items}) => {
                         <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={72} color={'#333'} overflow={'hidden'}>
                             {Номенклатура}
                         </Typography>
+                        <Divider/>
                         <Typography variant="body2" color="text.secondary" component="span">
                             <div>Артикул: {НоменклатураАртикул}</div>
                             <div>Модель: {clearSymbol(НоменклатураМодель)}</div>
