@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCatalogDataFilter} from "../CatalogSlice";
 
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import {clearSymbol} from "../../../assets/functions";
-import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
+import Divider from "@mui/material/Divider";
+import Paper from "@mui/material/Paper";
 
 
 const CatalogFilters = ({catalogData}) => {
@@ -74,10 +74,12 @@ const CatalogFilters = ({catalogData}) => {
     }
 
     return (
-        <div>
-            <Typography gutterBottom component="div" fontSize={16} fontWeight={600} align='center'>Параметры</Typography>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/*<div className='filters'>Цена:</div>
+        <div >
+            <Paper className='filtersContainer'>
+                <div className='filterHeader'>Параметры</div>
+                <Divider style={{marginBottom: 15}}/>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    {/*<div className='filters'>Цена:</div>
                 <TextField
                     {...register("priceFrom", {min: 0})}
                     label="От"
@@ -96,13 +98,15 @@ const CatalogFilters = ({catalogData}) => {
                     className='filters'
                     type="number"
                 />*/}
-                <Chip className='filterName' label="Бренд:" color="primary"/>
-                <FormGroup>
-                    {catalogData ? catalogFilterElements : 'no data' }
-                </FormGroup>
-                <div><Button type="submit">Применить фильтры</Button></div>
-                <div><Button onClick={resetForm}>Сбросить</Button></div>
-            </form>
+                    <Chip className='filterName' label="Бренд:" color="primary"/>
+                    <FormGroup className='filterCheckBox'>
+                        {catalogData ? catalogFilterElements : 'no data' }
+                    </FormGroup>
+                    <Divider/>
+                    <div><Button type="submit">Применить</Button></div>
+                    <div><Button onClick={resetForm}>Очистить</Button></div>
+                </form>
+            </Paper>
         </div>
     );
 };

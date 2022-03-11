@@ -77,7 +77,7 @@ const CatalogFiltersContainer = () => {
                     <div className='pageBody catalogWrapper'>
                         <CatalogFilters catalogData={catalogData} />
                         <Box sx={{ flexGrow: 1, display: 'grid'}} className='items'>
-                            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+                            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{marginLeft: 25}}>
                                 {catalogData ? catalogElements : 'no data' }
                             </Grid>
                         </Box>
