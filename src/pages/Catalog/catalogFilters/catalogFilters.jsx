@@ -31,6 +31,7 @@ const CatalogFilters = ({catalogData}) => {
         if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']} else {minPrice = 0;}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']} else {maxPrice = 1000000}
 
+        console.log(data)
         for (let key in data){
             if (data[key] === true){brandArr.push(key)}
         }
@@ -54,17 +55,18 @@ const CatalogFilters = ({catalogData}) => {
         if (!filterdata) return;
         return filterdata.map((item, i) => {
             const name = clearSymbol(item)
-            return <FormControlLabel
+            if (name.length < 1) return;
+            return  <FormControlLabel
                 key = {i}
                 label = {name}
                 control = {
-                <Controller
-                    name={item}
-                    control={control}
-                    render={({field: {value, ...field}}) => (
-                        <Checkbox {...field} checked={!!value}/>
-                    )}
-                />
+                    <Controller
+                        name={item}
+                        control={control}
+                        render={({field: {value, ...field}}) => (
+                            <Checkbox {...field} checked={!!value}/>
+                        )}
+                    />
                 }
             />
         })
@@ -72,7 +74,6 @@ const CatalogFilters = ({catalogData}) => {
     const catalogFilterBrand = renderCatalogFilters(filteredBrand);
     const catalogFilterType = renderCatalogFilters(filteredType);
     const catalogFilterSize = renderCatalogFilters(filteredSize);
-    console.log(filteredBrand)
 
     const resetForm = ()=>{
         reset()

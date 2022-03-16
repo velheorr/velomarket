@@ -42,7 +42,6 @@ export const clearSymbol = (data)=>{
 }
 
 export const filterCatalogBy = (catalog, filterBy)=>{
-    console.log(catalog)
     let filterArr = []
     const filtered = catalog.map(i => i[filterBy])
     for (let str of filtered) {
