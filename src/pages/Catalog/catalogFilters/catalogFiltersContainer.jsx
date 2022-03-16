@@ -6,7 +6,14 @@ import CatalogFilters from "./catalogFilters";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import CatalogCard from "../catalogCard/catalogCard";
-import {openCatalogData, setCatalogDataFilter, setFilteredBrand} from "../CatalogSlice";
+import {
+    openCatalogData,
+    setCatalogDataFilter,
+    setFilteredBrand,
+    setFilteredSize,
+    setFilteredType
+} from "../CatalogSlice";
+import {filterCatalogBy} from '../../../assets/functions'
 
 import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
@@ -32,16 +39,15 @@ const CatalogFiltersContainer = () => {
     },[id])
 
     const catalogFilters = (newCatalog)=>{
-        console.log(newCatalog)
-        let filterBrand = []
-        const filtered = newCatalog.map(i => i.НоменклатураБренд)
-        for (let str of filtered) {
-            if (!filterBrand.includes(str)) {
-                filterBrand.push(str);
-            }
-        }
-        dispatch(setFilteredBrand(filterBrand));
+        const brand = filterCatalogBy(newCatalog, 'НоменклатураБренд')
+        dispatch(setFilteredBrand(brand));
+        const type = filterCatalogBy(newCatalog, 'Тип')
+        dispatch(setFilteredType(type));
+        const size = filterCatalogBy(newCatalog, 'Размер')
+        dispatch(setFilteredSize(size));
     }
+
+
 
     const selectCatalog = (id)=>{
         let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))

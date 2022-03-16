@@ -1,3 +1,4 @@
+import {setFilteredBrand} from "../pages/Catalog/CatalogSlice";
 
 
 const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/images/'
@@ -38,4 +39,16 @@ export const sortData = (data, sortParam, direction = '+')=>{
 export const clearSymbol = (data)=>{
     const x = data.split('_').join(' ')
     return x
+}
+
+export const filterCatalogBy = (catalog, filterBy)=>{
+    console.log(catalog)
+    let filterArr = []
+    const filtered = catalog.map(i => i[filterBy])
+    for (let str of filtered) {
+        if (!filterArr.includes(str)) {
+            filterArr.push(str);
+        }
+    }
+    return filterArr
 }

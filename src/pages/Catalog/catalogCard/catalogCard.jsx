@@ -21,14 +21,15 @@ const CatalogCard = ({items}) => {
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        width="300"
-                        height='300'
+                      /*  width="300"*/
+                       /* height='300'*/
+                        sx={{height: 300}}
                         image ={imgURL(ПутьКартинок, ОснКартинка)}
                         alt={Номенклатура}
                         onError ={imgURLerror}
                     />
                     <CardContent>
-                        <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={72} color={'#333'} overflow={'hidden'}>
+                        <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={46} color={'#333'} overflow={'hidden'}>
                             {Номенклатура}
                         </Typography>
                         <Divider/>

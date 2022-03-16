@@ -12,11 +12,15 @@ import {clearSymbol} from "../../../assets/functions";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
+import ButtonGroup from "@mui/material/ButtonGroup";
+
 
 
 const CatalogFilters = ({catalogData}) => {
     const { register, handleSubmit, reset, control } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
+    const filteredType = useSelector(state => state.catalog.filteredType);
+    const filteredSize = useSelector(state => state.catalog.filteredSize);
     const dispatch = useDispatch();
 
     const onSubmit = data => {
@@ -24,7 +28,7 @@ const CatalogFilters = ({catalogData}) => {
         let maxPrice = 1000000;
         let brandArr =[]
 
-        if (data['priceFrom'] && data['priceFrom'] > 0 &&data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']} else {minPrice = 0;}
+        if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']} else {minPrice = 0;}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']} else {maxPrice = 1000000}
 
         for (let key in data){
@@ -65,7 +69,9 @@ const CatalogFilters = ({catalogData}) => {
             />
         })
     }
-    const catalogFilterElements = renderCatalogFilters(filteredBrand);
+    const catalogFilterBrand = renderCatalogFilters(filteredBrand);
+    const catalogFilterType = renderCatalogFilters(filteredType);
+    const catalogFilterSize = renderCatalogFilters(filteredSize);
     console.log(filteredBrand)
 
     const resetForm = ()=>{
@@ -77,7 +83,7 @@ const CatalogFilters = ({catalogData}) => {
         <div >
             <Paper className='filtersContainer'>
                 <div className='filterHeader'>Параметры</div>
-                <Divider style={{marginBottom: 15}}/>
+                <Divider sx={{mb: '10px'}}/>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/*<div className='filters'>Цена:</div>
                 <TextField
@@ -98,13 +104,41 @@ const CatalogFilters = ({catalogData}) => {
                     className='filters'
                     type="number"
                 />*/}
-                    <Chip className='filterName' label="Бренд:" color="primary"/>
-                    <FormGroup className='filterCheckBox'>
-                        {catalogData ? catalogFilterElements : 'no data' }
-                    </FormGroup>
+
+
+                    {
+                        catalogData
+                            ?
+                                <div>
+                                    <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
+                                    <FormGroup className='filterCheckBox'>{catalogFilterBrand}</FormGroup>
+                                </div>
+                            : ''
+                    }
+                    {
+                        filteredType.length > 1
+                            ?
+                                <div>
+                                    <Chip className='filterName' variant="outlined" color="info" size="small" label="Тип:"/>
+                                    <FormGroup className='filterCheckBox'>{catalogFilterType}</FormGroup>
+                                </div>
+                            : ''
+                    }
+                    {
+                        filteredSize.length > 1
+                            ?
+                            <div>
+                                <Chip className='filterName' variant="outlined" color="info" size="small" label="Размер:"/>
+                                <FormGroup className='filterCheckBox'>{catalogFilterSize}</FormGroup>
+                            </div>
+                            : ''
+                    }
+
                     <Divider/>
-                    <div><Button type="submit">Применить</Button></div>
-                    <div><Button onClick={resetForm}>Очистить</Button></div>
+                    <ButtonGroup sx={{mt: '10px'}} variant="text" size="small" fullWidth>
+                        <Button type="submit">Применить</Button>
+                        <Button onClick={resetForm}>Очистить</Button>
+                    </ButtonGroup>
                 </form>
             </Paper>
         </div>
