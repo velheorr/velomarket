@@ -26,32 +26,50 @@ const CatalogFilters = ({catalogData}) => {
     const onSubmit = data => {
         let minPrice = 0;
         let maxPrice = 1000000;
-        let brandArr =[]
+        let brandArr =[];
+        let typeArr =[];
+        let sizeArr =[];
 
         if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']} else {minPrice = 0;}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']} else {maxPrice = 1000000}
 
         console.log(data)
-        for (let key in data){
-            if (data[key] === true){brandArr.push(key)}
+
+        const filerByObject = (arr, object)=>{
+            for(let x in data[object]){
+                if (data[object][x] === true) arr.push(x)
+            }
         }
+        filerByObject(brandArr, 'brand')
+        filerByObject(typeArr, 'type')
+        filerByObject(sizeArr, 'size')
 // eslint-disable-next-line
         const catalogData_filtered = catalogData.filter(i => {
             if (+i.Цена >= minPrice && +i.Цена <= maxPrice) {
-                if (brandArr.length > 0){
+
+                brandArr.every(e => {
+                    console.log(e)
+                    if (i.НоменклатураБренд === e) return i.НоменклатураБренд;
+                })
+
+
+
+               /* if (brandArr.length > 0){
                     for (let key in brandArr){
                         if (i.НоменклатураБренд === brandArr[key]) return i.НоменклатураБренд;
                     }
                 } else {
                     return i.НоменклатураБренд;
-                }
+                }*/
+
+
             }
         })
         return dispatch(setCatalogDataFilter(catalogData_filtered))
     };
 
 
-    const renderCatalogFilters =(filterdata)=> {
+    const renderCatalogFilters =(filterdata, filterBy)=> {
         if (!filterdata) return;
         return filterdata.map((item, i) => {
             const name = clearSymbol(item)
@@ -61,7 +79,8 @@ const CatalogFilters = ({catalogData}) => {
                 label = {name}
                 control = {
                     <Controller
-                        name={item}
+                        name={`${filterBy}.${item}`}
+                        defaultValue={false}
                         control={control}
                         render={({field: {value, ...field}}) => (
                             <Checkbox {...field} checked={!!value}/>
@@ -71,9 +90,9 @@ const CatalogFilters = ({catalogData}) => {
             />
         })
     }
-    const catalogFilterBrand = renderCatalogFilters(filteredBrand);
-    const catalogFilterType = renderCatalogFilters(filteredType);
-    const catalogFilterSize = renderCatalogFilters(filteredSize);
+    const catalogFilterBrand = renderCatalogFilters(filteredBrand, 'brand');
+    const catalogFilterType = renderCatalogFilters(filteredType, 'type');
+    const catalogFilterSize = renderCatalogFilters(filteredSize, 'size');
 
     const resetForm = ()=>{
         reset()
