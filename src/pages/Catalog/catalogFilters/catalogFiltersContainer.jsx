@@ -32,6 +32,7 @@ const CatalogFiltersContainer = () => {
 
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
+    const filtersEmpty = useSelector(state => state.catalog.filtersEmpty);
 
     useEffect(()=>{
         selectCatalog(id)
@@ -58,10 +59,13 @@ const CatalogFiltersContainer = () => {
 
 
     const renderCatalogItems = (catalogData)=>{
-        if (catalogDataFiltered.length > 0) {
+        console.log(filtersEmpty)
+        if (catalogDataFiltered.length > 0 ) {
             return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
+        }  else if (filtersEmpty === true){
+            return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
         }
-        return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
+
     }
     const catalogElements = renderCatalogItems(catalogData);
 

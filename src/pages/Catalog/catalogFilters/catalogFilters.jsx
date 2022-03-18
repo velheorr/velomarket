@@ -1,7 +1,7 @@
 import  "../Catalog.scss";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {setCatalogDataFilter} from "../CatalogSlice";
+import {filtersState, setCatalogDataFilter} from "../CatalogSlice";
 
 import Typography from "@mui/material/Typography";
 import FormGroup from "@mui/material/FormGroup";
@@ -44,28 +44,47 @@ const CatalogFilters = ({catalogData}) => {
         filerByObject(typeArr, 'type')
         filerByObject(sizeArr, 'size')
 // eslint-disable-next-line
-        const catalogData_filtered = catalogData.filter(i => {
+
+
+            let filteredData = catalogData
+
+            const filterCheck = (arr, path)=> {
+
+                if (arr.length > 0) {
+                    filteredData = filteredData.filter(el => {
+                        for (let key in arr){
+                            if (el[path] === arr[key]) return el;
+                        }
+                    })
+                }
+                console.log(filteredData)
+            }
+             filterCheck(brandArr, 'НоменклатураБренд')
+             filterCheck(typeArr, 'Тип')
+             filterCheck(sizeArr, 'Размер')
+             if (brandArr.length > 0 || typeArr.length > 0 || sizeArr.length > 0){
+                 if (filteredData.length  === 0){dispatch(filtersState(false))}
+                 else { dispatch(filtersState(true))}
+             }
+             return dispatch(setCatalogDataFilter(filteredData))
+
+
+        /*console.log( catalogData.find(el => console.log(el.НоменклатураБренд)))*/
+
+/*        const catalogData_filtered = catalogData.filter(i => {
             if (+i.Цена >= minPrice && +i.Цена <= maxPrice) {
 
-                brandArr.every(e => {
-                    console.log(e)
-                    if (i.НоменклатураБренд === e) return i.НоменклатураБренд;
-                })
-
-
-
-               /* if (brandArr.length > 0){
+               /!* if (brandArr.length > 0){
                     for (let key in brandArr){
                         if (i.НоменклатураБренд === brandArr[key]) return i.НоменклатураБренд;
                     }
                 } else {
                     return i.НоменклатураБренд;
-                }*/
-
+                }*!/
 
             }
-        })
-        return dispatch(setCatalogDataFilter(catalogData_filtered))
+        })*/
+        /*return dispatch(setCatalogDataFilter(catalogData_filtered))*/
     };
 
 
@@ -96,6 +115,7 @@ const CatalogFilters = ({catalogData}) => {
 
     const resetForm = ()=>{
         reset()
+        dispatch(filtersState(true))
         dispatch(setCatalogDataFilter(''))
     }
 
