@@ -63,7 +63,7 @@ const CatalogPage = () => {
 
             <div className='pageBody cardInfo'>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}} className='cardImg'>
-                    <img src={imgURL(item.ПутьКартинок, item.ОснКартинка)} width={300} alt="veloamarketkoleso.ru"  onError={imgURLerror}/>
+                    <img src={imgURL(item.ПутьКартинок, item.ОснКартинка)} sx={{height: 300}} alt="veloamarketkoleso.ru"  onError={imgURLerror}/>
                 </Paper>
                 <div className='cardData'>
                     <div className='directory'>{item.ПутьПапки}</div>

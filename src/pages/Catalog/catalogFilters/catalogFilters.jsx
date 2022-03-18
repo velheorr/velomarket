@@ -2,8 +2,6 @@ import  "../Catalog.scss";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {filtersState, setCatalogDataFilter} from "../CatalogSlice";
-
-import Typography from "@mui/material/Typography";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -13,6 +11,11 @@ import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import {useState} from "react";
 
 
 
@@ -22,6 +25,9 @@ const CatalogFilters = ({catalogData}) => {
     const filteredType = useSelector(state => state.catalog.filteredType);
     const filteredSize = useSelector(state => state.catalog.filteredSize);
     const dispatch = useDispatch();
+
+    const [type, setType] = useState('All');
+    const handleChange = (e) => {setType(e.target.value);};
 
     const onSubmit = data => {
         let minPrice = 0;
@@ -55,6 +61,7 @@ const CatalogFilters = ({catalogData}) => {
                         for (let key in arr){
                             if (el[path] === arr[key]) return el;
                         }
+                        return filteredData
                     })
                 }
                 console.log(filteredData)
@@ -109,8 +116,16 @@ const CatalogFilters = ({catalogData}) => {
             />
         })
     }
+    const renderCatalogSelect = ()=>{
+        return filteredType.map((el, i) =>{
+            if (el.length <1) return;
+            return <MenuItem key={i} value={el}>{el}</MenuItem>
+            })
+    }
+    /*const catalogFilterType = renderCatalogFilters(filteredType, 'type');*/
+    const catalogFilterType = renderCatalogSelect(filteredType);
+
     const catalogFilterBrand = renderCatalogFilters(filteredBrand, 'brand');
-    const catalogFilterType = renderCatalogFilters(filteredType, 'type');
     const catalogFilterSize = renderCatalogFilters(filteredSize, 'size');
 
     const resetForm = ()=>{
@@ -144,7 +159,24 @@ const CatalogFilters = ({catalogData}) => {
                     className='filters'
                     type="number"
                 />*/}
-
+                    {
+                        filteredType.length > 1
+                            ?
+                            <FormControl fullWidth sx={{mt:1}}>
+                                <InputLabel id="type">Тип:</InputLabel>
+                                <Select
+                                    labelId="type"
+                                    value={type}
+                                    label="Тип"
+                                    defaultValue={'All'}
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value={'All'}>Все</MenuItem>
+                                    {catalogFilterType}
+                                </Select>
+                            </FormControl>
+                            : ''
+                    }
 
                     {
                         catalogData
@@ -152,15 +184,6 @@ const CatalogFilters = ({catalogData}) => {
                                 <div>
                                     <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
                                     <FormGroup className='filterCheckBox'>{catalogFilterBrand}</FormGroup>
-                                </div>
-                            : ''
-                    }
-                    {
-                        filteredType.length > 1
-                            ?
-                                <div>
-                                    <Chip className='filterName' variant="outlined" color="info" size="small" label="Тип:"/>
-                                    <FormGroup className='filterCheckBox'>{catalogFilterType}</FormGroup>
                                 </div>
                             : ''
                     }
