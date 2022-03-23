@@ -14,15 +14,12 @@ import Divider from "@mui/material/Divider";
 
 const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, Тип, Размер, ПутьКартинок,ОснКартинка, НоменклатураМодель} = items;
-    /*minHeight: 490*/
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
             <Card sx={{ maxWidth: 300 }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                      /*  width="300"*/
-                       /* height='300'*/
                         sx={{height: 300}}
                         image ={imgURL(ПутьКартинок, ОснКартинка)}
                         alt={Номенклатура}
@@ -37,8 +34,6 @@ const CatalogCard = ({items}) => {
                             <div>Артикул: {НоменклатураАртикул}</div>
                             <div>Модель: {clearSymbol(НоменклатураМодель)}</div>
                             <div>Бренд: {clearSymbol(НоменклатураБренд)}</div>
-                            <div>ТИП {Тип}</div>
-                            <div>РАЗМЕР {Размер}</div>
                         </Typography>
                         <Typography variant="body2" color="text.primary" component="div">
                            {/* <div className='price'>Цена: {Цена}р.</div>*/}

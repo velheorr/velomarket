@@ -63,8 +63,9 @@ const CatalogFiltersContainer = () => {
             return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
         }  else if (filtersEmpty === true){
             return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
+        } else if (filtersEmpty === false) {
+            return <div className='noDataWithFilters'><span>Уточните поиск. Товары с указанными фильтрами не найдены...</span></div>
         }
-
     }
     const catalogElements = renderCatalogItems(catalogData);
 
@@ -84,7 +85,7 @@ const CatalogFiltersContainer = () => {
                 data
                 ?
                     <div className='pageBody catalogWrapper'>
-                        <CatalogFilters catalogData={catalogData} />
+                        <CatalogFilters />
                         <Box sx={{ flexGrow: 1, display: 'grid'}} className='items'>
                             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{marginLeft: 25}}>
                                 {catalogData ? catalogElements : 'no data' }

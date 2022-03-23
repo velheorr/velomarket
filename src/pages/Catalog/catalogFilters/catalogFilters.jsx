@@ -1,7 +1,7 @@
 import  "../Catalog.scss";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize, setFilteredType} from "../CatalogSlice";
+import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize} from "../CatalogSlice";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -20,12 +20,15 @@ import {useState} from "react";
 
 
 
-const CatalogFilters = ({catalogData}) => {
+const CatalogFilters = () => {
     const { register, handleSubmit, reset, control } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
     const filteredType = useSelector(state => state.catalog.filteredType);
     const filteredSize = useSelector(state => state.catalog.filteredSize);
+    const catalogData = useSelector(state => state.catalog.catalogData);
+    const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
     const dispatch = useDispatch();
+
 
     const [type, setType] = useState('All');
     const handleChange = (e) => {
@@ -62,14 +65,17 @@ const CatalogFilters = ({catalogData}) => {
         filerByObject(brandArr, 'brand')
         filerByObject(sizeArr, 'size')
 
-        let filteredData = catalogData
+        let filteredData = catalogDataFiltered
+        if (type !== 'All') {
+            let filtered = catalogData.filter(el => el.Тип === type)
+            dispatch(setCatalogDataFilter(filtered))
+        }
 
         const filterCheck = (arr, path)=> {
             if (arr.length > 0) {
-                let x = []
-                filteredData.filter(el => {
+                let x = filteredData.filter(el => {
                     for (let key in arr){
-                        if (el[path] === arr[key]) {x.push(el)}
+                        if (el[path] === arr[key]) return el
                     }
                 })
                 return filteredData = x
@@ -89,7 +95,7 @@ const CatalogFilters = ({catalogData}) => {
         if (!filterdata) return;
         return filterdata.map((item, i) => {
             const name = clearSymbol(item)
-            if (name.length < 1) return;
+            if (name.length < 1) return null;
             return  <FormControlLabel
                 key = {i}
                 label = {name}
@@ -108,7 +114,7 @@ const CatalogFilters = ({catalogData}) => {
     }
     const renderCatalogSelect = ()=>{
         return filteredType.map((el, i) =>{
-            if (el.length <1) return;
+            if (el.length <1) return null;
             return <MenuItem key={i} value={el}>{el}</MenuItem>
         })
     }
