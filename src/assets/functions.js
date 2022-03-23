@@ -37,8 +37,7 @@ export const sortData = (data, sortParam, direction = '+')=>{
 }
 
 export const clearSymbol = (data)=>{
-    const x = data.split('_').join(' ')
-    return x
+    return data.split('_').join(' ')
 }
 
 export const filterCatalogBy = (catalog, filterBy)=>{

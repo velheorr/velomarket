@@ -59,7 +59,6 @@ const CatalogFiltersContainer = () => {
 
 
     const renderCatalogItems = (catalogData)=>{
-        console.log(filtersEmpty)
         if (catalogDataFiltered.length > 0 ) {
             return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
         }  else if (filtersEmpty === true){
