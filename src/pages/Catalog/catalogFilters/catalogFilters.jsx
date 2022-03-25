@@ -26,13 +26,13 @@ const CatalogFilters = () => {
     const filteredType = useSelector(state => state.catalog.filteredType);
     const filteredSize = useSelector(state => state.catalog.filteredSize);
     const catalogData = useSelector(state => state.catalog.catalogData);
-    const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
     const dispatch = useDispatch();
 
+    const [select, setSelect] = useState('All');
 
-    const [type, setType] = useState('All');
     const handleChange = (e) => {
-        setType(e.target.value);
+        console.log(e.target.value)
+        setSelect(e.target.value);
         resetForm()
         let filtered;
         if (e.target.value === 'All') {
@@ -42,11 +42,15 @@ const CatalogFilters = () => {
             filtered = catalogData.filter(el => el.Тип === e.target.value)
             dispatch(setCatalogDataFilter(filtered))
         }
+        renewFilters(filtered)
+    };
+
+    const renewFilters = (filtered)=>{
         const brand = filterCatalogBy(filtered, 'НоменклатураБренд')
         dispatch(setFilteredBrand(brand));
         const size = filterCatalogBy(filtered, 'Размер')
         dispatch(setFilteredSize(size));
-    };
+    }
 
     const onSubmit = data => {
         let minPrice = 0;
@@ -65,10 +69,9 @@ const CatalogFilters = () => {
         filerByObject(brandArr, 'brand')
         filerByObject(sizeArr, 'size')
 
-        let filteredData = catalogDataFiltered
-        if (type !== 'All') {
-            let filtered = catalogData.filter(el => el.Тип === type)
-            dispatch(setCatalogDataFilter(filtered))
+        let filteredData = catalogData
+        if (select !== 'All') {
+            filteredData = catalogData.filter(el => el.Тип === select)
         }
 
         const filterCheck = (arr, path)=> {
@@ -126,8 +129,9 @@ const CatalogFilters = () => {
     const resetForm = ()=>{
         reset()
         dispatch(filtersState(true))
-        dispatch(setCatalogDataFilter(''))
-        setType('All');
+        setSelect('All')
+        renewFilters(catalogData)
+        dispatch(setCatalogDataFilter(catalogData))
     }
 
     return (
@@ -162,9 +166,8 @@ const CatalogFilters = () => {
                                 <InputLabel id="type">Тип:</InputLabel>
                                 <Select
                                     labelId="type"
-                                    value={type}
+                                    value={select}
                                     label="Тип"
-                                    defaultValue={'All'}
                                     onChange={handleChange}
                                 >
                                     <MenuItem value={'All'}>Все</MenuItem>
