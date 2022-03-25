@@ -127,6 +127,7 @@ const CatalogFilters = () => {
         reset()
         dispatch(filtersState(true))
         dispatch(setCatalogDataFilter(''))
+        setType('All');
     }
 
     return (
