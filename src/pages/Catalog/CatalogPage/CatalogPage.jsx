@@ -60,9 +60,8 @@ const CatalogPage = () => {
             <Divider/>
 
             <div className='pageBody cardInfo'>
-                <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}} className='cardImg'>
+                <Paper sx={{width: 'auto', heigth: 400, backgroundColor: '#ffffffed'}} className='cardImg'>
                     <img src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
-                         sx={{height: 300}}
                          alt="veloamarketkoleso.ru"
                          onError={imgURLerror}
                          data-fancybox="gallery"
