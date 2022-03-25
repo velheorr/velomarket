@@ -30,16 +30,15 @@ const CatalogFilters = () => {
 
     const [select, setSelect] = useState('All');
 
-    const handleChange = (e) => {
-        console.log(e.target.value)
-        setSelect(e.target.value);
+    const handleChange = (event) => {
+        setSelect(event.target.value);
         resetForm()
         let filtered;
-        if (e.target.value === 'All') {
+        if (event.target.value === 'All') {
             dispatch(setCatalogDataFilter(catalogData))
             filtered = catalogData
         } else {
-            filtered = catalogData.filter(el => el.Тип === e.target.value)
+            filtered = catalogData.filter(el => el.Тип === event.target.value)
             dispatch(setCatalogDataFilter(filtered))
         }
         renewFilters(filtered)
@@ -163,9 +162,9 @@ const CatalogFilters = () => {
                         filteredType.length > 1
                             ?
                             <FormControl fullWidth sx={{mt:1}}>
-                                <InputLabel id="type">Тип:</InputLabel>
+                                <InputLabel id="typeS">Тип:</InputLabel>
                                 <Select
-                                    labelId="type"
+                                    labelId="typeS" id='selector'
                                     value={select}
                                     label="Тип"
                                     onChange={handleChange}

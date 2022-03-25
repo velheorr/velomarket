@@ -10,7 +10,6 @@ import Paper from "@mui/material/Paper";
 import goods from '../../../Data/data.json';
 
 
-
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
@@ -18,6 +17,8 @@ import Slider from "../../../Slider/Slider";
 import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Fancybox from "../../../assets/FancyBox";
+
 
 
 const CatalogPage = () => {
@@ -39,9 +40,6 @@ const CatalogPage = () => {
         return parentPath
     }
 
-    console.log(item)
-    /*console.log(item.НоменклатураКраткоеОписание)*/
-
     const strSplit = ()=>{
         if (item.НоменклатураОписание){
             const str = item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
@@ -51,7 +49,7 @@ const CatalogPage = () => {
     const itemDescription = strSplit()
 
     return (
-        <>
+        <Fancybox options={{ infinite: false }}>
             <Slider/>
             <ListItem disablePadding className='pageTitle'>
                 <Link to={backBTN}>
@@ -63,7 +61,13 @@ const CatalogPage = () => {
 
             <div className='pageBody cardInfo'>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}} className='cardImg'>
-                    <img src={imgURL(item.ПутьКартинок, item.ОснКартинка)} sx={{height: 300}} alt="veloamarketkoleso.ru"  onError={imgURLerror}/>
+                    <img src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
+                         sx={{height: 300}}
+                         alt="veloamarketkoleso.ru"
+                         onError={imgURLerror}
+                         data-fancybox="gallery"
+                         data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
+                    />
                 </Paper>
                 <div className='cardData'>
                     <div className='directory'>{item.ПутьПапки}</div>
@@ -114,7 +118,7 @@ const CatalogPage = () => {
                 :
                 <div>Loading...</div>
             }
-        </>
+        </Fancybox>
     );
 };
 
