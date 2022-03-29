@@ -16,12 +16,12 @@ const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, Тип, Размер, ПутьКартинок,ОснКартинка, НоменклатураМодель} = items;
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
-            <Card sx={{ maxWidth: 300 }}>
+            <Card sx={{ maxWidth: 325 }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        sx={{height: 300}}
-                        image ={imgURL(ПутьКартинок, ОснКартинка)}
+                        height='320px'
+                        image ={imgURL(ПутьКартинок, ОснКартинка, true)}
                         alt={Номенклатура}
                         onError ={imgURLerror}
                     />

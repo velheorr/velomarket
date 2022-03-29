@@ -15,7 +15,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 
@@ -28,13 +28,15 @@ const CatalogFilters = () => {
     const catalogData = useSelector(state => state.catalog.catalogData);
     const dispatch = useDispatch();
 
-    const [select, setSelect] = useState('All');
+    const [selectType, setSelectType] = useState('All');
 
     const handleChange = (event) => {
-        setSelect(event.target.value);
+        setSelectType(event.target.value);
         resetForm()
         let filtered;
+        console.log(event.target.value)
         if (event.target.value === 'All') {
+            console.log(event.target.value)
             dispatch(setCatalogDataFilter(catalogData))
             filtered = catalogData
         } else {
@@ -69,8 +71,8 @@ const CatalogFilters = () => {
         filerByObject(sizeArr, 'size')
 
         let filteredData = catalogData
-        if (select !== 'All') {
-            filteredData = catalogData.filter(el => el.Тип === select)
+        if (selectType !== 'All') {
+            filteredData = catalogData.filter(el => el.Тип === selectType)
         }
 
         const filterCheck = (arr, path)=> {
@@ -128,7 +130,7 @@ const CatalogFilters = () => {
     const resetForm = ()=>{
         reset()
         dispatch(filtersState(true))
-        setSelect('All')
+        setSelectType('All')
         renewFilters(catalogData)
         dispatch(setCatalogDataFilter(catalogData))
     }
@@ -165,7 +167,7 @@ const CatalogFilters = () => {
                                 <InputLabel id="typeS">Тип:</InputLabel>
                                 <Select
                                     labelId="typeS" id='selector'
-                                    value={select}
+                                    value={selectType}
                                     label="Тип"
                                     onChange={handleChange}
                                 >

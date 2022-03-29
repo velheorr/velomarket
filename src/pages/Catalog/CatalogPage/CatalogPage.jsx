@@ -18,6 +18,7 @@ import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Fancybox from "../../../assets/FancyBox";
+import CardMedia from "@mui/material/CardMedia";
 
 
 
@@ -60,8 +61,9 @@ const CatalogPage = () => {
             <Divider/>
 
             <div className='pageBody cardInfo'>
-                <Paper sx={{width: 'auto', heigth: 400, backgroundColor: '#ffffffed'}} className='cardImg'>
+                <Paper sx={{width: 'auto', maxWidth: 350, backgroundColor: '#ffffffed'}} className='cardImg'>
                     <img src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
+                         height={300}
                          alt="veloamarketkoleso.ru"
                          onError={imgURLerror}
                          data-fancybox="gallery"

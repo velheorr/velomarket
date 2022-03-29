@@ -1,21 +1,25 @@
 import {setFilteredBrand} from "../pages/Catalog/CatalogSlice";
 
 
-const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/images/'
+const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/'
 
-export const imgURL = (path, mainImg)=>{
+export const imgURL = (path, mainImg,thumb = false)=>{
     if (path === '' && mainImg === '') {
-        return baseURL + 'noimg.png'
+        return baseURL + 'images/noimg.png'
     }
-    /*console.log(path)
-    console.log(mainImg)*/
+    let link = `${baseURL}images/${path}/${mainImg}`;
+    if (thumb === true) {
+        let y = mainImg.split('.').join('_thumb.')
+        link = `${baseURL}thumbs/${path}/${y}`
+    }
     if (path && path.length > 1 && mainImg && mainImg.length > 1){
-        return (`${baseURL}${path}/${mainImg}`)
+        /*return (`${baseURL}${path}/${mainImg}`)*/
+        return link
     }
 }
 export const imgURLerror = (e)=>{
     e.target.onerror = null;
-    e.target.src = baseURL + 'noimg.png'
+    e.target.src = baseURL + 'images/noimg.png'
 }
 
 export const sortData = (data, sortParam, direction = '+')=>{
