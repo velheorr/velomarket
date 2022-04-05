@@ -74,7 +74,7 @@ const Repair = () => {
             <Divider/>
 
             <div className='pageBody'>
-                <FormControl sx={{ m: 1, minWidth: 250 }}>
+                <FormControl sx={{ m: 1, minWidth: 250, ml: 0 }}>
                     <InputLabel id="repairSelect">Услуги</InputLabel>
                     <Select
                         labelId="repairSelect" id="demo-simple-select-autowidth"
