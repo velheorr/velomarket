@@ -11,11 +11,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-
 
 
 const Catalog = () => {
@@ -48,37 +43,25 @@ const Catalog = () => {
                 </Grid>
             </Box>
             <Box sx={{ flexGrow: 1 }} className='wrapper2'>
-                <Grid container spacing={4} rowSpacing={4}>
+                <Grid container spacing={4} rowSpacing={4} className='catalogItems'>
                     <Grid item md={4}>
-                        <Card>
-                            <CardActionArea>
-                                <CardMedia
-                                    component="img"
-                                    image={catalogItems[0].img}
-                                    alt="green iguana"
-                                />
-                                <CardContent>
-                                    gdf
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
+                        <div style={{backgroundImage: `url(${catalogItems[6].img})`}}>1</div>
                     </Grid>
                     <Grid item md={4}>
-                        <div style={{width: '100%', height: 200, backgroundImage: `url(${catalogItems[0].img})`, backgroundRepeat: 'no-repeat'}}>1</div>
+                        <div style={{backgroundImage: `url(${catalogItems[7].img})`}}>1</div>
                     </Grid>
                     <Grid item md={4}>
-                        <div>1</div>
+                        <div style={{backgroundImage: `url(${catalogItems[8].img})`}}>1</div>
                     </Grid>
                     <Grid item md={4}>
-                        <div>1</div>
+                        <div style={{backgroundImage: `url(${catalogItems[9].img})`}}>1</div>
                     </Grid>
                     <Grid item md={4}>
-                        <div>1</div>
+                        <div style={{backgroundImage: `url(${catalogItems[10].img})`}}>1</div>
                     </Grid>
                     <Grid item md={4}>
-                        <div>1</div>
+                        <div style={{backgroundImage: `url(${catalogItems[11].img})`}}>1</div>
                     </Grid>
-
                 </Grid>
             </Box>
         </>
