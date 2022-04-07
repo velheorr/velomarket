@@ -24,6 +24,7 @@ import goods from "../../../Data/data.json";
 
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
+import Loader from "../../../assets/loader/Loader";
 
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
@@ -93,7 +94,7 @@ const CatalogFiltersContainer = () => {
                         </Box>
                     </div>
                 :
-                    <div className='noDataOnPage'>Страница временно недоступна!</div>
+                    <Loader/>
             }
         </>
     );

@@ -6,14 +6,6 @@ import bike from './img/bike.png'
 import winter from './img/winter.png'
 import giro from './img/giro.png'
 import inventar from './img/inventar.png'
-import a1 from './img/1.png'
-import a2 from './img/2.png'
-import a3 from './img/3.png'
-import a4 from './img/4.png'
-import a5 from './img/5.png'
-import a6 from './img/6.png'
-
-
 
 const initialState = {
     catalogItems: [
@@ -23,12 +15,6 @@ const initialState = {
         { name: 'ВЕЛОЗАПЧАСТИ', img: zapchasti},
         { name: 'ГИРОСКУТЕРЫ', img: giro},
         { name: 'СПОРТИНВЕНТАРЬ', img: inventar},
-        { name: 'САМОКАТЫ', img: a1},
-        { name: 'ЗИМНИЕ-ТОВАРЫ', img: a2},
-        { name: 'ВЕЛОСИПЕДЫ', img: a3},
-        { name: 'ВЕЛОЗАПЧАСТИ', img: a4},
-        { name: 'ГИРОСКУТЕРЫ', img: a5},
-        { name: 'СПОРТИНВЕНТАРЬ', img: a6},
     ],
     catalogData: [],
     catalogDataFiltered: [],
