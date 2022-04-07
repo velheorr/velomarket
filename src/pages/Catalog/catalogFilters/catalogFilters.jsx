@@ -13,7 +13,7 @@ import Paper from "@mui/material/Paper";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
+import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
 import {useState} from "react";
 
@@ -31,13 +31,12 @@ const CatalogFilters = () => {
 
     const handleChange = (event) => {
         setSelectType(event.target.value);
-        resetForm()
         let filtered;
-        console.log(event.target.value)
+        reset()
         if (event.target.value === 'All') {
-            console.log(event.target.value)
             dispatch(setCatalogDataFilter(catalogData))
             filtered = catalogData
+            resetForm()
         } else {
             filtered = catalogData.filter(el => el.Тип === event.target.value)
             dispatch(setCatalogDataFilter(filtered))
@@ -115,7 +114,7 @@ const CatalogFilters = () => {
             />
         })
     }
-    const renderCatalogSelect = ()=>{
+    const renderCatalogSelect = (filteredType)=>{
         return filteredType.map((el, i) =>{
             if (el.length <1) return null;
             return <MenuItem key={i} value={el}>{el}</MenuItem>
@@ -170,7 +169,7 @@ const CatalogFilters = () => {
                                     label="Тип"
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={'All'}>Все</MenuItem>
+                                    <MenuItem value='All'>Все</MenuItem>
                                     {catalogFilterType}
                                 </Select>
                             </FormControl>

@@ -49,7 +49,6 @@ const CatalogPage = () => {
     }
     const itemDescription = strSplit()
 
-    console.log(item)
 
     return (
         <Fancybox options={{ infinite: false }}>
