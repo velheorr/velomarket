@@ -10,7 +10,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ListItemText from "@mui/material/ListItemText";
-import Box from "@mui/material/Box";
 
 
 const Catalog = () => {

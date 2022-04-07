@@ -9,7 +9,6 @@ import Paper from "@mui/material/Paper";
 
 import goods from '../../../Data/data.json';
 
-
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
@@ -18,7 +17,8 @@ import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Fancybox from "../../../assets/FancyBox";
-import CardMedia from "@mui/material/CardMedia";
+import Loader from "../../../assets/loader/Loader";
+
 
 
 
@@ -48,6 +48,8 @@ const CatalogPage = () => {
         }
     }
     const itemDescription = strSplit()
+
+    console.log(item)
 
     return (
         <Fancybox options={{ infinite: false }}>
@@ -117,7 +119,7 @@ const CatalogPage = () => {
                     </TabContext>
                 </Box>
                 :
-                <div>Loading...</div>
+                <Loader/>
             }
         </Fancybox>
     );

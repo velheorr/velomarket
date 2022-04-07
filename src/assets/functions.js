@@ -1,6 +1,3 @@
-import {setFilteredBrand} from "../pages/Catalog/CatalogSlice";
-
-
 const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/'
 
 export const imgURL = (path, mainImg,thumb = false)=>{
