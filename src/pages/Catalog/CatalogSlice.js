@@ -9,12 +9,12 @@ import inventar from './img/inventar.png'
 
 const initialState = {
     catalogItems: [
-        { name: 'САМОКАТЫ', img: samokat},
-        { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
         { name: 'ВЕЛОСИПЕДЫ', img: bike},
+        { name: 'САМОКАТЫ', img: samokat},
         { name: 'ВЕЛОЗАПЧАСТИ', img: zapchasti},
         { name: 'ГИРОСКУТЕРЫ', img: giro},
         { name: 'СПОРТИНВЕНТАРЬ', img: inventar},
+        { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
     ],
     catalogData: [],
     catalogDataFiltered: [],

@@ -57,8 +57,8 @@ const CatalogFilters = () => {
         let brandArr =[];
         let sizeArr =[];
 
-        if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']} else {minPrice = 0;}
-        if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']} else {maxPrice = 1000000}
+        if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']}
+        if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']}
 
         const filerByObject = (arr, object)=>{
             for(let x in data[object]){
@@ -96,11 +96,9 @@ const CatalogFilters = () => {
     const renderCatalogFilters =(filterdata, filterBy)=> {
         let sortFilter = [...filterdata].sort();
         if (!sortFilter) return;
-        console.log(sortFilter)
         return sortFilter.map((item, i) => {
             const name = clearSymbol(item)
             if (name.length < 1) return null;
-            console.log(item)
             return  <FormControlLabel
                 key = {i}
                 label = {name}
@@ -197,7 +195,6 @@ const CatalogFilters = () => {
                             </div>
                             : ''
                     }
-
                     <Divider/>
                     <ButtonGroup sx={{mt: '10px'}} variant="text" size="small" fullWidth>
                         <Button type="submit">Применить</Button>
