@@ -16,12 +16,12 @@ import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
 const Contacts = () => {
     const schedule = [
         {day: 'Понедельник', time: 'Выходной', id: 1},
-        {day: 'Вторник', time: '09:00 - 19:00', id: 2},
-        {day: 'Среда', time: '09:00 - 19:00', id: 3},
-        {day: 'Четверг', time: '09:00 - 19:00', id: 4},
-        {day: 'Пятница', time: '09:00 - 19:00', id: 5},
-        {day: 'Суббота', time: '09:00 - 19:00', id: 6},
-        {day: 'Воскресенье', time: '09:00 - 19:00', id: 7},
+        {day: 'Вторник', time: '09:00 - 20:00', id: 2},
+        {day: 'Среда', time: '09:00 - 20:00', id: 3},
+        {day: 'Четверг', time: '09:00 - 20:00', id: 4},
+        {day: 'Пятница', time: '09:00 - 20:00', id: 5},
+        {day: 'Суббота', time: '09:00 - 20:00', id: 6},
+        {day: 'Воскресенье', time: '09:00 - 20:00', id: 7},
     ]
     const date = new Date();
     const day = date.getDay();
@@ -44,9 +44,7 @@ const Contacts = () => {
         size: [600, 600],
     };
 
-    const coordinates = [
-        [58.00103636683891,56.225435245232624],
-    ];
+    const coordinates = [ [58.00103636683891,56.225435245232624],];
 
     return (
         <div>
@@ -110,10 +108,10 @@ const Contacts = () => {
 const View = ({item, active}) =>{
     const css = active || ''
     return (
-        <div className={`work ${css}`}>
+        <ListItem disablePadding className={`work ${css}`}>
             <div className='day'>{item.day}</div>
             <div className='time'>{item.time}</div>
-        </div>
+        </ListItem>
     )
 }
 

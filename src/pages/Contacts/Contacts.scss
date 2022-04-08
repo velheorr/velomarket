@@ -27,3 +27,9 @@
 }
 
 .map{margin: 25px auto;}
+
+
+.grids {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Paper from "@mui/material/Paper";
-
+import PhotoIcon from '@mui/icons-material/Photo';
 import goods from '../../../Data/data.json';
 
 import Box from "@mui/material/Box";
@@ -49,7 +49,20 @@ const CatalogPage = () => {
     }
     const itemDescription = strSplit()
 
-    console.log(item)
+    //доработать множество картинок, отображение и подачу
+    let arr = []
+    const moreImg = ()=>{
+        return arr = item.ДопКартинки.split(',')
+    }
+    if (item.ДопКартинки){ moreImg()}
+
+    const renderMoreImg = ()=>{
+        return arr.map((img, i)=>{
+            return <span key={i} data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)}> </span>
+        })
+    }
+    const extraImg = renderMoreImg()
+
 
     return (
         <Fancybox options={{ infinite: false }}>
@@ -77,6 +90,9 @@ const CatalogPage = () => {
                                     onError={imgURLerror}
                                     data-fancybox="gallery"
                                     data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}/>
+                            </div>
+                            <div>
+                                {arr ? extraImg : ''}
                             </div>
                             <TabContext value={value}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
