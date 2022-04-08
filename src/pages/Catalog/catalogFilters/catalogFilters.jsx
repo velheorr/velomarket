@@ -96,9 +96,11 @@ const CatalogFilters = () => {
     const renderCatalogFilters =(filterdata, filterBy)=> {
         let sortFilter = [...filterdata].sort();
         if (!sortFilter) return;
+        console.log(sortFilter)
         return sortFilter.map((item, i) => {
             const name = clearSymbol(item)
             if (name.length < 1) return null;
+            console.log(item)
             return  <FormControlLabel
                 key = {i}
                 label = {name}
