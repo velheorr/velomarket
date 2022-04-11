@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 
 .main {
     display: flex;
@@ -49,10 +50,11 @@
             margin-top: 6px;
         }
         .headerInfo {
+            font-family: 'Rubik Glitch', cursive;
+            letter-spacing: 2px;
             color: #260852;
             font-size: 24px;
             font-weight: 600;
-            font-family: auto;
             right: 50px;
             position: absolute;
             top: 8px;

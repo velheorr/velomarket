@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Paper from "@mui/material/Paper";
-import PhotoIcon from '@mui/icons-material/Photo';
+
 import goods from '../../../Data/data.json';
 
 import Box from "@mui/material/Box";
@@ -104,7 +104,7 @@ const CatalogPage = () => {
                                 <Paper sx={{width: '100%', backgroundColor: '#ffffffed', minHeight: 200}}>
                                     <TabPanel value="1">
                                         <div>{item.НоменклатураКраткоеОписание}</div>
-                                        <div>{itemDescription}</div>
+                                        {itemDescription? <div>{itemDescription}</div> : <div>Данные отсутствуют...</div>}
                                     </TabPanel>
                                     <TabPanel value="2">
                                         <div className='cardData'>
