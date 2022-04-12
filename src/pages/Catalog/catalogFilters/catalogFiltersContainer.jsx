@@ -26,6 +26,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import Loader from "../../../assets/loader/Loader";
 
+
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
     let {id} = useParams();
@@ -39,6 +40,8 @@ const CatalogFiltersContainer = () => {
         selectCatalog(id)
         // eslint-disable-next-line
     },[id])
+
+
 
     const catalogFilters = (newCatalog)=>{
         const brand = filterCatalogBy(newCatalog, 'НоменклатураБренд')
@@ -73,6 +76,8 @@ const CatalogFiltersContainer = () => {
     const resetFiltersFromCatalogs = ()=>{
         dispatch(setCatalogDataFilter([]))
     }
+
+
 
     return (
         <>

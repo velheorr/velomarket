@@ -21,37 +21,11 @@
     }
 }
 
-.wrapper {
-    margin: 30px auto;
-    >div>div {
-        padding: 25px;
-        text-align: center;
-    }
-    >div>div:hover {
-        box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.04);
-        .text:hover {
-            transition: color ease-in-out .3s;
-            color: #270952;
-        }
-    }
-    img {width: 70px;}
-    .text, a {
-        font-weight: 600;
-        color: #333;
-    }
-
-
-}
-
 .price {
     text-align: right;
     font-weight: 600;
     color: black;
 }
-
-
 
 
 
@@ -62,6 +36,7 @@
         width: 100%;
         text-align: center;
         margin-top: 15px;
+        margin-bottom: 10px;
     }
     .filterHeader {
         font-size: 16px;
@@ -70,6 +45,8 @@
         margin-bottom: 10px;
     }
     .filterCheckBox {
+        border-top: 1px solid #b7b7b7;
+        border-bottom: 1px solid #b7b7b7;
         max-height: 350px;
         display: grid;
         overflow: auto;

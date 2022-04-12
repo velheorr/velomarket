@@ -20,8 +20,6 @@ import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
 
 
-
-
 const CatalogPage = () => {
     const {itemId} = useParams()
     const [item, setItem] = useState('');
@@ -50,13 +48,9 @@ const CatalogPage = () => {
     const itemDescription = strSplit()
 
     //доработать множество картинок, отображение и подачу
-    let arr = []
-    const moreImg = ()=>{
-        return arr = item.ДопКартинки.split(',')
-    }
-    if (item.ДопКартинки){ moreImg()}
-
     const renderMoreImg = ()=>{
+        let arr = []
+        if (item.ДопКартинки){ arr = item.ДопКартинки.split(',')}
         return arr.map((img, i)=>{
             return <span key={i} data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)}> </span>
         })
@@ -92,7 +86,7 @@ const CatalogPage = () => {
                                     data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}/>
                             </div>
                             <div>
-                                {arr ? extraImg : ''}
+                                {extraImg.length > 0 ? extraImg : ''}
                             </div>
                             <TabContext value={value}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
