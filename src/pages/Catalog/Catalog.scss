@@ -50,6 +50,23 @@
         max-height: 350px;
         display: grid;
         overflow: auto;
+        >div {
+            cursor: pointer;
+            position: relative;
+            margin: 5px 0px;
+        }
+        input {
+            width: 27px;
+            height: 17px;
+            position: absolute;
+        }
+        label {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            padding-left: 40px;
+            cursor: pointer;
+        }
     }
 }
 

@@ -54,19 +54,22 @@ const CatalogFilters = () => {
     const onSubmit = data => {
         let minPrice = 0;
         let maxPrice = 1000000;
-        let brandArr =[];
-        let sizeArr =[];
+        /*let brandArr =[];
+        let sizeArr =[];*/
+        let brandArr = data.brand;
+        let sizeArr =data.size;
 
         if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']}
 
-        const filerByObject = (arr, object)=>{
+        /*const filerByObject = (arr, object)=>{
             for(let x in data[object]){
                 if (data[object][x] === true) arr.push(x)
             }
         }
         filerByObject(brandArr, 'brand')
-        filerByObject(sizeArr, 'size')
+        filerByObject(sizeArr, 'size')*/
+        console.log(data)
 
         let filteredData = catalogData
         if (selectType !== 'All') {
@@ -92,14 +95,13 @@ const CatalogFilters = () => {
          return dispatch(setCatalogDataFilter(filteredData))
     };
 
-
     const renderCatalogFilters =(filterdata, filterBy)=> {
         let sortFilter = [...filterdata].sort();
         if (!sortFilter) return;
         return sortFilter.map((item, i) => {
             const name = clearSymbol(item)
             if (name.length < 1) return null;
-            return  <FormControlLabel
+            /*return  <FormControlLabel
                 key = {i}
                 label = {name}
                 control = {
@@ -112,7 +114,17 @@ const CatalogFilters = () => {
                         )}
                     />
                 }
-            />
+            />*/
+           /* return <FormControlLabel {...register(`${filterBy}`)} control={<Checkbox  value={item} />} label={item} key = {i}/>*/
+            /*return <Checkbox {...register(`${filterBy}`)} label={item} name={item} control={control} />*/
+            /*return <FormControlLabel key = {i} control={<Checkbox {...register(`${filterBy}`)} value={item} checked={item}/>} label={item} />*/
+            return <div className='checkBox' key = {i}><input type='checkbox' id={item} {...register(`${filterBy}`)} value={item} /><label htmlFor={item}>{item}</label></div>
+
+            /*return <FormControlLabel {...register(`${filterBy}.${item}`)} label={item} key = {i} control={
+                <Controller name={item} control={control} render={({ field: { value, ...field } }) => (
+                    <Checkbox {...field} checked={!!value} />
+                )}/>
+            } />*/
         })
     }
     const renderCatalogSelect = (filteredType)=>{
@@ -127,7 +139,7 @@ const CatalogFilters = () => {
     const catalogFilterSize = renderCatalogFilters(filteredSize, 'size');
 
     const resetForm = ()=>{
-        reset()
+        reset({brand: false})
         dispatch(filtersState(true))
         setSelectType('All')
         renewFilters(catalogData)
