@@ -1,11 +1,9 @@
 import  "../Catalog.scss";
-import {Controller, useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize} from "../CatalogSlice";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import {clearSymbol, filterCatalogBy} from "../../../assets/functions";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
@@ -17,10 +15,8 @@ import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
 import {useState} from "react";
 
-
-
 const CatalogFilters = () => {
-    const { register, handleSubmit, reset, control } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
     const filteredType = useSelector(state => state.catalog.filteredType);
     const filteredSize = useSelector(state => state.catalog.filteredSize);
@@ -54,22 +50,12 @@ const CatalogFilters = () => {
     const onSubmit = data => {
         let minPrice = 0;
         let maxPrice = 1000000;
-        /*let brandArr =[];
-        let sizeArr =[];*/
+
         let brandArr = data.brand;
         let sizeArr =data.size;
 
         if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']}
-
-        /*const filerByObject = (arr, object)=>{
-            for(let x in data[object]){
-                if (data[object][x] === true) arr.push(x)
-            }
-        }
-        filerByObject(brandArr, 'brand')
-        filerByObject(sizeArr, 'size')*/
-        console.log(data)
 
         let filteredData = catalogData
         if (selectType !== 'All') {
@@ -77,7 +63,7 @@ const CatalogFilters = () => {
         }
 
         const filterCheck = (arr, path)=> {
-            if (arr.length > 0) {
+            if (arr && arr.length > 0) {
                 let x = filteredData.filter(el => {
                     for (let key in arr){
                         if (el[path] === arr[key]) return el
@@ -101,30 +87,10 @@ const CatalogFilters = () => {
         return sortFilter.map((item, i) => {
             const name = clearSymbol(item)
             if (name.length < 1) return null;
-            /*return  <FormControlLabel
-                key = {i}
-                label = {name}
-                control = {
-                    <Controller
-                        name={`${filterBy}.${item}`}
-                        defaultValue={false}
-                        control={control}
-                        render={({field: {value, ...field}}) => (
-                            <Checkbox {...field} checked={!!value}/>
-                        )}
-                    />
-                }
-            />*/
-           /* return <FormControlLabel {...register(`${filterBy}`)} control={<Checkbox  value={item} />} label={item} key = {i}/>*/
-            /*return <Checkbox {...register(`${filterBy}`)} label={item} name={item} control={control} />*/
-            /*return <FormControlLabel key = {i} control={<Checkbox {...register(`${filterBy}`)} value={item} checked={item}/>} label={item} />*/
-            return <div className='checkBox' key = {i}><input type='checkbox' id={item} {...register(`${filterBy}`)} value={item} /><label htmlFor={item}>{item}</label></div>
-
-            /*return <FormControlLabel {...register(`${filterBy}.${item}`)} label={item} key = {i} control={
-                <Controller name={item} control={control} render={({ field: { value, ...field } }) => (
-                    <Checkbox {...field} checked={!!value} />
-                )}/>
-            } />*/
+            return <div className='checkBox' key = {i}>
+                <input type='checkbox' id={item} {...register(`${filterBy}`)} value={item} />
+                <label htmlFor={item}>{item}</label>
+            </div>
         })
     }
     const renderCatalogSelect = (filteredType)=>{

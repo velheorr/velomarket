@@ -28,7 +28,6 @@
 }
 
 
-
 .filtersContainer {
     padding: 10px;
     background-color: #f3f3f3 !important;
@@ -54,18 +53,19 @@
             cursor: pointer;
             position: relative;
             margin: 5px 0px;
-        }
-        input {
-            width: 27px;
-            height: 17px;
-            position: absolute;
-        }
-        label {
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.5;
-            padding-left: 40px;
-            cursor: pointer;
+            input {
+                width: 27px;
+                height: 17px;
+                position: absolute;
+                cursor: pointer;
+            }
+            label {
+                margin: 0;
+                font-size: 1rem;
+                line-height: 1.5;
+                padding-left: 40px;
+                cursor: pointer;
+            }
         }
     }
 }
@@ -106,11 +106,8 @@
                     background-color: #260852;
                     border-radius: 15px 0px 15px 0px;
                 }
-
             }
         }
-
-
     }
 }
 

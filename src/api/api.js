@@ -10,11 +10,6 @@ export const api = {
         let res = await axios.get(`${baseURL}images/${img}`)
         return res
     },
-    async getData(){
-
-
-    }
-
 }
 
 

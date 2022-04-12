@@ -22,6 +22,7 @@ const CatalogCard = ({items}) => {
                         component="img"
                         height='320px'
                         image ={imgURL(ПутьКартинок, ОснКартинка, true)}
+                        sx={{objectFit: 'scale-down'}}
                         alt={Номенклатура}
                         onError ={imgURLerror}
                     />
