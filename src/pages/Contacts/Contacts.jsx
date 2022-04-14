@@ -27,7 +27,7 @@ const Contacts = () => {
     const day = date.getDay();
 
     const scheduleMap = schedule.map((item, i) => {
-        const active = 'active';
+        const active = 'active1';
         const holiday = 'holiday';
 
         if(item.id === day && item.id !== 1) {
@@ -71,7 +71,7 @@ const Contacts = () => {
                 <ListItemText primary="Время работы"/>
             </ListItem>
             <div className='pageBody'>
-                <Paper sx={{m: '15px 0'}}>
+                <Paper sx={{mb: '15px'}}>
                     <List>
                         {scheduleMap}
                     </List>

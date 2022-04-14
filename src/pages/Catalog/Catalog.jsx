@@ -47,7 +47,7 @@ const Catalog = () => {
             <Slider/>
             <ListItem disablePadding className='pageTitle'>
                 <ListItemIcon><ShoppingCartIcon color='primary'/></ListItemIcon>
-                <ListItemText primary="Каталог"/>
+                <ListItemText primary="Каталог товаров"/>
             </ListItem>
 
             <div className='wrapper2'>
