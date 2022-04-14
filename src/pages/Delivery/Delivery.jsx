@@ -22,7 +22,7 @@ const Delivery = () => {
                 <ListItemIcon><PaymentsIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Способы оплаты"/>
             </ListItem>
-            <Divider/>
+
              <List className='pageBody'>
                 <ListItem>
                     <ListItemIcon><QrCodeScannerIcon /></ListItemIcon>
@@ -42,7 +42,6 @@ const Delivery = () => {
                 <ListItemIcon><ShoppingCartIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Самовывоз"/>
             </ListItem>
-            <Divider/>
 
             <List className='pageBody'>
                 <ListItem>
@@ -54,7 +53,6 @@ const Delivery = () => {
                 <ListItemIcon><DeliveryDiningIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Курьерская доставка на дом"/>
             </ListItem>
-            <Divider/>
 
             <List className='pageBody'>
                 <ListItem>

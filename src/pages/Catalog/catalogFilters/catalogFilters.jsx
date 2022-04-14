@@ -114,7 +114,7 @@ const CatalogFilters = () => {
 
     return (
         <div >
-            <Paper className='filtersContainer'>
+            <Paper className='filtersContainer' elevation={3}>
                 <div className='filterHeader'>Параметры</div>
                 <Divider sx={{mb: '10px'}}/>
                 <form onSubmit={handleSubmit(onSubmit)}>

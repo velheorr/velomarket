@@ -49,12 +49,7 @@ const Catalog = () => {
                 <ListItemIcon><ShoppingCartIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Каталог"/>
             </ListItem>
-            <Divider/>
-          {/*  <Box sx={{ flexGrow: 1 }} className='wrapper'>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
-                    {elements}
-                </Grid>
-            </Box>*/}
+
             <div className='wrapper2'>
                 <Grid container spacing={4} rowSpacing={4} columns={{ xs: 1, sm: 7, md: 10, lg: 10 }} className='catalogItems'>
                     {catalogElements}

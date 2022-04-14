@@ -1,35 +1,28 @@
-
+.grids {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+}
 
 .work {
-    color: #828282;
-    line-height: 20px;
     display: flex;
     .day, .time {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        border-bottom: 1px dashed;
+        padding: 10px 0;
     }
-    .time {min-width: 90px;}
     .day {
-        min-width: 90px;
-        width: 20%;
-        padding-right: 5px;
+        width: 50%;
+        padding-left: 10px;
     }
 }
 .active {
     font-weight: 600;
-    color: black;
+    background-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .holiday {
-    color: red;
+    color: red !important;
     font-weight: 600;
 }
 
-.map{margin: 25px auto;}
+.map{margin: 0 auto;}
 
 
-.grids {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}

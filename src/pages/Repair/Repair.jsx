@@ -71,7 +71,6 @@ const Repair = () => {
                 <ListItemIcon><HomeRepairServiceIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Сервис и Ремонт"/>
             </ListItem>
-            <Divider/>
 
             <div className='pageBody'>
                 <FormControl sx={{ m: 1, minWidth: 250, ml: 0 }}>

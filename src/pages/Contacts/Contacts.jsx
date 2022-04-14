@@ -11,7 +11,7 @@ import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
 import Slider from "../../Slider/Slider";
 import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
-
+import Paper from "@mui/material/Paper";
 
 const Contacts = () => {
     const schedule = [
@@ -53,7 +53,6 @@ const Contacts = () => {
                 <ListItemIcon><ContactsIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Контакты"/>
             </ListItem>
-            <Divider/>
 
             <List className='pageBody'>
                 <ListItem>
@@ -71,9 +70,12 @@ const Contacts = () => {
                 <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Время работы"/>
             </ListItem>
-            <Divider/>
             <div className='pageBody'>
-                {scheduleMap}
+                <Paper sx={{m: '15px 0'}}>
+                    <List>
+                        {scheduleMap}
+                    </List>
+                </Paper>
             </div>
 
             <Divider/>
@@ -81,25 +83,26 @@ const Contacts = () => {
                 <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
                 <ListItemText primary="Как к нам доехать"/>
             </ListItem>
-            <Divider/>
 
             <div className='map pageBody'>
-                <YMaps>
-                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
-                        key={i}
-                        geometry={coordinate}
-                        options={{
-                            preset: "islands#blueStretchyIcon",
-                            balloonCloseButton: false,
-                            hideIconOnBalloonOpen: false
-                        }}
-                        properties={{
-                            iconContent: 'Веломаркет "Колесо"',
-                        }}
-                    />)}
-                        <ZoomControl options={{ float: 'right' }} />
-                    </Map>
-                </YMaps>
+                <Paper elevation={3}>
+                    <YMaps>
+                        <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
+                            key={i}
+                            geometry={coordinate}
+                            options={{
+                                preset: "islands#blueStretchyIcon",
+                                balloonCloseButton: false,
+                                hideIconOnBalloonOpen: false
+                            }}
+                            properties={{
+                                iconContent: 'Веломаркет "Колесо"',
+                            }}
+                        />)}
+                            <ZoomControl options={{ float: 'right' }} />
+                        </Map>
+                    </YMaps>
+                </Paper>
             </div>
          </div>
     );
@@ -108,10 +111,13 @@ const Contacts = () => {
 const View = ({item, active}) =>{
     const css = active || ''
     return (
-        <ListItem disablePadding className={`work ${css}`}>
-            <div className='day'>{item.day}</div>
-            <div className='time'>{item.time}</div>
-        </ListItem>
+        <>
+            <ListItem button disablePadding className={`work ${css} grids`}>
+                <div className='day'>{item.day}</div>
+                <div className='time'>{item.time}</div>
+            </ListItem>
+            <Divider />
+        </>
     )
 }
 
