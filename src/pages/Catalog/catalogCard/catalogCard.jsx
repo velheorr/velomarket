@@ -34,7 +34,7 @@ const CatalogCard = ({items}) => {
                         <Typography variant="body2" color="text.secondary" component="span">
                             <div>Артикул: {НоменклатураАртикул}</div>
                             <div>Арт. производителя:{НоменклатураАртикулПроизв}</div>
-                            <div>Бренд: {clearSymbol(НоменклатураБренд)}</div>
+                            <div>Бренд: {НоменклатураБренд}</div>
                             <div>Модель: {clearSymbol(НоменклатураМодель)}</div>
                         </Typography>
                         <Typography variant="body2" color="text.primary" component="div">
