@@ -1,20 +1,15 @@
 import '../../App.scss'
 import './Delivery.scss'
+
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import List from "@mui/material/List";
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
-import MoneyIcon from '@mui/icons-material/Money';
 import StoreIcon from '@mui/icons-material/Store';
 import HomeIcon from '@mui/icons-material/Home';
 import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
 import Slider from "../../Slider/Slider";
 
 
@@ -44,10 +39,12 @@ const Delivery = () => {
             <div className='blocks paddingTB'>
                 <div>
                     <div><HomeIcon fontSize="large" color="primary"/></div>
-                    <div>г. Пермь, Борчанинова 62</div>
+                    <div>г. Пермь, </div>
+                    <div>ул. Борчанинова 62</div>
                 </div>
                 <div>
                     <div><StoreIcon fontSize="large" color="primary"/></div>
+                    <div>Магазин</div>
                     <div>Веломаркет «Колесо»</div>
                 </div>
             </div>

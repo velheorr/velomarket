@@ -1,17 +1,17 @@
-import React from "react";
+import '../../App.scss'
 import './Contacts.scss'
 import Divider from "@mui/material/Divider";
 import ContactsIcon from '@mui/icons-material/Contacts';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import PhoneIcon from '@mui/icons-material/Phone';
 import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
+import MapIcon from '@mui/icons-material/Map';
 import Slider from "../../Slider/Slider";
 import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
 import Paper from "@mui/material/Paper";
+import StoreIcon from "@mui/icons-material/Store";
 
 const Contacts = () => {
     const schedule = [
@@ -47,29 +47,29 @@ const Contacts = () => {
     const coordinates = [ [58.00103636683891,56.225435245232624],];
 
     return (
-        <div>
+        <>
             <Slider/>
-            <ListItem disablePadding className='pageTitle'>
-                <ListItemIcon><ContactsIcon color='primary'/></ListItemIcon>
-                <ListItemText primary="Контакты"/>
-            </ListItem>
 
-            <List className='pageBody'>
-                <ListItem>
-                    <ListItemIcon><HomeIcon /></ListItemIcon>
-                    <ListItemText secondary="г. Пермь Борчанинова 62 Веломаркет «Колесо»" />
-                </ListItem>
-                <ListItem>
-                    <ListItemIcon><PhoneIcon /></ListItemIcon>
-                    <ListItemText secondary="тел: +7 (902) 471-37-69" />
-                </ListItem>
-            </List>
+            <div className='paddingTB blockTitle'><ContactsIcon className='iconAlign' color="primary" />Контакты</div>
+            <div className='blocks paddingTB'>
+                <div>
+                    <div><HomeIcon fontSize="large" color="primary"/></div>
+                    <div>г. Пермь, </div>
+                    <div>ул. Борчанинова 62</div>
+                </div>
+                <div>
+                    <div><StoreIcon fontSize="large" color="primary"/></div>
+                    <div>Магазин</div>
+                    <div>Веломаркет «Колесо»</div>
+                </div>
+                <div>
+                    <div><PhoneIcon fontSize="large" color="primary"/></div>
+                    <div>Телефон</div>
+                    <div>+7 (902) 471-37-69</div>
+                </div>
+            </div>
 
-            <Divider/>
-            <ListItem disablePadding className='pageTitle'>
-                <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
-                <ListItemText primary="Время работы"/>
-            </ListItem>
+            <div className='paddingTB blockTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
             <div className='pageBody'>
                 <Paper sx={{mb: '15px'}}>
                     <List>
@@ -78,13 +78,9 @@ const Contacts = () => {
                 </Paper>
             </div>
 
-            <Divider/>
-            <ListItem disablePadding className='pageTitle'>
-                <ListItemIcon><ScheduleIcon color='primary'/></ListItemIcon>
-                <ListItemText primary="Как к нам доехать"/>
-            </ListItem>
 
-            <div className='map pageBody'>
+            <div className='paddingTB blockTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
+            <div className='pageBody'>
                 <Paper elevation={3}>
                     <YMaps>
                         <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
@@ -104,7 +100,7 @@ const Contacts = () => {
                     </YMaps>
                 </Paper>
             </div>
-         </div>
+         </>
     );
 };
 

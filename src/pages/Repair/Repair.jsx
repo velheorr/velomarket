@@ -2,20 +2,17 @@ import {useEffect, useState} from 'react';
 import '../../App.scss'
 import "./Repair.scss";
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
-import Divider from "@mui/material/Divider";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Paper from '@mui/material/Paper';
 
 import repairPrice from '../../Data/data.json'
 
-import Paper from '@mui/material/Paper';
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
 import Slider from "../../Slider/Slider";
 import {sortData} from "../../assets/functions";
+
 
 
 const Repair = () => {
@@ -67,11 +64,7 @@ const Repair = () => {
     return (
         <>
             <Slider/>
-            <ListItem disablePadding className='pageTitle'>
-                <ListItemIcon><HomeRepairServiceIcon color='primary'/></ListItemIcon>
-                <ListItemText primary="Сервис и Ремонт"/>
-            </ListItem>
-
+            <div className='paddingTB blockTitle'><HomeRepairServiceIcon className='iconAlign' color="primary" /> Сервис и Ремонт</div>
             <div className='pageBody'>
                 <FormControl sx={{ m: 1, minWidth: 250, ml: 0 }}>
                     <InputLabel id="repairSelect">Услуги</InputLabel>
