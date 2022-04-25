@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import '../../../App.scss'
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CatalogFilters from "./catalogFilters";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -25,6 +26,7 @@ import goods from "../../../Data/data.json";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import Loader from "../../../assets/loader/Loader";
+import IconButton from "@mui/material/IconButton";
 
 
 const CatalogFiltersContainer = () => {
@@ -77,7 +79,9 @@ const CatalogFiltersContainer = () => {
         dispatch(setCatalogDataFilter([]))
     }
 
-
+    const scrollTop = ()=>{
+        window.scrollTo(0, 0)
+    }
 
     return (
         <>
@@ -101,6 +105,11 @@ const CatalogFiltersContainer = () => {
                 :
                     <Loader/>
             }
+            <div className='upBtn'>
+                <IconButton color="primary" variant='outlined' onClick={scrollTop}>
+                    <ArrowUpwardIcon />
+                </IconButton>
+            </div>
         </>
     );
 };
