@@ -57,7 +57,6 @@ const CatalogPage = () => {
     }
     const extraImg = renderMoreImg()
 
-
     return (
         <Fancybox options={{ infinite: false }}>
             <Slider/>

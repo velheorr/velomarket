@@ -14,6 +14,7 @@ import Divider from "@mui/material/Divider";
 
 const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, Тип, Размер,НоменклатураАртикулПроизв, ПутьКартинок,ОснКартинка, НоменклатураМодель} = items;
+
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
             <Card sx={{ maxWidth: 325 }}>
