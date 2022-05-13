@@ -12,12 +12,11 @@ import {api} from '../api/api'
 
 const Modal = () => {
 	const dispatch = useDispatch()
-	const { register, handleSubmit, reset } = useForm();
+	const { register, handleSubmit, reset, formState: { errors }, } = useForm();
 
 	const onSubmit = data =>{
-		console.log(data)
 		api.sendContact(data)
-		/*dispatch(showModal(false))*/
+		dispatch(showModal(false))
 
 	};
 
@@ -39,14 +38,13 @@ const Modal = () => {
 				<div className='modalBody'>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<TextField {...register("name")}
-								   size="small" fullWidth label="Имя" helperText="Some important text"/>
-						<TextField {...register("phone")}
-								   size="small" fullWidth label="Телефон" />
-						<TextField {...register("email")}
-								   size="small" fullWidth label="Почта" />
+								   size="small" fullWidth label="Имя"/>
+						<TextField {...register("contact", {required: 'Укажите телефон или почту для связи'})}
+								   size="small" fullWidth label="Телефон или почта"
+								   error={errors.contact && true}
+								   helperText={errors.contact && <span style={{color: 'red'}}>{errors.contact.message}</span>}/>
 						<TextField {...register("text")}
 								   size="small" fullWidth label="Ваш вопрос" multiline rows={4}/>
-
 						<Button size="small" variant="outlined" type="submit" startIcon={<SendIcon/>}>Отправить</Button>
 					</form>
 				</div>
