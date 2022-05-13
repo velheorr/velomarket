@@ -7,8 +7,6 @@ import img2 from "./img/2.jpg"
 import img3 from "./img/3.jpg"
 import img4 from "./img/4.jpg"
 import img5 from "./img/5.jpg"
-import img6 from "./img/6.jpg"
-import img7 from "./img/7.jpg"
 
 const mainSlides = [
     { url: img1 },
@@ -16,9 +14,6 @@ const mainSlides = [
     { url: img3 },
     { url: img4 },
     { url: img5 },
-    { url: img6 },
-    { url: img7 },
-
 ]
 
 const Slider = ({slidePack = mainSlides}) => {

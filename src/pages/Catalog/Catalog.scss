@@ -81,12 +81,14 @@
             margin: 20px;
             transition: .15s all ease-in-out;
             position: relative;
+            opacity: 0.9;
             &:hover {
                 cursor: pointer;
                 box-shadow: 0 14px 28px
                 rgba(0,0,0,0.25), 0 10px 10px
                 rgba(0,0,0,0.22);
                 transform: scale(1.1);
+                opacity: 1;
 
             }
             .item {
@@ -115,4 +117,6 @@
     position: fixed;
     right: 10px;
     bottom: 30px;
+    border: 1px solid #1976d2;
+    border-radius: 50%;
 }

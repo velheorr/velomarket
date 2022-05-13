@@ -40,6 +40,7 @@ const CatalogFiltersContainer = () => {
 
     useEffect(()=>{
         selectCatalog(id)
+        window.scrollTo(0, 0)
         // eslint-disable-next-line
     },[id])
 
@@ -81,7 +82,10 @@ const CatalogFiltersContainer = () => {
 
     const scrollTop = ()=>{
         window.scrollTo(0, 0)
+        /*window.scrollTo(0, document.body.scrollHeight);*/
     }
+
+
 
     return (
         <>
@@ -106,8 +110,8 @@ const CatalogFiltersContainer = () => {
                     <Loader/>
             }
             <div className='upBtn'>
-                <IconButton color="primary" variant='outlined' onClick={scrollTop}>
-                    <ArrowUpwardIcon />
+                <IconButton color="primary" onClick={scrollTop}>
+                    <ArrowUpwardIcon/>
                 </IconButton>
             </div>
         </>

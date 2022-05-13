@@ -10,9 +10,12 @@ import logo from "./pages/Header/img/logo.png";
 import CatalogPage from "./pages/Catalog/CatalogPage/CatalogPage";
 import CatalogFiltersContainer from "./pages/Catalog/catalogFilters/catalogFiltersContainer";
 import Page404 from "./404/404";
+import {useSelector} from "react-redux";
+import Modal from "./Modal/Modal";
 
 
 const App = () => {
+    const modal = useSelector(state => state.modal.show);
 
     return (
         <div className='main'>
@@ -31,6 +34,7 @@ const App = () => {
                 <Route path="*"><Page404/></Route>
             </Switch>
             <img className='botLogo' src={logo} alt={'velomarketkoleso.ru'}/>
+            {modal? <Modal/> : ''}
         </div>
     );
 }
