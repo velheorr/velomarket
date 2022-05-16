@@ -21,7 +21,7 @@ const Contacts = () => {
         {day: 'Четверг', time: '09:00 - 20:00', id: 4},
         {day: 'Пятница', time: '09:00 - 20:00', id: 5},
         {day: 'Суббота', time: '09:00 - 20:00', id: 6},
-        {day: 'Воскресенье', time: '09:00 - 20:00', id: 7},
+        {day: 'Воскресенье', time: '09:00 - 19:00', id: 7},
     ]
     const date = new Date();
     const day = date.getDay();
