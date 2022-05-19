@@ -23,3 +23,18 @@
         }
     }
 }
+
+.imgList {
+    span {
+        margin-right: 10px;
+    }
+    .extraImg {
+        width: 60px;
+        padding: 4px;
+        border: 1px solid #b3b3b7;
+        border-radius: 5px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

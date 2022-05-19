@@ -52,7 +52,7 @@ const CatalogPage = () => {
         let arr = []
         if (item.ДопКартинки){ arr = item.ДопКартинки.split(',')}
         return arr.map((img, i)=>{
-            return <span key={i} data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)}> </span>
+            return <span key={i} data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)}><img className='extraImg' src={imgURL(item.ПутьКартинок, img)} alt='img'/></span>
         })
     }
     const extraImg = renderMoreImg()
@@ -85,7 +85,11 @@ const CatalogPage = () => {
                                     data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}/>
                             </div>
                             <div>
-                                {extraImg.length > 0 ? extraImg : ''}
+                                <Paper sx={{width: '100%',backgroundColor: '#ffffffed', pl: 1, pt: 1}} className='imgList'>
+                                    <span data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}><img className='extraImg' src={imgURL(item.ПутьКартинок, item.ОснКартинка)} alt='img'/></span>
+                                    {extraImg.length > 0 ? extraImg : ''}
+                                </Paper>
+
                             </div>
                             <TabContext value={value}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
