@@ -7,12 +7,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
-
-import repairPrice from '../../Data/data.json'
+import {api} from '../../api/api'
+/*import repairPrice from '../../Data/data.json'*/
 
 import Slider from "../../Slider/Slider";
 import {sortData} from "../../assets/functions";
-
+import {useDispatch, useSelector} from "react-redux";
+import {data} from './RepairSlice'
+import Loader from "../../assets/loader/Loader";
 
 
 const Repair = () => {
@@ -20,15 +22,26 @@ const Repair = () => {
     const [price ,setPrice] = useState([])
     const [select, setSelect] = useState('');
 
+    const dispatch = useDispatch()
+    const repairPrice = useSelector(state => state.repair.data);
+
     const handleChange = (event) => {
         setSelect(event.target.value);
         makePrice(event.target.value)
     };
 
+    const [dataPrice, setDataPrice] = useState(false)
+    const yaData = async ()=>{
+        const priceInfo = await api.getData()
+        dispatch(data(priceInfo))
+        setDataPrice(true)
+    }
+
     useEffect(()=>{
+        yaData()
         makePrice('УСЛУГИ')
         prepareSelectOptions(repairPrice)
-    },[])
+    },[dataPrice])
 
 
     const prepareSelectOptions = (services)=>{
@@ -61,6 +74,8 @@ const Repair = () => {
     }
     let listItems = renderListItems(price)
 
+
+
     return (
         <>
             <Slider/>
@@ -83,7 +98,9 @@ const Repair = () => {
                         <div>Описание</div>
                         <div>Цена</div>
                     </div>
+                    { repairPrice.length < 1 ? <Loader/> : ''}
                     {listItems}
+
                 </Paper>
             </div>
         </>

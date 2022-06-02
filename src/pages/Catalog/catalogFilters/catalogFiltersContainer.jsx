@@ -12,7 +12,8 @@ import {
     setCatalogDataFilter,
     setFilteredBrand,
     setFilteredSize,
-    setFilteredType
+    setFilteredType,
+    getFullCatalog
 } from "../CatalogSlice";
 import {filterCatalogBy} from '../../../assets/functions'
 
@@ -21,12 +22,12 @@ import Divider from "@mui/material/Divider";
 import Slider from "../../../Slider/Slider";
 import {Link, useParams} from "react-router-dom";
 
-import goods from "../../../Data/data.json";
-
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import Loader from "../../../assets/loader/Loader";
 import IconButton from "@mui/material/IconButton";
+import {api} from "../../../api/api";
+
 
 
 const CatalogFiltersContainer = () => {
@@ -37,12 +38,21 @@ const CatalogFiltersContainer = () => {
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
     const filtersEmpty = useSelector(state => state.catalog.filtersEmpty);
+    const fullCatalog = useSelector(state => state.catalog.fullCatalog);
+
+    const [dataFull, setDataFull] = useState(false)
+    const fullData = async ()=>{
+        const dataInfo = await api.getData()
+        dispatch(getFullCatalog(dataInfo))
+        setDataFull(true)
+    }
 
     useEffect(()=>{
         selectCatalog(id)
+        fullData()
         window.scrollTo(0, 0)
         // eslint-disable-next-line
-    },[id])
+    },[id, dataFull])
 
 
 
@@ -58,7 +68,7 @@ const CatalogFiltersContainer = () => {
 
 
     const selectCatalog = (id)=>{
-        let newCatalog = goods.filter(i => i.ПутьПапки.includes(id))
+        let newCatalog = fullCatalog.filter(i => i.ПутьПапки.includes(id))
         if (newCatalog.length > 0) {setData(true)}
         dispatch(openCatalogData(newCatalog))
         catalogFilters(newCatalog)

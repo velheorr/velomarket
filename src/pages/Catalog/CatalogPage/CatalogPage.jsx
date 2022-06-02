@@ -18,12 +18,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
+import {useSelector} from "react-redux";
+import {api} from "../../../api/api";
+import {getFullCatalog} from "../CatalogSlice";
 
 
 const CatalogPage = () => {
     const {itemId} = useParams()
     const [item, setItem] = useState('');
     const [value, setValue] = useState('1');
+
+
 
     useEffect(() => {
         setItem(goods.find(i => i.НоменклатураКод === itemId))
@@ -47,7 +52,6 @@ const CatalogPage = () => {
     }
     const itemDescription = strSplit()
 
-    //доработать множество картинок, отображение и подачу
     const renderMoreImg = ()=>{
         let arr = []
         if (item.ДопКартинки){ arr = item.ДопКартинки.split(',')}
