@@ -74,7 +74,7 @@ const CatalogPage = () => {
                         <>
                             <div className='itemPath'>{item.ПутьПапки}</div>
                             <div className='itemTitle'>{item.Номенклатура}</div>
-                            <div style={{textAlign: "center"}}>
+                            <div style={{textAlign: "center", backgroundColor:'#f3f3f3'}}>
                                 <img
                                     style={{cursor: 'pointer'}}
                                     src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
@@ -84,13 +84,11 @@ const CatalogPage = () => {
                                     data-fancybox="gallery"
                                     data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}/>
                             </div>
-                            <div>
-                                <Paper sx={{width: '100%',backgroundColor: '#ffffffed', pl: 1, pt: 1}} className='imgList'>
-                                    <span data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}><img className='extraImg' src={imgURL(item.ПутьКартинок, item.ОснКартинка)} alt='img'/></span>
-                                    {extraImg.length > 0 ? extraImg : ''}
-                                </Paper>
+                            <Paper sx={{width: '100%',backgroundColor: '#ffffffed', pt: 1}} className='imgList'>
+                                <span data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}><img className='extraImg' src={imgURL(item.ПутьКартинок, item.ОснКартинка)} alt='img'/></span>
+                                {extraImg.length > 0 ? extraImg : ''}
+                            </Paper>
 
-                            </div>
                             <TabContext value={value}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                     <TabList onChange={handleChange} aria-label="tabsCard">
