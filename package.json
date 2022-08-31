@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.3.0",
     "@fancyapps/ui": "^4.0.26",
     "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.0.4",
     "@mui/lab": "^5.0.0-alpha.62",
     "@mui/material": "^5.0.4",
