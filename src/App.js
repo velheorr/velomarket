@@ -12,7 +12,6 @@ import CatalogFiltersContainer from "./pages/Catalog/catalogFilters/catalogFilte
 import Page404 from "./404/404";
 import {useSelector} from "react-redux";
 import Modal from "./Modal/Modal";
-import Admin from "./pages/Admin/Admin";
 
 
 const App = () => {
