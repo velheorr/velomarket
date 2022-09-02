@@ -14,9 +14,11 @@ import Paper from "@mui/material/Paper";
 import StoreIcon from "@mui/icons-material/Store";
 import {api} from "../../api/api";
 import {useEffect, useState} from "react";
+import Loader from "../../assets/loader/Loader";
 
 const Contacts = () => {
-    const [ched, setSched] = useState([]);
+    const [sched, setSched] = useState([]);
+    const [contact, setContact] = useState({})
 
     useEffect(()=>{
         fullData()
@@ -25,11 +27,13 @@ const Contacts = () => {
     const fullData = async ()=>{
         const config = await api.getConfig()
         setSched(config.schedule)
+        setContact(config.contact)
     }
+
 
     const date = new Date();
     const day = date.getDay();
-    const scheduleMap = ched.map((item, i) => {
+    const scheduleMap = sched.map((item, i) => {
         const active = 'active1';
         const holiday = item.off ? 'holiday' : ''
 
@@ -52,32 +56,43 @@ const Contacts = () => {
             <Slider/>
 
             <div className='paddingTB blockTitle'><ContactsIcon className='iconAlign' color="primary" />Контакты</div>
-            <div className='blocks paddingTB'>
-                <div>
-                    <div><HomeIcon fontSize="large" color="primary"/></div>
-                    <div>г. Пермь, </div>
-                    <div>ул. Борчанинова 62</div>
-                </div>
-                <div>
-                    <div><StoreIcon fontSize="large" color="primary"/></div>
-                    <div>Магазин</div>
-                    <div>Веломаркет «Колесо»</div>
-                </div>
-                <div>
-                    <div><PhoneIcon fontSize="large" color="primary"/></div>
-                    <div>Телефон</div>
-                    <div>+7 (902) 471-37-69</div>
-                </div>
-            </div>
-
+            {
+                !contact
+                ? <Loader/>
+                : <div className='blocks paddingTB'>
+                        <div>
+                            <div><HomeIcon fontSize="large" color="primary"/></div>
+                            <div>г. Пермь, </div>
+                            <div>{contact.street}</div>
+                        </div>
+                        <div>
+                            <div><StoreIcon fontSize="large" color="primary"/></div>
+                            <div>Магазин</div>
+                            <div>{contact.name}</div>
+                        </div>
+                        <div>
+                            <div><PhoneIcon fontSize="large" color="primary"/></div>
+                            <div>Телефон</div>
+                            <div>{contact.phone}</div>
+                        </div>
+                    </div>
+            }
             <div className='paddingTB blockTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
-            <div className='pageBody'>
-                <Paper sx={{mb: '15px'}}>
-                    <List>
-                        {scheduleMap}
-                    </List>
-                </Paper>
-            </div>
+            {
+                !sched
+                ? <Loader/>
+                : <div className='pageBody'>
+                    <Paper sx={{mb: '15px'}}>
+                        <List>
+                            {scheduleMap}
+                        </List>
+                    </Paper>
+                </div>
+            }
+
+
+
+
 
 
             <div className='paddingTB blockTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
