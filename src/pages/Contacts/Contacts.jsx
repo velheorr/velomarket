@@ -90,11 +90,6 @@ const Contacts = () => {
                 </div>
             }
 
-
-
-
-
-
             <div className='paddingTB blockTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
             <div className='pageBody'>
                 <Paper elevation={3}>

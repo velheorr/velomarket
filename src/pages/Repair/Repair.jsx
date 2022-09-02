@@ -81,7 +81,7 @@ const Repair = () => {
             <Slider/>
             <div className='paddingTB blockTitle'><HomeRepairServiceIcon className='iconAlign' color="primary" /> Сервис и Ремонт</div>
             <div className='pageBody'>
-                <FormControl sx={{ m: 1, minWidth: 250, ml: 0 }}>
+                <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }}>
                     <InputLabel id="repairSelect">Услуги</InputLabel>
                     <Select
                         labelId="repairSelect" id="demo-simple-select-autowidth"

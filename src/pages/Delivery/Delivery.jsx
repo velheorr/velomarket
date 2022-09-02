@@ -11,9 +11,24 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 import Slider from "../../Slider/Slider";
+import {useEffect, useState} from "react";
+import {api} from "../../api/api";
+import Loader from "../../assets/loader/Loader";
 
 
 const Delivery = () => {
+    const [contact, setContact] = useState({});
+    const [delivery, setDelivery] = useState({});
+
+    useEffect(()=>{
+        fullData()
+    }, [])
+
+    const fullData = async ()=>{
+        const config = await api.getConfig()
+        setDelivery(config.delivery)
+        setContact(config.contact)
+    }
 
     return (
         <>
@@ -36,37 +51,45 @@ const Delivery = () => {
             </div>
 
             <div className='paddingTB blockTitle'>Самовывоз</div>
-            <div className='blocks paddingTB'>
-                <div>
-                    <div><HomeIcon fontSize="large" color="primary"/></div>
-                    <div>г. Пермь, </div>
-                    <div>ул. Борчанинова 62</div>
-                </div>
-                <div>
-                    <div><StoreIcon fontSize="large" color="primary"/></div>
-                    <div>Магазин</div>
-                    <div>Веломаркет «Колесо»</div>
-                </div>
-            </div>
+            {
+                 !contact
+                 ? <Loader/>
+                 : <div className='blocks paddingTB'>
+                     <div>
+                         <div><HomeIcon fontSize="large" color="primary"/></div>
+                         <div>г. Пермь, </div>
+                         <div>{contact.street}</div>
+                     </div>
+                     <div>
+                         <div><StoreIcon fontSize="large" color="primary"/></div>
+                         <div>Магазин</div>
+                         <div>{contact.name}</div>
+                     </div>
+                 </div>
+            }
 
             <div className='paddingTB blockTitle'>Курьерская доставка на дом</div>
-            <div className='blocks paddingTB'>
-                <div>
-                    <div><AccessTimeIcon fontSize="large" color="primary"/></div>
-                    <div>Время доставки</div>
-                    <div>с 18:00 до 22:00</div>
+            {
+                !delivery
+                ? <Loader/>
+                : <div className='blocks paddingTB'>
+                        <div>
+                        <div><AccessTimeIcon fontSize="large" color="primary"/></div>
+                        <div>Время доставки</div>
+                        <div>{delivery.time}</div>
+                    </div>
+                    <div>
+                        <div><DeliveryDiningIcon fontSize="large" color="primary"/></div>
+                        <div>Стоимость доставки</div>
+                        <div>{delivery.price}</div>
+                    </div>
+                    <div>
+                        <div><LocalShippingIcon fontSize="large" color="primary"/></div>
+                        <div>В отдаленные районы</div>
+                        <div>{delivery.price2}</div>
+                    </div>
                 </div>
-                <div>
-                    <div><DeliveryDiningIcon fontSize="large" color="primary"/></div>
-                    <div>Стоимость доставки</div>
-                    <div>200р</div>
-                </div>
-                <div>
-                    <div><LocalShippingIcon fontSize="large" color="primary"/></div>
-                    <div>В отдаленные районы</div>
-                    <div>300р</div>
-                </div>
-            </div>
+            }
 
         </>
 )
