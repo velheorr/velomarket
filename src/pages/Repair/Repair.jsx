@@ -17,6 +17,7 @@ import {data} from './RepairSlice'
 import Loader from "../../assets/loader/Loader";
 
 
+
 const Repair = () => {
     const [options, setOptions] = useState([])
     const [price ,setPrice] = useState([])
