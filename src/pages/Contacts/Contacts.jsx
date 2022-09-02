@@ -12,30 +12,31 @@ import Slider from "../../Slider/Slider";
 import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
 import Paper from "@mui/material/Paper";
 import StoreIcon from "@mui/icons-material/Store";
+import {api} from "../../api/api";
+import {useEffect, useState} from "react";
 
 const Contacts = () => {
-    const schedule = [
-        {day: 'Понедельник', time: 'Выходной', id: 1},
-        {day: 'Вторник', time: '09:00 - 20:00', id: 2},
-        {day: 'Среда', time: '09:00 - 20:00', id: 3},
-        {day: 'Четверг', time: '09:00 - 20:00', id: 4},
-        {day: 'Пятница', time: '09:00 - 20:00', id: 5},
-        {day: 'Суббота', time: '09:00 - 20:00', id: 6},
-        {day: 'Воскресенье', time: '09:00 - 19:00', id: 7},
-    ]
+    const [ched, setSched] = useState([]);
+
+    useEffect(()=>{
+        fullData()
+    }, [])
+
+    const fullData = async ()=>{
+        const config = await api.getConfig()
+        setSched(config.schedule)
+    }
+
     const date = new Date();
     const day = date.getDay();
-
-    const scheduleMap = schedule.map((item, i) => {
+    const scheduleMap = ched.map((item, i) => {
         const active = 'active1';
-        const holiday = 'holiday';
+        const holiday = item.off ? 'holiday' : ''
 
-        if(item.id === day && item.id !== 1) {
-            return <View item={item} key={i} active={active} />
-        } else if (item.id === 1){
-            return <View item={item} key={i} active={holiday} />
+        if(item.id === day) {
+            return <View item={item} key={i} active={active} holiday={holiday}/>
         }
-        return <View item={item} key={i} />
+        return <View item={item} key={i} holiday={holiday}/>
     });
 
     const mapData = {
@@ -104,11 +105,10 @@ const Contacts = () => {
     );
 };
 
-const View = ({item, active}) =>{
-    const css = active || ''
+const View = ({item, active, holiday}) =>{
     return (
         <>
-            <ListItem button disablePadding className={`work ${css} grids`}>
+            <ListItem button disablePadding className={`work ${holiday} ${active} grids`}>
                 <div className='day'>{item.day}</div>
                 <div className='time'>{item.time}</div>
             </ListItem>

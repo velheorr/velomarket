@@ -22,6 +22,15 @@ export const api = {
         } catch (error) {
             console.error(error);
         }
+    },
+    async getConfig() {
+        try {
+            const res = await axios.get('https://functions.yandexcloud.net/d4e5kuegp4to1vpg2bo9');
+            return res.data
+
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 
