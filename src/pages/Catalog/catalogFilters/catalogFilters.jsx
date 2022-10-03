@@ -116,7 +116,7 @@ const CatalogFilters = ({className}) => {
         <div className={className}>
             <Paper className='filtersContainer' elevation={3}>
                 <div className='filterHeader'>Параметры</div>
-                <Divider sx={{mb: '10px'}}/>
+               {/* <Divider sx={{mb: '10px'}}/>*/}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/*<div className='filters'>Цена:</div>
                 <TextField

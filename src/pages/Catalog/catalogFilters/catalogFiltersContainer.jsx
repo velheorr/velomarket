@@ -4,8 +4,6 @@ import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CatalogFilters from "./catalogFilters";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import CatalogCard from "../catalogCard/catalogCard";
 import {
     openCatalogData,
