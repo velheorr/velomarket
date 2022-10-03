@@ -78,7 +78,7 @@ const CatalogPage = () => {
                         <>
                             <div className='itemPath'>{item.ПутьПапки}</div>
                             <div className='itemTitle'>{item.Номенклатура}</div>
-                            <div style={{textAlign: "center", backgroundColor:'#f3f3f3'}}>
+                            <div className='itemImg'>
                                 <img
                                     style={{cursor: 'pointer'}}
                                     src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
