@@ -15,7 +15,7 @@ import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
 import {useState} from "react";
 
-const CatalogFilters = () => {
+const CatalogFilters = ({className}) => {
     const { register, handleSubmit, reset } = useForm();
     const filteredBrand = useSelector(state => state.catalog.filteredBrand);
     const filteredType = useSelector(state => state.catalog.filteredType);
@@ -113,7 +113,7 @@ const CatalogFilters = () => {
     }
 
     return (
-        <div >
+        <div className={className}>
             <Paper className='filtersContainer' elevation={3}>
                 <div className='filterHeader'>Параметры</div>
                 <Divider sx={{mb: '10px'}}/>

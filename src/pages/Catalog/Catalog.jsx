@@ -12,20 +12,6 @@ const Catalog = () => {
 
     const renderMainCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
-            <Grid key={i} item xs={1} sm={3} md={4} lg={3}>
-                <Link to={`/catalogs/${item.name}`}>
-                    <div style={{backgroundImage: `url(${item.img})`}} className='item'>
-                        <div className='text'>{item.name}</div>
-                    </div>
-                </Link>
-            </Grid>
-        )
-    }
-
-    const catalogElements = renderMainCatalogs(catalogItems);
-
-    const renderMainCatalogs2 = (catalogItems)=>{
-        return  catalogItems.map((item, i) =>
             <div key={i} item  className='catalog-column'>
                 <Link to={`/catalogs/${item.name}`}>
                     <div className='catalog-container'>
@@ -37,21 +23,15 @@ const Catalog = () => {
         )
     }
 
-    const catalogElements2 = renderMainCatalogs2(catalogItems);
+    const catalogElements = renderMainCatalogs(catalogItems);
 
     return (
         <>
             <Slider/>
             <div className='paddingTB blockTitle'><ShoppingCartIcon className='iconAlign' color="primary" /> Каталог товаров</div>
 
-            <div className='wrapper3'>
-               <div className='catalog-row'>{catalogElements2}</div>
-            </div>
-
             <div className='wrapper2'>
-                <Grid container spacing={4} rowSpacing={4} columns={{ xs: 1, sm: 7, md: 10, lg: 10 }} className='catalogItems'>
-                    {catalogElements}
-                </Grid>
+               <div className='catalog-row'>{catalogElements}</div>
             </div>
         </>
     );

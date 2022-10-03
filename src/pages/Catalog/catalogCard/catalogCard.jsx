@@ -17,7 +17,7 @@ const CatalogCard = ({items}) => {
 
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
-            <Card sx={{ maxWidth: 325 }}>
+            <Card sx={{ maxWidth: 300 }} className='catalog-cards-column'>
                 <CardActionArea>
                     <CardMedia
                         component="img"
