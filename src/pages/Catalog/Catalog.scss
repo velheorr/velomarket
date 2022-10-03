@@ -4,13 +4,9 @@
 }
 
 .catalogWrapper {
-    /*display: grid;
-    grid-template-columns: 250px auto;*/
     margin-top: 30px;
     display:flex;
-    .catalogWrapper-filters{
-        flex: 0 0 250px;
-    }
+    .catalogWrapper-filters{flex: 0 0 250px;}
     .catalog-cards {
         flex: 1 1 auto;
         .catalog-cards-row {
@@ -36,6 +32,10 @@
 @media (max-width: 560px){
     .catalogWrapper{
         flex-wrap: wrap;
+        .catalogWrapper-filters {flex: 0 0 100%;}
+        .catalog-cards {
+            .catalog-cards-row {padding-left: 0;}
+        }
     }
 }
 
