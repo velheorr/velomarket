@@ -19,20 +19,23 @@ const CatalogCard = ({items}) => {
         <Link to={`/catalog/${НоменклатураКод}`}>
             <Card sx={{ maxWidth: 300 }} className='catalog-cards-column'>
                 <CardActionArea>
+                    <CardContent>
+                        <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={46} color={'#333'} overflow={'hidden'} align={'center'}>
+                            {Номенклатура}
+                        </Typography>
+                        <Divider/>
+                    </CardContent>
                     <CardMedia
                         component="img"
-                        height='320px'
+                        height='300px'
                         image ={imgURL(ПутьКартинок, ОснКартинка, true)}
                         sx={{objectFit: 'scale-down'}}
                         alt={Номенклатура}
                         onError ={imgURLerror}
                     />
                     <CardContent>
-                        <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={46} color={'#333'} overflow={'hidden'}>
-                            {Номенклатура}
-                        </Typography>
                         <Divider/>
-                        <Typography variant="body2" color="text.secondary" component="span">
+                        <Typography variant="body2" color="text.secondary" component="div" marginTop={'10px'} >
                             <div>Артикул: {НоменклатураАртикул}</div>
                             <div>Арт. производителя:{НоменклатураАртикулПроизв}</div>
                             <div>Бренд: {НоменклатураБренд}</div>
