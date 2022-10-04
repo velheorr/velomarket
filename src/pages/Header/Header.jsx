@@ -26,7 +26,7 @@ const Header = () => {
                         <li><NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}>Контакты</NavLink></li>
                         <li onClick={openModal}><a href="#/">Обратная связь</a></li>
                     </ul>
-                    <SmallMenu css={'navHeaderMiniMenu'}/>
+                    <SmallMenu css={'navHeaderMiniMenu'} openModal={openModal}/>
                 </div>
             </div>
         </>

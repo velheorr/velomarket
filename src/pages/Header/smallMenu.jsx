@@ -5,8 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {useState} from "react";
+import {NavLink} from "react-router-dom";
 
-const SmallMenu =({css})=> {
+const SmallMenu =({css,openModal})=> {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -64,11 +65,11 @@ const SmallMenu =({css})=> {
 				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 			>
 
-				<MenuItem>Каталог</MenuItem>
-				<MenuItem>Сервис и ремонт</MenuItem>
-				<MenuItem>Оплата и доставка</MenuItem>
-				<MenuItem>Контакты</MenuItem>
-				<MenuItem>Обратная связь</MenuItem>
+				<MenuItem><NavLink to="/" exact className={isActive => (isActive ? 'active' : '')}>Каталог</NavLink></MenuItem>
+				<MenuItem><NavLink to="/repair" className={isActive => (isActive ? 'active' : '')}>Сервис и Ремонт</NavLink></MenuItem>
+				<MenuItem><NavLink to="/delivery" className={isActive => (isActive ? 'active' : '')}>Оплата и Доставка</NavLink></MenuItem>
+				<MenuItem><NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}>Контакты</NavLink></MenuItem>
+				<MenuItem onClick={openModal}><a href="#/">Обратная связь</a></MenuItem>
 			</Menu>
 		</>
 	);

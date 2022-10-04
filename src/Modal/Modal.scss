@@ -23,9 +23,10 @@
             }
         }
     }
+    @media (max-width: 860px) {.modalContent {width: 70%}}
+    @media (max-width: 660px) {.modalContent {width: 90%}}
     .close {
-        display: grid;
-        grid-template-columns: 90% 10%;
+        display: flex;
         font-weight: 600;
         padding: 5px;
         >div {
