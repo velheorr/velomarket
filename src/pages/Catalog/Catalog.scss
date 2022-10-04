@@ -30,7 +30,7 @@
         }
     }
 }
-@media (max-width: 560px){
+@media (max-width: 640px){
     .catalogWrapper{
         flex-wrap: wrap;
         .catalogWrapper-filters {flex: 0 0 100%;}
@@ -38,6 +38,7 @@
             .catalog-cards-row {padding-left: 0;}
         }
     }
+    .pageBody {padding: 0}
 }
 
 .price {
@@ -101,7 +102,7 @@
         .catalog-column {
             flex: 0 1 30%;
             padding: 15px;
-            min-width: 230px;
+            min-width: 300px;
             .catalog-container {
                 transition: .15s all ease-in-out;
                 &:hover {
