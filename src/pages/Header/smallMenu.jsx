@@ -64,12 +64,11 @@ const SmallMenu =({css,openModal})=> {
 				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 			>
-
-				<MenuItem><NavLink to="/" exact className={isActive => (isActive ? 'active' : '')}>Каталог</NavLink></MenuItem>
-				<MenuItem><NavLink to="/repair" className={isActive => (isActive ? 'active' : '')}>Сервис и Ремонт</NavLink></MenuItem>
-				<MenuItem><NavLink to="/delivery" className={isActive => (isActive ? 'active' : '')}>Оплата и Доставка</NavLink></MenuItem>
-				<MenuItem><NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}>Контакты</NavLink></MenuItem>
-				<MenuItem onClick={openModal}><a href="#/">Обратная связь</a></MenuItem>
+				<NavLink to="/" exact className={isActive => (isActive ? 'active' : '')}><MenuItem>Каталог</MenuItem></NavLink>
+				<NavLink to="/repair" className={isActive => (isActive ? 'active' : '')}><MenuItem>Сервис и Ремонт</MenuItem></NavLink>
+				<NavLink to="/delivery" className={isActive => (isActive ? 'active' : '')}><MenuItem>Оплата и Доставка</MenuItem></NavLink>
+				<NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}><MenuItem>Контакты</MenuItem></NavLink>
+				<a href="#/"><MenuItem onClick={openModal}>Обратная связь</MenuItem></a>
 			</Menu>
 		</>
 	);
