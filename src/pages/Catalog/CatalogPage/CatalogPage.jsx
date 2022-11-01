@@ -28,8 +28,6 @@ const CatalogPage = () => {
     const [item, setItem] = useState('');
     const [value, setValue] = useState('1');
 
-
-
     useEffect(() => {
         setItem(goods.find(i => i.НоменклатураКод === itemId))
     }, [itemId])
