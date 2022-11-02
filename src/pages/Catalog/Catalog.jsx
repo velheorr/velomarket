@@ -3,7 +3,6 @@ import "./Catalog.scss";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import Slider from "../../Slider/Slider";
-import Grid from "@mui/material/Grid";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 

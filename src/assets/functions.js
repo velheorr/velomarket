@@ -1,8 +1,9 @@
-const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/'
+const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/';
+const noImgURL = baseURL + 'images/noimg.png';
 
 export const imgURL = (path, mainImg,thumb = false)=>{
     if (path === '' && mainImg === '') {
-        return baseURL + 'images/noimg.png'
+        return noImgURL
     }
     let link = `${baseURL}images/${path}/${mainImg}`;
     if (thumb === true) {
@@ -16,7 +17,7 @@ export const imgURL = (path, mainImg,thumb = false)=>{
 }
 export const imgURLerror = (e)=>{
     e.target.onerror = null;
-    e.target.src = baseURL + 'images/noimg.png'
+    e.target.src = noImgURL
 }
 
 export const sortData = (data, sortParam, direction = '+')=>{
