@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Paper from "@mui/material/Paper";
 
-import goods from '../../../Data/data.json';
 
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";

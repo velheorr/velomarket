@@ -1,16 +1,13 @@
-.grids {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-}
-
 .work {
-    display: flex;
+    .icon {
+        padding: 0 5px;
+        color: #787878;
+    }
     .day, .time {
-        padding: 10px 0;
+        padding: 10px 5px;
     }
     .day {
-        width: 50%;
-        padding-left: 10px;
+        flex: 0 1 50%;
     }
 }
 .active1 {
@@ -21,8 +18,15 @@
 .holiday {
     color: red !important;
     font-weight: 600;
+    .icon {
+        color: red !important;
+    }
 }
 
 .map{margin: 0 auto;}
 
 
+.notice {
+    font-style: italic;
+    margin-left: 40px;
+}

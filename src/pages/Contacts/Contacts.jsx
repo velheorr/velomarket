@@ -15,24 +15,36 @@ import StoreIcon from "@mui/icons-material/Store";
 import {api} from "../../api/api";
 import {useEffect, useState} from "react";
 import Loader from "../../assets/loader/Loader";
+import EventIcon from '@mui/icons-material/Event';
 
 const Contacts = () => {
     const [sched, setSched] = useState([]);
     const [contact, setContact] = useState({})
+    const [notice, setNotice] = useState('')
 
     useEffect(()=>{
         fullData()
     }, [])
 
+    const date = new Date();
+    const day = date.getDay();
+
+    const checkSchedMounth = (config)=>{
+        const currMounth = date.getMonth() + 1
+        if (currMounth === 10 ||currMounth === 11 || currMounth === 3){
+            setSched(config.schedule2)
+        } else {setSched(config.schedule)}
+
+        const currentNotice = config.notice.find(i => {if(i.date - currMounth === 1){return i} })
+        setNotice(currentNotice)
+    }
+
     const fullData = async ()=>{
         const config = await api.getConfig()
-        setSched(config.schedule)
+        checkSchedMounth(config)
         setContact(config.contact)
     }
 
-
-    const date = new Date();
-    const day = date.getDay();
     const scheduleMap = sched.map((item, i) => {
         const active = 'active1';
         const holiday = item.off ? 'holiday' : ''
@@ -89,6 +101,17 @@ const Contacts = () => {
                     </Paper>
                 </div>
             }
+            <div className='notice'>
+                {notice
+                    ?
+                    <div>
+                        *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
+                        <span className='holiday'> понедельник - выходной</span>
+                    </div>
+                    :
+                    ''
+                }
+            </div>
 
             <div className='paddingTB blockTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
             <div className='pageBody'>
@@ -118,7 +141,8 @@ const Contacts = () => {
 const View = ({item, active, holiday}) =>{
     return (
         <>
-            <ListItem button disablePadding className={`work ${holiday} ${active} grids`}>
+            <ListItem button disablePadding className={`work ${holiday} ${active}`}>
+                <div className='icon'><EventIcon/></div>
                 <div className='day'>{item.day}</div>
                 <div className='time'>{item.time}</div>
             </ListItem>

@@ -12,7 +12,7 @@ import {api} from '../api/api'
 
 const Modal = () => {
 	const dispatch = useDispatch()
-	const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+	const { register, handleSubmit, formState: { errors }, } = useForm();
 
 	const onSubmit = data =>{
 		api.sendContact(data)
