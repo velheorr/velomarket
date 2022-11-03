@@ -20,10 +20,9 @@ const CatalogCard = ({items}) => {
             return true
         }
     }
-
-    return (
+     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
-            <Card sx={{ maxWidth: 300 }} className='catalog-cards-column'>
+            <Card sx={{ maxWidth: 300, background: ()=> notAvailable() ? '#f3f3f3 !important' : '' }} className='catalog-cards-column'>
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom component="div" fontSize={16} fontWeight={600} height={46} color={'#333'} overflow={'hidden'} align={'center'}>
