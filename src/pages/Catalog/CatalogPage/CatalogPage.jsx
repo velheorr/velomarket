@@ -11,7 +11,6 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import Slider from "../../../Slider/Slider";
 import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -68,7 +67,6 @@ const CatalogPage = () => {
 
     return (
         <Fancybox options={{ infinite: false }}>
-            <Slider/>
             <ListItem disablePadding className='pageTitle'>
                 <Link to={backBTN}>
                     <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>

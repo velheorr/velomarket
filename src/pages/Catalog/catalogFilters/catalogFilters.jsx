@@ -94,31 +94,14 @@ const CatalogFilters = ({className}) => {
             </div>
         })
     }
-    /*const renderCatalogSelect = (filteredType)=>{
-        let x = []
 
-        return filteredType.map((el, i) =>{
-            if (el.length <1) return null;
-            x.push(el)
-            return <MenuItem key={i} value={el}>{el}</MenuItem>
-        })
-        console.log(x)
-    }*/
     const renderCatalogSelect = (filteredType)=>{
-        let x = []
-
-        let y = filteredType.map((el, i) =>{
-            if (el.length <1) return null;
-            x.push(el)
+        return filteredType.filter(i => i != '')
+                            .sort()
+                            .map((el, i) =>{
             return <MenuItem key={i} value={el}>{el}</MenuItem>
         })
-        console.log(x.sort())
-        return y
-
     }
-    /*let x = filteredType.sort()
-    console.log(x)*/
-
 
     const catalogFilterType = renderCatalogSelect(filteredType);
 

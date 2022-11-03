@@ -2,7 +2,6 @@ import '../../App.scss'
 import "./Catalog.scss";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import Slider from "../../Slider/Slider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 
@@ -28,7 +27,7 @@ const Catalog = () => {
 
     return (
         <>
-            <Slider/>
+
             <div className='paddingTB blockTitle'><ShoppingCartIcon className='iconAlign' color="primary" /> Каталог товаров</div>
 
             <div className='wrapper2'>

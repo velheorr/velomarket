@@ -11,9 +11,17 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 
 
-
+/*Цена, Тип, Размер,*/
 const CatalogCard = ({items}) => {
-    const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, Цена, Тип, Размер,НоменклатураАртикулПроизв, ПутьКартинок,ОснКартинка, НоменклатураМодель} = items;
+    const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, НоменклатураАртикулПроизв, ПутьКартинок,ОснКартинка, НоменклатураМодель, ВНаличии} = items;
+    console.log(ВНаличии)
+
+    const notAvailable = () =>{
+        if (ВНаличии <= 1 && ВНаличии === ''){
+            return true
+        }
+    }
+
 
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>
@@ -29,10 +37,12 @@ const CatalogCard = ({items}) => {
                         component="img"
                         height='300px'
                         image ={imgURL(ПутьКартинок, ОснКартинка, true)}
-                        sx={{objectFit: 'scale-down'}}
+                        sx={{objectFit: 'scale-down', filter: ()=> notAvailable() ? 'grayscale(100%)' : ''}}
                         alt={Номенклатура}
                         onError ={imgURLerror}
                     />
+                    {notAvailable() ? <div className='notAvailable'>Нет в наличии</div> : ''}
+
                     <CardContent>
                         <Divider/>
                         <Typography variant="body2" color="text.secondary" component="div" marginTop={'10px'} >

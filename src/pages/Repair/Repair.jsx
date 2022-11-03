@@ -8,14 +8,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
 import {api} from '../../api/api'
-/*import repairPrice from '../../Data/data.json'*/
-
-import Slider from "../../Slider/Slider";
 import {sortData} from "../../assets/functions";
 import {useDispatch, useSelector} from "react-redux";
 import {data} from './RepairSlice'
 import Loader from "../../assets/loader/Loader";
-
 
 
 const Repair = () => {
@@ -79,7 +75,6 @@ const Repair = () => {
 
     return (
         <>
-            <Slider/>
             <div className='paddingTB blockTitle'><HomeRepairServiceIcon className='iconAlign' color="primary" /> Сервис и Ремонт</div>
             <div className='pageBody'>
                 <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }}>

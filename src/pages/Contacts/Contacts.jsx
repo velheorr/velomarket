@@ -8,7 +8,6 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
 import MapIcon from '@mui/icons-material/Map';
-import Slider from "../../Slider/Slider";
 import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
 import Paper from "@mui/material/Paper";
 import StoreIcon from "@mui/icons-material/Store";
@@ -65,8 +64,6 @@ const Contacts = () => {
 
     return (
         <>
-            <Slider/>
-
             <div className='paddingTB blockTitle'><ContactsIcon className='iconAlign' color="primary" />Контакты</div>
             {
                 !contact

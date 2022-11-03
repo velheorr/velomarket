@@ -1,12 +1,14 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-import '../App.scss'
+import '../../App.scss'
 
-import img1 from "./img/1.jpg"
-import img2 from "./img/2.jpg"
-import img3 from "./img/3.jpg"
-import img4 from "./img/4.jpg"
-import img5 from "./img/5.jpg"
+import img1 from "./img/winter/1.jpg"
+import img2 from "./img/winter/2.jpg"
+import img3 from "./img/winter/3.jpg"
+import img4 from "./img/winter/4.jpg"
+import img5 from "./img/winter/5.jpg"
+import img6 from "./img/winter/6.jpg"
+import img7 from "./img/winter/7.jpg"
 
 const mainSlides = [
     { url: img1 },
@@ -14,6 +16,8 @@ const mainSlides = [
     { url: img3 },
     { url: img4 },
     { url: img5 },
+    { url: img6 },
+    { url: img7 },
 ]
 
 const Slider = ({slidePack = mainSlides}) => {

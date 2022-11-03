@@ -17,7 +17,6 @@ import {filterCatalogBy} from '../../../assets/functions'
 
 import {useDispatch, useSelector} from "react-redux";
 import Divider from "@mui/material/Divider";
-import Slider from "../../../Slider/Slider";
 import {Link, useParams} from "react-router-dom";
 
 import ListItemText from "@mui/material/ListItemText";
@@ -97,7 +96,6 @@ const CatalogFiltersContainer = () => {
 
     return (
         <>
-            <Slider/>
             <ListItem disablePadding className='pageTitle'>
                 <Link to={`/`}><Button variant="outlined" onClick={resetFiltersFromCatalogs}  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
                 <ListItemText className='breadcrump' primary={id}/>
@@ -118,9 +116,7 @@ const CatalogFiltersContainer = () => {
                     <Loader/>
             }
             <div className='upBtn'>
-                <IconButton color="primary" onClick={scrollTop}>
-                    <ArrowUpwardIcon/>
-                </IconButton>
+                <IconButton color="primary" onClick={scrollTop}><ArrowUpwardIcon/></IconButton>
             </div>
         </>
     );

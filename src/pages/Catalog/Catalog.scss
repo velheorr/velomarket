@@ -137,3 +137,14 @@
     border: 1px solid #1976d2;
     border-radius: 50%;
 }
+
+.notAvailable {
+    background: grey;
+    padding: 3px;
+    text-align: right;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 76px;
+    border-radius: 4px;
+}
