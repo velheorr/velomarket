@@ -92,7 +92,9 @@ const CatalogPage = () => {
                                     data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}/>
                             </div>
                             <Paper sx={{width: '100%',backgroundColor: '#ffffffed', pt: 1}} className='imgList'>
-                                <span data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}><img className='extraImg' src={imgURL(item.ПутьКартинок, item.ОснКартинка)} alt='img'/></span>
+                                <span data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)} >
+                                    <img className='extraImg' src={imgURL(item.ПутьКартинок, item.ОснКартинка)} alt='img' onError={imgURLerror}/>
+                                </span>
                                 {extraImg.length > 0 ? extraImg : ''}
                             </Paper>
 

@@ -14,14 +14,12 @@ import Divider from "@mui/material/Divider";
 /*Цена, Тип, Размер,*/
 const CatalogCard = ({items}) => {
     const {Номенклатура, НоменклатураБренд, НоменклатураКод, НоменклатураАртикул, НоменклатураАртикулПроизв, ПутьКартинок,ОснКартинка, НоменклатураМодель, ВНаличии} = items;
-    console.log(ВНаличии)
 
     const notAvailable = () =>{
         if (ВНаличии <= 1 && ВНаличии === ''){
             return true
         }
     }
-
 
     return (
         <Link to={`/catalog/${НоменклатураКод}`}>

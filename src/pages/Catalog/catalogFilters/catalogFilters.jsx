@@ -120,27 +120,7 @@ const CatalogFilters = ({className}) => {
         <div className={className}>
             <Paper className='filtersContainer' elevation={3}>
                 <div className='filterHeader'>Параметры</div>
-               {/* <Divider sx={{mb: '10px'}}/>*/}
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    {/*<div className='filters'>Цена:</div>
-                <TextField
-                    {...register("priceFrom", {min: 0})}
-                    label="От"
-                    defaultValue=''
-                    size="small"
-                    variant="outlined"
-                    className='filters'
-                    type="number"
-                />
-                <TextField
-                    {...register("priceTo", {min: 0})}
-                    label="До"
-                    defaultValue=""
-                    size="small"
-                    variant="outlined"
-                    className='filters'
-                    type="number"
-                />*/}
                     {
                         filteredType.length > 1
                             ?
@@ -189,3 +169,24 @@ const CatalogFilters = ({className}) => {
 };
 
 export default CatalogFilters;
+
+
+{/*<div className='filters'>Цена:</div>
+                <TextField
+                    {...register("priceFrom", {min: 0})}
+                    label="От"
+                    defaultValue=''
+                    size="small"
+                    variant="outlined"
+                    className='filters'
+                    type="number"
+                />
+                <TextField
+                    {...register("priceTo", {min: 0})}
+                    label="До"
+                    defaultValue=""
+                    size="small"
+                    variant="outlined"
+                    className='filters'
+                    type="number"
+                />*/}
