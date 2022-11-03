@@ -11,11 +11,13 @@ const Catalog = () => {
 
     const renderMainCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
-            <div key={i} item  className='catalog-column'>
+            <div key={i} className='catalog-column'>
                 <Link to={`/catalogs/${item.name}`}>
                     <div className='catalog-container'>
                         <div className='catalog-text'>{item.name}</div>
-                        <div style={{backgroundImage: `url(${item.img})`}} className='catalog-item'></div>
+                        <div className="catalog-item">
+                            <img src={item.img} alt=""/>
+                        </div>
                     </div>
                 </Link>
             </div>

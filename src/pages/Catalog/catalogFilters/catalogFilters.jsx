@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize} from "../CatalogSlice";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import {clearSymbol, filterCatalogBy} from "../../../assets/functions";
+import {clearSymbol, filterCatalogBy, sortData} from "../../../assets/functions";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
@@ -24,6 +24,7 @@ const CatalogFilters = ({className}) => {
     const dispatch = useDispatch();
 
     const [selectType, setSelectType] = useState('All');
+
 
     const handleChange = (event) => {
         setSelectType(event.target.value);
@@ -93,12 +94,32 @@ const CatalogFilters = ({className}) => {
             </div>
         })
     }
-    const renderCatalogSelect = (filteredType)=>{
+    /*const renderCatalogSelect = (filteredType)=>{
+        let x = []
+
         return filteredType.map((el, i) =>{
             if (el.length <1) return null;
+            x.push(el)
             return <MenuItem key={i} value={el}>{el}</MenuItem>
         })
+        console.log(x)
+    }*/
+    const renderCatalogSelect = (filteredType)=>{
+        let x = []
+
+        let y = filteredType.map((el, i) =>{
+            if (el.length <1) return null;
+            x.push(el)
+            return <MenuItem key={i} value={el}>{el}</MenuItem>
+        })
+        console.log(x.sort())
+        return y
+
     }
+    /*let x = filteredType.sort()
+    console.log(x)*/
+
+
     const catalogFilterType = renderCatalogSelect(filteredType);
 
     const catalogFilterBrand = renderCatalogFilters(filteredBrand, 'brand');
