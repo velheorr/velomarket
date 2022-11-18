@@ -16,6 +16,7 @@ import React, {useEffect, useState} from "react";
 import Loader from "../../assets/loader/Loader";
 import EventIcon from '@mui/icons-material/Event';
 import TitleBlock from "../../elements/TitleBlock";
+import PinDropIcon from '@mui/icons-material/PinDrop';
 
 const Contacts = () => {
     const [sched, setSched] = useState([]);
@@ -66,26 +67,71 @@ const Contacts = () => {
     return (
         <>
             <TitleBlock name='Контакты' icon={<ContactsIcon className="iconAlign" color="primary" />}/>
-            <div className='pageBody'>
-                <Paper elevation={3}>
-                    <YMaps>
-                        <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
-                            key={i}
-                            geometry={coordinate}
-                            options={{
-                                preset: "islands#blueStretchyIcon",
-                                balloonCloseButton: false,
-                                hideIconOnBalloonOpen: false
-                            }}
-                            properties={{
-                                iconContent: 'Веломаркет "Колесо"',
-                            }}
-                        />)}
-                            <ZoomControl options={{ float: 'right' }} />
-                        </Map>
-                    </YMaps>
-                </Paper>
+
+            <div className='contactBlock'>
+                <div className='block1'>
+                    <div className='subTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
+ {/*                   {
+                        !contact
+                            ? <Loader/>
+                            : <div className='contactInfo'>
+                                <div><HomeIcon color="primary"/></div>
+                                <div style={{flexGrow:1}}>
+                                    <div>г. Пермь,</div>
+                                    <div>{contact.street}</div>
+                                </div>
+                            </div>
+                    }*/}
+                    {
+                        !contact
+                            ? <Loader/>
+                            : <div className='blocks'>
+                                <div>
+                                    <div><HomeIcon fontSize="large" color="primary"/></div>
+                                    <div>г. Пермь, </div>
+                                    <div>{contact.street}</div>
+                                </div>
+                                <div>
+                                    <div><StoreIcon fontSize="large" color="primary"/></div>
+                                    <div>Магазин</div>
+                                    <div>{contact.name}</div>
+                                </div>
+                                <div>
+                                    <div><PhoneIcon fontSize="large" color="primary"/></div>
+                                    <div>Телефон</div>
+                                    <div>{contact.phone}</div>
+                                </div>
+                            </div>
+                    }
+                </div>
+                <div className='block2'>
+                    <div className='subTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
+                    {
+                        !sched
+                            ? <Loader/>
+                            : <div>
+                                <Paper sx={{m: '25px 0'}}>
+                                    <List>
+                                        {scheduleMap}
+                                    </List>
+                                </Paper>
+                            </div>
+                    }
+                    <div className='notice'>
+                        {notice
+                            ?
+                            <div>
+                                *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
+                                <span className='holiday'> понедельник - выходной</span>
+                            </div>
+                            :
+                            ''
+                        }
+                    </div>
+                </div>
             </div>
+
+            <div className='paddingTB blockTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
             {
                 !contact
                 ? <Loader/>
@@ -132,10 +178,12 @@ const Contacts = () => {
             </div>
 
             <div className='paddingTB blockTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
-            <div className='pageBody'>
-                <Paper elevation={3}>
-                    <YMaps>
-                        <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
+
+
+            <div className='yaMap'>
+                <YMaps>
+                    <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) =>
+                        <Placemark
                             key={i}
                             geometry={coordinate}
                             options={{
@@ -147,11 +195,13 @@ const Contacts = () => {
                                 iconContent: 'Веломаркет "Колесо"',
                             }}
                         />)}
-                            <ZoomControl options={{ float: 'right' }} />
-                        </Map>
-                    </YMaps>
-                </Paper>
+                        <ZoomControl options={{float: 'right'}}/>
+                    </Map>
+                </YMaps>
             </div>
+
+
+
          </>
     );
 };
