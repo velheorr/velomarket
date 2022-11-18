@@ -77,7 +77,7 @@ const CatalogPage = () => {
             </div>
 
 
-            <Divider/>
+           
 
             <div className='pageBody'>
                 {item
