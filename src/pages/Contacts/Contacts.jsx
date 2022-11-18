@@ -12,9 +12,10 @@ import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
 import Paper from "@mui/material/Paper";
 import StoreIcon from "@mui/icons-material/Store";
 import {api} from "../../api/api";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Loader from "../../assets/loader/Loader";
 import EventIcon from '@mui/icons-material/Event';
+import TitleBlock from "../../elements/TitleBlock";
 
 const Contacts = () => {
     const [sched, setSched] = useState([]);
@@ -64,7 +65,27 @@ const Contacts = () => {
 
     return (
         <>
-            <div className='paddingTB blockTitle'><ContactsIcon className='iconAlign' color="primary" />Контакты</div>
+            <TitleBlock name='Контакты' icon={<ContactsIcon className="iconAlign" color="primary" />}/>
+            <div className='pageBody'>
+                <Paper elevation={3}>
+                    <YMaps>
+                        <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) => <Placemark
+                            key={i}
+                            geometry={coordinate}
+                            options={{
+                                preset: "islands#blueStretchyIcon",
+                                balloonCloseButton: false,
+                                hideIconOnBalloonOpen: false
+                            }}
+                            properties={{
+                                iconContent: 'Веломаркет "Колесо"',
+                            }}
+                        />)}
+                            <ZoomControl options={{ float: 'right' }} />
+                        </Map>
+                    </YMaps>
+                </Paper>
+            </div>
             {
                 !contact
                 ? <Loader/>
