@@ -9,9 +9,11 @@ import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {api} from "../../api/api";
 import Loader from "../../assets/loader/Loader";
+import TitleBlock from "../../elements/TitleBlock";
+
 
 
 const Delivery = () => {
@@ -30,6 +32,7 @@ const Delivery = () => {
 
     return (
         <>
+            <TitleBlock name='Оплата и доставка' icon={<StoreIcon className='iconAlign' color="primary"/>}/>
             <div className='paddingTB blockTitle'>Способы оплаты</div>
             <div className='blocks paddingTB'>
                 <div>
