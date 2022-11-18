@@ -19,6 +19,8 @@ import Loader from "../../../assets/loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
 import {api} from "../../../api/api";
 import {getFullCatalog} from "../CatalogSlice";
+import TitleBlock from "../../../elements/TitleBlock";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 
 const CatalogPage = () => {
@@ -67,12 +69,14 @@ const CatalogPage = () => {
 
     return (
         <Fancybox options={{ infinite: false }}>
-            <ListItem disablePadding className='pageTitle'>
+            <TitleBlock name={"Описание товара"} />
+            <div className='backBTN'>
                 <Link to={backBTN}>
                     <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>
                 </Link>
-                <ListItemText className='breadcrump' primary="Описание товара"/>
-            </ListItem>
+            </div>
+
+
             <Divider/>
 
             <div className='pageBody'>

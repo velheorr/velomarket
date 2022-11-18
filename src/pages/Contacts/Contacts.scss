@@ -37,24 +37,24 @@
 .contactBlock {
     display: flex;
     flex-wrap: wrap;
-    .subTitle {
-        font-weight: 600;
-        font-size: 20px;
-        font-style: italic;
-        margin-left: 20px;
-        margin-bottom: 15px;
-    }
+
     .block1 {
-        flex-basis:30%;
+        flex: 1 1 40%;
     }
     .block2 {
-        flex-grow:1;
-        width: 40%;
+        flex: 1 1 40%;
+        min-width: 280px;
     }
     @media (max-width: 560px) {.block1{flex-basis:100%;}}
-    .contactInfo {
-        display: inline-flex;
-        justify-content: end;
-        width: 100%;
-    }
+}
+.subTitle {
+    font-weight: 600;
+    font-size: 20px;
+    font-style: italic;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.scheduleBlock {
+    max-width: 800px;
 }

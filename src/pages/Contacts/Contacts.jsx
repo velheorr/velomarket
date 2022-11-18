@@ -71,17 +71,6 @@ const Contacts = () => {
             <div className='contactBlock'>
                 <div className='block1'>
                     <div className='subTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
- {/*                   {
-                        !contact
-                            ? <Loader/>
-                            : <div className='contactInfo'>
-                                <div><HomeIcon color="primary"/></div>
-                                <div style={{flexGrow:1}}>
-                                    <div>г. Пермь,</div>
-                                    <div>{contact.street}</div>
-                                </div>
-                            </div>
-                    }*/}
                     {
                         !contact
                             ? <Loader/>
@@ -109,7 +98,7 @@ const Contacts = () => {
                     {
                         !sched
                             ? <Loader/>
-                            : <div>
+                            : <div className="scheduleBlock">
                                 <Paper sx={{m: '25px 0'}}>
                                     <List>
                                         {scheduleMap}
@@ -131,55 +120,7 @@ const Contacts = () => {
                 </div>
             </div>
 
-            <div className='paddingTB blockTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
-            {
-                !contact
-                ? <Loader/>
-                : <div className='blocks paddingTB'>
-                        <div>
-                            <div><HomeIcon fontSize="large" color="primary"/></div>
-                            <div>г. Пермь, </div>
-                            <div>{contact.street}</div>
-                        </div>
-                        <div>
-                            <div><StoreIcon fontSize="large" color="primary"/></div>
-                            <div>Магазин</div>
-                            <div>{contact.name}</div>
-                        </div>
-                        <div>
-                            <div><PhoneIcon fontSize="large" color="primary"/></div>
-                            <div>Телефон</div>
-                            <div>{contact.phone}</div>
-                        </div>
-                    </div>
-            }
-            <div className='paddingTB blockTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
-            {
-                !sched
-                ? <Loader/>
-                : <div className='pageBody'>
-                    <Paper sx={{mb: '15px'}}>
-                        <List>
-                            {scheduleMap}
-                        </List>
-                    </Paper>
-                </div>
-            }
-            <div className='notice'>
-                {notice
-                    ?
-                    <div>
-                        *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
-                        <span className='holiday'> понедельник - выходной</span>
-                    </div>
-                    :
-                    ''
-                }
-            </div>
-
-            <div className='paddingTB blockTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
-
-
+            <div className='subTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
             <div className='yaMap'>
                 <YMaps>
                     <Map width='100%' height='450px' defaultState={mapData}>{coordinates.map((coordinate, i) =>

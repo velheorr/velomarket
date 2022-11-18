@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../../App.scss'
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -24,6 +24,8 @@ import ListItem from "@mui/material/ListItem";
 import Loader from "../../../assets/loader/Loader";
 import IconButton from "@mui/material/IconButton";
 import {api} from "../../../api/api";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import TitleBlock from "../../../elements/TitleBlock";
 
 
 
@@ -96,10 +98,12 @@ const CatalogFiltersContainer = () => {
 
     return (
         <>
-            <ListItem disablePadding className='pageTitle'>
+            <TitleBlock name={id} />
+            <div className='backBTN'>
                 <Link to={`/`}><Button variant="outlined" onClick={resetFiltersFromCatalogs}  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
-                <ListItemText className='breadcrump' primary={id}/>
-            </ListItem>
+            </div>
+
+
             <Divider/>
             {
                 data
