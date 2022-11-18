@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../App.scss'
 import "./Repair.scss";
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
@@ -12,6 +12,7 @@ import {sortData} from "../../assets/functions";
 import {useDispatch, useSelector} from "react-redux";
 import {data} from './RepairSlice'
 import Loader from "../../assets/loader/Loader";
+import TitleBlock from "../../elements/TitleBlock";
 
 
 const Repair = () => {
@@ -75,7 +76,7 @@ const Repair = () => {
 
     return (
         <>
-            <div className='paddingTB blockTitle'><HomeRepairServiceIcon className='iconAlign' color="primary" /> Сервис и Ремонт</div>
+            <TitleBlock name='Сервис и Ремонт' icon={<HomeRepairServiceIcon className='iconAlign' color="primary"/>}/>
             <div className='pageBody'>
                 <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }}>
                     <InputLabel id="repairSelect">Услуги</InputLabel>

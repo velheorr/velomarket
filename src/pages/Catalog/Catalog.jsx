@@ -3,6 +3,8 @@ import "./Catalog.scss";
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import TitleBlock from "../../elements/TitleBlock";
+import React from "react";
 
 
 const Catalog = () => {
@@ -27,9 +29,7 @@ const Catalog = () => {
 
     return (
         <>
-
-            <div className='paddingTB blockTitle'><ShoppingCartIcon className='iconAlign' color="primary" /> Каталог товаров</div>
-
+            <TitleBlock name='Каталог товаров' icon={<ShoppingCartIcon className='iconAlign' color="primary"/>}/>
             <div className='wrapper2'>
                <div className='catalog-row'>{catalogElements}</div>
             </div>
