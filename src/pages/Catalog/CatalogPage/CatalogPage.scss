@@ -11,10 +11,12 @@
     font-weight: 900;
     text-align: center;
     margin-bottom: 15px;
+    overflow-wrap: break-word;
 }
 
 .itemImgBlock {
     display:flex;
+    flex-wrap: wrap;
     .imgList {
         img {
             width: 60px;
@@ -33,6 +35,9 @@
         img {
             cursor: pointer;
             height: 300px;
+        }
+        @media (max-width: 570px) {
+            img {height: 200px}
         }
     }
 }

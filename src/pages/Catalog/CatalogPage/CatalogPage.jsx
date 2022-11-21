@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './CatalogPage.scss'
 import {Link, useParams} from 'react-router-dom';
 
@@ -16,11 +16,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {api} from "../../../api/api";
 import {getFullCatalog} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
+import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
+
 
 const CatalogPage = () => {
     const {itemId} = useParams()
     const [item, setItem] = useState('');
     const [value, setValue] = useState('2');
+    const [image, setImage] = useState('')
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -46,22 +49,14 @@ const CatalogPage = () => {
 
     const strSplit = ()=>{
         if (item){
-            const str = item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
-            return str
+            return item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
         }
     }
     const itemDescription = strSplit()
 
-
-
-    let mainImg = noImgURL
-
-    item ? mainImg = imgURL(item.ПутьКартинок, item.ОснКартинка) : mainImg = noImgURL
-
-    const imgClick = (img, e)=>{
+    const imgClick = (funcImg, e)=>{
         e.preventDefault()
-        console.log(img)
-        mainImg = img
+        setImage(funcImg)
     }
 
     const renderMoreImg = ()=>{
@@ -101,15 +96,9 @@ const CatalogPage = () => {
                             <div className='itemImgBlock'>
                                 <div className='imgList'>
                                     {extraImg}
-                                    {/*{extraImg.length > 0 ? extraImg : ''}*/}
                                 </div>
                                 <div className='itemImg'>
-                                    <img
-                                        src={mainImg}
-                                        alt="veloamarketkoleso.ru"
-                                        onError={imgURLerror}
-                                        data-fancybox-trigger="gallery"
-                                        />
+                                    <ImgForCatalogPage mainImg={image} item={item}/>
                                 </div>
                             </div>
 
@@ -150,3 +139,4 @@ const CatalogPage = () => {
 };
 
 export default CatalogPage;
+
