@@ -1,5 +1,5 @@
 const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/';
-const noImgURL = baseURL + 'images/noimg.png';
+export const noImgURL = baseURL + 'images/noimg.png';
 
 export const imgURL = (path, mainImg,thumb = false)=>{
     if (path === '' && mainImg === '') {

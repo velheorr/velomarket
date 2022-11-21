@@ -17,6 +17,7 @@ import Loader from "../../assets/loader/Loader";
 import EventIcon from '@mui/icons-material/Event';
 import TitleBlock from "../../elements/TitleBlock";
 import PinDropIcon from '@mui/icons-material/PinDrop';
+import NewReleasesIcon from '@mui/icons-material/NewReleases';
 
 const Contacts = () => {
     const [sched, setSched] = useState([]);
@@ -109,9 +110,12 @@ const Contacts = () => {
                     <div className='notice'>
                         {notice
                             ?
-                            <div>
-                                *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
-                                <span className='holiday'> понедельник - выходной</span>
+                            <div style={{display: 'inline-flex'}}>
+                                <NewReleasesIcon fontSize='large' className='iconAlign' color="warning" />
+                                <div>
+                                    *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
+                                    <span className='holiday'> понедельник - выходной</span>
+                                </div>
                             </div>
                             :
                             ''

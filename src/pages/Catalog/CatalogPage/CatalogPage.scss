@@ -6,17 +6,40 @@
     margin-top: 15px;
 }
 .itemTitle {
-    font-weight: 500;
-    font-size: 24px;
-    padding-left: 150px;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
     margin-bottom: 15px;
 }
 
-.itemImg {
-    text-align: center;
-    background-color: #f3f3f3;
-    padding: 15px;
+.itemImgBlock {
+    display:flex;
+    .imgList {
+        img {
+            width: 60px;
+            padding: 4px;
+            border: 1px solid #b3b3b7;
+            border-radius: 5px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .itemImg {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 15px;
+        img {
+            cursor: pointer;
+            height: 300px;
+        }
+    }
 }
+
+
+
+
 
 .cardData {
     margin-left: 20px;
@@ -30,20 +53,7 @@
     }
 }
 
-.imgList {
-    span {
-        margin-right: 10px;
-    }
-    .extraImg {
-        width: 60px;
-        padding: 4px;
-        border: 1px solid #b3b3b7;
-        border-radius: 5px;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-}
+
 
 .fancybox__backdrop {
     opacity: 0.8 !important;

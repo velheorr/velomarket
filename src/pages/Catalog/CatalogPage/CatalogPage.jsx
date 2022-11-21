@@ -1,32 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './CatalogPage.scss'
 import {Link, useParams} from 'react-router-dom';
 
-import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Paper from "@mui/material/Paper";
-
-
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import {clearSymbol, imgURL, imgURLerror, noImgURL} from "../../../assets/functions";
+
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
 import {api} from "../../../api/api";
 import {getFullCatalog} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
 
 const CatalogPage = () => {
     const {itemId} = useParams()
     const [item, setItem] = useState('');
-    const [value, setValue] = useState('1');
+    const [value, setValue] = useState('2');
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -58,14 +52,34 @@ const CatalogPage = () => {
     }
     const itemDescription = strSplit()
 
+
+
+    let mainImg = noImgURL
+
+    item ? mainImg = imgURL(item.ПутьКартинок, item.ОснКартинка) : mainImg = noImgURL
+
+    const imgClick = (img, e)=>{
+        e.preventDefault()
+        console.log(img)
+        mainImg = img
+    }
+
     const renderMoreImg = ()=>{
         let arr = []
-        if (item){ arr = item.ДопКартинки.split(',')}
+        if (item){
+            arr = item.ДопКартинки.split(',')
+            arr.unshift(item.ОснКартинка)
+        }
         return arr.map((img, i)=>{
-            return <span key={i} data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)}><img className='extraImg' src={imgURL(item.ПутьКартинок, img)} alt='img'/></span>
+            const funcImg = imgURL(item.ПутьКартинок, img)
+            return <div key={i}  data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)} onClick={(e)=>imgClick(funcImg, e)}>
+                <img className='extraImg' src={imgURL(item.ПутьКартинок, img)} alt='img'/>
+            </div>
         })
     }
     const extraImg = renderMoreImg()
+
+
 
     return (
         <Fancybox options={{ infinite: false }}>
@@ -77,30 +91,27 @@ const CatalogPage = () => {
             </div>
 
 
-           
-
             <div className='pageBody'>
                 {item
                     ?
                         <>
                             <div className='itemPath'>{item.ПутьПапки}</div>
                             <div className='itemTitle'>{item.Номенклатура}</div>
-                            <div className='itemImg'>
-                                <img
-                                    style={{cursor: 'pointer'}}
-                                    src={imgURL(item.ПутьКартинок, item.ОснКартинка)}
-                                    height={300}
-                                    alt="veloamarketkoleso.ru"
-                                    onError={imgURLerror}
-                                    data-fancybox="gallery"
-                                    data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)}/>
+
+                            <div className='itemImgBlock'>
+                                <div className='imgList'>
+                                    {extraImg}
+                                    {/*{extraImg.length > 0 ? extraImg : ''}*/}
+                                </div>
+                                <div className='itemImg'>
+                                    <img
+                                        src={mainImg}
+                                        alt="veloamarketkoleso.ru"
+                                        onError={imgURLerror}
+                                        data-fancybox-trigger="gallery"
+                                        />
+                                </div>
                             </div>
-                            <Paper sx={{width: '100%',backgroundColor: '#ffffffed', pt: 1}} className='imgList'>
-                                <span data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, item.ОснКартинка)} >
-                                    <img className='extraImg' src={imgURL(item.ПутьКартинок, item.ОснКартинка)} alt='img' onError={imgURLerror}/>
-                                </span>
-                                {extraImg.length > 0 ? extraImg : ''}
-                            </Paper>
 
                             <TabContext value={value}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
