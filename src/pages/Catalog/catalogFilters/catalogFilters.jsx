@@ -96,7 +96,7 @@ const CatalogFilters = ({className}) => {
     }
 
     const renderCatalogSelect = (filteredType)=>{
-        return filteredType.filter(i => i != '')
+        return filteredType.filter(i => i !== '')
                             .sort()
                             .map((el, i) =>{
             return <MenuItem key={i} value={el}>{el}</MenuItem>

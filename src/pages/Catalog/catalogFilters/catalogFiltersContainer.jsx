@@ -16,15 +16,10 @@ import {
 import {filterCatalogBy} from '../../../assets/functions'
 
 import {useDispatch, useSelector} from "react-redux";
-import Divider from "@mui/material/Divider";
 import {Link, useParams} from "react-router-dom";
-
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
 import Loader from "../../../assets/loader/Loader";
 import IconButton from "@mui/material/IconButton";
 import {api} from "../../../api/api";
-import ContactsIcon from "@mui/icons-material/Contacts";
 import TitleBlock from "../../../elements/TitleBlock";
 
 

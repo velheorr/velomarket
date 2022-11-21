@@ -3,9 +3,7 @@ import {imgURL, imgURLerror} from "../assets/functions";
 
 const ImgForCatalogPage = ({mainImg, item})=>{
 	let x
-	if (mainImg.length <1) {
-		x =  imgURL(item.ПутьКартинок, item.ОснКартинка)
-	} else { x = mainImg}
+	mainImg.length <1 ? x =  imgURL(item.ПутьКартинок, item.ОснКартинка) : x = mainImg
 	return (
 		<>
 			<img
