@@ -7,8 +7,6 @@ export const imgURL = (path, mainImg,thumb = false)=>{
     }
     let link = `${baseURL}images/${path}/${mainImg}`;
     if (thumb === true) {
-        /*let y = mainImg.split(/\.(?=[^\.]+$)/).join('_thumb.')
-        link = `${baseURL}thumbs/${path}/${y}`*/
         link = `${baseURL}thumb/${path}/${mainImg}`;
     }
     if (path && path.length > 1 && mainImg && mainImg.length > 1){
