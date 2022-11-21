@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize} from "../CatalogSlice";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import {clearSymbol, filterCatalogBy, sortData} from "../../../assets/functions";
+import {clearSymbol, filterCatalogBy} from "../../../assets/functions";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";

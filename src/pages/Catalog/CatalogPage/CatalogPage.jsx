@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import {clearSymbol, imgURL, imgURLerror, noImgURL} from "../../../assets/functions";
+import {clearSymbol, imgURL} from "../../../assets/functions";
 
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
