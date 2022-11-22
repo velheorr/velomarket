@@ -121,7 +121,9 @@
     }
     .footerRight {
         flex: 1 1 250px;
-        p {text-align: end;}
+        p {
+            padding-left: 100px;
+        }
         .footerTitle {
             font-family: "Alegreya", serif;
             letter-spacing: 2px;
@@ -163,7 +165,10 @@
     width: 250px;
     /*z-index: -1;
     opacity: 0.5;*/
+
 }
+@media (max-width: 600px) {.botLogo{opacity: .3;}}
+
 
 a {text-decoration: none;}
 
