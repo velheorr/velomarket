@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import {clearSymbol, imgURL, imgURLerror} from "../../../assets/functions";
+import {clearSymbol, imgURL} from "../../../assets/functions";
 
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
@@ -67,7 +67,6 @@ const CatalogPage = () => {
         }
         if (item){arr.unshift(item.ОснКартинка)}
         return arr.map((img, i)=>{
-            console.log(img)
             const funcImg = imgURL(item.ПутьКартинок, img)
             return <div key={i}  data-fancybox="gallery" data-src={imgURL(item.ПутьКартинок, img)} onClick={(e)=>imgClick(funcImg, e)}>
                 <img className='extraImg' src={imgURL(item.ПутьКартинок, img)} alt='img'/>

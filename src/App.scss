@@ -15,7 +15,6 @@
     background-color: #fff;
     box-shadow: 0 1px 10px -6px rgb(0 0 0 / 42%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 4px 5px -2px rgb(0 0 0 / 10%);
     .navHeader {
-        padding: 0 15px;
         display: flex;
         .navHeader-img{
             flex: 0 0 58px;
@@ -105,6 +104,39 @@
     .lowerHeader>div, .lowerHeader>div>div {width: 360px !important;height: 100px !important;}
 }
 
+.footer {
+    margin-top: 15px;
+    /*background: #333333;
+    color: #fff;*/
+    background: #f3f3f3;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 25px 15px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    .footerLeft{
+        flex: 1 1 60%;
+        font-style: italic;
+        font-size: 12px;
+        align-items: baseline;
+    }
+    .footerRight {
+        flex: 1 1 250px;
+        p {text-align: end;}
+        .footerTitle {
+            font-family: "Alegreya", serif;
+            letter-spacing: 2px;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-style: italic;
+            white-space: nowrap;
+            text-align: end;
+            text-shadow: 1px 1px 1px #fff;
+        }
+    }
+
+}
+
 .pageTitle {
     padding: 15px 35px;
     span {
@@ -125,11 +157,12 @@
 
 .botLogo {
     position: absolute;
-    width: 600px;
-    right: 14px;
-    bottom: -33px;
-    z-index: -1;
-    opacity: 0.5;
+    /*width: 600px;*/
+    /*right: 14px;*/
+    bottom: 0;
+    width: 250px;
+    /*z-index: -1;
+    opacity: 0.5;*/
 }
 
 a {text-decoration: none;}

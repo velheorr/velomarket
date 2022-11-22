@@ -6,13 +6,13 @@ import Catalog from "./pages/Catalog/Catalog";
 import Repair from "./pages/Repair/Repair";
 import Delivery from "./pages/Delivery/Delivery";
 import Contacts from "./pages/Contacts/Contacts";
-import logo from "./pages/Header/img/logo.png";
 import CatalogPage from "./pages/Catalog/CatalogPage/CatalogPage";
 import CatalogFiltersContainer from "./pages/Catalog/catalogFilters/catalogFiltersContainer";
 import Page404 from "./404/404";
 import {useSelector} from "react-redux";
 import Modal from "./Modal/Modal";
 import Slider from "./assets/Slider/Slider";
+import Footer from "./pages/Footer/Footer";
 
 
 const App = () => {
@@ -35,8 +35,9 @@ const App = () => {
 
                 <Route path="*"><Page404/></Route>
             </Switch>
-            <img className='botLogo' src={logo} alt={'velomarketkoleso.ru'}/>
+
             {modal? <Modal/> : ''}
+            <Footer/>
         </div>
     );
 }

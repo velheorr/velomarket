@@ -4,6 +4,7 @@
     font-style: italic;
     margin-bottom: 15px;
     margin-top: 15px;
+    word-break: break-word;
 }
 .itemTitle {
     font-family: 'Montserrat';
@@ -38,7 +39,7 @@
             max-width: 600px;
         }
         @media (max-width: 570px) {
-            img {height: 200px}
+            img {height: 180px;     max-width: 345px;}
         }
     }
 }
@@ -51,6 +52,7 @@
     margin-left: 20px;
 
     .cardParams {
+        word-break: break-word;
         display: grid;
         grid-template-columns: 3fr 7fr;
         :nth-child(odd) {
