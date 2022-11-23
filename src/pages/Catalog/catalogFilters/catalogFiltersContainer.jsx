@@ -97,23 +97,23 @@ const CatalogFiltersContainer = () => {
             <div className='backBTN'>
                 <Link to={`/`}><Button variant="outlined" onClick={resetFiltersFromCatalogs}  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
             </div>
-
-
-
-            {
-                data
-                ?
-                    <div className='pageBody catalogWrapper'>
-                        <CatalogFilters className='catalogWrapper-filters'/>
-                        <div className='catalog-cards'>
-                            <div className="catalog-cards-row">
-                                {catalogData ? catalogElements : 'no data' }
+            <div style={{minHeight: '500px'}}>
+                {
+                    data
+                        ?
+                        <div className='pageBody catalogWrapper'>
+                            <CatalogFilters className='catalogWrapper-filters'/>
+                            <div className='catalog-cards'>
+                                <div className="catalog-cards-row">
+                                    {catalogData ? catalogElements : 'no data' }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                :
-                    <Loader/>
-            }
+                        :
+                        <Loader/>
+                }
+            </div>
+
             <div className='upBtn'>
                 <IconButton color="primary" onClick={scrollTop}><ArrowUpwardIcon/></IconButton>
             </div>

@@ -43,13 +43,8 @@ const CatalogCard = ({items}) => {
                     <CardContent>
                         <Divider/>
                         <Typography variant="body2" color="text.secondary" component="div" marginTop={'10px'} >
-                            <div>Артикул: {НоменклатураАртикул}</div>
-                            <div>Арт. производителя:{НоменклатураАртикулПроизв}</div>
                             <div>Бренд: {НоменклатураБренд}</div>
                             <div>Модель: {clearSymbol(НоменклатураМодель)}</div>
-                        </Typography>
-                        <Typography variant="body2" color="text.primary" component="div">
-                           {/* <div className='price'>Цена: {Цена}р.</div>*/}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
