@@ -3,8 +3,6 @@
 .main {
     display: flex;
     flex-flow: column;
-    vertical-align: middle;
-    position: relative;
     min-height: 100vh;
 }
 
@@ -105,9 +103,7 @@
 }
 
 .footer {
-    margin-top: 15px;
-    /*background: #333333;
-    color: #fff;*/
+    margin-top: 20px;
     background: #f3f3f3;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
     padding: 25px 15px;
@@ -158,14 +154,7 @@
 }
 
 .botLogo {
-    position: absolute;
-    /*width: 600px;*/
-    /*right: 14px;*/
-    bottom: 0;
     width: 250px;
-    /*z-index: -1;
-    opacity: 0.5;*/
-
 }
 @media (max-width: 600px) {.botLogo{opacity: .3;}}
 
@@ -189,21 +178,5 @@ a {text-decoration: none;}
     flex-wrap: wrap;
     text-align: center;
     justify-content: center;
-    >div {
-        margin: 10px;
-        padding-top: 15px;
-        min-width: 300px;
-        width: 30%;
-        height: 100px;
-        box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-        background-color: #ffffffed;
-        >div:nth-child(2) {
-            font-weight: 600;
-            color: #676767;
-        }
-        >div:nth-child(3) {
-            font-style: italic;
-        }
-    }
 }
 

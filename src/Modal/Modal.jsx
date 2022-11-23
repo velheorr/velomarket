@@ -31,7 +31,7 @@ const Modal = () => {
 		<div className='modal'>
 			<Paper className='modalContent' elevation={3}>
 				<div className='close' >
-					<div>Форма обратной связи</div>
+					<div>Свяжитесь с нами</div>
 					<Button size="small" sx={{color: '#000'}} onClick={closeModal}>X</Button>
 				</div>
 				<Divider sx={{mb: '10px'}}/>

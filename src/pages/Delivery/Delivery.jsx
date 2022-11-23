@@ -13,6 +13,7 @@ import React, {useEffect, useState} from "react";
 import {api} from "../../api/api";
 import Loader from "../../assets/loader/Loader";
 import TitleBlock from "../../elements/TitleBlock";
+import BlockInfo from "../../elements/BlockInfo";
 
 
 
@@ -34,60 +35,33 @@ const Delivery = () => {
         <>
             <TitleBlock name='Оплата и доставка' icon={<StoreIcon className='iconAlign' color="primary"/>}/>
             <div className='paddingTB blockTitle'>Способы оплаты</div>
-            <div className='blocks paddingTB'>
-                <div>
-                    <div><CreditCardIcon fontSize="large" color="primary"/></div>
-                    <div>Банковской картой</div>
-                </div>
-                <div>
-                    <div><CurrencyRubleIcon fontSize="large" color="primary"/></div>
-                    <div>Наличными в магазине</div>
-                </div>
+            <div className='blocks'>
+                <BlockInfo icon={<CreditCardIcon fontSize="large" color="primary"/>} title={'Банковской картой'}/>
+                <BlockInfo icon={<CurrencyRubleIcon fontSize="large" color="primary"/>} title={'Наличными в магазине'}/>
             </div>
 
             <div className='paddingTB blockTitle'>Самовывоз</div>
             {
-                 !contact
-                 ? <Loader/>
-                 : <div className='blocks paddingTB'>
-                     <div>
-                         <div><HomeIcon fontSize="large" color="primary"/></div>
-                         <div>г. Пермь, </div>
-                         <div>{contact.street}</div>
-                     </div>
-                     <div>
-                         <div><StoreIcon fontSize="large" color="primary"/></div>
-                         <div>Магазин</div>
-                         <div>{contact.name}</div>
-                     </div>
-                 </div>
+                !contact
+                ? <Loader/>
+                : <div className='blocks'>
+                    <BlockInfo icon={<HomeIcon fontSize="large" color="primary"/>} title={'г. Пермь,'} text={contact.street}/>
+                    <BlockInfo icon={<StoreIcon fontSize="large" color="primary"/>} title={'Магазин'} text={contact.name}/>
+                </div>
             }
 
             <div className='paddingTB blockTitle'>Курьерская доставка на дом</div>
             {
                 !delivery
                 ? <Loader/>
-                : <div className='blocks paddingTB'>
-                        <div>
-                        <div><AccessTimeIcon fontSize="large" color="primary"/></div>
-                        <div>Время доставки</div>
-                        <div>{delivery.time}</div>
-                    </div>
-                    <div>
-                        <div><DeliveryDiningIcon fontSize="large" color="primary"/></div>
-                        <div>Стоимость доставки</div>
-                        <div>{delivery.price}</div>
-                    </div>
-                    <div>
-                        <div><LocalShippingIcon fontSize="large" color="primary"/></div>
-                        <div>В отдаленные районы</div>
-                        <div>{delivery.price2}</div>
-                    </div>
+                : <div className='blocks'>
+                    <BlockInfo icon={<AccessTimeIcon fontSize="large" color="primary"/>} title={'Время доставки'} text={delivery.time}/>
+                    <BlockInfo icon={<DeliveryDiningIcon fontSize="large" color="primary"/>} title={'Стоимость доставки'} text={delivery.price}/>
+                    <BlockInfo icon={<LocalShippingIcon fontSize="large" color="primary"/>} title={'В отдаленные районы'} text={delivery.price2}/>
                 </div>
             }
-
         </>
-)
+    )
 };
 
 export default Delivery;

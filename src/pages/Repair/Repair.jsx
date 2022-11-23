@@ -72,12 +72,12 @@ const Repair = () => {
     }
     let listItems = renderListItems(price)
 
-
+    console.log(listItems)
 
     return (
         <>
             <TitleBlock name='Сервис и Ремонт' icon={<HomeRepairServiceIcon className='iconAlign' color="primary"/>}/>
-            <div className='pageBody'>
+            <div className='pageBody' style={{minHeight: '430px'}}>
                 <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }}>
                     <InputLabel id="repairSelect">Услуги</InputLabel>
                     <Select

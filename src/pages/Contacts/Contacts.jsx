@@ -18,6 +18,7 @@ import EventIcon from '@mui/icons-material/Event';
 import TitleBlock from "../../elements/TitleBlock";
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
+import BlockInfo from "../../elements/BlockInfo";
 
 const Contacts = () => {
     const [sched, setSched] = useState([]);
@@ -76,21 +77,9 @@ const Contacts = () => {
                         !contact
                             ? <Loader/>
                             : <div className='blocks'>
-                                <div>
-                                    <div><HomeIcon fontSize="large" color="primary"/></div>
-                                    <div>г. Пермь, </div>
-                                    <div>{contact.street}</div>
-                                </div>
-                                <div>
-                                    <div><StoreIcon fontSize="large" color="primary"/></div>
-                                    <div>Магазин</div>
-                                    <div>{contact.name}</div>
-                                </div>
-                                <div>
-                                    <div><PhoneIcon fontSize="large" color="primary"/></div>
-                                    <div>Телефон</div>
-                                    <div>{contact.phone}</div>
-                                </div>
+                                <BlockInfo icon={<HomeIcon fontSize="large" color="primary"/>} title={'г. Пермь,'} text={contact.street}/>
+                                <BlockInfo icon={<StoreIcon fontSize="large" color="primary"/>} title={'Магазин'} text={contact.name}/>
+                                <BlockInfo icon={<PhoneIcon fontSize="large" color="primary"/>} title={'Телефон'} text={contact.phone}/>
                             </div>
                     }
                 </div>
