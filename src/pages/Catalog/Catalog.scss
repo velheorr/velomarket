@@ -90,44 +90,41 @@
     }
 }
 
-.wrapper2{
-    padding: 0 35px;
-    margin-top: 25px;
-    .catalog-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content:center;
-        margin: -15px;
-        .catalog-column {
-            flex: 0 1 30%;
-            padding: 15px;
-            min-width: 300px;
-            .catalog-container {
-                transition: .15s all ease-in-out;
-                &:hover {
-                    background-color: #ffffffeb;
-                    transform: scale(1.1);
-                }
-                .catalog-text {
-                    text-align: center;
-                    color: #ffffff;
-                    font-size: 16px;
-                    text-shadow: 2px 2px black;
-                    background-color: #260852;
-                    border-radius: 15px 0px 0px 0px;
-                    line-height: 2;
-                }
-                .catalog-item {
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-                    background-color: #f3f3f3;
-                    height: 200px;
-                    border-radius: 0 0 15px 0;
-                    text-align: center;
-                }
+
+.catalog-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin: -15px;
+    .catalog-column {
+        flex: 0 1 30%;
+        padding: 15px;
+        min-width: 350px;
+        .catalog-container {
+            transition: .15s all ease-in-out;
+            &:hover {
+                background-color: #ffffffeb;
+                transform: scale(1.1);
+            }
+            .catalog-text {
+                text-align: center;
+                color: #ffffff;
+                font-size: 16px;
+                text-shadow: 2px 2px black;
+                background-color: #260852;
+                border-radius: 15px 0px 0px 0px;
+                line-height: 2;
+            }
+            .catalog-item {
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                height: 200px;
+                border-radius: 0 0 15px 0;
+                text-align: center;
             }
         }
     }
 }
+
 
 .backBTN {
     margin: 0 20px;

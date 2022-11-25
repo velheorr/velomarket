@@ -30,9 +30,7 @@ const Catalog = () => {
     return (
         <>
             <TitleBlock name='Каталог товаров' icon={<ShoppingCartIcon className='iconAlign' color="primary"/>}/>
-            <div className='wrapper2'>
-               <div className='catalog-row'>{catalogElements}</div>
-            </div>
+            <div className='catalog-row'>{catalogElements}</div>
         </>
     );
 };

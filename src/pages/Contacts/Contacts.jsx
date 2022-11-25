@@ -69,48 +69,41 @@ const Contacts = () => {
     return (
         <>
             <TitleBlock name='Контакты' icon={<ContactsIcon className="iconAlign" color="primary" />}/>
-
-            <div className='contactBlock'>
-                <div className='block1'>
-                    <div className='subTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
-                    {
-                        !contact
-                            ? <Loader/>
-                            : <div className='blocks'>
-                                <BlockInfo icon={<HomeIcon fontSize="large" color="primary"/>} title={'г. Пермь,'} text={contact.street}/>
-                                <BlockInfo icon={<StoreIcon fontSize="large" color="primary"/>} title={'Магазин'} text={contact.name}/>
-                                <BlockInfo icon={<PhoneIcon fontSize="large" color="primary"/>} title={'Телефон'} text={contact.phone}/>
-                            </div>
-                    }
-                </div>
-                <div className='block2'>
-                    <div className='subTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
-                    {
-                        !sched
-                            ? <Loader/>
-                            : <div className="scheduleBlock">
-                                <Paper sx={{m: '25px 0'}}>
-                                    <List>
-                                        {scheduleMap}
-                                    </List>
-                                </Paper>
-                            </div>
-                    }
-                    <div className='notice'>
-                        {notice
-                            ?
-                            <div style={{display: 'inline-flex'}}>
-                                <NewReleasesIcon fontSize='large' className='iconAlign' color="warning" />
-                                <div>
-                                    *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
-                                    <span className='holiday'> понедельник - выходной</span>
-                                </div>
-                            </div>
-                            :
-                            ''
-                        }
+            <div className='subTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
+            {
+                !contact
+                    ? <Loader/>
+                    : <div className='blocks'>
+                        <BlockInfo icon={<HomeIcon fontSize="large" color="primary"/>} title={'г. Пермь,'} text={contact.street}/>
+                        <BlockInfo icon={<StoreIcon fontSize="large" color="primary"/>} title={'Магазин'} text={contact.name}/>
+                        <BlockInfo icon={<PhoneIcon fontSize="large" color="primary"/>} title={'Телефон'} text={contact.phone}/>
                     </div>
-                </div>
+            }
+            <div className='subTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
+            {
+                !sched
+                    ? <Loader/>
+                    : <div className="scheduleBlock">
+                        <Paper sx={{m: '25px 0'}}>
+                            <List>
+                                {scheduleMap}
+                            </List>
+                        </Paper>
+                    </div>
+            }
+            <div className='notice'>
+                {notice
+                    ?
+                    <div style={{display: 'inline-flex'}}>
+                        <NewReleasesIcon fontSize='large' className='iconAlign' color="warning" />
+                        <div>
+                            *Обратите внимание, что с <b>{notice.text}</b> магазин будет работать <b>{notice.time}</b>,
+                            <span className='holiday'> понедельник - выходной</span>
+                        </div>
+                    </div>
+                    :
+                    ''
+                }
             </div>
 
             <div className='subTitle'><MapIcon className='iconAlign' color="primary" /> Как к нам доехать</div>
