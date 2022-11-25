@@ -95,11 +95,11 @@
 }
 @media (max-width: 660px) {
     .lowerHeader {padding: 15px 0}
-    .lowerHeader>div, .lowerHeader>div>div {width: 460px !important;height: 150px !important;}
+    .lowerHeader>div, .lowerHeader>div>div {width: 100% !important;height: 220px !important;}
 }
 @media (max-width: 560px) {
     .lowerHeader {padding: 15px 0}
-    .lowerHeader>div, .lowerHeader>div>div {width: 360px !important;height: 100px !important;}
+    .lowerHeader>div, .lowerHeader>div>div {width: 100% !important;height: 125px !important;}
 }
 
 .footer {

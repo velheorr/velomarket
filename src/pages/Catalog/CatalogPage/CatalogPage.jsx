@@ -76,6 +76,11 @@ const CatalogPage = () => {
     const extraImg = renderMoreImg()
 
 
+    const notAvailable = () =>{
+        if (item.ВНаличии <= 1 && item.ВНаличии === ''){
+            return true
+        }
+    }
 
     return (
         <Fancybox options={{ infinite: false }}>
@@ -101,6 +106,7 @@ const CatalogPage = () => {
                                 <div className='itemImg'>
                                     <ImgForCatalogPage mainImg={image} item={item}/>
                                 </div>
+                                {notAvailable() ? <div className='noAvailableCatPage'>Нет в наличии</div> : ''}
                             </div>
 
                             <TabContext value={value}>
