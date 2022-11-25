@@ -84,7 +84,7 @@ const Contacts = () => {
                 !sched
                     ? <Loader/>
                     : <div className="scheduleBlock">
-                        <Paper sx={{m: '25px 0'}}>
+                        <Paper>
                             <List>
                                 {scheduleMap}
                             </List>

@@ -53,12 +53,13 @@
 }
 
 .scheduleBlock {
-    width: 700px;
+    width: 70%;
     margin: 0 auto;
 }
 @media (max-width: 560px) {.scheduleBlock{min-width: 360px}}
 .notice {
     font-style: italic;
     text-align: center;
+    margin-top: 10px;
 }
 
