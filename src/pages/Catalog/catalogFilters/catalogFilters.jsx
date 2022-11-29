@@ -14,6 +14,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
 import {useState} from "react";
+import CheckBox from "../../../elements/CheckBox";
 
 const CatalogFilters = ({className}) => {
     const { register, handleSubmit, reset } = useForm();
@@ -54,6 +55,7 @@ const CatalogFilters = ({className}) => {
 
         let brandArr = data.brand;
         let sizeArr =data.size;
+        let availableArr = data.available;
 
         if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']}
@@ -73,8 +75,10 @@ const CatalogFilters = ({className}) => {
                 return filteredData = x
             }
         }
+
          filterCheck(brandArr, 'НоменклатураБренд')
          filterCheck(sizeArr, 'Размер')
+
          if (brandArr.length > 0 || sizeArr.length > 0){
              if (filteredData.length  === 0){dispatch(filtersState(false))}
              else { dispatch(filtersState(true))}
@@ -88,10 +92,7 @@ const CatalogFilters = ({className}) => {
         return sortFilter.map((item, i) => {
             const name = clearSymbol(item)
             if (name.length < 1) return null;
-            return <div className='checkBox' key = {i}>
-                <input type='checkbox' id={item} {...register(`${filterBy}`)} value={item} />
-                <label htmlFor={item}>{item}</label>
-            </div>
+            return <CheckBox key={i} item={item} register={register} filterBy={filterBy}/>
         })
     }
 
@@ -144,7 +145,7 @@ const CatalogFilters = ({className}) => {
                             ?
                                 <div>
                                     <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
-                                    <FormGroup className='filterCheckBox'>{catalogFilterBrand}</FormGroup>
+                                    <div>{catalogFilterBrand}</div>
                                 </div>
                             : ''
                     }
@@ -153,10 +154,14 @@ const CatalogFilters = ({className}) => {
                             ?
                             <div>
                                 <Chip className='filterName' variant="outlined" color="info" size="small" label="Размер:"/>
-                                <FormGroup className='filterCheckBox'>{catalogFilterSize}</FormGroup>
+                                <div className='filterCheckBox'>{catalogFilterSize}</div>
                             </div>
                             : ''
                     }
+                   {/* <Chip className='filterName' variant="outlined" color="info" size="small" label="Показывать товары:"/>
+                    <div className='filterCheckBox'>
+                        <CheckBox register={register} filterBy={'available'} item='Только в наличии'/>
+                    </div>*/}
                     <Divider/>
                     <ButtonGroup sx={{mt: '10px'}} variant="text" size="small" fullWidth>
                         <Button type="submit">Применить</Button>

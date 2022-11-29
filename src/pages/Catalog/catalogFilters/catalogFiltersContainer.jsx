@@ -24,7 +24,6 @@ import TitleBlock from "../../../elements/TitleBlock";
 import CatalogCard from "../../../elements/CatalogCard";
 
 
-
 const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
     let {id} = useParams();
@@ -76,7 +75,7 @@ const CatalogFiltersContainer = () => {
         }  else if (filtersEmpty === true){
             return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
         } else if (filtersEmpty === false) {
-            return <div className='noDataWithFilters'><span>Уточните поиск. Товары с указанными фильтрами не найдены...</span></div>
+            return <div className='noDataWithFilters'><span>Уточните поиск. Товары с указанными параметрами не найдены...</span></div>
         }
     }
     const catalogElements = renderCatalogItems(catalogData);

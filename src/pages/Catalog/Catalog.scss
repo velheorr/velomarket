@@ -53,28 +53,10 @@
     }
     .filterCheckBox {
         border-top: 1px solid #b7b7b7;
-        /*border-bottom: 1px solid #b7b7b7;*/
         max-height: 350px;
-        display: grid;
+        display: flex;
+        flex-flow: column wrap;
         overflow: auto;
-        >div {
-            cursor: pointer;
-            position: relative;
-            margin: 5px 0px;
-            input {
-                width: 27px;
-                height: 17px;
-                position: absolute;
-                cursor: pointer;
-            }
-            label {
-                margin: 0;
-                font-size: 1rem;
-                line-height: 1.5;
-                padding-left: 40px;
-                cursor: pointer;
-            }
-        }
     }
 }
 

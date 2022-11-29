@@ -72,8 +72,6 @@ const Repair = () => {
     }
     let listItems = renderListItems(price)
 
-    console.log(listItems)
-
     return (
         <>
             <TitleBlock name='Сервис и Ремонт' icon={<HomeRepairServiceIcon className='iconAlign' color="primary"/>}/>
