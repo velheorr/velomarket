@@ -21,7 +21,9 @@
     .imgList {
         img {
             width: 60px;
+            height: 60px;
             padding: 4px;
+            object-fit: scale-down;
             border: 1px solid #b3b3b7;
             border-radius: 5px;
             &:hover {
