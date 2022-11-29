@@ -55,7 +55,6 @@ const CatalogFilters = ({className}) => {
 
         let brandArr = data.brand;
         let sizeArr =data.size;
-        let availableArr = data.available;
 
         if (data['priceFrom'] && data['priceFrom'] > 0 && data['priceFrom'] <= maxPrice){minPrice = +data['priceFrom']}
         if (data['priceTo'] && data['priceTo'] < maxPrice && data['priceTo'] > minPrice){maxPrice = +data['priceTo']}
@@ -145,7 +144,7 @@ const CatalogFilters = ({className}) => {
                             ?
                                 <div>
                                     <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
-                                    <div>{catalogFilterBrand}</div>
+                                    <div className='filterCheckBox'>{catalogFilterBrand}</div>
                                 </div>
                             : ''
                     }

@@ -13,7 +13,7 @@
             display: flex;
             flex-wrap: wrap;
             padding-left: 20px;
-
+            margin-top: -6px;
         }
     }
 }
@@ -54,9 +54,9 @@
     .filterCheckBox {
         border-top: 1px solid #b7b7b7;
         max-height: 350px;
-        display: flex;
-        flex-flow: column wrap;
-        overflow: auto;
+        display: grid;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }
 

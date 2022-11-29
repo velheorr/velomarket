@@ -89,8 +89,7 @@ const CatalogFiltersContainer = () => {
         /*window.scrollTo(0, document.body.scrollHeight);*/
     }
 
-
-
+    console.log(catalogData)
     return (
         <>
             <TitleBlock name={id} />
