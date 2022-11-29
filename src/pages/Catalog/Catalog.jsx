@@ -15,10 +15,10 @@ const Catalog = () => {
             <div key={i} className='catalog-column'>
                 <Link to={`/catalogs/${item.name}`}>
                     <div className='catalog-container'>
-                        <div className='catalog-text'>{item.name}</div>
                         <div className="catalog-item">
                             <img src={item.img} alt=""/>
                         </div>
+                        <div className='catalog-text'>{item.name}</div>
                     </div>
                 </Link>
             </div>
