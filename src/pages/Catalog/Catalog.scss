@@ -103,12 +103,12 @@
             transition: .15s all ease-in-out;
             box-shadow: 0 2px 4px 0 rgb(136 144 195 / 20%), 0 5px 15px 0 rgb(37 44 97 / 15%);
             border-radius: 15px;
+            position: relative;
             &:hover {
                 background-color: #ffffffeb;
                 transform: scale(1.1);
             }
             .catalog-text {
-                text-align: center;
                 line-height: 2;
                 font-weight: 600;
                 font-size: 20px;
@@ -116,6 +116,12 @@
                 letter-spacing: 2px;
                 color: #260852;
                 white-space: nowrap;
+                position: absolute;
+                z-index: 2;
+                background-color: rgba(255, 255, 255, 0.7);
+                width: 80%;
+                top: 15px;
+                left: 15px;
             }
             .catalog-item {
                 height: 200px;
