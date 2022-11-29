@@ -58,6 +58,7 @@ const Repair = () => {
         return <MenuItem key={i} value={item}>{str}</MenuItem>
     })
 
+
     const makePrice = (type)=>{
         const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
         const xSorted = sortData(x, 'НоменклатураБренд')

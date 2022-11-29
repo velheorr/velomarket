@@ -94,8 +94,11 @@
                 left: 15px;
             }
             .catalog-item {
-                height: 200px;
-                text-align: center;
+                height: 250px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
             }
         }
     }
