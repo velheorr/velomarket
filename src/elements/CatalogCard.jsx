@@ -39,7 +39,7 @@ const CatalogCard = ({items}) => {
 						<Divider/>
 						<Typography variant="body2" color="text.secondary" component="div" marginTop={'10px'} >
 							<div>Бренд: <span className='cardSubTitle'>{НоменклатураБренд}</span></div>
-							<div>Модель: {clearSymbol(НоменклатураМодель)}</div>
+							<div>Модель: <span className='cardSubTitle'>{clearSymbol(НоменклатураМодель)}</span></div>
 						</Typography>
 					</CardContent>
 				</CardActionArea>
