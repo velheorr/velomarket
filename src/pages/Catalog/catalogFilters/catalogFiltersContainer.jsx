@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CatalogFilters from "./catalogFilters";
-import CatalogCard from "../catalogCard/catalogCard";
+
 import {
     openCatalogData,
     setCatalogDataFilter,
@@ -21,6 +21,7 @@ import Loader from "../../../assets/loader/Loader";
 import IconButton from "@mui/material/IconButton";
 import {api} from "../../../api/api";
 import TitleBlock from "../../../elements/TitleBlock";
+import CatalogCard from "../../../elements/CatalogCard";
 
 
 
