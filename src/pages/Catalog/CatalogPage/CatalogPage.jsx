@@ -48,14 +48,6 @@ const CatalogPage = () => {
         setValue(newValue);
     };
 
-    const backBTN = ()=>{
-        let parentPath = `/`
-        if(item){parentPath = `/catalogs/${item.ПутьПапки.split('\\')[0]}`}
-        if (item){console.log(`${item.ПутьПапки.split('\\')[0]}`)}
-
-        return parentPath
-    }
-
     const strSplit = ()=>{
         if (item){
             return item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
@@ -94,19 +86,16 @@ const CatalogPage = () => {
     return (
         <Fancybox options={{ infinite: false }}>
             <TitleBlock name={"Описание товара"} />
-            <div className='backBTN'>
-                <Link to={backBTN}>
-                    <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>
-                </Link>
-            </div>
-            <Breadcrumb />
-
+            {item && itemId ?
+                <Breadcrumb backData={item.ПутьПапки} backTitle={item.Номенклатура} />
+                :
+                ''
+            }
             {/*catalog={id}*/}
             <div className='pageBody' style={{minHeight: '300px'}}>
                 {item && itemId
                     ?
                         <>
-                            <div className='itemPath'>{item.ПутьПапки}</div>
                             <div className='itemTitle'>{item.Номенклатура}</div>
 
                             <div className='itemImgBlock'>

@@ -9,26 +9,29 @@ import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {setCatalogDataFilter} from "../pages/Catalog/CatalogSlice";
 import {useDispatch} from "react-redux";
+import {useState} from "react";
 
 
 
-const Breadcrumb = ({catalog}) => {
+const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 	const dispatch = useDispatch();
 	const resetFiltersFromCatalogs = ()=>{
 		dispatch(setCatalogDataFilter([]))
 	}
 
-	if (!catalog){
-		catalog = '1'
-	}
 
+	let backPath;
+	let backText;
+	if(backData) {
+		backText = backData.split('\\')[0]
+		backPath = `/catalogs/${backText}`
+	}
 
 	return (
 		<div className='navBreadcrumb' role="presentation" >
 			<Breadcrumbs aria-label="breadcrumb">
 				<Link to={`/`}
 					underline="hover"
-					sx={{ display: 'flex', alignItems: 'center' }}
 					color="inherit"
 					href="/"
 					onClick={resetFiltersFromCatalogs}
@@ -36,13 +39,48 @@ const Breadcrumb = ({catalog}) => {
 					<ShoppingCartIcon sx={{ mr: 0.5 }}  fontSize="inherit" className='brIcon'/>
 					<span className='brTitle'>Каталог</span>
 				</Link>
-				<Typography
-					sx={{ display: 'flex', alignItems: 'center' }}
-					color="text.primary"
-				>
-					<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-					<span className='brTitle'>{catalog}</span>
-				</Typography>
+				{
+					backData
+						?
+						<Link to={backPath}
+								   underline="hover"
+								   color="inherit"
+								   href="/"
+						>
+							<ShoppingCartIcon sx={{ mr: 0.5 }}  fontSize="inherit" className='brIcon'/>
+							<span className='brTitle'>{backText}</span>
+						</Link>
+						:
+						''
+				}
+				{
+					backData
+						?
+						<Typography
+							sx={{ display: 'flex', alignItems: 'center' }}
+							color="text.primary"
+						>
+							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+							<span className='brTitle'>{backTitle}</span>
+						</Typography>
+						:
+						''
+				}
+				{
+					catalog
+					?
+						<Typography
+							sx={{ display: 'flex', alignItems: 'center' }}
+							color="text.primary"
+						>
+							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+							<span className='brTitle'>{catalog}</span>
+						</Typography>
+					:
+					''
+				}
+
+
 			</Breadcrumbs>
 		</div>
 	);
