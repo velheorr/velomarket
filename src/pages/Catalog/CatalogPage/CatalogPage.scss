@@ -51,14 +51,15 @@
 
 
 .cardData {
-    margin-left: 20px;
-
-    .cardParams {
-        word-break: break-word;
-        display: grid;
-        grid-template-columns: 3fr 7fr;
-        :nth-child(odd) {
-            color: grey;
+    display:flex;
+    .cardTitle {
+        flex: 0 0 200px;
+    }
+    .cardText {
+        flex: 1 1 auto;
+        color: grey;
+        div {
+            height: 21px;
         }
     }
 }

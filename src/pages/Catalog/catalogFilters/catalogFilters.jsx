@@ -153,7 +153,7 @@ const CatalogFilters = ({className}) => {
                             ?
                             <div>
                                 <Chip className='filterName' variant="outlined" color="info" size="small" label="Размер:"/>
-                                <div className='filterCheckBox'>{catalogFilterSize}</div>
+                                <div className='filterCheckBox flexBlock'>{catalogFilterSize}</div>
                             </div>
                             : ''
                     }

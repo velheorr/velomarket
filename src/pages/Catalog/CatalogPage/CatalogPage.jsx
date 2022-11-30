@@ -123,14 +123,23 @@ const CatalogPage = () => {
                                     </TabPanel>
                                     <TabPanel value="2">
                                         <div className='cardData'>
-                                            <div className='cardParams'>
-                                                <div>Артикул:</div><div>{item.НоменклатураАртикул}</div>
-                                                <div>Арт. производителя:</div><div>{item.НоменклатураАртикулПроизв}</div>
-                                                <div>Бренд:</div><div>{clearSymbol(item.НоменклатураБренд)}</div>
-                                                <div>Модель:</div><div>{clearSymbol(item.НоменклатураМодель)}</div>
-                                                <div>Раздел:</div><div>{item.НоменклатураРодительРодитель}</div>
-                                                <div>Размер:</div><div>{item.Размер}</div>
-                                                <div>Тип:</div><div>{item.Тип}</div>
+                                            <div className='cardTitle'>
+                                                <div>Артикул:</div>
+                                                <div>Арт. производителя:</div>
+                                                <div>Бренд:</div>
+                                                <div>Модель:</div>
+                                                <div>Раздел:</div>
+                                                <div>Размер:</div>
+                                                <div>Тип:</div>
+                                            </div>
+                                            <div className="cardText">
+                                                <div>{item.НоменклатураАртикул}</div>
+                                                <div>{item.НоменклатураАртикулПроизв}</div>
+                                                <div>{clearSymbol(item.НоменклатураБренд)}</div>
+                                                <div>{clearSymbol(item.НоменклатураМодель)}</div>
+                                                <div>{item.НоменклатураРодительРодитель}</div>
+                                                <div>{item.Размер}</div>
+                                                <div>{item.Тип}</div>
                                             </div>
                                         </div>
                                     </TabPanel>

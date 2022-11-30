@@ -58,6 +58,13 @@
         overflow-y: auto;
         overflow-x: hidden;
     }
+    .flexBlock {
+        display: flex;
+        flex-wrap: wrap;
+        .checkbox {
+            width: 50%;
+        }
+    }
 }
 
 
