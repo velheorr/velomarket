@@ -1,15 +1,13 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import HomeIcon from '@mui/icons-material/Home';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
 import GrainIcon from '@mui/icons-material/Grain';
+import FlareIcon from '@mui/icons-material/Flare';
 
 import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {setCatalogDataFilter} from "../pages/Catalog/CatalogSlice";
 import {useDispatch} from "react-redux";
-import {useState} from "react";
 
 
 
@@ -18,7 +16,6 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 	const resetFiltersFromCatalogs = ()=>{
 		dispatch(setCatalogDataFilter([]))
 	}
-
 
 	let backPath;
 	let backText;
@@ -47,7 +44,7 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 								   color="inherit"
 								   href="/"
 						>
-							<ShoppingCartIcon sx={{ mr: 0.5 }}  fontSize="inherit" className='brIcon'/>
+							<FlareIcon sx={{ mr: 0.5 }}  fontSize="inherit" className='brIcon'/>
 							<span className='brTitle'>{backText}</span>
 						</Link>
 						:
@@ -79,8 +76,6 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 					:
 					''
 				}
-
-
 			</Breadcrumbs>
 		</div>
 	);

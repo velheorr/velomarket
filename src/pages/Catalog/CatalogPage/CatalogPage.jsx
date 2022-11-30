@@ -1,9 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './CatalogPage.scss'
-import {Link, useParams} from 'react-router-dom';
-
-import Button from "@mui/material/Button";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useParams} from 'react-router-dom';
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
@@ -13,7 +10,7 @@ import {clearSymbol, imgURL} from "../../../assets/functions";
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
-import {api, fullData} from "../../../api/api";
+import {api} from "../../../api/api";
 import {getFullCatalog} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
@@ -91,7 +88,7 @@ const CatalogPage = () => {
                 :
                 ''
             }
-            {/*catalog={id}*/}
+
             <div className='pageBody' style={{minHeight: '300px'}}>
                 {item && itemId
                     ?
