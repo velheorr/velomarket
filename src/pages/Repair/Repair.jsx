@@ -71,10 +71,9 @@ const Repair = () => {
     }
 
     const renderListItems = (price) => {
-        const data = price.map((item, i) => {
+        return  price.map((item, i) => {
             return <View key={i} item={item}/>
         })
-        return data
     }
     let listItems = renderListItems(price)
 
