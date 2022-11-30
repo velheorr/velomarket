@@ -8,11 +8,12 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
 import {api} from '../../api/api'
-import {sortData} from "../../assets/functions";
 import {useDispatch, useSelector} from "react-redux";
 import {data} from './RepairSlice'
 import Loader from "../../assets/loader/Loader";
 import TitleBlock from "../../elements/TitleBlock";
+import {sortData} from '../../assets/functions'
+
 
 
 const Repair = () => {
@@ -50,14 +51,18 @@ const Repair = () => {
                 prepareOptions.push(i.НоменклатураРодитель)
             }
         })
-        setOptions(prepareOptions)
+        let sortOpt = []
+        prepareOptions.forEach(item =>{
+            let str = item.replace(/[0-9.]/g, '')
+            sortOpt.push({val: item, name: str})
+        })
+        let sortedOptions = sortData(sortOpt, 'name')
+        setOptions(sortedOptions)
     }
 
     const renderSelectOptions = options.map((item, i)=> {
-        let str = item.replace(/[0-9.]/g, '')
-        return <MenuItem key={i} value={item}>{str}</MenuItem>
+        return <MenuItem key={i} value={item.val}>{item.name}</MenuItem>
     })
-
 
     const makePrice = (type)=>{
         const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
