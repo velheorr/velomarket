@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './CatalogPage.scss'
 import {Link, useParams} from 'react-router-dom';
 
@@ -13,29 +13,36 @@ import {clearSymbol, imgURL} from "../../../assets/functions";
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
-import {api} from "../../../api/api";
+import {api, fullData} from "../../../api/api";
 import {getFullCatalog} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
+import Breadcrumb from "../../../elements/Breadcrumb";
 
 
 const CatalogPage = () => {
     const {itemId} = useParams()
-    const [item, setItem] = useState('');
+    const [item, setItem] = useState();
     const [value, setValue] = useState('2');
     const [image, setImage] = useState('')
     const dispatch = useDispatch();
 
+    const fullCatalog = useSelector(state => state.catalog.fullCatalog)
+
+    const [waitData, setWaitData] = useState(false)
+    const fullData = async ()=>{
+        if (fullCatalog.length < 1){
+            const dataInfo = await api.getData()
+            dispatch(getFullCatalog(dataInfo))
+        }
+        setWaitData(true)
+    }
+
     useEffect(() => {
         fullData()
-    }, [item])
-
-    const fullCatalog = useSelector(state => state.catalog.fullCatalog)
-    const fullData = async ()=>{
-        const dataInfo = await api.getData()
-        dispatch(getFullCatalog(dataInfo))
         setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
-    }
+    }, [waitData])
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -44,6 +51,8 @@ const CatalogPage = () => {
     const backBTN = ()=>{
         let parentPath = `/`
         if(item){parentPath = `/catalogs/${item.ПутьПапки.split('\\')[0]}`}
+        if (item){console.log(`${item.ПутьПапки.split('\\')[0]}`)}
+
         return parentPath
     }
 
@@ -90,10 +99,11 @@ const CatalogPage = () => {
                     <Button variant="outlined" startIcon={<ArrowBackIcon/>}>Назад</Button>
                 </Link>
             </div>
+            <Breadcrumb />
 
-
-            <div className='pageBody'>
-                {item
+            {/*catalog={id}*/}
+            <div className='pageBody' style={{minHeight: '300px'}}>
+                {item && itemId
                     ?
                         <>
                             <div className='itemPath'>{item.ПутьПапки}</div>

@@ -22,6 +22,7 @@ import IconButton from "@mui/material/IconButton";
 import {api} from "../../../api/api";
 import TitleBlock from "../../../elements/TitleBlock";
 import CatalogCard from "../../../elements/CatalogCard";
+import Breadcrumb from "../../../elements/Breadcrumb";
 
 
 const CatalogFiltersContainer = () => {
@@ -80,22 +81,15 @@ const CatalogFiltersContainer = () => {
     }
     const catalogElements = renderCatalogItems(catalogData);
 
-    const resetFiltersFromCatalogs = ()=>{
-        dispatch(setCatalogDataFilter([]))
-    }
-
     const scrollTop = ()=>{
         window.scrollTo(0, 0)
         /*window.scrollTo(0, document.body.scrollHeight);*/
     }
 
-    console.log(catalogData)
     return (
         <>
             <TitleBlock name={id} />
-            <div className='backBTN'>
-                <Link to={`/`}><Button variant="outlined" onClick={resetFiltersFromCatalogs}  startIcon={<ShoppingCartIcon/>}>Каталог</Button></Link>
-            </div>
+            <Breadcrumb catalog={id}/>
             <div style={{minHeight: '500px'}}>
                 {
                     data
