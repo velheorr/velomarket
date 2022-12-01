@@ -48,10 +48,7 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 				{
 					backData
 						?
-						<Typography
-							sx={{ display: 'flex', alignItems: 'center' }}
-							color="text.primary"
-						>
+						<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
 							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
 							<span className='brTitle'>{backTitle}</span>
 						</Typography>

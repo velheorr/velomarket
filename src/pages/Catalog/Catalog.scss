@@ -37,13 +37,14 @@
 
 .filtersContainer {
     padding: 10px;
-    background-color: #f3f3f3 !important;
+    /*background-color: #f3f3f3 !important;*/
     .filterName {
-        width: 100%;
-        text-align: center;
+/*        width: 100%;
+        text-align: center;*/
         margin-top: 15px;
         margin-bottom: 10px;
         border-radius: 3px;
+        background-color: #fff;
     }
     .filterHeader {
         font-size: 16px;
@@ -57,13 +58,6 @@
         display: grid;
         overflow-y: auto;
         overflow-x: hidden;
-    }
-    .flexBlock {
-        display: flex;
-        flex-wrap: wrap;
-        .checkbox {
-            width: 50%;
-        }
     }
 }
 

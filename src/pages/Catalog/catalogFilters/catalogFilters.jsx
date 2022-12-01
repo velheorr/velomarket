@@ -125,6 +125,7 @@ const CatalogFilters = ({className}) => {
                         filteredType.length > 1
                             ?
                             <FormControl fullWidth sx={{mt:1}}>
+
                                 <InputLabel id="typeS">Тип:</InputLabel>
                                 <Select
                                     labelId="typeS" id='selector'
@@ -144,6 +145,7 @@ const CatalogFilters = ({className}) => {
                             ?
                                 <div>
                                     <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
+                                    <div>Бренд:</div>
                                     <div className='filterCheckBox'>{catalogFilterBrand}</div>
                                 </div>
                             : ''
@@ -153,7 +155,7 @@ const CatalogFilters = ({className}) => {
                             ?
                             <div>
                                 <Chip className='filterName' variant="outlined" color="info" size="small" label="Размер:"/>
-                                <div className='filterCheckBox flexBlock'>{catalogFilterSize}</div>
+                                <div className='filterCheckBox'>{catalogFilterSize}</div>
                             </div>
                             : ''
                     }
