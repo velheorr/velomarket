@@ -30,22 +30,20 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 				<Link to={`/`}
 					underline="hover"
 					color="inherit"
-					href="/"
 					onClick={resetFiltersFromCatalogs}
+					className='brTitle brLink'
 				>
 					<ShoppingCartIcon sx={{ mr: 0.5 }}  fontSize="inherit" className='brIcon'/>
-					<span className='brTitle'>Каталог</span>
+					<span>Каталог</span>
 				</Link>
 				{
 					backData
 						?
 						<Link to={backPath}
 								   underline="hover"
-								   color="inherit"
-								   href="/"
+							  className='brTitle brLink'
 						>
-							<FlareIcon sx={{ mr: 0.5 }}  fontSize="inherit" className='brIcon'/>
-							<span className='brTitle'>{backText}</span>
+							<span>{backText}</span>
 						</Link>
 						:
 						''
@@ -66,10 +64,7 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 				{
 					catalog
 					?
-						<Typography
-							sx={{ display: 'flex', alignItems: 'center' }}
-							color="text.primary"
-						>
+						<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
 							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
 							<span className='brTitle'>{catalog}</span>
 						</Typography>
