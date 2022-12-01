@@ -56,7 +56,7 @@
                 .navHeaderMiniMenu {display: flex}
             }
             .navHeaderMiniMenu2{
-                a{color: black;                }
+                a{color: black;}
             }
         }
         .navHeader-title{
@@ -77,6 +77,17 @@
                 padding-top: 10px;
             }
         }
+    }
+}
+.smallMenuItem {
+    color: #000 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    border-bottom: 1px solid #dedede !important;
+    &:hover {
+        color: #260852 !important;
+        background: #cecece4f;
     }
 }
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import "../../App.scss"
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -6,6 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {useState} from "react";
 import {NavLink} from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
+import StoreIcon from "@mui/icons-material/Store";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import MessageIcon from '@mui/icons-material/Message';
 
 const SmallMenu =({css,openModal})=> {
 	const [anchorEl, setAnchorEl] = useState(null);
@@ -64,11 +70,19 @@ const SmallMenu =({css,openModal})=> {
 				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 			>
-				<NavLink to="/" exact className={isActive => (isActive ? 'active' : '')}><MenuItem>Каталог</MenuItem></NavLink>
-				<NavLink to="/repair" className={isActive => (isActive ? 'active' : '')}><MenuItem>Сервис и Ремонт</MenuItem></NavLink>
-				<NavLink to="/delivery" className={isActive => (isActive ? 'active' : '')}><MenuItem>Оплата и Доставка</MenuItem></NavLink>
-				<NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}><MenuItem>Контакты</MenuItem></NavLink>
-				<a href="#/"><MenuItem onClick={openModal}>Обратная связь</MenuItem></a>
+				<NavLink to="/" exact className={isActive => (isActive ? 'active' : '')}>
+					<MenuItem className='smallMenuItem'><ShoppingCartIcon fontSize='small' className='iconAlign'/> Каталог</MenuItem>
+				</NavLink>
+				<NavLink to="/repair" className={isActive => (isActive ? 'active' : '')}>
+					<MenuItem className='smallMenuItem'><HomeRepairServiceIcon fontSize='small' className='iconAlign'/> Сервис и Ремонт</MenuItem>
+				</NavLink>
+				<NavLink to="/delivery" className={isActive => (isActive ? 'active' : '')}>
+					<MenuItem className='smallMenuItem'><StoreIcon fontSize='small' className='iconAlign'/> Оплата и Доставка</MenuItem>
+				</NavLink>
+				<NavLink to="/contacts" className={isActive => (isActive ? 'active' : '')}>
+					<MenuItem className='smallMenuItem'><ContactsIcon fontSize='small' className="iconAlign"/> Контакты</MenuItem>
+				</NavLink>
+				<a href="#/"><MenuItem className='smallMenuItem' onClick={openModal}><MessageIcon fontSize='small' className="iconAlign"/> Обратная связь</MenuItem></a>
 			</Menu>
 		</>
 	);

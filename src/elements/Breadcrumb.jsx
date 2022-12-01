@@ -2,13 +2,10 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import GrainIcon from '@mui/icons-material/Grain';
-import FlareIcon from '@mui/icons-material/Flare';
-
 import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {setCatalogDataFilter} from "../pages/Catalog/CatalogSlice";
 import {useDispatch} from "react-redux";
-
 
 
 const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
