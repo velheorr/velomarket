@@ -2,7 +2,6 @@ import  "../Catalog.scss";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize} from "../CatalogSlice";
-import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import {clearSymbol, filterCatalogBy} from "../../../assets/functions";
 import Chip from "@mui/material/Chip";
@@ -145,7 +144,6 @@ const CatalogFilters = ({className}) => {
                             ?
                                 <div>
                                     <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
-                                    <div>Бренд:</div>
                                     <div className='filterCheckBox'>{catalogFilterBrand}</div>
                                 </div>
                             : ''

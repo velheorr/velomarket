@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import '../../../App.scss'
-import Button from "@mui/material/Button";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CatalogFilters from "./catalogFilters";
 
 import {
     openCatalogData,
-    setCatalogDataFilter,
     setFilteredBrand,
     setFilteredSize,
     setFilteredType,
@@ -16,7 +13,7 @@ import {
 import {filterCatalogBy} from '../../../assets/functions'
 
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Loader from "../../../assets/loader/Loader";
 import IconButton from "@mui/material/IconButton";
 import {api} from "../../../api/api";
