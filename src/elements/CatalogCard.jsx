@@ -6,14 +6,20 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import {clearSymbol, imgURL, imgURLerror} from "../assets/functions";
+import {clearSymbol, imgURL, imgURLerror, noImgURL} from "../assets/functions";
 import React from "react";
 import Divider from "@mui/material/Divider";
+import {useInView} from "react-intersection-observer";
 
 
 /*Цена, Тип, Размер,НоменклатураАртикул, НоменклатураАртикулПроизв*/
 const CatalogCard = ({items}) => {
 	const {Номенклатура, НоменклатураБренд, НоменклатураКод, ПутьКартинок,ОснКартинка, НоменклатураМодель, ВНаличии} = items;
+
+	const {ref, inView} = useInView({
+		threshold: 0.3,
+		triggerOnce: true,
+	})
 
 	const notAvailable = () =>{
 		if (ВНаличии <= 1 && ВНаличии === ''){
@@ -23,18 +29,24 @@ const CatalogCard = ({items}) => {
 
 	return (
 		<Link to={`/catalog/${НоменклатураКод}`} className='catalogCard'>
-			<Card sx={{ maxWidth: 300}} className='catalog-cards-column'>
+			<Card sx={{ maxWidth: 300}} className='catalog-cards-column' ref={ref}>
 				<CardActionArea>
 					{notAvailable() ? <div className='notAvailable'>Нет в наличии</div> : ''}
 					<div className='cardTitle'>{Номенклатура}</div>
-					<CardMedia
-						component="img"
-						height='300px'
-						image ={imgURL(ПутьКартинок, ОснКартинка, true)}
-						sx={{objectFit: 'scale-down', filter: ()=> notAvailable() ? 'grayscale(100%)' : ''}}
-						alt={Номенклатура}
-						onError ={imgURLerror}
-					/>
+					{
+						inView
+							?
+						<CardMedia
+							component="img"
+							height='300px'
+							image ={imgURL(ПутьКартинок, ОснКартинка, true)}
+							sx={{objectFit: 'scale-down', filter: ()=> notAvailable() ? 'grayscale(100%)' : ''}}
+							alt={Номенклатура}
+							onError ={imgURLerror}
+						/>
+						:
+							<img src={noImgURL} height='300px' width='300px' alt='VelomarketKoleso.ru'/>
+					}
 					<CardContent>
 						<Divider/>
 						<Typography variant="body2" color="text.secondary" component="div" marginTop={'10px'} >

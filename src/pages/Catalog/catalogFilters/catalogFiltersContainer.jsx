@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import '../../../App.scss'
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CatalogFilters from "./catalogFilters";
 
 import {
@@ -20,6 +19,7 @@ import {api} from "../../../api/api";
 import TitleBlock from "../../../elements/TitleBlock";
 import CatalogCard from "../../../elements/CatalogCard";
 import Breadcrumb from "../../../elements/Breadcrumb";
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 
 const CatalogFiltersContainer = () => {
@@ -105,7 +105,7 @@ const CatalogFiltersContainer = () => {
             </div>
 
             <div className='upBtn'>
-                <IconButton color="primary" onClick={scrollTop}><ArrowUpwardIcon/></IconButton>
+                <IconButton color="primary" variant="contained" onClick={scrollTop}><KeyboardDoubleArrowUpIcon/></IconButton>
             </div>
         </>
     );
