@@ -9,10 +9,11 @@
 }
 
 .itemImgBlock {
-    display:flex;
-    flex-wrap: wrap;
+    /*display:flex;
+    flex-wrap: wrap;*/
     position: relative;
     .imgList {
+        position: absolute;
         img {
             width: 60px;
             height: 60px;
@@ -26,7 +27,7 @@
         }
     }
     .itemImg {
-        flex: 1 1 auto;
+       /* flex: 1 1 auto;*/
         text-align: center;
         padding: 15px;
         img {
