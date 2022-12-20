@@ -1,3 +1,5 @@
+import React from "react";
+
 const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/';
 export const noImgURL = baseURL + 'images/noimg.png';
 
@@ -50,4 +52,9 @@ export const filterCatalogBy = (catalog, filterBy)=>{
         }
     }
     return filterArr
+}
+
+// cat page х-ки товара
+export const splitAndSHowParagraph = (text)=>{
+    return text.split('\n').map((item, i) => <p key={i}>{item}</p>)
 }

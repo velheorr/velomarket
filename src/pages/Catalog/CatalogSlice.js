@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import * as axios from "axios";
 
 import samokat from './img/samokat.png'
 import zapchasti from './img/zapchasti.png'
@@ -6,7 +7,6 @@ import bike from './img/bike.png'
 import winter from './img/winter.png'
 import giro from './img/giro.png'
 import inventar from './img/inventar.png'
-import * as axios from "axios";
 
 
 export const fetchCatalogJSON = createAsyncThunk('catalog/fetchCatalogJSON',async () =>{
@@ -14,8 +14,6 @@ export const fetchCatalogJSON = createAsyncThunk('catalog/fetchCatalogJSON',asyn
         return res.data;
     }
 )
-
-
 
 
 const initialState = {
@@ -35,8 +33,7 @@ const initialState = {
     filtersEmpty: true,
     slidePack: [],
     fullCatalog: [],
-    loadState: 'loading',
-    new1: []
+    itemLoadState: 'loading', // cat page load state
 }
 
 const catalogSlice = createSlice({
@@ -51,21 +48,19 @@ const catalogSlice = createSlice({
         setFilteredType: (state, action )=> {state.filteredType = action.payload},
         setFilteredSize: (state, action )=> {state.filteredSize = action.payload},
 
-        setCatalog: (state, action) => {state.new1 = action.payload},
     },
     extraReducers: {
         [fetchCatalogJSON.pending]: (state)=> {
-            state.new1 = [];
-            state.loadState = 'loading'
+            state.fullCatalog = [];
+            state.itemLoadState = 'loading'
         },
         [fetchCatalogJSON.fulfilled]: (state, action)=> {
-            console.log(action.payload)
-            state.new1 = action.payload;
-            state.loadState = 'fulfilled';
+            state.fullCatalog = action.payload;
+            state.itemLoadState = 'ready';
         },
         [fetchCatalogJSON.rejected]: (state, action)=> {
-            state.new1 = [];
-            state.loadState = 'rejected';
+            state.fullCatalog = [];
+            state.itemLoadState = 'rejected';
         },
     }
 });
@@ -74,5 +69,5 @@ const {actions, reducer} = catalogSlice;
 
 export default reducer;
 export const {
-    openCatalogData, setFilteredBrand,setFilteredType,setFilteredSize, setCatalogDataFilter, filtersState, getFullCatalog, setCatalog
+    openCatalogData, setFilteredBrand,setFilteredType,setFilteredSize, setCatalogDataFilter, filtersState, getFullCatalog
 } = actions;

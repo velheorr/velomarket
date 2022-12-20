@@ -5,13 +5,11 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import {clearSymbol, imgURL} from "../../../assets/functions";
-
+import {clearSymbol, imgURL, splitAndSHowParagraph} from "../../../assets/functions";
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
-import {api} from "../../../api/api";
-import {fetchCatalogJSON, getFullCatalog} from "../CatalogSlice";
+import {fetchCatalogJSON} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
 import Breadcrumb from "../../../elements/Breadcrumb";
@@ -24,47 +22,29 @@ const CatalogPage = () => {
     const [image, setImage] = useState('')
     const dispatch = useDispatch();
 
-    const fullCatalog = useSelector(state => state.catalog.fullCatalog)
-    const new1 = useSelector(state => state.catalog.new1)
+    const fullCatalog = useSelector(state => state.catalog.fullCatalog)  //весь каталог
+    const itemLoadState = useSelector(state => state.catalog.itemLoadState)  // состояние загрузки item
 
-    const [waitData, setWaitData] = useState(false)
-    const fullData = async ()=>{
-        if (fullCatalog.length < 1){
-            const dataInfo = await api.getData()
-            dispatch(getFullCatalog(dataInfo))
+    const [waitData, setWaitData] = useState(false)  // выкл loader
+    const fetchCatalog = async () => {   // загрузка всего каталога
+        if(fullCatalog.length == 0){
+            try {
+                await dispatch(fetchCatalogJSON())
+            } catch (err) {
+                console.error('Error')
+            }
         }
         setWaitData(true)
     }
-
-    useEffect(() => {
-        fullData()
-        setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
-    }, [waitData])
-
-    const fetchCatalog = async () => {
-        try {
-            await dispatch(fetchCatalogJSON())
-        } catch (err) {
-            console.log('error')
-        }
-    }
     useEffect(()=>{
         fetchCatalog()
-    }, [])
-
-
-
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
-    const strSplit = ()=>{
-        if (item){
-            return item.НоменклатураОписание.split('\n').map((item, i) => <p key={i}>{item}</p>)
+        if (fullCatalog.length !== 0){
+            setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
         }
-    }
-    const itemDescription = strSplit()
+    }, [waitData])
+
+
+    const handleChange = (event, newValue) => {setValue(newValue)}; //табы
 
     const imgClick = (funcImg, e)=>{
         e.preventDefault()
@@ -73,7 +53,6 @@ const CatalogPage = () => {
 
     const renderMoreImg = ()=>{
         let arr = []
-
         if (item && item.ДопКартинки.includes('.')){
             arr = item.ДопКартинки.split(',')
         }
@@ -87,32 +66,21 @@ const CatalogPage = () => {
     }
     const extraImg = renderMoreImg()
 
-
     const notAvailable = () =>{
-        if (item.ВНаличии <= 1 && item.ВНаличии === ''){
-            return true
-        }
+        if (item.ВНаличии < 1 && item.ВНаличии === ''){return true}
     }
 
     return (
         <Fancybox options={{ infinite: false }}>
             <TitleBlock name={"Описание товара"} />
-            {item && itemId ?
-                <Breadcrumb backData={item.ПутьПапки} backTitle={item.Номенклатура} />
-                :
-                ''
-            }
-
+            {itemLoadState === 'ready' && item ? <Breadcrumb backData={item.ПутьПапки} backTitle={item.Номенклатура} /> : ''}
             <div className='pageBody' style={{minHeight: '300px'}}>
-                {item && itemId
+                {item && itemLoadState === 'ready'
                     ?
                         <>
                             <div className='itemTitle'>{item.Номенклатура}</div>
-
                             <div className='itemImgBlock'>
-                                <div className='imgList'>
-                                    {extraImg}
-                                </div>
+                                <div className='imgList'>{extraImg}</div>
                                 <div className='itemImg'>
                                     <ImgForCatalogPage mainImg={image} item={item}/>
                                 </div>
@@ -129,7 +97,10 @@ const CatalogPage = () => {
                                 <Paper sx={{width: '100%', backgroundColor: '#ffffffed', minHeight: 200}}>
                                     <TabPanel value="1">
                                         <div>{item.НоменклатураКраткоеОписание}</div>
-                                        {itemDescription? <div>{itemDescription}</div> : <div>Данные отсутствуют...</div>}
+                                        {item
+                                            ? <div>{splitAndSHowParagraph(item.НоменклатураОписание)}</div>
+                                            : <div>Данные отсутствуют...</div>
+                                        }
                                     </TabPanel>
                                     <TabPanel value="2">
                                         <div className='cardData'>
