@@ -25,14 +25,13 @@ const initialState = {
         { name: 'СПОРТИНВЕНТАРЬ', img: inventar},
         { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
     ],
-    catalogData: [],
+    catalogData: [], // current catalog group
     catalogDataFiltered: [],
     filteredBrand: [],
     filteredType: [],
     filteredSize: [],
     filtersEmpty: true,
-    slidePack: [],
-    fullCatalog: [],
+    fullCatalog: [], // whole catalog json
     itemLoadState: 'loading', // cat page load state
 }
 
@@ -40,14 +39,12 @@ const catalogSlice = createSlice({
     name: 'catalog',
     initialState,
     reducers: {
-        getFullCatalog: (state, action) => {state.fullCatalog = action.payload},
         openCatalogData: (state, action) => {state.catalogData = action.payload},
         setCatalogDataFilter: (state, action) => {state.catalogDataFiltered = action.payload},
         filtersState: (state, action) => {state.filtersEmpty = action.payload},
         setFilteredBrand: (state, action )=> {state.filteredBrand = action.payload},
         setFilteredType: (state, action )=> {state.filteredType = action.payload},
         setFilteredSize: (state, action )=> {state.filteredSize = action.payload},
-
     },
     extraReducers: {
         [fetchCatalogJSON.pending]: (state)=> {
@@ -69,5 +66,5 @@ const {actions, reducer} = catalogSlice;
 
 export default reducer;
 export const {
-    openCatalogData, setFilteredBrand,setFilteredType,setFilteredSize, setCatalogDataFilter, filtersState, getFullCatalog
+    openCatalogData, setFilteredBrand,setFilteredType,setFilteredSize, setCatalogDataFilter, filtersState
 } = actions;

@@ -58,3 +58,8 @@ export const filterCatalogBy = (catalog, filterBy)=>{
 export const splitAndSHowParagraph = (text)=>{
     return text.split('\n').map((item, i) => <p key={i}>{item}</p>)
 }
+
+// cat filt container scroll top func
+export const scrollTop = ()=>{
+    window.scrollTo(0, 0)
+}
