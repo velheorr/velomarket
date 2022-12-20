@@ -11,7 +11,7 @@ import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
 import {api} from "../../../api/api";
-import {getFullCatalog} from "../CatalogSlice";
+import {fetchCatalogJSON, getFullCatalog} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
 import Breadcrumb from "../../../elements/Breadcrumb";
@@ -25,6 +25,7 @@ const CatalogPage = () => {
     const dispatch = useDispatch();
 
     const fullCatalog = useSelector(state => state.catalog.fullCatalog)
+    const new1 = useSelector(state => state.catalog.new1)
 
     const [waitData, setWaitData] = useState(false)
     const fullData = async ()=>{
@@ -39,6 +40,19 @@ const CatalogPage = () => {
         fullData()
         setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
     }, [waitData])
+
+    const fetchCatalog = async () => {
+        try {
+            await dispatch(fetchCatalogJSON())
+        } catch (err) {
+            console.log('error')
+        }
+    }
+    useEffect(()=>{
+        fetchCatalog()
+    }, [])
+
+
 
 
     const handleChange = (event, newValue) => {
