@@ -26,7 +26,7 @@ const CatalogPage = () => {
     const itemLoadState = useSelector(state => state.catalog.itemLoadState)  // состояние загрузки item
 
     const [waitData, setWaitData] = useState(false)  // выкл loader
-    const fetchCatalog = async () => {   // загрузка всего каталога
+    async function fetchCatalog(){   // загрузка всего каталога
         if(fullCatalog.length === 0){
             try {
                 await dispatch(fetchCatalogJSON())

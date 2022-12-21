@@ -7,13 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
-import {api} from '../../api/api'
 import {useDispatch, useSelector} from "react-redux";
-import {data} from './RepairSlice'
+import {fetchRepairJSON} from './RepairSlice'
 import Loader from "../../assets/loader/Loader";
 import TitleBlock from "../../elements/TitleBlock";
 import {sortData} from '../../assets/functions'
-
 
 
 const Repair = () => {
@@ -22,25 +20,30 @@ const Repair = () => {
     const [select, setSelect] = useState('');
 
     const dispatch = useDispatch()
-    const repairPrice = useSelector(state => state.repair.data);
+    const fullCatalog = useSelector(state => state.repair.fullCatalog);
 
     const handleChange = (event) => {
         setSelect(event.target.value);
         makePrice(event.target.value)
     };
 
-    const [dataPrice, setDataPrice] = useState(false)
-    const yaData = async ()=>{
-        const priceInfo = await api.getData()
-        dispatch(data(priceInfo))
-        setDataPrice(true)
+    const [waitData, setWaitData] = useState(false)  // выкл loader
+    async function fetchCatalog(){   // загрузка всего каталога
+        if(fullCatalog.length === 0){
+            try {
+                await dispatch(fetchRepairJSON())
+            } catch (err) {
+                console.error('Error')
+            }
+        }
+        setWaitData(true)
     }
-
     useEffect(()=>{
-        yaData()
+        fetchCatalog()
         makePrice('УСЛУГИ')
-        prepareSelectOptions(repairPrice)
-    },[dataPrice])
+        prepareSelectOptions(fullCatalog)
+    }, [waitData])
+
 
 
     const prepareSelectOptions = (services)=>{
@@ -65,17 +68,23 @@ const Repair = () => {
     })
 
     const makePrice = (type)=>{
-        const x = repairPrice.filter(i => (i.НоменклатураРодитель === type))
+        const x = fullCatalog.filter(i => (i.НоменклатураРодитель === type))
         const xSorted = sortData(x, 'НоменклатураБренд')
         setPrice(xSorted)
     }
 
     const renderListItems = (price) => {
-        return  price.map((item, i) => {
-            return <View key={i} item={item}/>
+        const x = price.map((item, i) => {
+            return <div className='list' key={i}>
+                <div>{item.НоменклатураБренд.split('_').join(' ')}</div>
+                <div>{item.Номенклатура}</div>
+                <div>{item.Цена}р</div>
+            </div>
         })
+        return x
     }
     let listItems = renderListItems(price)
+
 
     return (
         <>
@@ -92,32 +101,27 @@ const Repair = () => {
                         {renderSelectOptions}
                     </Select>
                 </FormControl>
-                <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed'}}>
-                    <div className='listTitle'>
-                        <div>Услуга</div>
-                        <div>Описание</div>
-                        <div>Цена</div>
-                    </div>
-                    { repairPrice.length < 1 ? <Loader/> : ''}
-                    {listItems}
-
+                <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed', minHeight: '500px'}}>
+                    {waitData
+                        ?
+                        <>
+                            <div className='listTitle'>
+                                <div>Услуга</div>
+                                <div>Описание</div>
+                                <div>Цена</div>
+                            </div>
+                            {listItems}
+                        </>
+                        :
+                        <Loader/>
+                    }
                 </Paper>
             </div>
         </>
     );
 };
 
-const View = ({item})=>{
-    const {НоменклатураБренд, Номенклатура, Цена} = item;
-    const txt = НоменклатураБренд.split('_').join(' ')
-    return (
-        <div className='list'>
-            <div>{txt}</div>
-            <div>{Номенклатура}</div>
-            <div>{Цена}р</div>
-        </div>
-    )
-}
+
 
 export default Repair;
 
