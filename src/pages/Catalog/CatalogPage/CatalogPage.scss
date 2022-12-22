@@ -9,8 +9,6 @@
 }
 
 .itemImgBlock {
-    /*display:flex;
-    flex-wrap: wrap;*/
     position: relative;
     .imgList {
         position: absolute;
@@ -27,7 +25,6 @@
         }
     }
     .itemImg {
-       /* flex: 1 1 auto;*/
         text-align: center;
         padding: 15px;
         img {
@@ -37,6 +34,14 @@
         }
         @media (max-width: 570px) {
             img {height: 180px;     max-width: 345px;}
+        }
+    }
+    .brandLogo {
+        position: absolute;
+        right: 15px;
+        bottom: 0px;
+        img {
+            width: 150px;
         }
     }
 }
