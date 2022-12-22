@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../../App.scss'
 import CatalogFilters from "./catalogFilters";
-
 import {
     openCatalogData,
     setFilteredBrand,
@@ -13,7 +12,6 @@ import {filterCatalogBy, scrollTop} from '../../../assets/functions'
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import Loader from "../../../assets/loader/Loader";
-import IconButton from "@mui/material/IconButton";
 import TitleBlock from "../../../elements/TitleBlock";
 import CatalogCard from "../../../elements/CatalogCard";
 import Breadcrumb from "../../../elements/Breadcrumb";
@@ -95,10 +93,7 @@ const CatalogFiltersContainer = () => {
                     <Loader/>
                 }
             </div>
-
-            <ScrollToTop smooth className='scrollTop' component={<IconButton color="primary" variant="contained">
-                <KeyboardDoubleArrowUpIcon/>
-            </IconButton>}/>
+            <ScrollToTop smooth className='scrollTop' component={<KeyboardDoubleArrowUpIcon/>}/>
         </>
     );
 };

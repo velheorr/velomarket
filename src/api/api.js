@@ -5,22 +5,9 @@ const baseURL = 'https://storage.yandexcloud.net/velomarketkoleso/'
 
 
 export const api = {
-    async getImg(img){
-        let res = await axios.get(`${baseURL}images/${img}`)
-        return res
-    },
     async sendContact(data){
         let res = await axios.get(`https://functions.yandexcloud.net/d4enchfsim84gntm625q?name=${data.name}&contact=${data.contact}&text=${data.text}`)
         return res
-    },
-    async getData() {
-        try {
-            const res = await axios.get('https://functions.yandexcloud.net/d4e52c56im1dh44c6nk6');
-            return res.data
-
-        } catch (error) {
-            console.error(error);
-        }
     },
     async getConfig() {
         try {
