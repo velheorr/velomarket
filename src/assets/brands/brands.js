@@ -5,7 +5,7 @@ import forward from './forward.png'
 import novatrack from './novatrack.png'
 import smartrike from './smartrike.png'
 import stels from './stels.png'
-
+import foxx from './foxx.png'
 
 
 const brands = [
@@ -16,6 +16,7 @@ const brands = [
 	{brand: 'NOVATRACK', img: novatrack},
 	{brand: 'SMARTRIKE', img: smartrike},
 	{brand: 'STELS', img: stels},
+	{brand: 'SCOOTER', img: foxx},
 
 ]
 

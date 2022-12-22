@@ -13,7 +13,7 @@ import {fetchCatalogJSON} from "../CatalogSlice";
 import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
 import Breadcrumb from "../../../elements/Breadcrumb";
-import brands from '../../../assets/brands/brands'
+import BrandLogo from "../../../elements/BrandLogo";
 
 
 const CatalogPage = () => {
@@ -73,16 +73,6 @@ const CatalogPage = () => {
     }
 
 
-    const brandLogo = (data)=>{
-        const img = brands.find(i => i.brand === data)
-        if (img){
-            console.log(data)
-            return <div className='brandLogo'><img src={img.img} alt=''/></div>
-        }
-
-    }
-
-
     return (
         <Fancybox options={{ infinite: false }}>
             <TitleBlock name={"Описание товара"} />
@@ -98,7 +88,7 @@ const CatalogPage = () => {
                                     <ImgForCatalogPage mainImg={image} item={item}/>
                                 </div>
                                 {notAvailable() ? <div className='noAvailableCatPage'>Нет в наличии</div> : ''}
-                                {brandLogo(item.НоменклатураБренд)}
+                                <BrandLogo data={item.НоменклатураБренд}/>
                             </div>
 
                             <TabContext value={value}>
