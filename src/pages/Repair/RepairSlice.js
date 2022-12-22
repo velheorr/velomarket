@@ -18,8 +18,11 @@ const repairSlice = createSlice({
     reducers: {
         menu: (state, action) => {state.selectMenu = action.payload},
     },
-    extraReducers: {
-        [fetchRepairJSON.fulfilled]: (state, action)=> {state.fullCatalog = action.payload},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchRepairJSON.fulfilled, (state, action) =>{
+                state.fullCatalog = action.payload
+            })
     }
 });
 

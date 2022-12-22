@@ -46,19 +46,20 @@ const catalogSlice = createSlice({
         setFilteredType: (state, action )=> {state.filteredType = action.payload},
         setFilteredSize: (state, action )=> {state.filteredSize = action.payload},
     },
-    extraReducers: {
-        [fetchCatalogJSON.pending]: (state)=> {
-            state.fullCatalog = [];
-            state.itemLoadState = 'loading'
-        },
-        [fetchCatalogJSON.fulfilled]: (state, action)=> {
-            state.fullCatalog = action.payload;
-            state.itemLoadState = 'ready';
-        },
-        [fetchCatalogJSON.rejected]: (state, action)=> {
-            state.fullCatalog = [];
-            state.itemLoadState = 'rejected';
-        },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchCatalogJSON.pending, (state) =>{
+                state.fullCatalog = [];
+                state.itemLoadState = 'loading'
+            })
+            .addCase(fetchCatalogJSON.fulfilled, (state, action) =>{
+                state.fullCatalog = action.payload;
+                state.itemLoadState = 'ready';
+            })
+            .addCase(fetchCatalogJSON.rejected, (state) =>{
+                state.fullCatalog = [];
+                state.itemLoadState = 'rejected';
+            })
     }
 });
 

@@ -190,3 +190,12 @@ a {text-decoration: none;}
     margin-bottom: 10px;
 }
 
+.scrollTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px !important;
+    right: 11px !important;
+    bottom: 65px !important;
+    border: 1px solid #1976d2 !important;
+}

@@ -18,6 +18,7 @@ import TitleBlock from "../../../elements/TitleBlock";
 import CatalogCard from "../../../elements/CatalogCard";
 import Breadcrumb from "../../../elements/Breadcrumb";
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import ScrollToTop from "react-scroll-to-top";
 
 
 const CatalogFiltersContainer = () => {
@@ -95,9 +96,9 @@ const CatalogFiltersContainer = () => {
                 }
             </div>
 
-            <div className='upBtn'>
-                <IconButton color="primary" variant="contained" onClick={scrollTop}><KeyboardDoubleArrowUpIcon/></IconButton>
-            </div>
+            <ScrollToTop smooth className='scrollTop' component={<IconButton color="primary" variant="contained">
+                <KeyboardDoubleArrowUpIcon/>
+            </IconButton>}/>
         </>
     );
 };
