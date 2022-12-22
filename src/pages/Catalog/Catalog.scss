@@ -6,7 +6,7 @@
 .catalogWrapper {
     margin-top: 30px;
     display:flex;
-    .catalogWrapper-filters{flex: 0 0 250px;}
+    .catalogWrapper-filters{flex: 0 0 250px; margin-bottom: 15px;}
     .catalog-cards {
         flex: 1 1 auto;
         .catalog-cards-row {

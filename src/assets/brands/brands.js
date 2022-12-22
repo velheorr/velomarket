@@ -5,7 +5,11 @@ import forward from './forward.png'
 import novatrack from './novatrack.png'
 import smartrike from './smartrike.png'
 import stels from './stels.png'
-import foxx from './foxx.png'
+import bibitu from './bibitu.png'
+import navigator from './navigator.png'
+import nika from './nika.png'
+import saimaa from './saimaa.png'
+import bars from './bars.png'
 
 
 const brands = [
@@ -16,7 +20,11 @@ const brands = [
 	{brand: 'NOVATRACK', img: novatrack},
 	{brand: 'SMARTRIKE', img: smartrike},
 	{brand: 'STELS', img: stels},
-	{brand: 'SCOOTER', img: foxx},
+	{brand: 'BIBITU', img: bibitu},
+	{brand: 'NAVIGATOR', img: navigator},
+	{brand: 'NIKA', img: nika},
+	{brand: 'SAIMAA', img: saimaa},
+	{brand: 'БАРС', img: bars},
 
 ]
 
