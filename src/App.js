@@ -11,8 +11,8 @@ import CatalogFiltersContainer from "./pages/Catalog/catalogFilters/catalogFilte
 import Page404 from "./404/404";
 import {useSelector} from "react-redux";
 import Modal from "./Modal/Modal";
-import Slider from "./assets/Slider/Slider";
 import Footer from "./pages/Footer/Footer";
+import SlickSlider from "./assets/Slider/SlickSlider";
 
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
             <div className='mainHeader'>
                 <Header/>
             </div>
-            <Slider/>
+            <SlickSlider/>
             <Switch>
                 <Route exact path="/"><Catalog/></Route>
                 <Route path="/repair"><Repair/></Route>
