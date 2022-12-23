@@ -12,6 +12,9 @@
     position: relative;
     .imgList {
         position: absolute;
+        overflow-y: scroll;
+        height: 300px;
+        @media (max-width: 570px) {height: 200px; margin-left: 10px;}
         img {
             width: 60px;
             height: 60px;
