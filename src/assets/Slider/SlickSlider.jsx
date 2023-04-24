@@ -18,6 +18,10 @@ import img11 from "./img/11.jpg"
 import img12 from "./img/12.jpg"
 import img13 from "./img/13.jpg"
 import img14 from "./img/14.jpg"
+import img15 from "./img/15.jpg"
+import img16 from "./img/16.jpg"
+import img17 from "./img/17.jpg"
+import img18 from "./img/18.jpg"
 
 
 const SlickSlider = () => {
@@ -36,12 +40,16 @@ const SlickSlider = () => {
 		{ url: img12 },
 		{ url: img13 },
 		{ url: img14 },
+		{ url: img15 },
+		{ url: img16 },
+		{ url: img17 },
+		{ url: img18 },
 	]
 
 	const settings = {
 		dots: true,
 		autoplay: true,
-		speed: 1500,
+		speed: 2000,
 		slidesToShow: 4,
 		slidesToScroll: 1,
 		initialSlide: 0,
