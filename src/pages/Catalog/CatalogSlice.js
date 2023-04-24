@@ -8,7 +8,7 @@ import winter from './img/winter.png'
 import giro from './img/giro.png'
 import inventar from './img/inventar.png'
 
-
+// получение data.json
 export const fetchCatalogJSON = createAsyncThunk('catalog/fetchCatalogJSON',async () =>{
         const res = await axios.get('https://functions.yandexcloud.net/d4e52c56im1dh44c6nk6');
         return res.data;

@@ -14,6 +14,7 @@ import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
 import Breadcrumb from "../../../elements/Breadcrumb";
 import BrandLogo from "../../../elements/BrandLogo";
+import Price from "../../../elements/Price";
 
 
 const CatalogPage = () => {
@@ -72,6 +73,7 @@ const CatalogPage = () => {
         if (item.ВНаличии < 1 && item.ВНаличии === ''){return true}
     }
 
+    /*console.log(item.Цена)*/
 
     return (
         <Fancybox options={{ infinite: false }}>
@@ -89,6 +91,7 @@ const CatalogPage = () => {
                                 </div>
                                 {notAvailable() ? <div className='noAvailableCatPage'>Нет в наличии</div> : ''}
                                 <BrandLogo data={item.НоменклатураБренд}/>
+                                <Price data={item.Цена}/>
                             </div>
 
                             <TabContext value={value}>

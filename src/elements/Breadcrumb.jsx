@@ -37,15 +37,15 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 					backData
 						?
 						<Link to={backPath}
-								   underline="hover"
-							  className='brTitle brLink'
+							underline="hover"
+							className='brTitle brLink'
 						>
 							<span>{backText}</span>
 						</Link>
 						:
 						''
 				}
-				{
+				{/*{
 					backData
 						?
 						<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
@@ -54,7 +54,7 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 						</Typography>
 						:
 						''
-				}
+				}*/}
 				{
 					catalog
 					?
