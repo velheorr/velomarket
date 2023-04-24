@@ -13,8 +13,9 @@
     min-height: 235px;
     .imgList {
         position: absolute;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
         height: 300px;
+        overflow: auto;
         @media (max-width: 570px) {height: 200px; margin-left: 10px;}
         img {
             width: 60px;
