@@ -1,11 +1,12 @@
 import React from 'react';
 import img from './load.gif'
 
-const Loader = () => {
+const Loader = ({text = 'Идет загрузка данных...', css = {textAlign: "center", marginTop: '50px'}}  ) => {
+
 	return (
-		<div style={{textAlign: "center", marginTop: '50px'}}>
+		<div style={css}>
 			<img src={img} alt='loading'/>
-			<div>Идет загрузка данных...</div>
+			<div>{text}</div>
 		</div>
 	);
 };
