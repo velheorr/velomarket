@@ -56,6 +56,8 @@ const CatalogPage = () => {
 
     const renderMoreImg = ()=>{
         let arr = []
+        console.log(item)
+
         if (item && item.ДопКартинки.includes('.')){
             arr = item.ДопКартинки.split(',')
         }
