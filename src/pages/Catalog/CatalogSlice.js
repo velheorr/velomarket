@@ -23,7 +23,7 @@ const initialState = {
         { name: 'ВЕЛОЗАПЧАСТИ', img: zapchasti},
         { name: 'ГИРОСКУТЕРЫ', img: giro},
         { name: 'СПОРТИНВЕНТАРЬ', img: inventar},
-       /* { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},*/
+        { name: 'ЗИМНИЕ-ТОВАРЫ', img: winter},
     ],
     catalogData: [], // current catalog group
     catalogDataFiltered: [],
