@@ -27,6 +27,7 @@ const Contacts = () => {
 
     useEffect(()=>{
         fullData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const date = new Date();
@@ -38,8 +39,11 @@ const Contacts = () => {
             setSched(config.schedule2)
         } else {setSched(config.schedule)}
 
-        const currentNotice = config.notice.find(i => {if(i.date - currMounth === 1){return i} })
-        setNotice(currentNotice)
+        const currentNotice = config.notice.find(i => {
+            if(i.date - currMounth === 1){return i}
+        });
+        setNotice(currentNotice);
+
     }
 
     const fullData = async ()=>{

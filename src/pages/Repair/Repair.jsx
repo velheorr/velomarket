@@ -42,6 +42,7 @@ const Repair = () => {
         fetchCatalog()
         makePrice('УСЛУГИ')
         prepareSelectOptions(fullCatalog)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [waitData])
 
 

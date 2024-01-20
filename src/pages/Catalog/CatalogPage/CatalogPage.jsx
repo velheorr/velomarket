@@ -43,7 +43,7 @@ const CatalogPage = () => {
         if (fullCatalog.length !== 0){
             setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
         }
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [waitData])
 
 
@@ -56,7 +56,6 @@ const CatalogPage = () => {
 
     const renderMoreImg = ()=>{
         let arr = []
-        console.log(item)
 
         if (item && item.ДопКартинки.includes('.')){
             arr = item.ДопКартинки.split(',')

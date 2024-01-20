@@ -10,13 +10,26 @@ const Price = ({data}) => {
 
 	useEffect(()=>{
 		addSpaceToPrice()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [space])
 
 	const addSpaceToPrice = ()=>{
 		if (data.length > 3){
+			if (data.length <= 3){
+				return setSpace(data)
+			} else if (data.length === 4) {
+				let out = data.split('')
+				out.splice(1, 0, " ")
+				return setSpace(out.join(''))
+			} else if (data.length === 5) {
 			let out = data.split('')
 			out.splice(2, 0, " ")
-			setSpace(out.join(''))
+			return setSpace(out.join(''))
+		}
+			/*let out = data.split('')
+			out.splice(2, 0, " ")
+			setSpace(out.join(''))*/
+			return
 		}
 	}
 

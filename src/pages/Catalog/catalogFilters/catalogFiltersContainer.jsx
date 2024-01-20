@@ -43,6 +43,7 @@ const CatalogFiltersContainer = () => {
         fetchCatalog()
         selectCatalog(id)
         scrollTop()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [waitData])
 
     // define current catalog group
