@@ -90,9 +90,9 @@ const CatalogPage = () => {
                                 <div className='itemImg'>
                                     <ImgForCatalogPage mainImg={image} item={item}/>
                                 </div>
-                                {notAvailable() ? <div className='noAvailableCatPage'>Нет в наличии</div> : ''}
+                                {notAvailable() ? <div className='noAvailableCatPage'>Нет в наличии</div> : <Price data={item.Цена}/>}
                                 <BrandLogo data={item.НоменклатураБренд}/>
-                                <Price data={item.Цена}/>
+
                             </div>
 
                             <TabContext value={value}>
