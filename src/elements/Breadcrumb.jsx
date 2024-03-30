@@ -5,11 +5,12 @@ import GrainIcon from '@mui/icons-material/Grain';
 import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {setCatalogDataFilter} from "../pages/Catalog/CatalogSlice";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 	const dispatch = useDispatch();
+
 	const resetFiltersFromCatalogs = ()=>{
 		dispatch(setCatalogDataFilter([]))
 	}
@@ -65,6 +66,16 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 					:
 					''
 				}
+				{/*{
+					viewChoise
+						?
+						<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
+							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+							<span className='brTitle'>{viewChoise}</span>
+						</Typography>
+						:
+						''
+				}*/}
 			</Breadcrumbs>
 		</div>
 	);

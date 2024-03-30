@@ -23,6 +23,8 @@ const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
     let {id} = useParams();
 
+    console.log(id)
+
     const fullCatalog = useSelector(state => state.catalog.fullCatalog);
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
@@ -77,7 +79,7 @@ const CatalogFiltersContainer = () => {
     return (
         <>
             <TitleBlock name={id} />
-            <Breadcrumb catalog={id}/>
+            <Breadcrumb catalog={id} />
             <div style={{minHeight: '500px'}}>
                 {waitData
                     ?

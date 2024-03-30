@@ -34,7 +34,9 @@ const App = () => {
                 <Route path="/delivery"><Delivery/></Route>
                 <Route path="/contacts"><Contacts/></Route>
                 <Route path="/catalogs/:id" ><CatalogDetails /></Route>
-                <Route path="/catalogs2/:id" ><CatalogFiltersContainer /></Route>
+                {/*<Route path="/catalogs/:id/:typeId" ><CatalogFiltersContainer /></Route>*/}
+                <Route path="/catalogDetails/:id" ><CatalogFiltersContainer /></Route>
+               {/* <Route path="/catalogs/:id" ><CatalogFiltersContainer /></Route>*/}
                 <Route path="/catalog/:itemId"><CatalogPage /></Route>
 
                 <Route path="*"><Page404/></Route>

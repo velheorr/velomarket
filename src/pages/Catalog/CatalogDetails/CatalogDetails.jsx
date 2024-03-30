@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import TitleBlock from "../../../elements/TitleBlock";
 import Breadcrumb from "../../../elements/Breadcrumb";
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
-import {fetchCatalogJSON, openCatalogData, setCatalogTypeData} from "../CatalogSlice";
+import {Link, useHistory, useParams} from "react-router-dom";
+import {fetchCatalogJSON, openCatalogData, setCatalogTypeData, setViewChoise} from "../CatalogSlice";
 import {scrollTop} from "../../../assets/functions";
 import Loader from "../../../assets/loader/Loader";
 import './CatalogDetails.scss'
@@ -11,6 +11,7 @@ import './CatalogDetails.scss'
 const CatalogDetails = () => {
 	const dispatch = useDispatch();
 	let {id} = useParams();
+	const history = useHistory();
 	const fullCatalog = useSelector(state => state.catalog.fullCatalog);
 	const catalogTypeData = useSelector(state => state.catalog.catalogTypeData);
 
@@ -34,27 +35,39 @@ const CatalogDetails = () => {
 
 	const dataType = (catalog) => {
 		let typeCatalog = []
-		catalog.filter(i => i.ПутьПапки.includes(id)).forEach((elem) =>{
+		catalog.filter(i => i.ПутьПапки.includes(id)).forEach((elem) => {
 			let item = elem.Тип
-			if (item === ''){item = 'Другие'}
-			if (!typeCatalog.includes(item) ){typeCatalog.push(item)}
+			if (item === '') {
+				item = 'Другие'
+			}
+			if (!typeCatalog.includes(item)) {
+				typeCatalog.push(item)
+			}
 		})
+		if (typeCatalog.length === 1) {
+			console.log(typeCatalog)
+			dispatch(setViewChoise(typeCatalog[0]))
+
+			history.push(`/catalogDetails/${id}`);
+		}
 		dispatch(setCatalogTypeData(typeCatalog))
-		console.log(catalogTypeData)
+
 	}
 
 
 	return (
 		<div style={{minHeight: '500px'}}>
 			<TitleBlock name={id} />
-			<Breadcrumb catalog={id}/>
+			<Breadcrumb catalog={id} />
 			<div className='detailedBlock' >
 				{
 					!waitData
 						? <Loader/>
 						: catalogTypeData?.map((item, i) => {
-							return <div key={i} className='item'>
-								<div className='itemText'>{item}</div>
+							return <div key={i} className='item' >
+								<Link to={`/catalogDetails/${id}`} onClick={()=>{dispatch(setViewChoise(item))}}>
+									<div className='itemText'>{item}</div>
+								</Link>
 							</div>
 						})
 				}

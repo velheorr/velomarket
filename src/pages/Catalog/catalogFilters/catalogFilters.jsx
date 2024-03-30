@@ -12,7 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CheckBox from "../../../elements/CheckBox";
 
 const CatalogFilters = ({className}) => {
@@ -21,21 +21,33 @@ const CatalogFilters = ({className}) => {
     const filteredType = useSelector(state => state.catalog.filteredType);
     const filteredSize = useSelector(state => state.catalog.filteredSize);
     const catalogData = useSelector(state => state.catalog.catalogData);
+
+    const viewChoise = useSelector(state => state.catalog.viewChoise);
     const dispatch = useDispatch();
 
     const [selectType, setSelectType] = useState('All');
 
+    useEffect(()=>{
+        if (viewChoise){
+            handleChange('',viewChoise)
+        }
 
-    const handleChange = (event) => {
-        setSelectType(event.target.value);
+    }, [viewChoise])
+
+    const handleChange = (event, link = '') => {
+        let x = link
+        if (event) {
+            x = event.target.value
+        }
+        setSelectType(x);
         let filtered;
         reset()
-        if (event.target.value === 'All') {
+        if (x === 'All') {
             dispatch(setCatalogDataFilter(catalogData))
             filtered = catalogData
             resetForm()
         } else {
-            filtered = catalogData.filter(el => el.Тип === event.target.value)
+            filtered = catalogData.filter(el => el.Тип === x)
             dispatch(setCatalogDataFilter(filtered))
         }
         renewFilters(filtered)
