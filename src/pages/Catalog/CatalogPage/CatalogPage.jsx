@@ -17,6 +17,7 @@ import BrandLogo from "../../../elements/BrandLogo";
 import Price from "../../../elements/Price";
 
 
+
 const CatalogPage = () => {
     const {itemId} = useParams()
     const [item, setItem] = useState();
@@ -90,7 +91,9 @@ const CatalogPage = () => {
                                 <div className='itemImg'>
                                     <ImgForCatalogPage mainImg={image} item={item}/>
                                 </div>
-                                {notAvailable() ? <div className='noAvailableCatPage'>Нет в наличии</div> : <Price data={item.Цена}/>}
+                                {notAvailable()
+                                    ? <div className='noAvailableCatPage'>Нет в наличии</div>
+                                    : <Price data={item.Цена}/>}
                                 <BrandLogo data={item.НоменклатураБренд}/>
 
                             </div>

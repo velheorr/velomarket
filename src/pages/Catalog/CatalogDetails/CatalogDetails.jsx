@@ -45,9 +45,7 @@ const CatalogDetails = () => {
 			}
 		})
 		if (typeCatalog.length === 1) {
-			console.log(typeCatalog)
 			dispatch(setViewChoise(typeCatalog[0]))
-
 			history.push(`/catalogDetails/${id}`);
 		}
 		dispatch(setCatalogTypeData(typeCatalog))

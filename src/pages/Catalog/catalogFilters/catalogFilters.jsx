@@ -21,8 +21,8 @@ const CatalogFilters = ({className}) => {
     const filteredType = useSelector(state => state.catalog.filteredType);
     const filteredSize = useSelector(state => state.catalog.filteredSize);
     const catalogData = useSelector(state => state.catalog.catalogData);
-
     const viewChoise = useSelector(state => state.catalog.viewChoise);
+
     const dispatch = useDispatch();
 
     const [selectType, setSelectType] = useState('All');
@@ -133,7 +133,7 @@ const CatalogFilters = ({className}) => {
                 <div className='filterHeader'>Параметры</div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {
-                        filteredType.length > 1
+                        filteredType.length > 1 && viewChoise === ''
                             ?
                             <FormControl fullWidth sx={{mt:1}}>
 

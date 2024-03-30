@@ -8,7 +8,7 @@ import {setCatalogDataFilter} from "../pages/Catalog/CatalogSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 
-const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
+const Breadcrumb = ({catalog = false, backData = false, backTitle = '', viewChoise = ''}) => {
 	const dispatch = useDispatch();
 
 	const resetFiltersFromCatalogs = ()=>{
@@ -59,15 +59,18 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 				{
 					catalog
 					?
-						<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
-							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-							<span className='brTitle'>{catalog}</span>
-						</Typography>
+						<Link to={`/catalogs/${catalog}`} underline="hover" className='brLink'>
+							<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
+								<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+								<span className='brTitle brLink'>{catalog}</span>
+
+							</Typography>
+						</Link>
 					:
 					''
 				}
-				{/*{
-					viewChoise
+				{
+					viewChoise && catalog !== viewChoise
 						?
 						<Typography	sx={{ display: 'flex', alignItems: 'center' }}>
 							<GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -75,7 +78,7 @@ const Breadcrumb = ({catalog = false, backData = false, backTitle = ''}) => {
 						</Typography>
 						:
 						''
-				}*/}
+				}
 			</Breadcrumbs>
 		</div>
 	);

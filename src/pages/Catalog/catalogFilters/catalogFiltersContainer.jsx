@@ -23,12 +23,11 @@ const CatalogFiltersContainer = () => {
     const dispatch = useDispatch();
     let {id} = useParams();
 
-    console.log(id)
-
     const fullCatalog = useSelector(state => state.catalog.fullCatalog);
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
     const filtersEmpty = useSelector(state => state.catalog.filtersEmpty);
+    const viewChoise = useSelector(state => state.catalog.viewChoise);
 
     const [waitData, setWaitData] = useState(false)  // выкл loader
     const fetchCatalog = async () => {   // загрузка всего каталога
@@ -79,7 +78,7 @@ const CatalogFiltersContainer = () => {
     return (
         <>
             <TitleBlock name={id} />
-            <Breadcrumb catalog={id} />
+            <Breadcrumb catalog={id} viewChoise={viewChoise}/>
             <div style={{minHeight: '500px'}}>
                 {waitData
                     ?

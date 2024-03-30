@@ -10,6 +10,7 @@ import {clearSymbol, imgURL, imgURLerror, noImgURL} from "../assets/functions";
 import React from "react";
 import Divider from "@mui/material/Divider";
 import {useInView} from "react-intersection-observer";
+import {Tooltip} from "@mui/material";
 
 
 /*Цена, Тип, Размер,НоменклатураАртикул, НоменклатураАртикулПроизв*/
@@ -31,7 +32,7 @@ const CatalogCard = ({items}) => {
 		<Link to={`/catalog/${НоменклатураКод}`} className='catalogCard'>
 			<Card sx={{ maxWidth: 300}} className='catalog-cards-column' ref={ref}>
 				<CardActionArea>
-					{notAvailable() ? <div className='notAvailable'>Нет в наличии</div> : ''}
+					{notAvailable() ? <Tooltip title="Детали уточняйте по телефону: +7 (902) 471-37-69"><div className='notAvailable'>Нет в наличии</div></Tooltip> : ''}
 					<div className='cardTitle'>{Номенклатура}</div>
 					{
 						inView
