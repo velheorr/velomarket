@@ -39,7 +39,8 @@
             z-index: 2;
             padding-left: 0;
             transition: padding-left ease-in-out 0.5s;
-
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
     }

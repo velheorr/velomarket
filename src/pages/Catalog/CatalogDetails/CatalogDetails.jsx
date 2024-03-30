@@ -4,7 +4,7 @@ import Breadcrumb from "../../../elements/Breadcrumb";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {fetchCatalogJSON, openCatalogData, setCatalogTypeData, setViewChoise} from "../CatalogSlice";
-import {scrollTop} from "../../../assets/functions";
+import {scrollTop, sortArr} from "../../../assets/functions";
 import Loader from "../../../assets/loader/Loader";
 import './CatalogDetails.scss'
 
@@ -48,7 +48,7 @@ const CatalogDetails = () => {
 			dispatch(setViewChoise(typeCatalog[0]))
 			history.push(`/catalogDetails/${id}`);
 		}
-		dispatch(setCatalogTypeData(typeCatalog))
+		dispatch(setCatalogTypeData(sortArr(typeCatalog)))
 
 	}
 
