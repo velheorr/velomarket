@@ -1,0 +1,42 @@
+.detailedBlock{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin-top: 15px;
+    .item {
+        flex: 0 1 20%;
+        padding: 15px;
+        min-width: 300px;
+        transition: 0.15s all ease-in-out;
+        box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2), 0 5px 15px 0 rgba(37, 44, 97, 0.15);
+        border-radius: 15px;
+        position: relative;
+        max-width: 500px;
+        margin: 5px 15px;
+        height: 35px;
+        &:hover {
+            background-color: #ffffffeb;
+            transform: scale(1.1);
+            cursor: pointer;
+            color: #3f51b5;
+            transition: color ease-in-out 0.5s;
+            .itemText{
+                padding-left: 20px;
+                transition: padding-left ease-in-out 0.5s;
+            }
+
+        }
+        .itemText {
+            font-weight: 600;
+            position: relative;
+            font-size: 22px;
+            font-family: "Alegreya", serif;
+            white-space: nowrap;
+            z-index: 2;
+            padding-left: 0;
+            transition: padding-left ease-in-out 0.5s;
+
+        }
+    }
+}

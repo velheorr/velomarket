@@ -13,11 +13,12 @@ import {useSelector} from "react-redux";
 import Modal from "./Modal/Modal";
 import Footer from "./pages/Footer/Footer";
 import SlickSlider from "./assets/Slider/SlickSlider";
+import CatalogDetails from "./pages/Catalog/CatalogDetails/CatalogDetails";
 
 
 const App = () => {
     const modal = useSelector(state => state.modal.show);
-   /* const snow =  document.createElement('script');
+    /*const snow =  document.createElement('script');
     snow.src = "https://thecode.media/wp-content/uploads/2019/12/snowfall2020.js"; document.body.appendChild(snow);*/
 
 
@@ -32,8 +33,8 @@ const App = () => {
                 <Route path="/repair"><Repair/></Route>
                 <Route path="/delivery"><Delivery/></Route>
                 <Route path="/contacts"><Contacts/></Route>
-
-                <Route path="/catalogs/:id" ><CatalogFiltersContainer /></Route>
+                <Route path="/catalogs/:id" ><CatalogDetails /></Route>
+                <Route path="/catalogs2/:id" ><CatalogFiltersContainer /></Route>
                 <Route path="/catalog/:itemId"><CatalogPage /></Route>
 
                 <Route path="*"><Page404/></Route>
