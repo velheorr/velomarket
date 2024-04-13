@@ -32,7 +32,7 @@ const CatalogFilters = ({className}) => {
             handleChange('',viewChoise)
         }
 
-    }, [viewChoise])
+    }, [viewChoise, catalogData])
 
     const handleChange = (event, link = '') => {
         let x = link
