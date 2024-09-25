@@ -17,6 +17,12 @@ import CatalogCard from "../../../elements/CatalogCard";
 import Breadcrumb from "../../../elements/Breadcrumb";
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import ScrollToTop from "react-scroll-to-top";
+import {easySearch, searchInArray} from "../../../assets/searchInArray";
+import TextField from "@mui/material/TextField";
+import {InputAdornment} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 
 const CatalogFiltersContainer = () => {
@@ -28,7 +34,7 @@ const CatalogFiltersContainer = () => {
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
     const filtersEmpty = useSelector(state => state.catalog.filtersEmpty);
     const viewChoise = useSelector(state => state.catalog.viewChoise);
-
+    const [catEl, setCatEl] = useState([])
     const [waitData, setWaitData] = useState(false)  // выкл loader
     const fetchCatalog = async () => {   // загрузка всего каталога
         if(fullCatalog.length === 0){
@@ -45,6 +51,8 @@ const CatalogFiltersContainer = () => {
         selectCatalog(id)
         scrollTop()
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        setCatEl(catalogData)
+        renderCatalogItems(catEl)
     }, [waitData])
 
     // define current catalog group
@@ -61,24 +69,56 @@ const CatalogFiltersContainer = () => {
     }
 
     let total = 0
-    function renderCatalogItems(catalogData){
-        if (catalogDataFiltered.length > 0 ) {
-            total = catalogDataFiltered.length
-            return catalogDataFiltered.map((item, i) => <CatalogCard key={i} items={item}/>)
+    function renderCatalogItems(catEl){
+        if (catEl.length > 0 ) {
+            total = catEl.length
+            return catEl.map((item, i) => <CatalogCard key={i} items={item}/>)
         } else if (filtersEmpty === true){
-            total = catalogData.length
-            return catalogData.map((item, i) => <CatalogCard key={i} items={item}/>)
+            total = catEl.length
+            return catEl.map((item, i) => <CatalogCard key={i} items={item}/>)
         } else if (filtersEmpty === false) {
             total = 0
             return <div className='noDataWithFilters'><span>Уточните поиск. Товары с указанными параметрами не найдены...</span></div>
         }
     }
-    const catalogElements = renderCatalogItems(catalogData);
+    const catalogElements = renderCatalogItems(catEl);
 
+
+    /*Поиск*/
+    const [search, setSearch] = useState('')
+    /*Очистка поля поиска*/
+    const resetSearch = ()=> {
+        setSearch('')
+        setCatEl(catalogData)
+    }
+    /*Обновление поля поиска*/
+    const handleSearch = (e) =>{
+        e.preventDefault()
+        setSearch(e.target.value)
+    }
+    /*ф-я поиска*/
+    const handleKeyDown = (e)=>{
+        if (e.key === 'Backspace' || e.key === 'Delete'){
+            setCatEl(catalogData)
+        }
+        if (e.key === 'Enter' && search.length > 1) {
+            const keysToSearch = ["Номенклатура", "НоменклатураБренд", 'НоменклатураМодель'];
+            const searchedData = searchInArray(catEl, search, keysToSearch);
+            setCatEl(searchedData)
+        }
+    }
+    console.log(catalogData)
     return (
         <>
             <TitleBlock name={id} />
             <Breadcrumb catalog={id} viewChoise={viewChoise}/>
+            <div className='searchFilter' style={{position: 'relative'}}>
+                <TextField id="realiz_search" sx={{position: 'absolute', right: '30px', top: '-32px'}}  variant="standard" placeholder='Поиск' value={search}
+                           onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
+                    startAdornment: (<InputAdornment position="start"><SearchIcon/></InputAdornment>),
+                    endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon  /></IconButton ></InputAdornment>)
+                }}/>
+            </div>
             <div style={{minHeight: '500px'}}>
                 {waitData
                     ?
