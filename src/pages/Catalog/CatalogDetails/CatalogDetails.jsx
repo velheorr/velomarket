@@ -7,6 +7,12 @@ import {fetchCatalogJSON, openCatalogData, setCatalogTypeData, setViewChoise} fr
 import {scrollTop, sortArr} from "../../../assets/functions";
 import Loader from "../../../assets/loader/Loader";
 import './CatalogDetails.scss'
+import {easySearch, searchInArray} from "../../../assets/searchInArray";
+import TextField from "@mui/material/TextField";
+import {InputAdornment} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const CatalogDetails = () => {
 	const dispatch = useDispatch();
@@ -31,6 +37,7 @@ const CatalogDetails = () => {
 		fetchCatalog()
 		dataType(fullCatalog)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
+		setCatType(catalogTypeData)
 	}, [waitData])
 
 	const dataType = (catalog) => {
@@ -53,15 +60,47 @@ const CatalogDetails = () => {
 	}
 
 
+	const [catType, setCatType] = useState([])
+	/*Поиск*/
+	const [search, setSearch] = useState('')
+	/*Очистка поля поиска*/
+	const resetSearch = ()=> {
+		setSearch('')
+		setCatType(catalogTypeData)
+	}
+	/*Обновление поля поиска*/
+	const handleSearch = (e) =>{
+		e.preventDefault()
+		setSearch(e.target.value)
+	}
+	/*ф-я поиска*/
+	const handleKeyDown = (e)=>{
+		if (e.key === 'Backspace' || e.key === 'Delete'){
+			setCatType(catalogTypeData)
+		}
+		if (e.key === 'Enter' && search.length > 1) {
+			const keysToSearch = ["org", "seller", 'vendor'];
+			const searchedData = easySearch(catType, search, keysToSearch);
+			setCatType(searchedData)
+		}
+	}
+
 	return (
 		<div style={{minHeight: '500px'}}>
 			<TitleBlock name={id} />
 			<Breadcrumb catalog={id} />
+			<div className='searchFilter' style={{position: 'relative'}}>
+				<TextField id="realiz_search" sx={{position: 'absolute', right: '30px', top: '-32px'}}  variant="standard" placeholder='Поиск' value={search}
+							onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
+					startAdornment: (<InputAdornment position="start"><SearchIcon/></InputAdornment>),
+					endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon  /></IconButton ></InputAdornment>)
+				}}/>
+			</div>
 			<div className='detailedBlock' >
 				{
 					!waitData
 						? <Loader/>
-						: catalogTypeData?.map((item, i) => {
+						: catType?.map((item, i) => {
 							return <div key={i} className='item' >
 								<Link to={`/catalogDetails/${id}`} onClick={()=>{dispatch(setViewChoise(item))}}>
 									<div className='itemText'>{item}</div>
