@@ -50,7 +50,6 @@
         background: #f2f2f1;
         box-shadow: 0 1px 0 0 #d7d8db;
         padding: 1px 5px;
-        margin-top: 15px;
         position: absolute;
         left: -10px;
         width: 104%;
@@ -70,12 +69,12 @@
         width: 95%;
     }
     .filterCheckBox {
-        border-top: 1px solid #b7b7b7;
+        /*border-top: 1px solid #b7b7b7;*/
         max-height: 350px;
         display: grid;
         overflow-y: auto;
         overflow-x: hidden;
-        padding-top: 38px;
+;
     }
 }
 

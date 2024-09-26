@@ -173,7 +173,7 @@ const CatalogFilters = ({className}) => {
                     {
                         filteredType.length > 1 && viewChoise === ''
                             ?
-                            <FormControl fullWidth sx={{mt:1}}>
+                            <FormControl fullWidth sx={{mt:1, mb: '20px'}}>
 
                                 <InputLabel id="typeS">Тип:</InputLabel>
                                 <Select
@@ -192,22 +192,24 @@ const CatalogFilters = ({className}) => {
 
                     {
                         catalogData
-                            ?
+                            &&
                                 <div style={{position:'relative'}}>
                                     <div className='filterName2'>Бренд:</div>
+                                    <div style={{height: '25px'}}></div>
                                     {/*<Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>*/}
                                     <div className='filterCheckBox'>{catalogFilterBrand}</div>
                                 </div>
-                            : ''
+
                     }
                     {
                         filteredSize.length > 1
-                            ?
-                            <div>
-                                <Chip className='filterName' variant="outlined" color="info" size="small" label="Размер:"/>
+                            &&
+                            <div style={{position:'relative'}}>
+                                <div className='filterName2'>Размер:</div>
+                                <div style={{height: '25px'}}></div>
                                 <div className='filterCheckBox'>{catalogFilterSize}</div>
                             </div>
-                            : ''
+
                     }
                    {/* <Chip className='filterName' variant="outlined" color="info" size="small" label="Показывать товары:"/>
                     <div className='filterCheckBox'>
