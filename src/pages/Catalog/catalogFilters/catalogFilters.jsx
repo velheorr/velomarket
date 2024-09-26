@@ -12,8 +12,14 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import CheckBox from "../../../elements/CheckBox";
+import TextField from "@mui/material/TextField";
+import {InputAdornment} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import {searchInArray} from "../../../assets/searchInArray";
 
 const CatalogFilters = ({className}) => {
     const { register, handleSubmit, reset } = useForm();
@@ -127,10 +133,42 @@ const CatalogFilters = ({className}) => {
         dispatch(setCatalogDataFilter(catalogData))
     }
 
+    const [catEl, setCatEl] = useState([])
+    /*Поиск*/
+    const [search, setSearch] = useState('')
+    /*Очистка поля поиска*/
+    const resetSearch = ()=> {
+        setSearch('')
+        resetForm()
+    }
+    /*Обновление поля поиска*/
+    const handleSearch = (e) =>{
+        e.preventDefault()
+        setSearch(e.target.value)
+    }
+    /*ф-я поиска*/
+    const handleKeyDown = (e)=>{
+        if (e.key === 'Backspace' || e.key === 'Delete'){
+            resetForm()
+        }
+        if (e.key === 'Enter' && search.length > 1) {
+            const keysToSearch = ["Номенклатура", "НоменклатураБренд", 'НоменклатураМодель'];
+            const searchedData = searchInArray(catalogData, search, keysToSearch);
+            dispatch(setCatalogDataFilter(searchedData))
+        }
+    }
+
     return (
         <div className={className}>
             <Paper className='filtersContainer' elevation={3}>
                 <div className='filterHeader'>Параметры</div>
+                <div className='searchFilter' style={{position: 'relative'}}>
+                    <TextField id="realiz_search" sx={{mt: '10px', mb: '10px'}} variant="standard" placeholder='Поиск' value={search}
+                               onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
+                        startAdornment: (<InputAdornment position="start"><SearchIcon/></InputAdornment>),
+                        endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon  /></IconButton ></InputAdornment>)
+                    }}/>
+                </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {
                         filteredType.length > 1 && viewChoise === ''
@@ -142,6 +180,7 @@ const CatalogFilters = ({className}) => {
                                     labelId="typeS" id='selector'
                                     value={selectType}
                                     label="Тип"
+                                    size='small'
                                     onChange={handleChange}
                                 >
                                     <MenuItem value='All'>Все</MenuItem>
@@ -154,8 +193,9 @@ const CatalogFilters = ({className}) => {
                     {
                         catalogData
                             ?
-                                <div>
-                                    <Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>
+                                <div style={{position:'relative'}}>
+                                    <div className='filterName2'>Бренд:</div>
+                                    {/*<Chip className='filterName' variant="outlined" color="info" size="small" label="Бренд:"/>*/}
                                     <div className='filterCheckBox'>{catalogFilterBrand}</div>
                                 </div>
                             : ''
@@ -186,23 +226,3 @@ const CatalogFilters = ({className}) => {
 
 export default CatalogFilters;
 
-
-{/*<div className='filters'>Цена:</div>
-                <TextField
-                    {...register("priceFrom", {min: 0})}
-                    label="От"
-                    defaultValue=''
-                    size="small"
-                    variant="outlined"
-                    className='filters'
-                    type="number"
-                />
-                <TextField
-                    {...register("priceTo", {min: 0})}
-                    label="До"
-                    defaultValue=""
-                    size="small"
-                    variant="outlined"
-                    className='filters'
-                    type="number"
-                />*/}

@@ -38,23 +38,36 @@
 .filtersContainer {
     padding: 30px 10px 10px 10px;
     position: relative;
-    .filterName {
+    /*.filterName {
         margin-top: 15px;
         margin-bottom: 10px;
         border-radius: 3px;
         background-color: #fff;
+    }*/
+    .filterName2 {
+        font-size: 15px;
+        font-weight: 600;
+        background: #f2f2f1;
+        box-shadow: 0 1px 0 0 #d7d8db;
+        padding: 1px 5px;
+        margin-top: 15px;
+        position: absolute;
+        left: -10px;
+        width: 104%;
     }
     .filterHeader {
         font-size: 16px;
         font-weight: 600;
         position: absolute;
         top: -14px;
+        left: -4px;
+        text-align: center;
         background: #f2f2f1;
         border-radius: 10px;
         line-height: 36px;
         padding: 0 10px;
         box-shadow: 0 1px 0 0 #d7d8db;
-        width: 85%;
+        width: 95%;
     }
     .filterCheckBox {
         border-top: 1px solid #b7b7b7;
@@ -62,6 +75,7 @@
         display: grid;
         overflow-y: auto;
         overflow-x: hidden;
+        padding-top: 38px;
     }
 }
 
