@@ -43,6 +43,7 @@ const catalogSlice = createSlice({
     name: 'catalog',
     initialState,
     reducers: {
+        setFullCatalog: (state, action) => {state.fullCatalog = action.payload},
         openCatalogData: (state, action) => {state.catalogData = action.payload},
         setCatalogTypeData: (state, action) => {state.catalogTypeData = action.payload},
         setViewChoise: (state, action) => {state.viewChoise = action.payload},
@@ -73,5 +74,5 @@ const {actions, reducer} = catalogSlice;
 
 export default reducer;
 export const {
-    openCatalogData, setFilteredBrand,setFilteredType,setFilteredSize, setCatalogDataFilter, filtersState, setCatalogTypeData, setViewChoise
+    openCatalogData, setFilteredBrand,setFilteredType,setFilteredSize, setCatalogDataFilter, filtersState, setCatalogTypeData, setViewChoise, setFullCatalog
 } = actions;

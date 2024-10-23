@@ -31,8 +31,8 @@ const CatalogPage = () => {
 
     const [waitData, setWaitData] = useState(false)  // выкл loader
 
-    const {data: realization, isLoading, isError} = useGetRealizationData()
-   /* async function fetchCatalog(){   // загрузка всего каталога
+    //const {data: realization, isLoading, isError} = useGetRealizationData()
+    async function fetchCatalog(){   // загрузка всего каталога
         if(fullCatalog.length === 0){
             try {
                 await dispatch(fetchCatalogJSON())
@@ -41,11 +41,10 @@ const CatalogPage = () => {
             }
         }
         setWaitData(true)
-    }*/
+    }
     useEffect(()=>{
-        /*fetchCatalog()*/
-        if (realization.length !== 0){
-            dispatch(fetchCatalogJSON())
+        fetchCatalog()
+        if (fullCatalog.length !== 0){
             setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
         }
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,9 +79,9 @@ const CatalogPage = () => {
     }
 
 
-    if (isLoading) {setWaitData(true)}
+    /*if (isLoading) {return <Skelet option='realization'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
-    if (!realization) {return <h3>Нет данных с сервера</h3>}
+    if (!realization) {return <h3>Нет данных с сервера</h3>}*/
 
     return (
         <Fancybox options={{ infinite: false }}>

@@ -138,6 +138,7 @@ const Contacts = () => {
 };
 
 const View = ({item, active, holiday}) =>{
+    console.log(item)
     return (
         <>
             <ListItem button disablePadding className={`work ${holiday} ${active}`}>
