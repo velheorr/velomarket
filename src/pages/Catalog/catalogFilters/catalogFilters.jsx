@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {filtersState, setCatalogDataFilter, setFilteredBrand, setFilteredSize} from "../CatalogSlice";
 import Button from "@mui/material/Button";
 import {clearSymbol, filterCatalogBy} from "../../../assets/functions";
-import Chip from "@mui/material/Chip";
+
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -129,17 +129,18 @@ const CatalogFilters = ({className}) => {
         reset({brand: false})
         dispatch(filtersState(true))
         setSelectType('All')
-        renewFilters(catalogData)
-        dispatch(setCatalogDataFilter(catalogData))
+        handleChange('',viewChoise)
+        /*renewFilters(catalogData)
+        dispatch(setCatalogDataFilter(catalogData))*/
+
     }
 
-    const [catEl, setCatEl] = useState([])
     /*Поиск*/
     const [search, setSearch] = useState('')
     /*Очистка поля поиска*/
     const resetSearch = ()=> {
         setSearch('')
-        resetForm()
+        handleChange('',viewChoise)
     }
     /*Обновление поля поиска*/
     const handleSearch = (e) =>{

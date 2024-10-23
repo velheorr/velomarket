@@ -10,7 +10,8 @@ import inventar from './img/inventar.png'
 
 // получение data.json
 export const fetchCatalogJSON = createAsyncThunk('catalog/fetchCatalogJSON',async () =>{
-        const res = await axios.get('https://functions.yandexcloud.net/d4e52c56im1dh44c6nk6');
+        //const res = await axios.get('https://functions.yandexcloud.net/d4e52c56im1dh44c6nk6');
+        const res = await axios.get('https://storage.yandexcloud.net/velomarketkoleso/data/data.json');
         const x = res.data.filter(i => i.ВНаличии >= 1)
         return x;
     }

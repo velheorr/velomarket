@@ -15,6 +15,7 @@ import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
 import Breadcrumb from "../../../elements/Breadcrumb";
 import BrandLogo from "../../../elements/BrandLogo";
 import Price from "../../../elements/Price";
+import {useGetRealizationData} from "../../../api/useGetData";
 
 
 
@@ -29,7 +30,9 @@ const CatalogPage = () => {
     const itemLoadState = useSelector(state => state.catalog.itemLoadState)  // состояние загрузки item
 
     const [waitData, setWaitData] = useState(false)  // выкл loader
-    async function fetchCatalog(){   // загрузка всего каталога
+
+    const {data: realization, isLoading, isError} = useGetRealizationData()
+   /* async function fetchCatalog(){   // загрузка всего каталога
         if(fullCatalog.length === 0){
             try {
                 await dispatch(fetchCatalogJSON())
@@ -38,10 +41,11 @@ const CatalogPage = () => {
             }
         }
         setWaitData(true)
-    }
+    }*/
     useEffect(()=>{
-        fetchCatalog()
-        if (fullCatalog.length !== 0){
+        /*fetchCatalog()*/
+        if (realization.length !== 0){
+            dispatch(fetchCatalogJSON())
             setItem(fullCatalog.find(i => i.НоменклатураКод === itemId))
         }
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,7 +79,10 @@ const CatalogPage = () => {
         if (item.ВНаличии < 1 && item.ВНаличии === ''){return true}
     }
 
-    /*console.log(item.Цена)*/
+
+    if (isLoading) {setWaitData(true)}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!realization) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <Fancybox options={{ infinite: false }}>

@@ -35,7 +35,7 @@ const Contacts = () => {
 
     const checkSchedMounth = (config)=>{
         const currMounth = date.getMonth() + 1
-        if (currMounth === 10 ||currMounth === 11 || currMounth === 3){
+        if (currMounth === 9 ||currMounth === 10 || currMounth === 3){
             setSched(config.schedule2)
         } else {setSched(config.schedule)}
 
