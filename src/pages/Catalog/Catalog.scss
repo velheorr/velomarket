@@ -93,6 +93,7 @@
             border-radius: 15px;
             position: relative;
             max-width: 500px;
+            transform: rotate(2deg);
             &:hover {
                 background-color: #ffffffeb;
                 transform: scale(1.1);
@@ -107,7 +108,7 @@
                 white-space: nowrap;
                 position: absolute;
                 z-index: 2;
-                background-color: rgba(255, 255, 255, 0.7);
+                /*background-color: rgba(255, 255, 255, 0.7);*/
                 width: 80%;
                 top: 15px;
                 left: 15px;

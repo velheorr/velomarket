@@ -5,8 +5,7 @@ import {
     openCatalogData,
     setFilteredBrand,
     setFilteredSize,
-    setFilteredType,
-    fetchCatalogJSON
+    setFilteredType, setFullCatalog,
 } from "../CatalogSlice";
 import {filterCatalogBy, scrollTop} from '../../../assets/functions'
 import {useDispatch, useSelector} from "react-redux";
@@ -17,39 +16,30 @@ import CatalogCard from "../../../elements/CatalogCard";
 import Breadcrumb from "../../../elements/Breadcrumb";
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import ScrollToTop from "react-scroll-to-top";
+import {useGetCatalogData} from "../../../api/useGetData";
 
 
 const CatalogFiltersContainer = () => {
+    const {data: catalog, isLoading, isError, refetch, status} = useGetCatalogData()
     const dispatch = useDispatch();
     let {id} = useParams();
 
-    const fullCatalog = useSelector(state => state.catalog.fullCatalog);
     const catalogData = useSelector(state => state.catalog.catalogData);
     const catalogDataFiltered = useSelector(state => state.catalog.catalogDataFiltered);
     const filtersEmpty = useSelector(state => state.catalog.filtersEmpty);
     const viewChoise = useSelector(state => state.catalog.viewChoise);
 
-    const [waitData, setWaitData] = useState(false)  // выкл loader
-    const fetchCatalog = async () => {   // загрузка всего каталога
-        if(fullCatalog.length === 0){
-            try {
-                await dispatch(fetchCatalogJSON())
-            } catch (err) {
-                console.error('Error')
-            }
-        }
-        setWaitData(true)
-    }
     useEffect(()=>{
-        fetchCatalog()
-        selectCatalog(id)
-        scrollTop()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [waitData])
+        if (catalog){
+            selectCatalog(id)
+            scrollTop()
+        }
+    },[catalog])
+
 
     // define current catalog group
     const selectCatalog = (id)=>{
-        let newCatalog = fullCatalog.filter(i => i.ПутьПапки.includes(id))
+        let newCatalog = catalog.filter(i => i.ПутьПапки.includes(id))
         dispatch(openCatalogData(newCatalog))
         catalogFilters(newCatalog)
     }
@@ -75,13 +65,17 @@ const CatalogFiltersContainer = () => {
     }
     const catalogElements = renderCatalogItems(catalogData);
 
+
+
+    if (isLoading) {return <Loader/>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!catalog) {return <h3>Нет данных с сервера</h3>}
+
     return (
         <>
             <TitleBlock name={id} />
             <Breadcrumb catalog={id} viewChoise={viewChoise}/>
             <div style={{minHeight: '500px'}}>
-                {waitData
-                    ?
                     <div className='pageBody catalogWrapper'>
                         <CatalogFilters className='catalogWrapper-filters'/>
                         <div className='catalog-cards'>
@@ -91,9 +85,6 @@ const CatalogFiltersContainer = () => {
                             </div>
                         </div>
                     </div>
-                    :
-                    <Loader/>
-                }
             </div>
             <ScrollToTop smooth className='scrollTop' component={<KeyboardDoubleArrowUpIcon/>}/>
         </>

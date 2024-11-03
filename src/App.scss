@@ -4,6 +4,7 @@
     display: flex;
     flex-flow: column;
     min-height: 100vh;
+    overflow-x: clip;
 }
 
 .mainHeader {
@@ -69,6 +70,7 @@
             .navHeaderMiniMenu2{a{color: #3f51b5;}}
         }
         .navHeader-title{
+            padding-top: 6px;
             flex: 1 1 auto;
             font-family: 'Alegreya', serif;
             letter-spacing: 2px;
@@ -101,13 +103,24 @@
 }
 
 .footer {
-    margin-top: 20px;
+    margin-top: 75px;
     background: #f3f3f3;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
     padding: 25px 15px;
     display: inline-flex;
     flex-wrap: wrap;
+    position: relative;
+    .footerline {
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        background: #f3f3f3;
+        width: 105%;
+        height: 80px;
+        position: absolute;
+        top: -40px;
+        left: -2%;
+        transform: rotate(3deg);
+    }
     .footerLeft{
+        z-index: 100;
         flex: 1 1 60%;
         font-style: italic;
         font-size: 12px;
@@ -115,6 +128,7 @@
     }
     .footerRight {
         flex: 1 1 250px;
+        z-index: 100;
         p {
             padding-left: 100px;
         }
@@ -154,7 +168,11 @@
     padding-left: 30px;
 }
 
-.botLogo {width: 250px;}
+.botLogo {
+    width: 250px;
+    position: absolute;
+    top: 5px;
+}
 @media (max-width: 820px) {.botLogo{width: 200px;}}
 @media (max-width: 600px) {.botLogo{opacity: .3;}}
 
@@ -163,6 +181,7 @@ a {text-decoration: none;}
 .iconAlign {
     vertical-align: text-top;
     padding-right: 5px;
+    font-size: 33px !important;
 }
 
 .blockTitle {
@@ -188,3 +207,4 @@ a {text-decoration: none;}
     border: 1px solid #1976d2 !important;
     color: #1976d2;
 }
+

@@ -1,15 +1,12 @@
 import '../../App.scss'
 import "./Catalog.scss";
 import {useSelector} from "react-redux";
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import TitleBlock from "../../elements/TitleBlock";
-import React from "react";
-
 
 const Catalog = () => {
     const catalogItems = useSelector(state => state.catalog.catalogItems);
-
 
     const renderMainCatalogs = (catalogItems)=>{
         return  catalogItems.map((item, i) =>
