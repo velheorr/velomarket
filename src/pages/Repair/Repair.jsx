@@ -7,48 +7,47 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchRepairJSON} from './RepairSlice'
 import Loader from "../../assets/loader/Loader";
 import TitleBlock from "../../elements/TitleBlock";
 import {sortData} from '../../assets/functions'
+import {useGetService} from "../../api/useGetData";
 
 
 const Repair = () => {
+    const {data: service, isLoading, isError} = useGetService()
     const [options, setOptions] = useState([])
     const [price ,setPrice] = useState([])
     const [select, setSelect] = useState('');
 
-    const dispatch = useDispatch()
-    const fullCatalog = useSelector(state => state.repair.fullCatalog);
+    const [serviceData, setServiceData] = useState([]);
 
-    const handleChange = (event) => {
-        setSelect(event.target.value);
-        makePrice(event.target.value)
-    };
 
-    const [waitData, setWaitData] = useState(false)  // выкл loader
-    async function fetchCatalog(){   // загрузка всего каталога
-        if(fullCatalog.length === 0){
-            try {
-                await dispatch(fetchRepairJSON())
-            } catch (err) {
-                console.error('Error')
-            }
-        }
-        setWaitData(true)
-    }
     useEffect(()=>{
-        fetchCatalog()
-        makePrice('УСЛУГИ')
-        prepareSelectOptions(fullCatalog)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [waitData])
+        if (service){
+            const x = service.filter(item => item['ТипНоменклатуры'] === 'Услуга')
+            prepareSelectOptions(x)
+            setServiceData(x)
+            makePrice('УСЛУГИ')
+        }
+    },[service])
 
+    const makePrice = (type)=>{
+        const x = serviceData.filter(item => item['НоменклатураРодитель'] === type);
+        const xSorted = sortData(x, 'НоменклатураБренд')
+        setPrice(xSorted)
+    }
+
+    const handleChange = (e) => {
+        let obj = 'УСЛУГИ'
+        if (e){ obj = e.target.value}
+        setSelect(obj);
+        makePrice(obj)
+    };
 
 
     const prepareSelectOptions = (services)=>{
-        const ss = services.filter(i => i.ТипНоменклатуры === 'Услуга')
+        const ss = services
+
         let prepareOptions = []
         ss.forEach(i => {
             if(!prepareOptions.includes(i.НоменклатураРодитель)){
@@ -64,15 +63,12 @@ const Repair = () => {
         setOptions(sortedOptions)
     }
 
+
     const renderSelectOptions = options.map((item, i)=> {
         return <MenuItem key={i} value={item.val}>{item.name}</MenuItem>
     })
 
-    const makePrice = (type)=>{
-        const x = fullCatalog.filter(i => (i.НоменклатураРодитель === type))
-        const xSorted = sortData(x, 'НоменклатураБренд')
-        setPrice(xSorted)
-    }
+
 
     const renderListItems = (price) => {
         const x = price.map((item, i) => {
@@ -86,15 +82,18 @@ const Repair = () => {
     }
     let listItems = renderListItems(price)
 
+    if (isLoading) {return <Loader/>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!service) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <>
             <TitleBlock name='Сервис и Ремонт' icon={<HomeRepairServiceIcon className='iconAlign' color="primary"/>}/>
-            <div className='pageBody' style={{minHeight: '430px'}}>
-                <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }}>
+            <div className='pageBody' style={{minHeight: '430px', marginBottom: '20px'}}>
+                <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }} >
                     <InputLabel id="repairSelect">Услуги</InputLabel>
                     <Select
-                        labelId="repairSelect" id="demo-simple-select-autowidth"
+                        labelId="repairSelect"
                         value={select}
                         onChange={handleChange}
                         autoWidth  label="Вид услуги"
@@ -103,8 +102,6 @@ const Repair = () => {
                     </Select>
                 </FormControl>
                 <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed', minHeight: '500px'}}>
-                    {waitData
-                        ?
                         <>
                             <div className='listTitle'>
                                 <div>Услуга</div>
@@ -113,9 +110,6 @@ const Repair = () => {
                             </div>
                             {listItems}
                         </>
-                        :
-                        <Loader/>
-                    }
                 </Paper>
             </div>
         </>

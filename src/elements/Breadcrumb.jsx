@@ -5,7 +5,7 @@ import GrainIcon from '@mui/icons-material/Grain';
 import {Link} from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {setCatalogDataFilter} from "../pages/Catalog/CatalogSlice";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 
 const Breadcrumb = ({catalog = false, backData = false, backTitle = '', viewChoise = ''}) => {
