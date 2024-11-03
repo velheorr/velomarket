@@ -35,6 +35,7 @@ const Repair = () => {
         const x = serviceData.filter(item => item['НоменклатураРодитель'] === type);
         const xSorted = sortData(x, 'НоменклатураБренд')
         setPrice(xSorted)
+        console.log(price)
     }
 
     const handleChange = (e) => {
@@ -81,6 +82,7 @@ const Repair = () => {
         return x
     }
     let listItems = renderListItems(price)
+    console.log(listItems)
 
     if (isLoading) {return <Loader/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
@@ -101,16 +103,18 @@ const Repair = () => {
                         {renderSelectOptions}
                     </Select>
                 </FormControl>
-                <Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed', minHeight: '500px'}}>
-                        <>
+                {/*<Paper sx={{width: '100%', maxWidth: '100%', backgroundColor: '#ffffffed', minHeight: '500px'}}>*/}
                             <div className='listTitle'>
                                 <div>Услуга</div>
                                 <div>Описание</div>
                                 <div>Цена</div>
                             </div>
+                {listItems.length > 1
+                    ? listItems
+                    : <Loader text={'Выберите тип услуги'}/>
+                }
                             {listItems}
-                        </>
-                </Paper>
+               {/* </Paper>*/}
             </div>
         </>
     );
