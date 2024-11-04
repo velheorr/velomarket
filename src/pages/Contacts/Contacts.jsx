@@ -73,7 +73,7 @@ const Contacts = () => {
     return (
         <>
             <TitleBlock name='Контакты' icon={<ContactsIcon className="iconAlign" color="primary" />}/>
-            <div className='subTitle'><PinDropIcon className='iconAlign' color="primary" /> Наш адрес</div>
+            <div className='subTitle'>Наш адрес</div>
             {
                 !contact
                     ? <Loader/>
@@ -83,16 +83,14 @@ const Contacts = () => {
                         <BlockInfo icon={<PhoneIcon fontSize="large" color="primary"/>} title={'Телефон'} text={contact.phone}/>
                     </div>
             }
-            <div className='subTitle'><ScheduleIcon className='iconAlign' color="primary" /> Время работы</div>
+            <div className='subTitle'>Время работы</div>
             {
                 !sched
                     ? <Loader/>
                     : <div className="scheduleBlock">
-                        <Paper>
                             <List>
                                 {scheduleMap}
                             </List>
-                        </Paper>
                     </div>
             }
             <div className='notice'>
@@ -138,8 +136,7 @@ const Contacts = () => {
 };
 
 const View = ({item, active, holiday}) =>{
-    console.log(item)
-    return (
+  return (
         <>
             <ListItem button disablePadding className={`work ${holiday} ${active}`}>
                 <div className='icon'><EventIcon/></div>
