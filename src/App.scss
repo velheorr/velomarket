@@ -103,9 +103,9 @@
 }
 
 .footer {
-    margin-top: 75px;
+    margin-top: 100px;
     background: #f3f3f3;
-    padding: 25px 15px;
+    padding: 8px 0px;
     display: inline-flex;
     flex-wrap: wrap;
     position: relative;
@@ -113,9 +113,9 @@
         border-top: 1px solid rgba(0, 0, 0, 0.12);
         background: #f3f3f3;
         width: 105%;
-        height: 80px;
+        height: 100px;
         position: absolute;
-        top: -40px;
+        top: -50px;
         left: -2%;
         transform: rotate(3deg);
     }
@@ -140,7 +140,7 @@
             text-transform: uppercase;
             font-style: italic;
             white-space: nowrap;
-            text-align: end;
+            text-align: center;
             text-shadow: 1px 1px 1px #fff;
         }
     }
@@ -171,7 +171,8 @@
 .botLogo {
     width: 250px;
     position: absolute;
-    top: 5px;
+    top: -30px;
+    left: 30px;
 }
 @media (max-width: 820px) {.botLogo{width: 200px;}}
 @media (max-width: 600px) {.botLogo{opacity: .3;}}

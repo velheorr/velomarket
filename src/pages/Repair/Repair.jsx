@@ -91,14 +91,14 @@ const Repair = () => {
     return (
         <>
             <TitleBlock name='Сервис и Ремонт' icon={<HomeRepairServiceIcon className='iconAlign' color="primary"/>}/>
-            <div className='pageBody' style={{minHeight: '430px', marginBottom: '20px'}}>
-                <FormControl sx={{ m: 1, minWidth: '100%', ml: 0 }} >
+            <div className='pageBody' style={{minHeight: '500px', marginBottom: '20px'}}>
+                <FormControl sx={{ m: 1, minWidth: '30%', ml: 0 }} variant="standard">
                     <InputLabel id="repairSelect">Услуги</InputLabel>
                     <Select
                         labelId="repairSelect"
                         value={select}
                         onChange={handleChange}
-                        autoWidth  label="Вид услуги"
+                         label="Вид услуги"
                     >
                         {renderSelectOptions}
                     </Select>
