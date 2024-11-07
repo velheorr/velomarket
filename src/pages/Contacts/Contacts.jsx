@@ -136,12 +136,14 @@ const Contacts = () => {
 };
 
 const View = ({item, active, holiday}) =>{
+
   return (
         <>
             <ListItem button disablePadding className={`work ${holiday} ${active}`}>
                 <div className='icon'><EventIcon/></div>
                 <div className='day'>{item.day}</div>
-                <div className='time'>{item.time}</div>
+               {/* <div className='time'>{item.time}</div>*/}
+                <div className='time'>{item.off? 'Выходной' : '10:00 - 18:00'}</div>
             </ListItem>
             <Divider />
         </>

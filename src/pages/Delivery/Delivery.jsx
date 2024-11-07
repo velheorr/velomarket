@@ -8,6 +8,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import QrCodeIcon from '@mui/icons-material/QrCode';
 
 import React, {useEffect, useState} from "react";
 import {api} from "../../api/api";
@@ -37,6 +38,7 @@ const Delivery = () => {
             <div className='paddingTB blockTitle'>Способы оплаты</div>
             <div className='blocks'>
                 <BlockInfo icon={<CreditCardIcon fontSize="large" color="primary"/>} title={'Банковской картой'}/>
+                <BlockInfo icon={<QrCodeIcon fontSize="large" color="primary"/>} title={'QR кодом'}/>
                 <BlockInfo icon={<CurrencyRubleIcon fontSize="large" color="primary"/>} title={'Наличными в магазине'}/>
             </div>
 
@@ -56,8 +58,8 @@ const Delivery = () => {
                 ? <Loader/>
                 : <div className='blocks'>
                     <BlockInfo icon={<AccessTimeIcon fontSize="large" color="primary"/>} title={'Время доставки'} text={delivery.time}/>
-                    <BlockInfo icon={<DeliveryDiningIcon fontSize="large" color="primary"/>} title={'Стоимость доставки'} text={delivery.price}/>
-                    <BlockInfo icon={<LocalShippingIcon fontSize="large" color="primary"/>} title={'В отдаленные районы'} text={delivery.price2}/>
+                    <BlockInfo icon={<DeliveryDiningIcon fontSize="large" color="primary"/>} title={'Стоимость доставки'} text={"300₽"}/>
+                    <BlockInfo icon={<LocalShippingIcon fontSize="large" color="primary"/>} title={'В отдаленные районы'} text={'500₽'}/>
                 </div>
             }
         </>

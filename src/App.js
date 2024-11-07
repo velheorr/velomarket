@@ -18,8 +18,8 @@ import CatalogDetails from "./pages/Catalog/CatalogDetails/CatalogDetails";
 
 const App = () => {
     const modal = useSelector(state => state.modal.show);
-    /*const snow =  document.createElement('script');
-    snow.src = "https://thecode.media/wp-content/uploads/2019/12/snowfall2020.js"; document.body.appendChild(snow);*/
+    const snow =  document.createElement('script');
+    snow.src = "https://thecode.media/wp-content/uploads/2019/12/snowfall2020.js"; document.body.appendChild(snow);
 
 
     return (
