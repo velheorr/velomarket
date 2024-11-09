@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Paper from '@mui/material/Paper';
 import Loader from "../../assets/loader/Loader";
 import TitleBlock from "../../elements/TitleBlock";
 import {sortData} from '../../assets/functions'

@@ -5,10 +5,9 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import { TabPanel, TabList, TabContext } from '@mui/lab';
-import {clearSymbol, imgURL, scrollTop, splitAndSHowParagraph} from "../../../assets/functions";
+import {clearSymbol, imgURL, splitAndSHowParagraph} from "../../../assets/functions";
 import Fancybox from "../../../assets/FancyBox";
 import Loader from "../../../assets/loader/Loader";
-import {useDispatch, useSelector} from "react-redux";
 import TitleBlock from "../../../elements/TitleBlock";
 import ImgForCatalogPage from "../../../elements/ImgForCatalogPage";
 import Breadcrumb from "../../../elements/Breadcrumb";
@@ -20,7 +19,7 @@ import {useGetCatalogData} from "../../../api/useGetData";
 
 
 const CatalogPage = () => {
-    const {data: catalog, isLoading, isError, refetch, status} = useGetCatalogData()
+    const {data: catalog, isLoading, isError} = useGetCatalogData()
     const {itemId} = useParams()
     const [item, setItem] = useState('');
     const [value, setValue] = useState('2');

@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import '../../../App.scss'
 import CatalogFilters from "./catalogFilters";
 import {
     openCatalogData,
     setFilteredBrand,
     setFilteredSize,
-    setFilteredType, setFullCatalog,
+    setFilteredType,
 } from "../CatalogSlice";
 import {filterCatalogBy, scrollTop} from '../../../assets/functions'
 import {useDispatch, useSelector} from "react-redux";
@@ -20,7 +20,7 @@ import {useGetCatalogData} from "../../../api/useGetData";
 
 
 const CatalogFiltersContainer = () => {
-    const {data: catalog, isLoading, isError, refetch, status} = useGetCatalogData()
+    const {data: catalog, isLoading, isError} = useGetCatalogData()
     const dispatch = useDispatch();
     let {id} = useParams();
 

@@ -1,6 +1,6 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
-import './slickSlider.css'
+import './slickSlider.scss'
 
 /*import img1 from "./img/winter/1.jpg"
 import img2 from "./img/winter/2.jpg"

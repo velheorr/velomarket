@@ -14,6 +14,7 @@ import Modal from "./Modal/Modal";
 import Footer from "./pages/Footer/Footer";
 import SlickSlider from "./assets/Slider/SlickSlider";
 import CatalogDetails from "./pages/Catalog/CatalogDetails/CatalogDetails";
+import Search from "./pages/Search/Search";
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/catalogs/:id" ><CatalogDetails /></Route>
                 <Route path="/catalogDetails/:id" ><CatalogFiltersContainer /></Route>
                 <Route path="/catalog/:itemId"><CatalogPage /></Route>
+                <Route path="/search"><Search /></Route>
 
                 <Route path="/repair"><Repair/></Route>
                 <Route path="/delivery"><Delivery/></Route>

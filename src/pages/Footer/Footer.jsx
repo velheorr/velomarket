@@ -12,8 +12,8 @@ const Footer = () => {
 			</div>
 			<div className='footerRight' style={{backgroundImage: logo}}>
 				<div className='footerTitle'>ВЕЛОМАРКЕТ "КОЛЕСО"</div>
-				<p><PinDropIcon className="iconAlign" fontSize="small"/> г.Пермь, ул. Борчанинова 62</p>
-				<p><PhoneIcon className="iconAlign" fontSize="small"/> +7 (902) 471-37-69</p>
+				<p><PinDropIcon sx={{verticalAlign: 'bottom'}} className="iconAlign" fontSize="small"/> г.Пермь, ул. Борчанинова 62</p>
+				<p><PhoneIcon sx={{verticalAlign: 'bottom'}} className="iconAlign" fontSize="small"/> +7 (902) 471-37-69</p>
 			</div>
 
 		</div>

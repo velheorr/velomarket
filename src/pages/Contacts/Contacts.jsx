@@ -2,21 +2,18 @@ import '../../App.scss'
 import './Contacts.scss'
 import Divider from "@mui/material/Divider";
 import ContactsIcon from '@mui/icons-material/Contacts';
-import ScheduleIcon from '@mui/icons-material/Schedule';
 import ListItem from "@mui/material/ListItem";
 import PhoneIcon from '@mui/icons-material/Phone';
 import List from "@mui/material/List";
 import HomeIcon from '@mui/icons-material/Home';
 import MapIcon from '@mui/icons-material/Map';
 import {Map, Placemark, YMaps, ZoomControl} from "react-yandex-maps";
-import Paper from "@mui/material/Paper";
 import StoreIcon from "@mui/icons-material/Store";
 import {api} from "../../api/api";
 import React, {useEffect, useState} from "react";
 import Loader from "../../assets/loader/Loader";
 import EventIcon from '@mui/icons-material/Event';
 import TitleBlock from "../../elements/TitleBlock";
-import PinDropIcon from '@mui/icons-material/PinDrop';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import BlockInfo from "../../elements/BlockInfo";
 

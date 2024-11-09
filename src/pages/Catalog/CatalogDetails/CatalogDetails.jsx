@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import TitleBlock from "../../../elements/TitleBlock";
 import Breadcrumb from "../../../elements/Breadcrumb";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Link, useHistory, useParams} from "react-router-dom";
-import {setCatalogTypeData, setFullCatalog, setViewChoise} from "../CatalogSlice";
+import {setFullCatalog, setViewChoise} from "../CatalogSlice";
 import {sortArr} from "../../../assets/functions";
 import Loader from "../../../assets/loader/Loader";
 import './CatalogDetails.scss'
@@ -16,7 +16,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import {useGetCatalogData} from "../../../api/useGetData";
 
 const CatalogDetails = () => {
-	const {data: catalog, isLoading, isError, refetch, status} = useGetCatalogData()
+	const {data: catalog, isLoading, isError} = useGetCatalogData()
 	const dispatch = useDispatch();
 	let {id} = useParams();
 	const history = useHistory();
@@ -50,7 +50,6 @@ const CatalogDetails = () => {
 		}
 		setCatType(sortArr(arr))
 		setSearchCat(sortArr(arr))
-		return;
 	}
 
 
@@ -74,7 +73,7 @@ const CatalogDetails = () => {
 			setSearchCat(catType)
 		}
 		if (e.key === 'Enter' && search.length > 1) {
-			const keysToSearch = ["org", "seller", 'vendor'];
+			const keysToSearch = ["Номенклатура", "НоменклатураБренд", 'НоменклатураМодель'];
 			const searchedData = easySearch(catType, search, keysToSearch);
 			setSearchCat(searchedData)
 		}
