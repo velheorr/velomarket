@@ -53,8 +53,6 @@ const CatalogDetails = () => {
 	}
 
 
-
-
 	/*Поиск*/
 	const [search, setSearch] = useState('')
 	/*Очистка поля поиска*/

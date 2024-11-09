@@ -30,7 +30,6 @@ const CatalogPage = () => {
         if (cat){
             let x = (cat.ПутьПапки).split('\\')[0]
             setParent(x)
-            console.log(cat)
         }
 
     }
