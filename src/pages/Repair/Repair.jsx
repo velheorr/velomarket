@@ -26,7 +26,8 @@ const Repair = () => {
             const x = service.filter(item => item['ТипНоменклатуры'] === 'Услуга')
             prepareSelectOptions(x)
             setServiceData(x)
-            makePrice('УСЛУГИ')
+            handleChange()
+            //makePrice('УСЛУГИ')
         }
     },[service])
 
@@ -34,7 +35,6 @@ const Repair = () => {
         const x = serviceData.filter(item => item['НоменклатураРодитель'] === type);
         const xSorted = sortData(x, 'НоменклатураБренд')
         setPrice(xSorted)
-        console.log(price)
     }
 
     const handleChange = (e) => {
@@ -81,7 +81,6 @@ const Repair = () => {
         return x
     }
     let listItems = renderListItems(price)
-    console.log(listItems)
 
     if (isLoading) {return <Loader/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
