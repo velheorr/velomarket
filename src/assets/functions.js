@@ -10,7 +10,7 @@ export const imgURL = (path, mainImg,thumb = false)=>{
     }
     let link = `${baseURL}images/${path}/${mainImg}`;
     if (thumb === true) {
-        link = `${baseURL}thumb/${path}/${mainImg}`;
+        link = `${baseURL}images/${path}/${mainImg}`;
     }
     if (path && path.length > 1 && mainImg && mainImg.length > 1){
         return link
